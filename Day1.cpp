@@ -24,7 +24,7 @@ int main()
     int a, b;
     std::cout << "Insert a: "; std::cin >> a;
     std::cout << "Insert b: "; std::cin >> b;
-    std::cout << "a: " << a << "\nb: " << b <<std::endl;
+    std::cout << "a: " << a << "\tb: " << b <<std::endl;
     std::cout << "Min: " << min(a,b) << std::endl;
     std::cout << "Max: " << max(a,b) << std::endl;
     std::cout << "Sum: " << sum(a,b) << std::endl;

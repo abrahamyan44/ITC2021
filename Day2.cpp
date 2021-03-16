@@ -70,20 +70,19 @@ int Ifactorial(unsigned int num)
 
 int main()
 {
-    //int number;
-    //std::cout << "Enter n: "; std::cin >> n;
-    //Drow_Triangle(n);
+    int number;
+    std::cout << "Enter n: "; std::cin >> number;
+    Drow_Triangle(number);
 
-    //string txt;
-    //std::cout << "Enter your string: ";
-    //std::getline(std::cin, txt);
-    //Reverse_String(txt);
-    //std::cout << "Reversed string: " << txt;
-    
-    //int number;
-    //std::cout << "Enter positive number: "; std::cin >> number;
-    //std::cout << "Factorial with recursion: " << Rfactorial(number) << std::endl;
-    //std::cout << "Factorial with iteration: " << Ifactorial(number) << std::endl;
+    string txt;
+    std::cout << "\nEnter your string: ";
+    std::cin.ignore();
+    std::getline(std::cin, txt);
+    Reverse_String(txt);
+    std::cout << "Reversed string: " << txt << "\n\n";
 
+    std::cout << "Enter positive number: "; std::cin >> number;
+    std::cout << "Factorial with recursion: " << Rfactorial(number) << std::endl;
+    std::cout << "Factorial with iteration: " << Ifactorial(number) << std::endl;
 
 }
