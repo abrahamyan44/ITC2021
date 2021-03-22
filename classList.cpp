@@ -160,8 +160,7 @@ void List::insert_after(int key,const int& val)
 
 void List::insert_before(int key,const int& val)
 {
-	NodePtr node = new Node(val);
-   
+	NodePtr node = new Node(val);   
 	//find the position
 	NodePtr current = m_tail;
 
