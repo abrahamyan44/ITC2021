@@ -8,21 +8,18 @@ file2 = "test_run/output.txt"
 
 bin/main: $(OBJ_FILES)
 	@mkdir -p bin
+	@mkdir -p test_run
 	g++ -g $^ -o $@
 
-#release: $(OBJ_FILES)
-#	@mkdir -p bin
-#	g++ -O3 -g $^ -o bin/$@
+release: $(OBJ_FILES)
+	@mkdir -p bin
+	@mkdir -p test_run
+	g++ -O3 -g $^ -o bin/$@
 
-#test_run:
-#	@mkdir -p $@
-
-OBJ_FILES: $(SOURCE_FILES)
+$(OBJ_FILES): $(SOURCE_FILES)
 	g++ -c $^ -o $@
 
-.PHONY: test test_run release	
-test_run:
-	@mkdir -p $@
+.PHONY: test release	
 
 test: 
 	@if diff -q $(file1) $(file2); then
