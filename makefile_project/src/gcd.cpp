@@ -19,13 +19,14 @@ int main() {
 		std::cout << "No such file";
 	}
 	else {
-		int a, b;
-                std::ofstream created_file("test_run/output.txt");
+		std::fstream my_file;
+				int a, b;
+                std::ofstream MyFile("test_run/output.txt");
 		while (finput >> a >> b)
 		{
-          created_file << gcd(a, b) << std::endl;
+          MyFile << gcd(a, b) << std::endl;
         }
-		created_file.close();
+		MyFile.close();
 	}
 	finput.close();
         return 0;
