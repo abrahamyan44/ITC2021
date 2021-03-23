@@ -24,17 +24,18 @@ $(OBJ_FILES): $(SOURCE_FILES)
 	@mv $@ obj/
 
 .PHONY: $(OBJ_FILES) release bin/main test	
+count = `diff $(file1) $(file2)| grep "^>" | wc -l`
 
 test: 
 	@make -s  all
 	@./bin/main
-	@echo "Comand is checking the differnce..."
+	@echo "Command is checking the difference..."
 	@if diff -q $(file1) $(file2); then
 		@echo "PASSED"
 	@else
 		@echo "FAILED";
+		@echo The count of different lines is $(count)
 	@fi
-
 clean:
 	@echo "All generated files are deleted"
 	@rm -rf bin test_run obj
