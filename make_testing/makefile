@@ -15,17 +15,18 @@ create_bin:
 .Phony: create_bin bin/gcd.out
 
 debug:
+	make create_bin
 	g++ -g src/gcd.cpp -o bin/gcd.out
 
 .ONESHELL:
 test:
+	make all
 	$(MKDIR) -p test_run
 	$(COPY) $(TEST_FILES) test_run
 	$(BASH) test_run/read_and_write_in_file.sh
 
 release:
-	$(MKDIR) -p bin
-	g++ src/gcd.cpp -o bin/gcd.out
+	make all
 
 clean: 
 	rm -rf bin
