@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main()
+void test()
 {
 	fstream inputf;
 	inputf.open("tst/input.txt", ios::in);
@@ -24,6 +24,10 @@ int main()
 
 	createdf.close();
 	inputf.close();
+}
 
+int main()
+{
+	test();
     return 0;
 }
