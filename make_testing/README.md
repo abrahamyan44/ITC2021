@@ -1,3 +1,12 @@
+---------------------------Commands-------------------------
+1. $ make
+2. $ make release
+3. $ make debug
+4. $ make test
+5. $ make clean
+
+----------------------------How to use it?---------------------------------
+
 1. "make" or "make release" command creates the executable file under "bin" directory
 2. "make debug" command creates the executable file under "bin" directory for debugging
 3. "make test" command`
