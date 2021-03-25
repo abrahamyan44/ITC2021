@@ -1,14 +1,14 @@
+EXE := main
 OBJPATH := ../../obj
 BINPATH := ../../bin
-SRC := $(wildcard *.cpp)
-OBJ := $(patsubst %.cpp,%.o,$(SRC))
+SRCS := $(wildcard *.cpp)
+OBJS := $(patsubst %.cpp,%.o,$(SRCS))
 OBJECTS := $(wildcard ../../obj/*.o)
 
 
-$(BINPATH)/main: $(OBJECTS)
-	@echo "OBJECTS-----> "$^
-	g++ $^ -o $@
+$(BINPATH)/$(EXE): $(OBJECTS) $(OBJPATH)/$(OBJS)
+	@g++ $^ -o $@
 
-$(OBJPATH)/%.o: %.cpp
-	@echo "MAIN OBJ----> "$<
-	g++ -c $< -o $@
+$(OBJPATH)/$(OBJS): $(SRCS)
+	@g++ -c  $^ -o $@
+
