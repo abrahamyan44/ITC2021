@@ -1,3 +1,6 @@
+.ONESHELL:
+SHELL := /bin/bash
+
 SRC := $(wildcard src/*.cpp)
 BINPATH := bin
 FILEPATH := tst
@@ -29,12 +32,12 @@ test: bin/*
 	@mkdir -p $(TESTPATH)
 	@./bin/*
 	@cp $(FILEPATH)/*output.txt $(TESTPATH)
-	./script
-#	@ifeq diff -c  $(file1) $(file)
-#		@echo "PASSED";
-#	@else
-#		@echo "FAILED";	
-#	@endif
+	@if diff -c  $(file1) $(file2)
+	@then
+		@echo "PASSED";
+	@else
+		@echo "FAILED";	
+	@fi
 
 
 clean:

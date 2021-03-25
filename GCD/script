@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if diff -u tst.run/goutput.txt tst.run/output.txt; then
-    echo "PASSED";
-else
-    echo "FAILED";
-fi
