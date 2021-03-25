@@ -3,11 +3,11 @@ SUBDIRS := src/class src/main
 .PHONY: all clean $(SUBDIRS)
 
 all: $(SUBDIRS)
-	
 
 $(SUBDIRS): 
 	@mkdir -p bin obj lib
-	@$(MAKE) -C $@ 
+	@$(MAKE) -C $@
+
 
 clean:
 	@rm -rf *.o bin obj lib
