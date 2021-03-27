@@ -18,6 +18,12 @@ class BinSTree {
     void InsertRecursive(Node*& node, const T& data);
     void TreeCopyRecursive(Node*& other_node, Node*& my_node);
     void TreeDeleteRecursive(Node*& node);
+    Node* FindDeletableNodesParentRecursive(Node*& node, const T& data);
+    void GetDeletableAndParentNodes(Node*& parent_node, Node*& deletable_node, const T& data);
+    T FindSubstituteNodeDataRecursive(Node*& parent_node, Node*& substitute_node);
+    void GetAndReplaceSubstituteNode(Node*& parent_node, Node*& deletable_node);
+    void ReplaceSubstituteAndDeletableNodes(Node*& parent_node, Node*& deletable_node, Node*& substitute_node);
+
 
 public:
     BinSTree();

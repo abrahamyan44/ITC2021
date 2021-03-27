@@ -9,7 +9,10 @@ BinSTree<T>::BinSTree()
 template <class T>
 BinSTree<T>::BinSTree(T* arr, int size)
     :m_root(nullptr) {
-
+        for(int i = 0; i < size; ++i) 
+        {
+            Insert(arr[i]);
+        }
 }
 
 template <class T>
@@ -26,6 +29,8 @@ BinSTree<T>::~BinSTree()
 {
     TreeDeleteRecursive(m_root);
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////
 
 template <class T>
 void BinSTree<T>::InsertRecursive(Node*& node, const T& data)
@@ -61,6 +66,8 @@ void BinSTree<T>::Insert(const T& data)
     }
     InsertRecursive(m_root, data);
 }
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 template <class T>
 void BinSTree<T>::Print(const std::string type, Node*& node)
@@ -112,6 +119,8 @@ void BinSTree<T>::PrintPostorder()
     Print("postorder", m_root);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+
 template <class T>
 void BinSTree<T>::TreeCopyRecursive(Node*& other_node, Node*& my_node)
 {
@@ -135,6 +144,18 @@ void BinSTree<T>::TreeCopyRecursive(Node*& other_node, Node*& my_node)
 }
 
 template <class T>
+BinSTree<T>& BinSTree<T>::operator=(BinSTree& other) {
+    if(this == &other)
+        return *this;
+    TreeDeleteRecursive(m_root);
+    m_root = nullptr;
+    TreeCopyRecursive(other.m_root, m_root);
+    return *this;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
 void BinSTree<T>::TreeDeleteRecursive(Node*& node)
 {
     if(node)
@@ -146,26 +167,150 @@ void BinSTree<T>::TreeDeleteRecursive(Node*& node)
 }
 
 template <class T>
-BinSTree<T>& BinSTree<T>::operator=(BinSTree& other) {
-    if(this == &other)
-        return *this;
-    TreeDeleteRecursive(m_root);
-    m_root = nullptr;
-    TreeCopyRecursive(other.m_root, m_root);
-    return *this;
+struct BinSTree<T>::Node* BinSTree<T>::FindDeletableNodesParentRecursive(Node*& node, const T& data)
+{
+    if(node->data > data && node->left)
+    {   
+        if(node->left->data == data)
+        {
+            return node;
+        }
+        return FindDeletableNodesParentRecursive(node->left, data);
+    }
+    if(node->data < data && node->right)
+    {
+        if(node->right->data == data)
+        {
+            return node;
+        }
+        return FindDeletableNodesParentRecursive(node->right, data);
+    }
+
+    return nullptr;
 }
 
+template <class T>
+T BinSTree<T>::FindSubstituteNodeDataRecursive(Node*& parent_node, Node*& substitute_node)
+{
+    if(substitute_node->right)
+    {
+        return FindSubstituteNodeDataRecursive(substitute_node, substitute_node->right);
+    }
+    T data = substitute_node->data;
+    if(parent_node->left == substitute_node)
+    {
+        parent_node->left = substitute_node->left;
+    }
+    else
+    {
+        parent_node->right = substitute_node->left;
+    }
+    
+    return data;
+}
+
+template <class T>
+void BinSTree<T>::GetDeletableAndParentNodes(Node*& parent_node, Node*& deletable_node, const T& data)
+{
+    if(m_root->data != data)
+    {
+        parent_node = FindDeletableNodesParentRecursive(m_root, data);
+        if(!parent_node)
+        {
+            return;
+        }
+        if(parent_node->left && parent_node->left->data == data)
+        {
+            deletable_node = parent_node->left;
+        }
+        else
+        {
+            deletable_node = parent_node->right;
+        }
+    }
+    else
+    {
+        parent_node = nullptr;
+        deletable_node = m_root;
+    }
+}
+
+template <class T>
+void BinSTree<T>::GetAndReplaceSubstituteNode(Node*& parent_node, Node*& deletable_node)
+{
+    Node* substitute_node;
+    if(deletable_node->left && !deletable_node->right)
+    {
+        substitute_node = deletable_node->left;
+    }
+    else if(deletable_node->right && !deletable_node->left)
+    {
+        substitute_node = deletable_node->right;
+    }
+    else if(!deletable_node->left && !deletable_node->right)
+    {
+        substitute_node = nullptr;
+    }
+    else
+    {
+        T data = FindSubstituteNodeDataRecursive(deletable_node, deletable_node->left);
+        substitute_node = new Node(data);
+        substitute_node->left = deletable_node->left;
+        substitute_node->right = deletable_node->right;
+    }
+    ReplaceSubstituteAndDeletableNodes(parent_node, deletable_node, substitute_node);
+}
+
+template <class T>
+void BinSTree<T>::ReplaceSubstituteAndDeletableNodes(Node*& parent_node, Node*& deletable_node, Node*& substitute_node)
+{
+    if(parent_node)
+    {
+        if(parent_node->left == deletable_node)
+        {
+            parent_node->left = substitute_node;
+        }
+        else
+        {
+            parent_node->right = substitute_node;
+        }
+    }
+    else
+    {
+        m_root = substitute_node;
+    }
+    delete deletable_node;
+}
+
+template <class T>
+void BinSTree<T>::Remove(const T& data)
+{
+    if(!m_root) {
+        return;
+    }
+    Node* parent_node;
+    Node* deletable_node;
+    GetDeletableAndParentNodes(parent_node, deletable_node, data);
+    GetAndReplaceSubstituteNode(parent_node, deletable_node);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main()
 {
     BinSTree<int> a;
     a.Insert(1);
-    a.Insert(7);
-    a.Insert(1);
+    a.Insert(0);
+    a.Insert(10);
+    a.Insert(15);
     a.Insert(5);
     a.Insert(2);
-    a.Insert(4);
+    a.Insert(7);
+    a.Insert(13);
+    a.Insert(17);
+    a.Insert(16);
     BinSTree<int> b;
     b = a;
-    b.PrintInorder();
+    b.Remove(5);
+    b.PrintPreorder();
 }
