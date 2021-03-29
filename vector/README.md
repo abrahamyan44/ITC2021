@@ -1,0 +1,3 @@
+###vector class ####
+//reverce//shrink_to_fit//push_back//insert//...
+//:template class //
