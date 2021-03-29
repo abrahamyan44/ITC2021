@@ -12,9 +12,11 @@ void file_ganarate()
 
 	int n = 100;
 	int cnt = 0;
-	
+
+	srand( time(0) );	
 	while ( cnt < n ) 
 	{
+	
 		int x = random()%1000000;
 		int y = random()%1000000;
 		test << x << "\t" << y << endl;

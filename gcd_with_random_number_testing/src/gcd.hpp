@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <time.h>
 using namespace std;
 
 //void file_reader (ifstream file, string file_path);
