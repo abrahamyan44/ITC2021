@@ -23,7 +23,7 @@ std::istream& operator>>(std::istream& in, Vector<T1>& V)
 
 template <typename T>
 Vector<T>::Vector()
-	:m_maxsize(MAXSIZE)
+	:m_max_size(MAX_SIZE)
 	,m_size(0)
 	,m_data(nullptr)
 {
@@ -32,7 +32,7 @@ Vector<T>::Vector()
 
 template <typename T>
 Vector<T>::Vector(int size, const T* data)
-	:m_maxsize((size > MAXSIZE) ? size : MAXSIZE)
+	:m_max_size((size > MAX_SIZE) ? size : MAX_SIZE)
 	,m_size(size)
 	,m_data(nullptr)
 {
@@ -41,7 +41,7 @@ Vector<T>::Vector(int size, const T* data)
 
 template <typename T>
 Vector<T>::Vector(const Vector<T>& V)
-	:m_maxsize(V.m_maxsize)
+	:m_max_size(V.m_max_size)
 	,m_size(V.m_size)
 	,m_data(nullptr) 
 {
@@ -51,15 +51,15 @@ Vector<T>::Vector(const Vector<T>& V)
 template <typename T>
 Vector<T>::~Vector()
 {
-	Delocate();
+	Deallocate();
 }
 
 template <typename T>
 Vector<T>& Vector<T>::operator=(const Vector<T>& V)
 {
 	if (this != &V) {
-		Delocate();
-		m_maxsize = V.m_maxsize;
+		Deallocate();
+		m_max_size = V.m_max_size;
 		m_size = V.m_size;
 		AllocateAndInitialize(V.m_data);
 	}
@@ -83,16 +83,16 @@ const T& Vector<T>::operator[](int index) const
 template <typename T>
 void Vector<T>::PushBack(const T& element)
 {
-	if (m_size == m_maxsize) {
-		m_maxsize *= 2;
+	if (m_size == m_max_size) {
+		m_max_size *= 2;
 
-		T* tmp = new T[m_maxsize];
+		T* tmp = new T[m_max_size];
 		
 		for (int i = 0; i < m_size; ++i) {
 			tmp[i] = m_data[i];
 		}
 
-		Delocate();
+		Deallocate();
 		m_data = tmp;
 	}
 	m_data[m_size++] = element;
@@ -121,11 +121,11 @@ void Vector<T>::Insert(int index, const T& element)
 	if (index >= m_size) {
 		PushBack(element);
 	} else {
-		if (m_size == m_maxsize) {
-			m_maxsize *= 2;	
+		if (m_size == m_max_size) {
+			m_max_size *= 2;	
 		}
 
-		T* tmp = new T[m_maxsize];
+		T* tmp = new T[m_max_size];
 
 		for (int i = 0; i < index; ++i) {
 			tmp[i] = m_data[i];
@@ -137,7 +137,7 @@ void Vector<T>::Insert(int index, const T& element)
 			tmp[i] = m_data[i - 1];
 		}
 
-		Delocate();
+		Deallocate();
 		m_data = tmp;
 		++m_size;
 	}
@@ -154,7 +154,7 @@ void Vector<T>::Remove(int index)
 	if (index >= m_size) {
 		PopBack();
 	} else {
-		T* tmp = new T[m_maxsize];
+		T* tmp = new T[m_max_size];
 
 		for (int i = 0; i < index; ++i) {
 			tmp[i] = m_data[i];
@@ -163,7 +163,7 @@ void Vector<T>::Remove(int index)
 		for (int i = index; i < m_size - 1; ++i) {
 			tmp[i] = m_data[i + 1];
 		}
-		Delocate();
+		Deallocate();
 		m_data = tmp;
 		--m_size;
 	}	
@@ -173,18 +173,18 @@ template <typename T>
 void Vector<T>::ShrinkToFit()
 {
 	if (0 == m_size) {
-		m_maxsize = m_size;
-		T* m_data = new T[m_maxsize];
+		m_max_size = m_size;
+		T* m_data = new T[m_max_size];
 		return;
 	}
 
-	m_maxsize = m_size;
-	T* tmp = new T[m_maxsize];
+	m_max_size = m_size;
+	T* tmp = new T[m_max_size];
 
 	for (int i = 0; i < m_size; ++i) {
 		tmp[i] = m_data[i];
 	}
-	Delocate();
+	Deallocate();
 	m_data = tmp;
 }	
 
@@ -196,18 +196,18 @@ void Vector<T>::Reserve(int nmaxsize)
 	}
 
 	if (0 == m_size) {
-		m_maxsize = nmaxsize;
-		T* m_data = new T[m_maxsize];
+		m_max_size = nmaxsize;
+		T* m_data = new T[m_max_size];
 		return;
 	}
 
-	m_maxsize = nmaxsize;
+	m_max_size = nmaxsize;
 	T* tmp = new T[nmaxsize];
 
 	for (int i = 0; i < m_size; ++i) {
 		tmp[i] = m_data[i];
 	}
-	Delocate();
+	Deallocate();
 	m_data = tmp;
 }	
 	
@@ -220,7 +220,7 @@ int Vector<T>::GetSize() const
 template <typename T>
 int Vector<T>::GetCapacity() const
 {
-	return m_maxsize;
+	return m_max_size;
 }
 
 template <typename T>
@@ -232,7 +232,7 @@ bool Vector<T>::IsEmpty() const
 template <typename T>
 void Vector<T>::AllocateAndInitialize(const T* data)
 {
-	m_data = new T[m_maxsize] {};
+	m_data = new T[m_max_size] {};
 
 	if (nullptr != data) {
 		assert(nullptr != data);
@@ -245,7 +245,7 @@ void Vector<T>::AllocateAndInitialize(const T* data)
 }
 
 template <typename T>
-void Vector<T>::Delocate()
+void Vector<T>::Deallocate()
 {
 	delete[] m_data;
 	m_data = nullptr;

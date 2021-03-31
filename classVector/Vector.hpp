@@ -4,6 +4,7 @@
 #include <cassert>
 
 template <typename T>
+
 class Vector
 {
 	template <typename T1>
@@ -12,16 +13,16 @@ class Vector
 	friend std::istream& operator>>(std::istream&, Vector<T1>&);	
 
 private:
-	static int const MAXSIZE = 100;
+	static int const MAX_SIZE = 100; //dynamic maximum size of Vector
 
-	int m_maxsize;
-	int m_size;
-	T* m_data;
+	int m_max_size; //maximum size 
+	int m_size;     //number of elements
+	T* m_data; 	    //data
 
 private:
-	void AllocateAndInitialize(const T* = nullptr);
-	void Delocate();
-	void CheckIndex(int);
+	void AllocateAndInitialize(const T* = nullptr); //allocate and initialize
+	void Deallocate();								//deallocate
+	void CheckIndex(int);							//check index
 
 public:
 	Vector(); 				  //default ctor
@@ -30,9 +31,9 @@ public:
 	~Vector(); 				  //dtor
 	Vector<T>& operator=(const Vector<T>&); //assignment operator
 
-	int GetSize() const;
-	int GetCapacity() const;
-	bool IsEmpty() const;
+	int GetSize() const; 		//get size
+	int GetCapacity() const;	//get capacity
+	bool IsEmpty() const;		//returns whether teh Vector is empty
 
 	T& operator[](int);
 	const T& operator[](int) const;
