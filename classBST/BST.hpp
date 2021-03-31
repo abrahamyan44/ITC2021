@@ -25,7 +25,7 @@ template <typename T>
 class BinarySearchTree
 {
 private:
-	int m_size; 
+	int m_size; // Size of elements
 	NodePtr<T> m_root;
 protected:	
   	NodePtr<T> InsertHelper(NodePtr<T> root, T val); 		// Insert helper
