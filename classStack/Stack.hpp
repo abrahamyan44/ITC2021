@@ -14,8 +14,8 @@ private:
 	T* m_data;		//Data
 
 private:
-	void AllocateAndInitialize(const T* = nullptr); //Allocate and Initialize the Stack
-	void Deallocate();								//Deallocate the Stack
+	void AllocateAndInitialize(const T* = nullptr); //Allocate and Initialize
+	void Deallocate();								//Deallocate
 //	void CheckEmpty() const;
 
 public:
