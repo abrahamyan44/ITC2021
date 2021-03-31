@@ -16,11 +16,11 @@ class BinSTree {
 
     void Print(const std::string type, Node*& node);
     void InsertRecursive(Node*& node, const T& data);
-    void TreeCopyRecursive(Node*& other_node, Node*& my_node);
+    void TreeCopyRecursive(const Node*& other_node, Node*& my_node);
     void TreeDeleteRecursive(Node*& node);
     Node* FindDeletableNodesParentRecursive(Node*& node, const T& data);
     void GetDeletableAndParentNodes(Node*& parent_node, Node*& deletable_node, const T& data);
-    T FindSubstituteNodeDataRecursive(Node*& parent_node, Node*& substitute_node);
+    Node*& FindSubstituteNodeDataRecursive(Node*& parent_node, Node*& substitute_node);
     void GetAndReplaceSubstituteNode(Node*& parent_node, Node*& deletable_node);
     void ReplaceSubstituteAndDeletableNodes(Node*& parent_node, Node*& deletable_node, Node*& substitute_node);
 
@@ -28,12 +28,12 @@ class BinSTree {
 public:
     BinSTree();
     BinSTree(T* arr, int size);
-    BinSTree(BinSTree& other);
+    BinSTree(const BinSTree& other);
     ~BinSTree();
     void Insert(const T& data);
     void Remove(const T& data);
     void PrintInorder();
     void PrintPreorder();
     void PrintPostorder();
-    BinSTree& operator=(BinSTree& other);
+    BinSTree& operator=(const BinSTree& other);
 };

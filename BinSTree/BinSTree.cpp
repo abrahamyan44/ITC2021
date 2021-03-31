@@ -16,7 +16,7 @@ BinSTree<T>::BinSTree(T* arr, int size)
 }
 
 template <class T>
-BinSTree<T>::BinSTree(BinSTree& other)
+BinSTree<T>::BinSTree(const BinSTree& other)
     :m_root(nullptr) {
     if(other.m_root)
     {
@@ -122,7 +122,7 @@ void BinSTree<T>::PrintPostorder()
 ///////////////////////////////////////////////////////////////////////////////
 
 template <class T>
-void BinSTree<T>::TreeCopyRecursive(Node*& other_node, Node*& my_node)
+void BinSTree<T>::TreeCopyRecursive(const Node*& other_node, Node*& my_node)
 {
     if(other_node && !my_node)
     {
@@ -133,23 +133,26 @@ void BinSTree<T>::TreeCopyRecursive(Node*& other_node, Node*& my_node)
         if(other_node->left)
         {
             my_node->left = new Node(other_node->left->data);
-            TreeCopyRecursive(other_node->left, my_node->left);
+            const Node* node = other_node->left;
+            TreeCopyRecursive(node, my_node->left);
         }
         if(other_node->right)
         {
             my_node->right = new Node(other_node->right->data);
-            TreeCopyRecursive(other_node->right, my_node->right);
+            const Node* node = other_node->right;
+            TreeCopyRecursive(node, my_node->right);
         }
     }
 }
 
 template <class T>
-BinSTree<T>& BinSTree<T>::operator=(BinSTree& other) {
+BinSTree<T>& BinSTree<T>::operator=(const BinSTree& other) {
     if(this == &other)
         return *this;
     TreeDeleteRecursive(m_root);
     m_root = nullptr;
-    TreeCopyRecursive(other.m_root, m_root);
+    const Node* node = other.m_root;
+    TreeCopyRecursive(node, m_root);
     return *this;
 }
 
@@ -190,13 +193,13 @@ struct BinSTree<T>::Node* BinSTree<T>::FindDeletableNodesParentRecursive(Node*& 
 }
 
 template <class T>
-T BinSTree<T>::FindSubstituteNodeDataRecursive(Node*& parent_node, Node*& substitute_node)
+struct BinSTree<T>::Node*& BinSTree<T>::FindSubstituteNodeDataRecursive(Node*& parent_node, Node*& substitute_node)
 {
     if(substitute_node->right)
     {
-        return FindSubstituteNodeDataRecursive(substitute_node, substitute_node->right);
+        Node* sub_node = substitute_node->right;
+        return FindSubstituteNodeDataRecursive(substitute_node, sub_node);
     }
-    T data = substitute_node->data;
     if(parent_node->left == substitute_node)
     {
         parent_node->left = substitute_node->left;
@@ -206,7 +209,7 @@ T BinSTree<T>::FindSubstituteNodeDataRecursive(Node*& parent_node, Node*& substi
         parent_node->right = substitute_node->left;
     }
     
-    return data;
+    return substitute_node;
 }
 
 template <class T>
@@ -253,8 +256,8 @@ void BinSTree<T>::GetAndReplaceSubstituteNode(Node*& parent_node, Node*& deletab
     }
     else
     {
-        T data = FindSubstituteNodeDataRecursive(deletable_node, deletable_node->left);
-        substitute_node = new Node(data);
+        Node* sub_node = deletable_node->left;
+        Node* substitute_node = FindSubstituteNodeDataRecursive(deletable_node, sub_node);
         substitute_node->left = deletable_node->left;
         substitute_node->right = deletable_node->right;
     }
