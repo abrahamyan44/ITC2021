@@ -5,6 +5,7 @@
 #include "factorial.h"
 
 
+
 ul Recursive_Factorial (const int& n) {
 	if (n < 0) {
 		throw std::runtime_error ("Please enter non negative number.");
@@ -24,7 +25,6 @@ ul Iterative_Factorial (const int& n) {
 			f *= i;
 		} return f;	
 }
-
 
 int main () {
 

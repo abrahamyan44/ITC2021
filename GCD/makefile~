@@ -7,7 +7,7 @@ MKDIR ?=@mkdir -p
 SOURCE :=$(wildcard $(SOURCE_DIR)/*.cpp)
 OBJ :=$(patsubst $(SOURCE_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SOURCE))
 
-.PHONY : clean release test diff create_bin
+.PHONY : clean create_bin release test diff
 
 SHELL:=/bin/bash
 .ONESHELL:

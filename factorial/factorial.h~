@@ -1,5 +1,4 @@
 
-
 typedef unsigned long long ul;
 
 ul Recursive_Factorial (const int& n);
