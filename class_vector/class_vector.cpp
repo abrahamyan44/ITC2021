@@ -5,9 +5,9 @@ using namespace std;
 
 template <class T>
 class Vector {
-privet:
-	size_type m_size;
-	size_type m_capacity;
+private:
+	size_t m_size;
+	size_t m_capacity;
 	T* m_data;
 
 public:
@@ -21,19 +21,19 @@ void push_back (const T& val);
 
 void pop_back ();
 
-size_type size() const;
+size_t size() const;
 
-size_type capacity() const;
+size_t capacity() const;
 
 bool empty() const;
 
-void reserve (size_type n);
+void reserve (size_t n);
 
 void shrink_to_fit();
 
 vector& operator= (const vector& x);
 
-reference operator[] (size_type n);
+reference operator[] (size_t n);
 
 };
 
@@ -47,13 +47,13 @@ Vector::Vector()
 Vector:: Vector (const vector& x) {
 	x.size = m.size;
 	x.capasity = m.capacity;
-	for(size_type i = 0; i <= m.size; i++) {
+	for(size_t i = 0; i <= m.size; i++) {
 		x[i] = m.data[i];
 	}
 }
 
 Vector::~Vector() {
-	for(size_type i = 0; i <= m_size, i++){
+	for(size_t i = 0; i <= m_size, i++){
 		delete[] m_data[i];
 	}
 	m_data = nullptr;
@@ -62,7 +62,7 @@ Vector::~Vector() {
 
 Vector::shrink_to_fit() 
 {
-	size_type new_capacity = m_size - 1;
+	size_t new_capacity = m_size - 1;
 	T* new_block = new T(new_capacity);
 	for(int i = 0; i < m_size; i++) {
 		new_block[i] = m_data[i]
@@ -74,7 +74,7 @@ Vector::shrink_to_fit()
 	m_capacity = new_capacity;
 }
 
-Vector::reserve(size_type n) 
+Vector::reserve(size_t n) 
 {
 	T* new_block = new T(n);
 	assert(nullptr != new_block);
@@ -84,7 +84,7 @@ Vector::reserve(size_type n)
 	}
 
 	delete[] m_data;
-	m_data = nullptr'
+	m_data = nullptr;
 	
 	m_capacity = n;
 	m_data = new_block;
@@ -102,13 +102,13 @@ Vector::push_back(const T& val)
 
 Vector::size() 
 {
-	size_type size = m_size - 1;
+	size_t size = m_size - 1;
 	return size;
 }
 
 Vector::capacity() 
 {
-	size_type capacity = m_capacity;
+	size_t capacity = m_capacity;
 	return capacity;
 }
 
@@ -121,10 +121,10 @@ Vector::empty()
 	}
 }
 
-vector:: operator[] (size_type n)
+Vector:: operator[] (size_t n)
 {
 	if(n >= my_size) {
-		size_type size = m_size;
+		size_t size = m_size;
 		assert(n < size);
 	}
 		return m_data[n]; 
@@ -132,7 +132,7 @@ vector:: operator[] (size_type n)
 
 void print(const Vector<T> vector) 
 {
-	for(size_type i = 0; i <= vector.size(); i++) {
+	for(size_t i = 0; i <= vector.size(); i++) {
 		cout << vector[i] << endl;;
 	} 
 }
