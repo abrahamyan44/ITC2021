@@ -14,15 +14,15 @@ class BinSTree {
 
     Node* m_root;
 
-    void Print(const std::string type, Node*& node);
-    void InsertRecursive(Node*& node, const T& data);
-    void TreeCopyRecursive(const Node*& other_node, Node*& my_node);
-    void TreeDeleteRecursive(Node*& node);
-    Node* FindDeletableNodesParentRecursive(Node*& node, const T& data);
-    void GetDeletableAndParentNodes(Node*& parent_node, Node*& deletable_node, const T& data);
-    Node*& FindSubstituteNodeDataRecursive(Node*& parent_node, Node*& substitute_node);
-    void GetAndReplaceSubstituteNode(Node*& parent_node, Node*& deletable_node);
-    void ReplaceSubstituteAndDeletableNodes(Node*& parent_node, Node*& deletable_node, Node*& substitute_node);
+    void Print(const std::string type, Node* node);
+    void InsertRecursive(Node* node, const T& data);
+    void TreeCopyRecursive(const Node* other_node, Node* my_node);
+    void TreeDeleteRecursive(Node* node);
+    Node* FindDeletableNodesParentRecursive(Node* node, const T& data);
+    void GetDeletableAndParentNodes(Node* parent_node, Node* deletable_node, const T& data);
+    Node* FindSubstituteNodeDataRecursive(Node* parent_node, Node* substitute_node);
+    void GetAndReplaceSubstituteNode(Node* parent_node, Node* deletable_node);
+    void ReplaceSubstituteAndDeletableNodes(Node* parent_node, Node* deletable_node, Node* substitute_node);
 
 
 public:
