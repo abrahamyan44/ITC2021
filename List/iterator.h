@@ -5,14 +5,16 @@
 
 class Iterator
 {
+	private:
+        void next();
+        void prev();
     public:
         Node* iterator;
-        void next();
-		void prev();
 
 		Iterator();
 		Iterator (Node* node);
 		Iterator (const Iterator& itr);
+   
         Iterator& operator++();
 		Iterator operator++(int);
 		Iterator& operator--();

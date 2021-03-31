@@ -2,64 +2,64 @@
 #include "iterator.h"
 
 
-Iterator::void next() {
+Iterator::Iterator()
+    :iterator (nullptr) {}
+
+Iterator::Iterator (Node* node)
+    :iterator (node) {}
+
+Iterator::Iterator (const Iterator& itr)
+    :iterator (itr.iterator) {}
+
+void Iterator::next() {
 	if (iterator == nullptr) {
 		return;
 	} else {
-		iterator =  iterator->next;
+		iterator =  iterator->m_next;
 	}
 }
 
-Iterator::void prev() {
+void Iterator::prev() {
 	if (iterator == nullptr) {
                 return;
 	} else {
-		iterator =  iterator->prev;
+		iterator =  iterator->m_prev;
 	}
 }
 
-Iterator::Iterator()
-	:iterator (nullptr) {}
-
-Iterator::Iterator (Node* node)
-	:iterator (node) {}
-
-Iterator::Iterator (const Iterator& itr)
-	:iterator(itr.iterator) {}
-
-Iterator::Iterator& operator++() {
+Iterator& Iterator::operator++() {
 	next(); return *this;
 }
 
-Iterator::Iterator operator++(int) {
+Iterator Iterator::operator++ (int) {
 	auto tmp(*this);
 	operator++();
 	return tmp;
 }
 
-Iterator::Iterator& operator--() {
+Iterator& Iterator::operator-- () {
 	prev(); 
 	return *this;
 }
 
-Iterator::Iterator operator--(int) {
-	auto tmp(*this);
-	operator--();
+Iterator Iterator::operator-- (int) {
+	auto tmp (*this);
+	operator-- ();
 	return tmp;
 } 
 
-Iterator::bool operator==(const Iterator& itr) {
+bool Iterator::operator== (const Iterator& itr) {
 	return iterator == itr.iterator;
 } 
 
-Iterator::bool operator!=(const Iterator& itr) {
+bool Iterator::operator!= (const Iterator& itr) {
 	return iterator != itr.iterator;
 } 
 
-Iterator::int& operator*() {
-	return iterator->data;
+int& Iterator::operator*() {
+	return iterator->m_data;
 }
 
-Iterator::Iterator& operator->() {
+Iterator& Iterator::operator->() {
 	return *this;
 }

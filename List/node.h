@@ -4,9 +4,9 @@
 class Node
 {
     public:
-        int data;
-        Node* prev;
-        Node* next;
+        int m_data;
+        Node* m_prev;
+        Node* m_next;
 
         Node();
         Node (const int& value);

@@ -1,45 +1,45 @@
 #include <iostream>
 #include "BSTree.h"
 
-BSNode::BSNode()
-    :m_left(nullptr),
-    m_right(nullptr) {}
+BinarySearchNode::BinarySearchNode()
+    :m_left (nullptr),
+    m_right (nullptr) {}
 
-BSNode::BSNode (int value)
-    :m_data(value),
-    m_left(nullptr),
-    m_right(nullptr) {}
+BinarySearchNode::BinarySearchNode (int value)
+    :m_data (value),
+    m_left (nullptr),
+    m_right (nullptr) {}
 
-BSTree::BSTree() : m_root(nullptr) {}
+BinarySearchTree::BinarySearchTree() : m_root (nullptr) {}
 
-BSTree::~BSTree()
+BinarySearchTree::~BinarySearchTree()
 {
     if (m_root != nullptr) {
         DestructorHelper (m_root);
     }
 }
 
-void BSTree::DestructorHelper (BSNode* root) {
+void BinarySearchTree::DestructorHelper (BinarySearchNode* root) {
     if (root->m_left) {
          DestructorHelper (root->m_left);
-    } if (root->m_right) {
+    } if (m_root->m_right) {
          DestructorHelper (root->m_right);
     } delete root;
 }
 
-BSNode* BSTree::insert (BSNode* root, int value)
+BinarySearchNode* BinarySearchTree::Insert (BinarySearchNode* root, int value)
 {
     if (root == nullptr) {
-        root = new BSNode (value);
+        root = new BinarySearchNode (value);
         return root;
     } if (value <= root->m_data) {
-        root->m_left = insert (root->m_left, value);
+        root->m_left = Insert (root->m_left, value);
     } else {
-        root->m_right = insert (root->m_right, value);
+        root->m_right = Insert (root->m_right, value);
     } return root;
 }
 
-void BSTree::PreOrder (BSNode* root)
+void BinarySearchTree::PreOrder (BinarySearchNode* root)
 {
     if (root != nullptr) {
         std::cout << root->m_data << " ";
@@ -51,7 +51,7 @@ void BSTree::PreOrder (BSNode* root)
     }
 }
 
-void BSTree::PostOrder (BSNode* root)
+void BinarySearchTree::PostOrder (BinarySearchNode* root)
 {
     if (root != nullptr) {
         if (root->m_left) {
@@ -62,7 +62,7 @@ void BSTree::PostOrder (BSNode* root)
     }
 }
 
-void BSTree::InOrder (BSNode* root)
+void BinarySearchTree::InOrder (BinarySearchNode* root)
 {
     if (root != nullptr) {
         if (root->m_left) {

@@ -1,14 +1,18 @@
 #include "node.h"
 
-Node::Node();
+Node::Node()
+	:m_prev (nullptr),
+	m_next (nullptr) {}
 
 Node::Node (const int& value)
-	:data(value), prev(nullptr), next(nullptr) {}
+	:m_data (value),
+   	m_prev (nullptr),
+   	m_next (nullptr) {}
 
 Node::Node (const Node& node) {
-	this->data = node.data;
-	prev = node.prev;
-	next = node.next;
+	this->m_data = node.m_data;
+	m_prev = node.m_prev;
+	m_next = node.m_next;
 }
 
 

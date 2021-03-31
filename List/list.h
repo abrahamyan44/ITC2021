@@ -8,8 +8,8 @@
 class List
 {
     private:
-        Node* head;
-        Node* tail;
+        Node* m_head;
+        Node* m_tail;
     public:
         int size() const;
         void insert (int pos, const int& value);
