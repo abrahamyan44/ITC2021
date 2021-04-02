@@ -5,45 +5,47 @@
 #include "factorial.h"
 
 
-ul Recursive_Factorial (const int& n) {
-	if (n < 0) {
+ul RecursiveFactorial (const int& num) {
+	if (num < 0) {
 		throw std::runtime_error ("Please enter non negative number.");
-	} if (n >= 20) {
+	} if (num >= 20) {
 		throw std::out_of_range ("It is not possible to count.");
 	} else {
-		if (n == 0) return 1;
-		else return n*Recursive_Factorial(n - 1);
+		if (num == 0) return 1;
+		else return num*RecursiveFactorial(num - 1);
 	}
 }
 
-ul Iterative_Factorial (const int& n) {
-	ul f = 1;
-	if (n == 0 || n == 1) return 1;
+ul IterativeFactorial (const int& num) {
+	if (num < 0) {
+        throw std::runtime_error ("Please enter non negative number.");
+    } if (num >= 20) {
+        throw std::out_of_range ("It is not possible to count.");
+    } ul factorial = 1;
+	if (num < 2) return 1;
 	else 
-		for (int i = 1; i <= n; ++i) {
-			f *= i;
-		} return f;	
+		for (int i = 1; i <= num; ++i) {
+			factorial *= i;
+		} return factorial;	
 }
 
-
-int main () {
-
-	int n;
+int main () 
+{
+	int number;
 	std::cout << "Enter number:" << std::endl;
-	std::cin >> n;
+	std::cin >> number;
 	try {
-		ul r = Recursive_Factorial(n);
-	std::cout << "recursive_factorial: " << n << "!=" << r << "\n";
-	std::cout << "iterative_factorial: " << n << "!=" << Iterative_Factorial(n) << "\n";
-	} catch (std::runtime_error& ex) {
-		std::cout << ex.what() << std::endl;
-	} catch (std::out_of_range& e) {
-                std::cout << e.what() << std::endl;
-        } catch (std::exception& c) {
+		ul factorial = RecursiveFactorial(number);
+	    std::cout << "recursive_factorial: " << number << "!=" << factorial << "\n";
+	    std::cout << "iterative_factorial: " << number << "!=" << IterativeFactorial(number) << "\n";
+	} catch (std::runtime_error& ex_for_negative) {
+		std::cout << ex_for_negative.what() << std::endl;
+	} catch (std::out_of_range& ex_greater_range) {
+        std::cout << ex_greater_range.what() << std::endl;
+    } catch (std::exception& std_ex) {
 		std::cout << "std::exception" << std::endl;
 	} catch (...) {
 		std::cout << "another exception" << std::endl;
 	}
-
 	return 0;
 }

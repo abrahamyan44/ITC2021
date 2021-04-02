@@ -2,6 +2,6 @@
 
 typedef unsigned long long ul;
 
-ul Recursive_Factorial (const int& n);
+ul RecursiveFactorial (const int& num);
 
-ul Iterative_Factorial (const int& n);
+ul IterativeFactorial (const int& num);
