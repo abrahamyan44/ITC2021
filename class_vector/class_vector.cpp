@@ -31,9 +31,9 @@ void reserve (size_t n);
 
 void shrink_to_fit();
 
-vector& operator= (const vector& x);
+Vector& operator=(const vector& x);
 
-reference operator[] (size_t n);
+operator[] (size_t n);
 
 };
 
@@ -41,7 +41,7 @@ Vector::Vector()
 {
 	m_size = 1;
 	m_capacity = 3;
-	m_data = nullptr;
+	T* m_data = new T[1];
 }
 
 Vector:: Vector (const vector& x) {
@@ -60,7 +60,7 @@ Vector::~Vector() {
 	assert(nullptr = m_data);
 }
 
-Vector::shrink_to_fit() 
+void Vector::shrink_to_fit() 
 {
 	size_t new_capacity = m_size - 1;
 	T* new_block = new T(new_capacity);
@@ -74,7 +74,7 @@ Vector::shrink_to_fit()
 	m_capacity = new_capacity;
 }
 
-Vector::reserve(size_t n) 
+void Vector::reserve(size_t n) 
 {
 	T* new_block = new T(n);
 	assert(nullptr != new_block);
@@ -90,35 +90,54 @@ Vector::reserve(size_t n)
 	m_data = new_block;
 }
 
-Vector::push_back(const T& val)
+void Vector::push_back(const T& val)
 {
 	if(m_size >= m_capacity) {
-	Vector::reserve(m_capacity + m_capacity/3);
+		Vector::reserve(m_capacity + m_capacity/2);
 	}
 
 	m_data[m_size] = val;
 	m_size++;
 }
 
-Vector::size() 
+
+
+void Vector::pop_back() {
+	size_t i = Vector::size();
+	delete m_data[i];
+	m_data[i] = nullptr;
+	m_size--;
+}
+
+size_t Vector::size() 
 {
 	size_t size = m_size - 1;
 	return size;
 }
 
-Vector::capacity() 
+size_t Vector::capacity() 
 {
 	size_t capacity = m_capacity;
 	return capacity;
 }
 
-Vector::empty() 
+bool Vector::empty() 
 {
 	if(m_size == 0) {
 		return true;
 	} else {
 		return false;
 	}
+}
+
+Vector& Vector::operator=(const Vector& x) {
+	if(this != x) {
+		for(i = 0; i < m_size-1; i++) {
+			m_data = x.m_data;
+			m_capacity = x.m_capacity;
+			m_size = x.m_size;
+			return *this;
+		}
 }
 
 Vector:: operator[] (size_t n)
