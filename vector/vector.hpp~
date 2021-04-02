@@ -4,30 +4,32 @@
 using size_type = size_t;
 
 template <class T>
-class Vector {
-public:
-	Vector();
-	Vector (size_type n);
-	Vector (size_type size, T value);
-	Vector (const Vector& vec);
-	~Vector();
-	void PushBack (const T& val);
-	void PopBack();
-	size_type Size() const;
-	size_type Capacity() const;
-	bool Empty() const;
-	void Reserve (size_type n);
-	void ShrinkToFit();
-	Vector& operator= (const Vector& x);
-	T& operator[] (size_type n);
-private:
-	size_type m_size;
-	size_type m_capacity;
-	T* m_array;
+class vector {
+	public:
+		vector();
+		vector(size_type n);
+		vector(size_type size, T value);
+		vector(const vector& vec);
+		~vector();
+	public:
+		void push_back (const T& val);
+		void pop_back();
+		size_type size() const;
+		size_type capacity() const;
+		bool empty() const;
+		void reserve (size_type n);
+		void shrink_to_fit();
+		vector& operator= (const vector& x);
+		T& operator[] (size_type n);
+
+	private:
+		size_type m_size;
+		size_type m_capacity;
+		T* m_array;
 };
 
 template <class T>
-void Vector<T>::PushBack (const T& val) 
+void vector<T>::push_back (const T& val) 
 {
 	if(m_size < m_capacity) {
 		m_array[m_size] = val;
@@ -47,34 +49,34 @@ void Vector<T>::PushBack (const T& val)
 }
 
 template <class T>
-void Vector<T>::PopBack()
+void vector<T>::pop_back()
 {
 	if (m_size == 0) {
-		throw std::invalid_argument("Vector is empty");
+		throw std::invalid_argument("vector is empty");
 	} m_array[m_size-1] = 0;
 	--m_size;
 }
 
 template <class T>
-size_type Vector<T>::Size() const 
+size_type vector<T>::size() const 
 {
 	return m_size;
 }
 
 template <class T>
-size_type Vector<T>::Capacity() const
+size_type vector<T>::capacity() const
 {
     return m_capacity;
 }
 
 template <class T>
-bool Vector<T>::Empty() const
+bool vector<T>::empty() const
 {
 	return m_size == 0;
 }
 
 template <class T>
-void Vector<T>::Reserve (size_type n) 
+void vector<T>::reserve (size_type n) 
 {
 	if (m_size == 0) {
 		m_array = new T[n];
@@ -97,7 +99,7 @@ void Vector<T>::Reserve (size_type n)
 }
 
 template <class T>
-void Vector<T>::ShrinkToFit()
+void vector<T>::shrink_to_fit()
 {
    	m_capacity = m_size;
    	T* array = m_array; 
@@ -109,13 +111,13 @@ void Vector<T>::ShrinkToFit()
 }
 
 template <class T>
-Vector<T>::Vector()
+vector<T>::vector()
 	:m_size(0),
 	m_capacity(0),
 	m_array(nullptr) {}
 
 template <class T>
-Vector<T>::Vector(const Vector& vec):
+vector<T>::vector(const vector& vec):
 	m_size(vec.m_size),
 	m_capacity(vec.m_capacity)
 {
@@ -126,7 +128,7 @@ Vector<T>::Vector(const Vector& vec):
 }
 
 template <class T>
-Vector<T>::Vector(size_type n):
+vector<T>::vector(size_type n):
     m_size(0),
     m_capacity(n)
 {
@@ -134,7 +136,7 @@ Vector<T>::Vector(size_type n):
 }
 
 template <class T>
-Vector<T>::Vector(size_type n, T value):
+vector<T>::vector(size_type n, T value):
 	m_size(n),
 	m_capacity(1.5 * n)
 {
@@ -145,14 +147,14 @@ Vector<T>::Vector(size_type n, T value):
 }
 
 template <class T>
-Vector<T>::~Vector()
+vector<T>::~vector()
 {
     delete [] m_array;
 	m_array = nullptr;
 }
 
 template <class T>
-Vector<T>& Vector<T>::operator= (const Vector<T>& x) 
+vector<T>& vector<T>::operator=(const vector<T>& x) 
 {
 	if (this == &x)
     return *this;
@@ -165,7 +167,7 @@ Vector<T>& Vector<T>::operator= (const Vector<T>& x)
 }
 
 template <class T>
-T& Vector<T>::operator[] (size_type n)
+T& vector<T>::operator[] (size_type n)
 {
 	if(n < 0 || n >= m_size) {
 		throw std::out_of_range("out of range");
