@@ -4,11 +4,7 @@
 using size_type = size_t;
 
 template <class T>
-class Vector {i
-private:
-    size_type m_size;
-    size_type m_capacity;
-    T* m_array;
+class Vector {
 public:
 	Vector();
 	Vector (size_type n);
@@ -24,6 +20,10 @@ public:
 	void ShrinkToFit();
 	Vector& operator= (const Vector& x);
 	T& operator[] (size_type n);
+private:
+	size_type m_size;
+	size_type m_capacity;
+	T* m_array;
 };
 
 template <class T>
