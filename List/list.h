@@ -7,28 +7,27 @@
 
 class List
 {
-    private:
-        Node* m_head;
-        Node* m_tail;
-    public:
-        int size() const;
-        void insert (int pos, const int& value);
-        void erase (int pos);
-        void push_back(const int& value);
-        void push_front(const int& value);
-        int top_back();
-        int top_front();
-        void pop_back();
-        void pop_front();
-        Iterator begin();
-        Iterator end();
-    public:
-        List();
-        List(int count, int value);
-        List(const List& ll);
-        ~List();
-        List& operator=(const List& ll);
-        friend std::ostream& operator<<(std::ostream& out, const List& ll);
+private:
+    Node* m_head;
+    Node* m_tail;
+public:
+    int Size() const;
+    void Insert (int position, const int& value);
+    void Erase (int position);
+    void PushBack (const int& value);
+    void PushFront (const int& value);
+    int TopBack();
+    int TopFront();
+    void PopBack();
+    void PopFront();
+    Iterator Begin();
+    Iterator End();
+    List();
+    List (int count, int value);
+    List (const List& ll);
+    ~List();
+    List& operator= (const List& ll);
+    friend std::ostream& operator<< (std::ostream& out, const List& ll);
 };
 
 #endif

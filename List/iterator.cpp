@@ -11,7 +11,7 @@ Iterator::Iterator (Node* node)
 Iterator::Iterator (const Iterator& itr)
     :iterator (itr.iterator) {}
 
-void Iterator::next() {
+void Iterator::Next() {
 	if (iterator == nullptr) {
 		return;
 	} else {
@@ -19,16 +19,17 @@ void Iterator::next() {
 	}
 }
 
-void Iterator::prev() {
+void Iterator::Prev() {
 	if (iterator == nullptr) {
-                return;
+        return;
 	} else {
 		iterator =  iterator->m_prev;
 	}
 }
 
 Iterator& Iterator::operator++() {
-	next(); return *this;
+	Next();
+   	return *this;
 }
 
 Iterator Iterator::operator++ (int) {
@@ -37,8 +38,8 @@ Iterator Iterator::operator++ (int) {
 	return tmp;
 }
 
-Iterator& Iterator::operator-- () {
-	prev(); 
+Iterator& Iterator::operator--() {
+    Prev(); 
 	return *this;
 }
 

@@ -5,24 +5,22 @@
 
 class Iterator
 {
-	private:
-        void next();
-        void prev();
-    public:
-        Node* iterator;
-
-		Iterator();
-		Iterator (Node* node);
-		Iterator (const Iterator& itr);
-   
-        Iterator& operator++();
-		Iterator operator++(int);
-		Iterator& operator--();
-		Iterator operator--(int);
-		bool operator==(const Iterator& itr);
-		bool operator!=(const Iterator& itr);
-		int& operator*();
-		Iterator& operator->();
+private:
+    void Next();
+    void Prev();
+public:
+    Node* iterator;
+	Iterator();
+	Iterator (Node* node);
+	Iterator (const Iterator& itr);
+    Iterator& operator++();
+	Iterator operator++ (int);
+	Iterator& operator--();
+	Iterator operator-- (int);
+	bool operator== (const Iterator& itr);
+	bool operator!= (const Iterator& itr);
+	int& operator*();
+	Iterator& operator->();
 
 };
           

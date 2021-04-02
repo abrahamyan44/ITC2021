@@ -1,6 +1,6 @@
 #include "list.h"
 
-int List::size() const
+int List::Size() const
 {
     int s = 0;
     if (m_head != nullptr) {
@@ -13,14 +13,14 @@ int List::size() const
 
 }
 
-void List::insert (int pos, const int& value)
+void List::Insert (int position, const int& value)
 {
-    if (pos < 0) {
+    if (position < 0) {
         return;
     }
-    assert (0 <= pos);
+    assert (0 <= position);
     Node* tmp = m_head;
-    for (int i = 0; i < pos - 1; ++i) {
+    for (int i = 0; i < position - 1; ++i) {
         tmp = tmp->m_next;
     } Node* tmp1 = tmp;
     Node* node = new Node (value);
@@ -30,7 +30,7 @@ void List::insert (int pos, const int& value)
     tmp1->m_prev = node;
 }
 
-void List::push_back (const int& value)
+void List::PushBack (const int& value)
 {
     Node* node = new Node (value);
     if (m_head == nullptr) {
@@ -42,7 +42,7 @@ void List::push_back (const int& value)
     } m_tail = node;
 }
 
-void List::push_front (const int& value)
+void List::PushFront (const int& value)
 {
     Node* node = new Node (value);
     if (m_head == nullptr) {
@@ -55,21 +55,21 @@ void List::push_front (const int& value)
     } m_head = node;
 }
 
-int List::top_back()
+int List::TopBack()
 {
     assert (m_head != nullptr);
-    assert (0 < size());
+    assert (0 < Size());
     return m_tail->m_data;
 }
 
-int List::top_front()
+int List::TopFront()
 {
     assert (m_head != nullptr);
-    assert (0 < size());
+    assert (0 < Size());
     return m_head->m_data;
 }
 
-void List::pop_back()
+void List::PopBack()
 {
     if (m_head == nullptr) {
 		return;
@@ -79,7 +79,7 @@ void List::pop_back()
     m_tail->m_prev = tmp->m_prev;
 }
 
-void List::pop_front()
+void List::PopFront()
 {
     if (m_head == nullptr) {
 	   	return;
@@ -88,21 +88,21 @@ void List::pop_front()
     m_head->m_prev = nullptr;
 }
 
-void List::erase (int pos)
+void List::Erase (int position)
 {
-    if (pos < 0) {
+    if (position < 0) {
         return;
-        } assert(0 <= pos);
-        assert (this->size() >= 0);
+        } assert(0 <= position);
+        assert (this->Size() >= 0);
         Node* tmp = m_head;
         if (m_head == nullptr) {
 		   	return;
-		} if (pos == 0) {
+		} if (position == 0) {
             m_head = m_head->m_next;
             m_head->m_prev = nullptr;
             free(tmp);
             return;
-    } for (int i = 1; i < pos - 1 && tmp != nullptr; ++i) {
+    } for (int i = 1; i < position - 1 && tmp != nullptr; ++i) {
                 tmp = tmp->m_next;
         } if(tmp == nullptr || tmp->m_next == nullptr) {
            return;
@@ -111,12 +111,12 @@ void List::erase (int pos)
         tmp->m_next = tmp1;
 }
 
-Iterator List::begin()
+Iterator List::Begin()
 {
     return m_head;
 }
 
-Iterator List::end()
+Iterator List::End()
 {
     return m_tail->m_next;
 }
