@@ -10,6 +10,7 @@ int List::Size() const
             tmp = tmp->m_next;
         }
     } return s;
+
 }
 
 void List::Insert (int position, const int& value)

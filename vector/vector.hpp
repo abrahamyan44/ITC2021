@@ -115,18 +115,18 @@ Vector<T>::Vector()
 	m_array(nullptr) {}
 
 template <class T>
-Vector<T>::Vector(const Vector& vec):
+Vector<T>::Vector (const Vector& vec):
 	m_size(vec.m_size),
 	m_capacity(vec.m_capacity)
 {
 	m_array = new T[m_capacity];
-	for(size_type i = 0; i < m_size; ++i) {
+	for (size_type i = 0; i < m_size; ++i) {
 	    m_array[i] = vec.m_array[i];
 	}
 }
 
 template <class T>
-Vector<T>::Vector(size_type n):
+Vector<T>::Vector (size_type n):
     m_size(0),
     m_capacity(n)
 {
@@ -134,12 +134,12 @@ Vector<T>::Vector(size_type n):
 }
 
 template <class T>
-Vector<T>::Vector(size_type n, T value):
+Vector<T>::Vector (size_type n, T value):
 	m_size(n),
 	m_capacity(1.5 * n)
 {
 	m_array = new T[m_capacity];
-	for(size_type i = 0; i < m_size; ++i) {
+	for (size_type i = 0; i < m_size; ++i) {
         m_array[i] = value;
     }
 }
@@ -159,7 +159,7 @@ Vector<T>& Vector<T>::operator= (const Vector<T>& x)
 	} m_size = x.m_size;
     m_capacity = x.m_capacity;
     m_array = new T[m_capacity];
-    for(size_type i = 0; i < m_size; ++i) {
+    for (size_type i = 0; i < m_size; ++i) {
         m_array[i] = x.m_array[i];
     } return *this;
 }
@@ -167,7 +167,7 @@ Vector<T>& Vector<T>::operator= (const Vector<T>& x)
 template <class T>
 T& Vector<T>::operator[] (size_type n)
 {
-	if(n < 0 || n >= m_size) {
+	if (n < 0 || n >= m_size) {
 	    throw std::out_of_range("out of range");
 	} else {
 	return m_array[n];

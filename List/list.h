@@ -24,10 +24,10 @@ public:
     Iterator End();
     List();
     List (int count, int value);
-    List (const List& ll);
+    List (const List& other);
     ~List();
-    List& operator= (const List& ll);
-    friend std::ostream& operator<< (std::ostream& out, const List& ll);
+    List& operator= (const List& other);
+    friend std::ostream& operator<< (std::ostream& out, const List& other);
 };
 
 #endif

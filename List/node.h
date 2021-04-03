@@ -8,8 +8,8 @@ public:
     Node* m_prev;
     Node* m_next;
     Node();
-	Node (const int& value);
-	Node (const Node& node);
+    Node (const int& value);
+    Node (const Node& node);
 };
 
 #endif
