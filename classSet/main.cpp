@@ -2,12 +2,12 @@
 
 void testing()
 {
-// testing ctor and operator<<
+	// testing ctor and operator<<
 	int a[15] = { 3, 6, 1, 3, 8, 9, 9, 8, 8, 2, 11, 14, 2, 14, 2 };
 	Set s1(15, a);
 	std::cout << "s1 is: " << s1;
 
-	// testing contains
+	// testing Contains
 	std::cout << "s1 contains 20: " << s1.Contains(20) << std::endl;
 	std::cout << "s1 contains 2: " << s1.Contains(2) << std::endl;
 
@@ -20,7 +20,7 @@ void testing()
 	s2 = s3;
 	std::cout << "after s2 = s3 s2 is: " << s2;
 
-	// testing is_sub_set, operator==, operator&=, operator|=, operator-=
+	// testing IsSubSet, operator==, operator&=, operator|=, operator-=
 	int c[7] = { 3, 6, 1, 3, 8, 9, 9 };
 	Set s4(7, c);
 	std::cout << "s4 is: " << s4;
