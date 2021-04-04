@@ -4,10 +4,9 @@ SHELL := /bin/bash
 export EXE := factorial
 export GCC := g++
 export DEBUG_FLAG ?=
-
-SRC := $(wildcard src/*.cpp)
-OBJ := $(patsubst src/%.cpp, obj/%.o, $(SRC))
-DEP := $(patsubst src/%.cpp, obj/%.dep, $(SRC)) 
+export SRC := $(wildcard src/*.cpp)
+export OBJ := $(patsubst src/%.cpp, obj/%.o, $(SRC))
+export DEP := $(patsubst src/%.cpp, obj/%.dep, $(SRC)) 
 
 bin/$(EXE) : $(OBJ)
 	@mkdir -p bin
@@ -32,8 +31,6 @@ debug :
 	@echo '************  DEBUG VERSION ************'
 
 .PHONY : test
-
-
 test :
 	@echo '************  TEST VERSION ************'
 	@mkdir -p tst_run
@@ -49,12 +46,10 @@ test :
 	@	fi
 export count=`diff tst_run/output.txt tst_run/goutput.txt | grep "^>" | wc -l`
 
-
 .PHONY : clean
 clean :
 	@echo '************ DELETED ALL GENERATED FILES ************'
 	@rm -r bin obj tst_run #$(OBJ) $(DEP)
 	
 -include $(DEP)  
-
 
