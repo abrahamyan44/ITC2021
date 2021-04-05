@@ -14,7 +14,8 @@ int main(int argc, char* argv[])
 
 	log.Message(MSGS::verbosity::ERROR,"error_msg");
 
-	//std::cout << "Current Verbosity is:" << log.GetVerbosity();
+	std::cout << "Current Verbosity is: " << log.GetVerbosity();
+	std::cout << std::endl;
 	//int level = std::stoi(argv[2]);
 
 	return 0;

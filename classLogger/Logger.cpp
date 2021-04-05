@@ -17,6 +17,7 @@ Logger::~Logger() noexcept
 
 void Logger::Error(const std::string& m, ...) noexcept
 {
+	m_verbosity = MSGS::ERROR;
 	time_t now = time(0); 	// current date/time based on current system
 	char* dt = ctime(&now); // convert now to string form
 	
@@ -27,6 +28,7 @@ void Logger::Error(const std::string& m, ...) noexcept
 
 void Logger::Warning(const std::string& m, ...) noexcept
 {
+	m_verbosity = MSGS::WARNING;
 	time_t now = time(0);   //current date/time based on current system
 	char* dt = ctime(&now); //convert now to string form
 			
@@ -35,6 +37,7 @@ void Logger::Warning(const std::string& m, ...) noexcept
 
 void Logger::Info(const std::string& m, ...) noexcept
 {
+	m_verbosity = MSGS::INFO;
 	time_t now = time(0);   //current date/time based on current system
 	char* dt = ctime(&now); //convert now to string form
 
