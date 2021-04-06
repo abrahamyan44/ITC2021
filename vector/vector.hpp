@@ -152,19 +152,6 @@ Vector<T>::~Vector()
 }
 
 template <class T>
-Vector<T>& Vector<T>::operator= (const Vector<T>& x) 
-{
-	if (this == &x) {
-		return *this;
-	} m_size = x.m_size;
-    m_capacity = x.m_capacity;
-    m_array = new T[m_capacity];
-    for (size_type i = 0; i < m_size; ++i) {
-        m_array[i] = x.m_array[i];
-    } return *this;
-}
-
-template <class T>
 T& Vector<T>::operator[] (size_type n)
 {
 	if (n < 0 || n >= m_size) {
@@ -172,5 +159,18 @@ T& Vector<T>::operator[] (size_type n)
 	} else {
 	return m_array[n];
 	}
+}
+
+template <class T>
+Vector<T>& Vector<T>::operator= (const Vector<T>& x) 
+{
+    if (this == &x) {
+		return *this;
+	} m_size = x.m_size;
+	m_capacity = x.m_capacity;
+	m_array = new T[m_capacity];
+	for (size_type i = 0; i < m_size; ++i) {
+		m_array[i] = x.m_array[i];
+	} return *this;
 }
 
