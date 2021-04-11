@@ -11,7 +11,8 @@ BinarySearchNode* BinarySearchTree::PushNodeHelper (BinarySearchNode* root, int*
 	if (start <= end) {
         int m = (start + end) / 2;
         root = new BinarySearchNode (array[m]);
-	    root->m_right = PushNodeHelper (root->m_right, array, m + 1, end);	       root->m_left = PushNodeHelper (root->m_left, array, start, m - 1);
+	    root->m_right = PushNodeHelper (root->m_right, array, m + 1, end);
+	    root->m_left = PushNodeHelper (root->m_left, array, start, m - 1);
 	}
 	return root;
 }
