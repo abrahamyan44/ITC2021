@@ -4,7 +4,8 @@
 using size_type = size_t;
 
 template <class T>
-class Vector {i
+class Vector
+{
 private:
     size_type m_size;
     size_type m_capacity;
@@ -85,9 +86,9 @@ void Vector<T>::Reserve (size_type n)
 	if (n < m_size) {
 	    std::cout << "The last elements will be lost." << std::endl;
 	    m_size = m_capacity;
-    for (size_type i = 0; i < m_size; ++i) {
-        m_array[i] = array[i];
-    } delete [] array;
+        for (size_type i = 0; i < m_size; ++i) {
+            m_array[i] = array[i];
+        } delete [] array;
         return;	
 	} else {
 	    for (size_type i = 0; i < m_size; ++i) {
@@ -157,7 +158,7 @@ T& Vector<T>::operator[] (size_type n)
 	if (n < 0 || n >= m_size) {
 	    throw std::out_of_range("out of range");
 	} else {
-	return m_array[n];
+	    return m_array[n];
 	}
 }
 
@@ -166,11 +167,11 @@ Vector<T>& Vector<T>::operator= (const Vector<T>& x)
 {
     if (this == &x) {
 		return *this;
-	} m_size = x.m_size;
-	m_capacity = x.m_capacity;
-	m_array = new T[m_capacity];
-	for (size_type i = 0; i < m_size; ++i) {
-		m_array[i] = x.m_array[i];
+    } m_size = x.m_size;
+    m_capacity = x.m_capacity;
+    m_array = new T[m_capacity];
+    for (size_type i = 0; i < m_size; ++i) {
+	    m_array[i] = x.m_array[i];
 	} return *this;
 }
 

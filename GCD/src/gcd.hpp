@@ -1,2 +1,2 @@
 
-int GreatestCommonDivisor (int n, int m); 
+int GreatestCommonDivisor (int number1, int number2); 

@@ -33,20 +33,20 @@ Iterator& Iterator::operator++() {
 }
 
 Iterator Iterator::operator++ (int) {
-	auto tmp(*this);
+	auto current(*this);
 	operator++();
-	return tmp;
+	return current;
 }
 
-Iterator& Iterator::operator--() {
-    Prev(); 
-	return *this;
+Iterator& Iterator::operator--() {	
+    Prev();
+    return *this;
 }
 
 Iterator Iterator::operator-- (int) {
-	auto tmp (*this);
+	auto temp (*this);
 	operator-- ();
-	return tmp;
+	return temp;
 } 
 
 bool Iterator::operator== (const Iterator& itr) {

@@ -2,14 +2,14 @@
 
 int List::Size() const
 {
-    int s = 0;
+    int size = 0;
     if (m_head != nullptr) {
-        Node* tmp = m_head;
-        while (tmp) {
-            ++s;
-            tmp = tmp->m_next;
+        Node* current = m_head;
+        while (current) {
+            ++size;
+            current = current->m_next;
         }
-    } return s;
+    } return size;
 }
 
 void List::Insert (int position, const int& value)
@@ -17,16 +17,16 @@ void List::Insert (int position, const int& value)
     if (position < 0) {
         return;
     }
-    assert (0 <= position);
-    Node* tmp = m_head;
+    assert(0 <= position);
+    Node* current = m_head;
     for (int i = 0; i < position - 1; ++i) {
-        tmp = tmp->m_next;
-    } Node* tmp1 = tmp;
+        current = current->m_next;
+    } Node* current1 = current;
     Node* node = new Node (value);
-    tmp->m_prev->m_next = node;
-    node->m_prev = tmp1->m_prev;
-    node->m_next = tmp1;
-    tmp1->m_prev = node;
+    current->m_prev->m_next = node;
+    node->m_prev = current1->m_prev;
+    node->m_next = current1;
+    current1->m_prev = node;
 }
 
 void List::PushBack (const int& value)
@@ -71,18 +71,18 @@ int List::TopFront()
 void List::PopBack()
 {
     if (m_head == nullptr) {
-		return;
-	} Node* tmp = m_tail;
+        return;
+    } Node* current = m_tail;
     m_tail = m_tail->m_prev;
     m_tail->m_next = nullptr;
-    m_tail->m_prev = tmp->m_prev;
+    m_tail->m_prev = current->m_prev;
 }
 
 void List::PopFront()
 {
     if (m_head == nullptr) {
-	   	return;
-	} Node* tmp = m_head;
+        return;
+    } Node* current = m_head;
     m_head = m_head->m_next;
     m_head->m_prev = nullptr;
 }
@@ -93,21 +93,21 @@ void List::Erase (int position)
         return;
         } assert(0 <= position);
         assert (this->Size() >= 0);
-        Node* tmp = m_head;
+        Node* current = m_head;
         if (m_head == nullptr) {
-		   	return;
-		} if (position == 0) {
+	        return;
+	    } if (position == 0) {
             m_head = m_head->m_next;
             m_head->m_prev = nullptr;
-            free(tmp);
+            free(current);
             return;
-    } for (int i = 1; i < position - 1 && tmp != nullptr; ++i) {
-                tmp = tmp->m_next;
-        } if(tmp == nullptr || tmp->m_next == nullptr) {
-           return;
-        } Node* tmp1 = tmp->m_next->m_next;
-        free(tmp->m_next);
-        tmp->m_next = tmp1;
+    } for (int i = 1; i < position - 1 && current != nullptr; ++i) {
+        current = current->m_next;
+    } if(current == nullptr || current->m_next == nullptr) {
+        return;
+    } Node* current1 = current->m_next->m_next;
+    free(current->m_next);
+    current->m_next = current1;
 }
 
 Iterator List::Begin()
@@ -146,11 +146,11 @@ List::~List()
 {
     if (m_head == nullptr) {
         return;
-    } Node* tmp = m_head;
-    while (tmp->m_next) {
-        auto tmp1 = tmp;
-        tmp = tmp->m_next;
-        delete tmp1;
+    } Node* current = m_head;
+    while (current->m_next) {
+        auto current1 = current;
+        current = current->m_next;
+        delete current1;
     }
 }
 
@@ -167,10 +167,10 @@ std::ostream& operator<< (std::ostream& out, const List& other)
     if (other.m_head == nullptr) {
         out << "no list";
         return out;
-    } Node* tmp = other.m_head;
-    while (tmp != nullptr) {
-        out << tmp->m_data << " ";
-        tmp = tmp->m_next;
+    } Node* current = other.m_head;
+    while (current != nullptr) {
+        out << current->m_data << " ";
+        current = current->m_next;
     } return out;
 }
     

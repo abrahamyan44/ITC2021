@@ -9,10 +9,9 @@ BinarySearchTree::BinarySearchTree()
 BinarySearchNode* BinarySearchTree::PushNodeHelper (BinarySearchNode* root, int* array, int start, int end)
 {
 	if (start <= end) {
-		int m = (start + end) / 2;
-		root = new BinarySearchNode (array[m]);
-	    root->m_right = PushNodeHelper (root->m_right, array, m + 1, end);
-	    root->m_left = PushNodeHelper (root->m_left, array, start, m - 1);
+        int m = (start + end) / 2;
+        root = new BinarySearchNode (array[m]);
+	    root->m_right = PushNodeHelper (root->m_right, array, m + 1, end);	       root->m_left = PushNodeHelper (root->m_left, array, start, m - 1);
 	}
 	return root;
 }
@@ -38,7 +37,7 @@ void BinarySearchTree::InOrder (BinarySearchNode* root)
 	    } std::cout << root->m_data << " ";
 	    if (root->m_right) {
             InOrder (root->m_right);
-	     }
+	    }
 	}
 }
 
@@ -51,9 +50,9 @@ BinarySearchNode* BinarySearchTree::Insert (BinarySearchNode* root, int value)
 {
 	if (root == nullptr) {
 		root = new BinarySearchNode (value);
-		return root;
+        return root;
 	} if (value <= root->m_data) {
-		root->m_left = Insert (root->m_left, value); 
+        root->m_left = Insert (root->m_left, value); 
 	} root->m_right = Insert (root->m_right, value);
 	return root;
 }
@@ -61,15 +60,15 @@ BinarySearchNode* BinarySearchTree::Insert (BinarySearchNode* root, int value)
 BinarySearchNode* BinarySearchTree::SearchNode (BinarySearchNode* root, int value) 
 {
 	if (root == nullptr) {
-		return nullptr;
+        return nullptr;
 	} if (value == root->m_data) {
-		return root;
+        return root;
 	} if (value < root->m_data) {
         return SearchNode (root->m_left, value);
 	} if (value > root->m_data) {
-         return SearchNode (root->m_right, value);
+        return SearchNode (root->m_right, value);
 	} else {
-		return nullptr;
+        return nullptr;
 	}
 }
 
@@ -77,24 +76,26 @@ BinarySearchNode* BinarySearchTree::SearchNextNode (BinarySearchNode* root, int 
 {
 	BinarySearchNode* node = root->m_right;
 	while (node->m_left != nullptr) {
-		node = node->m_left;
+	    node = node->m_left;
 	} return node;
 	std::cout << "next"<< std::endl;
 }
 
 BinarySearchNode* BinarySearchTree::SearchNodeParent (BinarySearchNode* root, int value) 
 {
-	 if ((root->m_left != nullptr && root->m_left->m_data == value) ||
-	 (root->m_right != nullptr && root->m_right->m_data == value)) {
-        return root;
+	if ((root->m_left != nullptr && root->m_left->m_data == value) || (root->m_right != nullptr && root->m_right->m_data == value)) {
+		return root;
     } if (root->m_data > value) {
-		return SearchNodeParent (root->m_left, value);
+	    return SearchNodeParent (root->m_left, value);
 	} if (root->m_data < value) {
-		return SearchNodeParent (root->m_right, value);
-	} else return nullptr;
+	    return SearchNodeParent (root->m_right, value);
+	} else {
+		return nullptr;
+	}
 }
 
-void BinarySearchTree::RemoveNoChildeNode (BinarySearchNode* node, BinarySearchNode* pnode) {
+void BinarySearchTree::RemoveNoChildeNode (BinarySearchNode* node, BinarySearchNode* pnode)
+{
     if (node->m_data < pnode->m_data) {
         pnode->m_left = nullptr;
     } else {
@@ -103,7 +104,8 @@ void BinarySearchTree::RemoveNoChildeNode (BinarySearchNode* node, BinarySearchN
     delete node;
 }
 
-void BinarySearchTree::RemoveRightNode (BinarySearchNode* node, BinarySearchNode* pnode) {
+void BinarySearchTree::RemoveRightNode (BinarySearchNode* node, BinarySearchNode* pnode)
+{
 	if (pnode->m_data < node->m_data) {
         pnode->m_right = node->m_right;
     } else {
@@ -113,18 +115,20 @@ void BinarySearchTree::RemoveRightNode (BinarySearchNode* node, BinarySearchNode
     node = nullptr;
 }
 
-void BinarySearchTree::RemoveLeftNode (BinarySearchNode* node, BinarySearchNode* pnode) {
+void BinarySearchTree::RemoveLeftNode (BinarySearchNode* node, BinarySearchNode* pnode)
+{
 	if (node->m_data < pnode->m_data) {
-            pnode->m_left = node->m_left;
-        } else {
-            pnode->m_left = node->m_left;
-        }
-            delete node;
-            node = nullptr;
+        pnode->m_left = node->m_left;
+    } else {
+        pnode->m_left = node->m_left;
+    }
+	delete node;
+    node = nullptr;
 } 
 
-void BinarySearchTree::RemoveCaseForRoot (const int& value) {
-	BinarySearchNode* nnode = SearchNextNode (m_root, value);
+void BinarySearchTree::RemoveCaseForRoot (const int& value)
+{
+    BinarySearchNode* nnode = SearchNextNode (m_root, value);
     BinarySearchNode* pnnode = SearchNodeParent (m_root, nnode->m_data);
     int tmp = nnode->m_data;
     if (nnode->m_right == nullptr) {
@@ -136,7 +140,8 @@ void BinarySearchTree::RemoveCaseForRoot (const int& value) {
     }
 }
 
-void BinarySearchTree::RemoveTwoChildNode (BinarySearchNode* node, const int& value) {
+void BinarySearchTree::RemoveTwoChildNode (BinarySearchNode* node, const int& value)
+{
     BinarySearchNode* nnode = SearchNextNode (node, value);
     BinarySearchNode* pnnode = SearchNodeParent (nnode, nnode->m_data);
     int tmp = nnode->m_data;
@@ -151,26 +156,26 @@ void BinarySearchTree::RemoveTwoChildNode (BinarySearchNode* node, const int& va
 
 void BinarySearchTree::Remove (int value)
 {  
-	if (m_root == nullptr) {
-		std::cout << "no tree" << std::endl;
-		return;
-	} BinarySearchNode* node = SearchNode (m_root, value); 
-	if (node == nullptr) {
-		std::cout << "no such value in this tree" << std::endl;
+    if (m_root == nullptr) {
+        std::cout << "no tree" << std::endl;
+	    return;
+    } BinarySearchNode* node = SearchNode (m_root, value); 
+    if (node == nullptr) {
+        std::cout << "no such value in this tree" << std::endl;
         return;
 	} if (value != m_root->m_data) {
-	BinarySearchNode* pnode = SearchNodeParent (m_root, value);
-	if ((node->m_left == nullptr && node->m_right == nullptr)) {
+    BinarySearchNode* pnode = SearchNodeParent (m_root, value);
+    if ((node->m_left == nullptr && node->m_right == nullptr)) {
         RemoveNoChildeNode (node, pnode);
-	} else if (node->m_left == nullptr && node->m_right != nullptr) { 
+    } else if (node->m_left == nullptr && node->m_right != nullptr) { 
         RemoveRightNode (node, pnode);
-	} else if (node->m_left != nullptr && node->m_right == nullptr) {
-		RemoveLeftNode (node, pnode);
-	} else {
+    } else if (node->m_left != nullptr && node->m_right == nullptr) {
+        RemoveLeftNode (node, pnode);
+    } else {
         RemoveTwoChildNode (node, value);
-	}
+    }
     } if (value == m_root->m_data) {
-	  	RemoveCaseForRoot (value);
+	    RemoveCaseForRoot (value);
   	} 
 }
 

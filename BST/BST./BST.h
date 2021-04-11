@@ -18,7 +18,7 @@ private:
     void RemoveRightNode (BinarySearchNode* node, BinarySearchNode* pnode);
     void RemoveNoChildeNode (BinarySearchNode* node, BinarySearchNode* pnode);
     void RemoveLeftNode (BinarySearchNode* node, BinarySearchNode* pnode);
-	void RemoveTwoChildNode (BinarySearchNode* node,const int& value);
+    void RemoveTwoChildNode (BinarySearchNode* node,const int& value);
     void RemoveCaseForRoot (const int& value);
 public:
     BinarySearchTree();

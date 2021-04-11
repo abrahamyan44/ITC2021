@@ -3,31 +3,25 @@
 
 class BinarySearchNode
 {
-    public:
+public:
         int m_data;
         BinarySearchNode* m_left;
         BinarySearchNode* m_right;
-
-    public:
-
-        BinarySearchNode();
+public:
+	    BinarySearchNode();
         BinarySearchNode(int value);
-
 };
 
 class BinarySearchTree
 {
-    private:
+private:
         BinarySearchNode* m_root;
         void DestructorHelper (BinarySearchNode* root);
-
-    public:
-
-        BinarySearchNode* Insert (BinarySearchNode* root, int value);
+public:
+	   	BinarySearchNode* Insert (BinarySearchNode* root, int value);
         void PreOrder (BinarySearchNode* root);
         void InOrder (BinarySearchNode* root);
         void PostOrder (BinarySearchNode* root);
-
         BinarySearchTree();
         ~BinarySearchTree();
 

@@ -1,11 +1,11 @@
 #include "gcd.hpp"
 
-int GreatestCommonDivisor (int n, int m)
+int GreatestCommonDivisor (int number1, int number2)
 {
-    if (n == 0) {
-		return m;
-	} else {
-		return GreatestCommonDivisor (m % n, n);
-	}
+    if (number1 == 0) {
+        return number2;
+    } else {
+	    return GreatestCommonDivisor (number2 % number1, number1);
+    }
 }
 
