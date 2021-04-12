@@ -107,7 +107,7 @@ void BinarySearchTree::RemoveNoChildeNode (BinarySearchNode* node, BinarySearchN
 
 void BinarySearchTree::RemoveRightNode (BinarySearchNode* node, BinarySearchNode* parent_node)
 {
-	if (parent_node->m_data < node->m_data) {
+    if (parent_node->m_data < node->m_data) {
         parent_node->m_right = node->m_right;
     } else {
         parent_node->m_left = node->m_right;
@@ -118,7 +118,7 @@ void BinarySearchTree::RemoveRightNode (BinarySearchNode* node, BinarySearchNode
 
 void BinarySearchTree::RemoveLeftNode (BinarySearchNode* node, BinarySearchNode* parent_node)
 {
-	if (node->m_data < parent_node->m_data) {
+    if (node->m_data < parent_node->m_data) {
         parent_node->m_left = node->m_left;
     } else {
         parent_node->m_left = node->m_left;
