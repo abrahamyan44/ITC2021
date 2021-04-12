@@ -3,11 +3,11 @@
 
 int main()
 {
-    int* arr;
+    int* array;
     for (int i = 5; i >= 0; --i) {
-        arr[i] = i;
+        array[i] = i;
     }
-    BinarySearchTree tree (arr, 5);
+    BinarySearchTree tree (array, 5);
     tree.Print();
     tree.Insert(9);
     tree.Insert(12);
