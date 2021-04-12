@@ -91,16 +91,16 @@ void List::Erase (int position)
 {
     if (position < 0) {
         return;
-        } assert(0 <= position);
-        assert (this->Size() >= 0);
-        Node* current = m_head;
-        if (m_head == nullptr) {
-	        return;
-	    } if (position == 0) {
-            m_head = m_head->m_next;
-            m_head->m_prev = nullptr;
-            free(current);
-            return;
+    } assert(0 <= position);
+    assert (this->Size() >= 0);
+    Node* current = m_head;
+    if (m_head == nullptr) {
+	    return;
+    } if (position == 0) {
+        m_head = m_head->m_next;
+        m_head->m_prev = nullptr;
+        free(current);
+        return;
     } for (int i = 1; i < position - 1 && current != nullptr; ++i) {
         current = current->m_next;
     } if(current == nullptr || current->m_next == nullptr) {
