@@ -86,10 +86,10 @@ BinarySearchNode* BinarySearchTree::SearchNodeParent (BinarySearchNode* root, in
 {
 	if ((root->m_left != nullptr && root->m_left->m_data == value) || (root->m_right != nullptr && root->m_right->m_data == value)) {
 		return root;
-    } if (root->m_data > value) {
-	    return SearchNodeParent (root->m_left, value);
+	} if (root->m_data > value) {
+		return SearchNodeParent (root->m_left, value);
 	} if (root->m_data < value) {
-	    return SearchNodeParent (root->m_right, value);
+		return SearchNodeParent (root->m_right, value);
 	} else {
 		return nullptr;
 	}
@@ -157,26 +157,26 @@ void BinarySearchTree::RemoveTwoChildNode (BinarySearchNode* node, const int& va
 
 void BinarySearchTree::Remove (int value)
 {  
-    if (m_root == nullptr) {
-        std::cout << "no tree" << std::endl;
-	    return;
-    } BinarySearchNode* node = SearchNode (m_root, value); 
-    if (node == nullptr) {
-        std::cout << "no such value in this tree" << std::endl;
-        return;
+	if (m_root == nullptr) {
+		std::cout << "no tree" << std::endl;
+		return;
+	} BinarySearchNode* node = SearchNode (m_root, value); 
+	if (node == nullptr) {
+		std::cout << "no such value in this tree" << std::endl;
+		return;
 	} if (value != m_root->m_data) {
-    BinarySearchNode* pnode = SearchNodeParent (m_root, value);
-    if ((node->m_left == nullptr && node->m_right == nullptr)) {
-        RemoveNoChildeNode (node, pnode);
-    } else if (node->m_left == nullptr && node->m_right != nullptr) { 
-        RemoveRightNode (node, pnode);
-    } else if (node->m_left != nullptr && node->m_right == nullptr) {
-        RemoveLeftNode (node, pnode);
-    } else {
-        RemoveTwoChildNode (node, value);
-    }
-    } if (value == m_root->m_data) {
-	    RemoveCaseForRoot (value);
-  	} 
+		BinarySearchNode* pnode = SearchNodeParent (m_root, value);
+		if ((node->m_left == nullptr && node->m_right == nullptr)) {
+			RemoveNoChildeNode (node, pnode);
+		} else if (node->m_left == nullptr && node->m_right != nullptr) {
+			RemoveRightNode (node, pnode);
+		} else if (node->m_left != nullptr && node->m_right == nullptr) {
+			RemoveLeftNode (node, pnode);
+		} else {
+			RemoveTwoChildNode (node, value);
+		}
+	} if (value == m_root->m_data) {
+		RemoveCaseForRoot (value);
+	} 
 }
 
