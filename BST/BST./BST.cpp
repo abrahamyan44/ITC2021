@@ -95,33 +95,33 @@ BinarySearchNode* BinarySearchTree::SearchNodeParent (BinarySearchNode* root, in
 	}
 }
 
-void BinarySearchTree::RemoveNoChildeNode (BinarySearchNode* node, BinarySearchNode* pnode)
+void BinarySearchTree::RemoveNoChildeNode (BinarySearchNode* node, BinarySearchNode* parent_node)
 {
-    if (node->m_data < pnode->m_data) {
-        pnode->m_left = nullptr;
+    if (node->m_data < parent_node->m_data) {
+        parent_node->m_left = nullptr;
     } else {
-        pnode->m_right = nullptr;
+        parent_node->m_right = nullptr;
     }
     delete node;
 }
 
-void BinarySearchTree::RemoveRightNode (BinarySearchNode* node, BinarySearchNode* pnode)
+void BinarySearchTree::RemoveRightNode (BinarySearchNode* node, BinarySearchNode* parent_node)
 {
-	if (pnode->m_data < node->m_data) {
-        pnode->m_right = node->m_right;
+	if (parent_node->m_data < node->m_data) {
+        parent_node->m_right = node->m_right;
     } else {
-        pnode->m_left = node->m_right;
+        parent_node->m_left = node->m_right;
     }
     delete node;
     node = nullptr;
 }
 
-void BinarySearchTree::RemoveLeftNode (BinarySearchNode* node, BinarySearchNode* pnode)
+void BinarySearchTree::RemoveLeftNode (BinarySearchNode* node, BinarySearchNode* parent_node)
 {
-	if (node->m_data < pnode->m_data) {
-        pnode->m_left = node->m_left;
+	if (node->m_data < parent_node->m_data) {
+        parent_node->m_left = node->m_left;
     } else {
-        pnode->m_left = node->m_left;
+        parent_node->m_left = node->m_left;
     }
 	delete node;
     node = nullptr;
@@ -129,28 +129,28 @@ void BinarySearchTree::RemoveLeftNode (BinarySearchNode* node, BinarySearchNode*
 
 void BinarySearchTree::RemoveCaseForRoot (const int& value)
 {
-    BinarySearchNode* nnode = SearchNextNode (m_root, value);
-    BinarySearchNode* pnnode = SearchNodeParent (m_root, nnode->m_data);
-    int tmp = nnode->m_data;
-    if (nnode->m_right == nullptr) {
-        RemoveNoChildeNode (nnode, pnnode);
+    BinarySearchNode* next_node = SearchNextNode (m_root, value);
+    BinarySearchNode* next_node_parent = SearchNodeParent (m_root, next_node->m_data);
+    int tmp = next_node->m_data;
+    if (next_node->m_right == nullptr) {
+        RemoveNoChildeNode (next_node, next_node_parent);
         m_root->m_data = tmp;
     } else {
-        RemoveRightNode (nnode, pnnode);
+        RemoveRightNode (next_node, next_node_parent);
         m_root->m_data = tmp;
     }
 }
 
 void BinarySearchTree::RemoveTwoChildNode (BinarySearchNode* node, const int& value)
 {
-    BinarySearchNode* nnode = SearchNextNode (node, value);
-    BinarySearchNode* pnnode = SearchNodeParent (nnode, nnode->m_data);
-    int tmp = nnode->m_data;
-    if (nnode->m_right == nullptr) {
-        RemoveNoChildeNode (nnode, pnnode);
+    BinarySearchNode* next_node = SearchNextNode (node, value);
+    BinarySearchNode* next_node_parent = SearchNodeParent (next_node, next_node->m_data);
+    int tmp = next_node->m_data;
+    if (next_node->m_right == nullptr) {
+        RemoveNoChildeNode (next_node, next_node_parent);
         node->m_data = tmp;
     } else {
-        RemoveRightNode (nnode, pnnode);
+        RemoveRightNode (next_node, next_node_parent);
         node->m_data = tmp;
     }
 }
@@ -165,13 +165,13 @@ void BinarySearchTree::Remove (int value)
 		std::cout << "no such value in this tree" << std::endl;
 		return;
 	} if (value != m_root->m_data) {
-		BinarySearchNode* pnode = SearchNodeParent (m_root, value);
+		BinarySearchNode* parent_node = SearchNodeParent (m_root, value);
 		if ((node->m_left == nullptr && node->m_right == nullptr)) {
-			RemoveNoChildeNode (node, pnode);
+			RemoveNoChildeNode (node, parent_node);
 		} else if (node->m_left == nullptr && node->m_right != nullptr) {
-			RemoveRightNode (node, pnode);
+			RemoveRightNode (node, parent_node);
 		} else if (node->m_left != nullptr && node->m_right == nullptr) {
-			RemoveLeftNode (node, pnode);
+			RemoveLeftNode (node, parent_node);
 		} else {
 			RemoveTwoChildNode (node, value);
 		}
