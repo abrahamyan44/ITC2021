@@ -11,49 +11,49 @@ private:
     size_type m_capacity;
     T* m_array;
 public:
-	Vector();
-	Vector (size_type n);
-	Vector (size_type size, T value);
-	Vector (const Vector& vec);
-	~Vector();
-	void PushBack (const T& val);
-	void PopBack();
-	size_type Size() const;
-	size_type Capacity() const;
-	bool Empty() const;
-	void Reserve (size_type n);
-	void ShrinkToFit();
-	Vector& operator= (const Vector& x);
-	T& operator[] (size_type n);
+    Vector();
+    Vector (size_type n);
+    Vector (size_type size, T value);
+    Vector (const Vector& vec);
+    ~Vector();
+    void PushBack (const T& val);
+    void PopBack();
+    size_type Size() const;
+    size_type Capacity() const;
+    bool Empty() const;
+    void Reserve (size_type n);
+    void ShrinkToFit();
+    Vector& operator= (const Vector& x);
+    T& operator[] (size_type n);
 };
 
 template <class T>
 void Vector<T>::PushBack (const T& val) 
 {
-	if(m_size < m_capacity) {
-		m_array[m_size] = val;
-		++m_size;
-	} else {
-		size_type old_capacity = m_capacity;
-		m_capacity = 1.5 * old_capacity;
-		T* n_array;
-		n_array = new T[m_capacity];
-	   	for(size_type i = 0; i < m_size; ++i) {
-		    n_array[i] = m_array[i];
-		} n_array[m_size] = val;
-		++m_size;
-		delete [] m_array;
-		m_array = n_array;
+    if(m_size < m_capacity) {
+        m_array[m_size] = val;
+        ++m_size;
+    } else {
+        size_type old_capacity = m_capacity;
+        m_capacity = 1.5 * old_capacity;
+        T* n_array;
+        n_array = new T[m_capacity];
+        for (size_type i = 0; i < m_size; ++i) {
+             n_array[i] = m_array[i];
+        } n_array[m_size] = val;
+        ++m_size;
+        delete [] m_array;
+        m_array = n_array;
 	}
 }
 
 template <class T>
 void Vector<T>::PopBack()
 {
-	if (m_size == 0) {
-	    throw std::invalid_argument("Vector is empty");
-	} m_array[m_size-1] = 0;
-	--m_size;
+    if (m_size == 0) {
+        throw std::invalid_argument("Vector is empty");
+    } m_array[m_size-1] = 0;
+    --m_size;
 }
 
 template <class T>
@@ -92,9 +92,9 @@ void Vector<T>::Reserve (size_type n)
         return;	
 	} else {
 	    for (size_type i = 0; i < m_size; ++i) {
-            m_array[i] = array[i];
+             m_array[i] = array[i];
         } delete [] array;
-	}
+    }
 }
 
 template <class T>
@@ -155,23 +155,23 @@ Vector<T>::~Vector()
 template <class T>
 T& Vector<T>::operator[] (size_type n)
 {
-	if (n < 0 || n >= m_size) {
-	    throw std::out_of_range("out of range");
-	} else {
-	    return m_array[n];
-	}
+    if (n < 0 || n >= m_size) {
+        throw std::out_of_range("out of range");
+    } else {
+        return m_array[n];
+    }
 }
 
 template <class T>
 Vector<T>& Vector<T>::operator= (const Vector<T>& x) 
 {
     if (this == &x) {
-		return *this;
+        return *this;
     } m_size = x.m_size;
     m_capacity = x.m_capacity;
     m_array = new T[m_capacity];
     for (size_type i = 0; i < m_size; ++i) {
-	    m_array[i] = x.m_array[i];
-	} return *this;
+        m_array[i] = x.m_array[i];
+    } return *this;
 }
 
