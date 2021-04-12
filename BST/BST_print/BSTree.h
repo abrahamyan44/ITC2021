@@ -18,7 +18,7 @@ private:
         BinarySearchNode* m_root;
         void DestructorHelper (BinarySearchNode* root);
 public:
-	   	BinarySearchNode* Insert (BinarySearchNode* root, int value);
+	    BinarySearchNode* Insert (BinarySearchNode* root, int value);
         void PreOrder (BinarySearchNode* root);
         void InOrder (BinarySearchNode* root);
         void PostOrder (BinarySearchNode* root);
