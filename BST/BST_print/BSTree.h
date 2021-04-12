@@ -8,7 +8,7 @@ public:
         BinarySearchNode* m_left;
         BinarySearchNode* m_right;
 public:
-	    BinarySearchNode();
+        BinarySearchNode();
         BinarySearchNode(int value);
 };
 
@@ -18,7 +18,7 @@ private:
         BinarySearchNode* m_root;
         void DestructorHelper (BinarySearchNode* root);
 public:
-	    BinarySearchNode* Insert (BinarySearchNode* root, int value);
+        BinarySearchNode* Insert (BinarySearchNode* root, int value);
         void PreOrder (BinarySearchNode* root);
         void InOrder (BinarySearchNode* root);
         void PostOrder (BinarySearchNode* root);
