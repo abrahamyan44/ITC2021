@@ -15,10 +15,11 @@ void BubbleSort(const int& size, int* a)
                 swap(a[j - 1], a[j]);
                 swapped = true;
             }
-            if(!swapped)
-            {
-                break;
-            }
+        }
+
+        if(!swapped)
+        {
+            break;
         }
     }
 
