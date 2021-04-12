@@ -5,6 +5,7 @@ using namespace std;
 
 void BubbleSort(const int& size, int* a)
 {
+    bool swapped = false;
     for(int i = 0; i < size; ++i)
     {
         for(int j = 1; j < size - i; ++j)
@@ -12,6 +13,11 @@ void BubbleSort(const int& size, int* a)
             if(a[j - 1] > a[j])
             {
                 swap(a[j - 1], a[j]);
+                swapped = true;
+            }
+            if(!swapped)
+            {
+                break;
             }
         }
     }
