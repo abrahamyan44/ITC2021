@@ -4,11 +4,11 @@
 class BinarySearchNode
 {
 public:
-    int m_data;
-    BinarySearchNode* m_left;
-    BinarySearchNode* m_right;
+	int m_data;
+	BinarySearchNode* m_left;
+	BinarySearchNode* m_right;
 public:
-   	BinarySearchNode();
+	BinarySearchNode();
 	BinarySearchNode(int value);
 };
 
