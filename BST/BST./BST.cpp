@@ -8,11 +8,11 @@ BinarySearchTree::BinarySearchTree()
 
 BinarySearchNode* BinarySearchTree::PushNodeHelper (BinarySearchNode* root, int* array, int start, int end)
 {
-	if (start <= end) {
+    if (start <= end) {
         int m = (start + end) / 2;
         root = new BinarySearchNode (array[m]);
-	    root->m_right = PushNodeHelper (root->m_right, array, m + 1, end);
-	    root->m_left = PushNodeHelper (root->m_left, array, start, m - 1);
+        root->m_right = PushNodeHelper (root->m_right, array, m + 1, end);
+        root->m_left = PushNodeHelper (root->m_left, array, start, m - 1);
 	}
 	return root;
 }
@@ -33,12 +33,12 @@ void BinarySearchTree::InOrder (BinarySearchNode* root)
 	if (root == nullptr) {
 		std::cout << "empty tree" << std::endl;
 	} else {
-	    if (root->m_left) {
-		    InOrder (root->m_left);
-	    } std::cout << root->m_data << " ";
-	    if (root->m_right) {
-            InOrder (root->m_right);
-	    }
+		if (root->m_left) {
+			InOrder (root->m_left);
+		} std::cout << root->m_data << " ";
+		if (root->m_right) {
+			InOrder (root->m_right);
+		}
 	}
 }
 
@@ -61,15 +61,15 @@ BinarySearchNode* BinarySearchTree::Insert (BinarySearchNode* root, int value)
 BinarySearchNode* BinarySearchTree::SearchNode (BinarySearchNode* root, int value) 
 {
 	if (root == nullptr) {
-        return nullptr;
+		return nullptr;
 	} if (value == root->m_data) {
-        return root;
+		return root;
 	} if (value < root->m_data) {
-        return SearchNode (root->m_left, value);
+		return SearchNode (root->m_left, value);
 	} if (value > root->m_data) {
-        return SearchNode (root->m_right, value);
+		return SearchNode (root->m_right, value);
 	} else {
-        return nullptr;
+		return nullptr;
 	}
 }
 
