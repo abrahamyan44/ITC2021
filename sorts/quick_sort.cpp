@@ -34,8 +34,11 @@ void QuickSort(int start, int wall, int end, int* a)
 int main()
 {
     int n;
+    cout << "Input element count\n";
     cin >> n;
     int* a = new int[n];
+    cout << "Input elements\n";
+
     for(int i = 0; i < n; ++i)
     {
         cin >> a[i];

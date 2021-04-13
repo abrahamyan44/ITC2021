@@ -30,8 +30,10 @@ void BubbleSort(const int& size, int* a)
 int main()
 {
     int n;
+	cout << "Input element count\n";
     cin >> n;
     int* a = new int[n];
+	cout << "Input elements\n";
     for(int i = 0; i < n; ++i)
     {
         cin >> a[i];
