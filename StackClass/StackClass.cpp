@@ -7,7 +7,7 @@ Stack <T>::Stack() : m_top(0), m_size(0)
 {}
 
 template <class T>
-Stack <T>::Stack(const T& value, int count) : m_top(0), m_size(0)
+Stack <T>::Stack (const T& value, int count) : m_top(0), m_size(0)
 {
     for (int i=0; i < count; i++)
     {
@@ -129,7 +129,7 @@ int main()
 {
     Stack <int> s1;
     s1.Print(); 
-    Stack <int> s2(9,4);
+    Stack <int> s2(9, 4);
     std::cout << "s2's elements are: " << std::endl;
     s2.Print();
     Stack <int> s3(s2);
@@ -152,10 +152,12 @@ int main()
     s2.Print();
     std::cout << "s1's size is: " << s1.GetSize() << std::endl;
     std::cout << "s1's top is: " << s1.GetTop() << std::endl;
+    
     if (!s1.IsEmpty())
     {
         std::cout << "s1 is not empty." << std::endl;
     }
+    
     return 0;
 }
 
