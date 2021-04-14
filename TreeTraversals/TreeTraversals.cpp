@@ -5,27 +5,27 @@
 using namespace std;
 
 template <class T>
-Tree <T>::Tree() : m_root(0)
+Tree <T>::Tree () : m_root(0)
 {}
 
 template <class T>
-Node <T>* Tree <T>::CreateNode(T data)
+node <T>* Tree <T>::CreateNode (T data)
 {
-    Node <T>* node = new Node <T>;
-    node->data = data;
-    node->left = node->right = 0;
-    return node;
+    node <T>* node1 = new node <T>;
+    node1->data = data;
+    node1->left = node1->right = 0;
+    return node1;
 }
 
 template <class T>
-Tree <T>::~Tree()
+Tree <T>::~Tree ()
 {
     std::cout << "Destructed!" << std::endl;
     MakeEmpty(m_root);
 }
 
 template <class T>
-void Tree <T>::MakeEmpty(Node <T>* leaf)
+void Tree <T>::MakeEmpty (node <T>* leaf)
 {
     if (leaf != 0) {   
         MakeEmpty(leaf->left);
@@ -35,7 +35,7 @@ void Tree <T>::MakeEmpty(Node <T>* leaf)
 }
 
 template <class T>
-void Tree <T>::InOrderRecursively(Node <T>* root)
+void Tree <T>::InOrderRecursively (node <T>* root)
 {
     if (root != 0) {
         InOrderRecursively(root->left);
@@ -45,7 +45,7 @@ void Tree <T>::InOrderRecursively(Node <T>* root)
 }
 
 template <class T>
-void Tree <T>::PreOrderRecursively(Node <T>* root)
+void Tree <T>::PreOrderRecursively (node <T>* root)
 {
     if (root != 0) {
         std::cout << root->data << " ";
@@ -55,7 +55,7 @@ void Tree <T>::PreOrderRecursively(Node <T>* root)
 }
 
 template <class T>
-void Tree <T>::PostOrderRecursively(Node <T>* root)
+void Tree <T>::PostOrderRecursively (node <T>* root)
 {
     if (root != 0) {
         PostOrderRecursively(root->left);
@@ -65,49 +65,49 @@ void Tree <T>::PostOrderRecursively(Node <T>* root)
 }
 
 template <class T>
-void Tree <T>::InOrder(Node <T>* root)
+void Tree <T>::InOrder (node <T>* root)
 {
-    stack <Node <T>*> stack1;
-    Node <T>* temp = root;
-    while (temp != 0 || stack1.empty() != true) {
-        while (temp != 0) {
-            stack1.push(temp);
-            temp = temp->left;
+    stack <node <T>*> stack1;
+    node <T>* temporal = root;
+    while (temporal != 0 || stack1.empty() != true) {
+        while (temporal != 0) {
+            stack1.push(temporal);
+            temporal = temporal->left;
         }
-        temp = stack1.top();
+        temporal = stack1.top();
         stack1.pop();
-        std::cout << temp->data << " ";
-        temp = temp->right;
+        std::cout << temporal->data << " ";
+        temporal = temporal->right;
     }
 }
 
 template <class T>
-void Tree <T>::Print(Node <T>* root)
+void Tree <T>::Print (node <T>* root)
 {
-    queue <Node <T>*> queue1, queue2;
-	Node <T>* ptr = root;
-	if (ptr) {
+    queue <node <T>*> queue1, queue2;
+	node <T>* pointer = root;
+	if (pointer) {
 		queue1.push(root);
     }
 	while (1) {
 		while (!queue1.empty()) {
-			ptr = queue1.front();
-            std::cout << ptr->data << " ";
+			pointer = queue1.front();
+            std::cout << pointer->data << " ";
 			queue1.pop();
-			if (ptr->left) {
-				queue2.push(ptr->left);
+			if (pointer->left) {
+				queue2.push(pointer->left);
             }
-			if (ptr->right) {
-				queue2.push(ptr->right);
+			if (pointer->right) {
+				queue2.push(pointer->right);
             }
 		}
         std::cout << std::endl;
 		if (queue2.empty()) {
-			return;
+	            return;
         }
 		while (!queue2.empty()) {
-            queue1.push(queue2.front());
-            queue2.pop();
+                    queue1.push(queue2.front());
+                    queue2.pop();
 		}
 	}
 }
@@ -115,13 +115,13 @@ void Tree <T>::Print(Node <T>* root)
 int main()
 {
     Tree <int> tree;
-    Node <int>* root = tree.CreateNode(4);
+    node <int>* root = tree.CreateNode(4);
 	root->left = tree.CreateNode(5);
 	root->right = tree.CreateNode(6);
 	root->left->left = tree.CreateNode(2);
 	root->left->right = tree.CreateNode(3);
 
-	std::cout << "InOrder: ";
+    std::cout << "InOrder: ";
     tree.InOrderRecursively(root);
     std::cout << std::endl;
 
