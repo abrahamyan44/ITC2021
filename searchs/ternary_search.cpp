@@ -32,7 +32,8 @@ int TernarySearch (const int left, const int right, const int& key, const int* a
 
 int main()
 {
-    int count, key;
+    int count;
+    int key;
     cout << "Input members count and key\n";
     cin >> count >> key;
     int* array = new int[count];
