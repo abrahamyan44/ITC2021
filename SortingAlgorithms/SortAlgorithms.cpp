@@ -97,9 +97,9 @@ int PartitionArray(int* array, int low, int high)
 void QuickSort(int* array, int low, int high)
 {
     if(low < high) {
-        int pivot = PartitionArray(array, low, high - 1);
-        QuickSort(array, low, pivot -1);
-        QuickSort(array, pivot + 1, high);
+        int index = PartitionArray(array, low, high - 1);
+        QuickSort(array, low, index -1);
+        QuickSort(array, index + 1, high);
     }
 }
 
