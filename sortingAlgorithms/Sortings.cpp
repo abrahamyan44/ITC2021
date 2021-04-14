@@ -36,9 +36,12 @@ void Sortings::SelectionSort(int* array, int size)
 				min_index = j;
 			}
 		}
-		// Swap the found min element with the first element
+	
+        if (i != min_index) {
+        // Swap the found min element with the first element
 		Swap(array[min_index],array[i]);
-	}
+	    }
+    }
 }
 
 void Sortings::InsertionSort(int* array, int size)
