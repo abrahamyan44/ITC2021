@@ -2,37 +2,38 @@
 
 using namespace std;
 
-
-int BinarySearch(const int l, const int r, const int& key, const int* arr)
+int BinarySearch (const int left, const int right, const int& key, const int* arr)
 {
-    if(l <= r)
+    if (left <= right)
     {
-        int mid = (l + r) / 2;
-        if(arr[mid] == key)
+        int mid = (left + right) / 2;
+        if (arr[mid] == key)
         {
             return mid;
         }
-        if(key > arr[mid])
+        if (key > arr[mid])
         {
-            return BinarySearch(mid + 1, r, key, arr);
+            return BinarySearch(mid + 1, right, key, arr);
         }
-        return BinarySearch(l, mid - 1, key, arr);
+        return BinarySearch(left, mid - 1, key, arr);
     }
 
     return -1;
 }
 
-
 int main()
 {
-    int n, k;
-    cin >> n >> k;
-    int* a = new int[n];
-    for(int i = 0; i < n; ++i)
+    int count;
+    int key;
+    cout << "Input members count and key\n";
+    cin >> count >> key;
+    int* array = new int[count];
+    cout << "Input array members\n";
+    for (int i = 0; i < count; ++i)
     {
-        cin >> a[i];
+        cin >> array[i];
     }
-    cout << BinarySearch(0, n - 1, k, a) << endl;
-    delete[] a;
+    cout << BinarySearch(0, count - 1, key, array) << endl;
+    delete[] array;
     return 0;
 }
