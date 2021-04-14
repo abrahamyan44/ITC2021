@@ -9,7 +9,7 @@ template <class T>
 Node <T>* BST <T>::CreateBST(T* arr, int start, int end)
 {
     SortedArray(arr, end + 1);
-    if(start > end) {
+    if (start > end) {
         return 0;
     }
     //get middle element and make it root
@@ -161,10 +161,10 @@ int main()
     tree.PrintInOrder(tree.GetRoot());
     std::cout << std::endl;
     
-    const int n = 7;
+    const int size = 7;
     int arr[] = {1,6,5,7,8,4,9};
     BST <int> tree1;
-    Node <int>* root = tree1.CreateBST(arr, 0, n-1);
+    Node <int>* root = tree1.CreateBST(arr, 0, size-1);
     std::cout << "Here is the BST from an array: ";
     tree1.PrintInOrder(root);
     std::cout << std::endl;
