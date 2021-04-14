@@ -44,6 +44,16 @@ int main()
 	
 	/*************************************/
 
+	/*Sortings::QuickSort(array, 0, n - 1);
+
+	std::cout << "After Quick Sort: ";
+	for (int element : array) {
+		std::cout << element << ' ';
+	}
+	std::cout << std::endl;*/
+
+	/*************************************/
+
 	Sortings::MergeSort(array, 0, n-1);
 
 	std::cout << "After Merge Sort: ";

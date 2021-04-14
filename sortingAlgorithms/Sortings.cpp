@@ -59,6 +59,37 @@ void Sortings::InsertionSort(int* array, int size)
 	}
 }
 
+namespace 
+{
+	int Partitioning(int* array, int start, int end)
+	{
+		int pivot = end; 	 
+		int pindex = start;  // index for partitioning
+
+		for (int i = start; i < end; ++i) {
+			if (array[i] < array[pivot]) {
+				Swap(array[pindex], array[i]);
+				++pindex;
+			}
+		}
+		Swap(array[pindex],array[pivot]);
+
+		return pindex;
+	}
+}
+
+void Sortings::QuickSort(int* array, int start, int end)
+{
+	if (start >= end) {
+		return;
+	}
+
+	int pivot = Partitioning(array, start, end); 
+
+	QuickSort(array, start, pivot - 1);
+	QuickSort(array, pivot + 1, end);
+}
+
 namespace
 {	
 	void Merge(int* array, int start, int middle, int end)
