@@ -34,15 +34,24 @@ int main()
 
 	/*************************************/
 
-	Sortings::InsertionSort(array,n);
+  /*Sortings::InsertionSort(array, n);
 
 	std::cout << "After Insertion Sort: ";
 	for (int element : array) {
 		std::cout << element << ' ';
 	}
-	std::cout << std::endl;
+	std::cout << std::endl;*/
 	
 	/*************************************/
 
+	Sortings::MergeSort(array, 0, n-1);
+
+	std::cout << "After Merge Sort: ";
+	for (int element : array) {
+		std::cout << element << ' ';
+	}
+	std::cout << std::endl;
+	
+	
 	return 0;
 }

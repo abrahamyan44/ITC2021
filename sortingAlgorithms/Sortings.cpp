@@ -1,3 +1,5 @@
+#include <cassert>
+#include <iostream>
 #include "Sortings.hpp"
 
 namespace 
@@ -7,7 +9,7 @@ namespace
 		int tmp = a;
 		a = b;
 		b = tmp;
-	}
+	}	
 }
 
 void Sortings::BubbleSort(int* array, int size)
@@ -36,7 +38,8 @@ void Sortings::SelectionSort(int* array, int size)
 				min_index = j;
 			}
 		}
-	
+
+		//if it is not the same element
         if (i != min_index) {
             // Swap the found min element with the first element
 		    Swap(array[min_index],array[i]);
@@ -56,4 +59,44 @@ void Sortings::InsertionSort(int* array, int size)
 	}
 }
 
-//void Sortings::QuickSort
+namespace
+{	
+	void Merge(int* array, int start, int middle, int end)
+	{
+		int i = start; 			 // initial index of first subarray
+		int j = middle + 1;		 // initial index of second subarray
+		int l = end - start + 1; // size of temp array
+
+		int* tmp = new int[l];
+
+		for (int k = 0; k < l; ++k) {
+			if ((i <= middle && array[i] < array[j]) || j > end) {
+				tmp[k] = array[i];
+				++i;
+			} else {
+				tmp[k] = array[j];
+				++j;
+			}
+		}
+
+		for (int k = 0, p = start; k < l; ++k, ++p) {
+			array[p] = tmp[k];
+		}
+		delete[] tmp;
+	}
+}
+
+void Sortings::MergeSort(int* array, int start, int end)
+{
+	if (start >= end) {
+		return;
+	}
+
+	int middle = (start + end) / 2;
+
+	MergeSort(array, start, middle);
+	MergeSort(array, middle + 1, end);
+	Merge(array, start, middle, end);
+}
+
+
