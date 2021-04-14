@@ -17,11 +17,14 @@ void Print(int array[], int size) {
     for (int i = 0; i < size; ++i) {
         std::cout << array[i] << ' ';
     }
+    std::cout << std::endl;
 }
 
 int main() {
     int size;
+    std::cout << "Enter array's size." << std::endl;
     std::cin >> size;
+    std::cout << "Enter array's elements separated by spaces." << std::endl;
     int array[size];
     for (int i = 0; i < size; ++i) {
         std::cin >> array[i];
