@@ -1,11 +1,9 @@
-#include <iostream>
-
 template <class T>
-struct Node
+struct node
 {
     T data;
-    Node <T>* link;
-    Node(const T& value = T(), Node <T>* next = 0)
+    node <T>* link;
+    node (const T& value = T(), Node <T>* next = 0)
     {
         data = value;
         link = next;
@@ -15,13 +13,13 @@ struct Node
 template <class T>
 class Stack {
 private:
-    Node <T>* m_top;
+    node <T>* m_top;
     int m_size;
 
 public:
     Stack(); //empty stack with no elements
     Stack(const T& value, int count); //stack with 'count' elements, each is a copy of value
-    Stack(const Stack <T>& x); //copy constructor
+    Stack(const Stack <T>& other_stack); //copy constructor
     ~Stack();
 
     void Pop(); //removes the element on top of the stack, reducing the size by one
