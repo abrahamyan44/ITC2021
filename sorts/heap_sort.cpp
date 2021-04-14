@@ -2,28 +2,26 @@
 
 using namespace std;
 
-
-void HeapSwapping(const int& n, int index, int* a)
+void HeapSwapping(const int& count, int index, int* arr)
 {
 	int max = index;
 	int left = 2 * index + 1, right = 2 * index + 2;
-	if(left < n && a[left] > a[max])
+	if(left < count && arr[left] > arr[max])
 	{
 		max = left;
 	}
 
-	if(right < n && a[right] > a[max])
+	if(right < count && arr[right] > arr[max])
 	{
 		max = right;
 	}
 
 	if(max != index)
 	{
-		swap(a[max], a[index]);
-		HeapSwapping(n, max, a);
+		swap(arr[max], arr[index]);
+		HeapSwapping(count, max, arr);
 	}
 }
-
 
 void HeapSort(const int& n, int* a)
 {
@@ -39,23 +37,27 @@ void HeapSort(const int& n, int* a)
 	}
 }
 
+void PrintArray(const int& count, int* array)
+{
+    for (int i = 0; i < count; ++i)
+    {
+        cout << array[i] << " ";
+    }
+}
 
 int main()
 {
-	int n;
-    cout << "Input element count\n";
-    cin >> n;
-    int* a = new int[n];
-    cout << "Input elements\n";
-	for(int i = 0; i < n; ++i)
-	{
-		cin >> a[i];
-	}
-	HeapSort(n, a);
-	for(int i = 0; i < n; ++i)
-	{
-		cout << a[i] << " ";
-	}
-	delete[] a;
-	return 0;
+    int count;
+	cout << "Input element count\n";
+    cin >> count;
+    int* array = new int[count];
+	cout << "Input elements\n";
+    for (int i = 0; i < count; ++i) {
+        cin >> array[i];
+    }
+
+    HeapSort(count, array);
+    PrintArray(count, array);
+    delete[] array;
+    return 0;
 }

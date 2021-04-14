@@ -2,8 +2,7 @@
 
 using namespace std;
 
-
-void QuickSort(int start, int wall, int end, int* a)
+void QuickSort(int start, int wall, int end, int* arr)
 {
     if(start >= end)
     {
@@ -11,42 +10,46 @@ void QuickSort(int start, int wall, int end, int* a)
     }
     if(start + 1 == end)
     {
-        if(a[start] > a[end])
+        if(arr[start] > arr[end])
         {
-            swap(a[start], a[end]);
+            swap(arr[start], arr[end]);
         }
         return;
     }
     for(int i = wall; i < end; ++i)
     {
-        if(a[i] < a[end])
+        if(arr[i] < arr[end])
         {
-            swap(a[wall], a[i]);
+            swap(arr[wall], arr[i]);
             ++wall;
         }
     }
-    swap(a[wall], a[end]);
-    QuickSort(start, start, wall - 1, a);
-    QuickSort(wall + 1, wall + 1, end, a);
+    swap(arr[wall], arr[end]);
+    QuickSort(start, start, wall - 1, arr);
+    QuickSort(wall + 1, wall + 1, end, arr);
 }
 
+void PrintArray(const int& count, int* array)
+{
+    for (int i = 0; i < count; ++i)
+    {
+        cout << array[i] << " ";
+    }
+}
 
 int main()
 {
-    int n;
-    cout << "Input element count\n";
-    cin >> n;
-    int* a = new int[n];
-    cout << "Input elements\n";
+    int count;
+	cout << "Input element count\n";
+    cin >> count;
+    int* array = new int[count];
+	cout << "Input elements\n";
+    for (int i = 0; i < count; ++i) {
+        cin >> array[i];
+    }
 
-    for(int i = 0; i < n; ++i)
-    {
-        cin >> a[i];
-    }
-    QuickSort(0, 0, n - 1, a);
-    for(int i = 0; i < n; ++i) {
-        cout << a[i] << " ";
-    }
-    delete[] a;
+    QuickSort(0, 0, count - 1, array);
+    PrintArray(count, array);
+    delete[] array;
     return 0;
 }

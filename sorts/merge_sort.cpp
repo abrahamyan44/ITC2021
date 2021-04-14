@@ -2,81 +2,83 @@
 
 using namespace std;
 
-
-void DeclareSortedArray(int* a, int* a1, int* a2, int n)
+void DeclareSortedArray(int* arr, int* arr1, int* arr2, int count)
 {
 	int index1 = 0, index2 = 0;
-	for(int i = 0; i < n; ++i)
+	for(int i = 0; i < count; ++i)
 	{
-		if(index2 >= n - n / 2 || (index1 < n / 2 && a1[index1] < a2[index2]))
+		if(index2 >= count - count / 2 || (index1 < count / 2 && arr1[index1] < arr2[index2]))
 		{
-			a[i] = a1[index1];
+			arr[i] = arr1[index1];
 			++index1;
 		}
 		else
 		{
-			a[i] = a2[index2];
+			arr[i] = arr2[index2];
 			++index2;
 		}
 	}	
 }
 
-
-void DivideMyArray(int* a, int* a1, int* a2, int n)
+void DivideMyArray(int* arr, int* arr1, int* arr2, int count)
 {
-    for(int i = 0; i < n / 2; ++i)
+    for(int i = 0; i < count / 2; ++i)
     {
-		a1[i] = a[i];
+		arr1[i] = arr[i];
 	}
-	for(int i = 0; i < n - n / 2; ++i)
+	for(int i = 0; i < count - count / 2; ++i)
 	{
-		a2[i] = a[i + n / 2];
+		arr2[i] = arr[i + count / 2];
 	}
 }
 
 
-void MergeSort(int n, int* a)
+void MergeSort(int count, int* arr)
 {
-	if(n == 1)
+	if(count == 1)
 	{
 		return;
 	}
-	if(n == 2)
+	if(count == 2)
 	{
-		if(a[0] > a[1])
+		if(arr[0] > arr[1])
 		{
-			swap(a[0], a[1]);
+			swap(arr[0], arr[1]);
 		}
 
 		return;
 	}
-	int* a1 = new int[n / 2];
-	int* a2 = new int[n - n / 2];
-	DivideMyArray(a, a1, a2, n);
-	MergeSort(n / 2, a1);
-	MergeSort(n - n / 2, a2);
-	DeclareSortedArray(a, a1, a2, n);
-	delete[] a1;
-	delete[] a2;
+	int* arr1 = new int[count / 2];
+	int* arr2 = new int[count - count / 2];
+	DivideMyArray(arr, arr1, arr2, count);
+	MergeSort(count / 2, arr1);
+	MergeSort(count - count / 2, arr2);
+	DeclareSortedArray(arr, arr1, arr2, count);
+	delete[] arr1;
+	delete[] arr2;
 }
 
+void PrintArray(const int& count, int* array)
+{
+    for (int i = 0; i < count; ++i)
+    {
+        cout << array[i] << " ";
+    }
+}
 
 int main()
 {
-	int n;
-    cout << "Input element count\n";
-    cin >> n;
-    int* a = new int[n];
-    cout << "Input elements\n";
-	for(int i = 0; i < n; ++i)
-	{
-		cin >> a[i];
-	}
-	MergeSort(n, a);
-	for(int i = 0; i < n; ++i)
-	{
-		cout << a[i] << " ";
-	}
-	delete[] a;
-	return 0;
+    int count;
+	cout << "Input element count\n";
+    cin >> count;
+    int* array = new int[count];
+	cout << "Input elements\n";
+    for (int i = 0; i < count; ++i) {
+        cin >> array[i];
+    }
+
+    MergeSort(count, array);
+    PrintArray(count, array);
+    delete[] array;
+    return 0;
 }

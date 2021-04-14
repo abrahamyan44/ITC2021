@@ -2,18 +2,17 @@
 
 using namespace std;
 
-
-void ShellSort(const int& n, int* a)
+void ShellSort(const int& count, int* arr)
 {
-	for(int interval = n / 2; interval > 0; interval /= 2)
+	for(int interval = count / 2; interval > 0; interval /= 2)
 	{
-		for(int i = interval; i < n; ++i)
+		for(int i = interval; i < count; ++i)
 		{
 			for(int j = i; j >= interval; j -= interval)
 			{
-				if(a[j] < a[j - interval])
+				if(arr[j] < arr[j - interval])
 				{
-					swap(a[j], a[j - interval]);
+					swap(arr[j], arr[j - interval]);
 				}
 				else
 				{
@@ -24,23 +23,27 @@ void ShellSort(const int& n, int* a)
 	}
 }
 
+void PrintArray(const int& count, int* array)
+{
+    for (int i = 0; i < count; ++i)
+    {
+        cout << array[i] << " ";
+    }
+}
 
 int main()
 {
-	int n;
-    cout << "Input element count\n";
-    cin >> n;
-    int* a = new int[n];
-    cout << "Input elements\n";
-	for(int i = 0; i < n; ++i)
-	{
-		cin >> a[i];
-	}
-	ShellSort(n, a);
-	for(int i = 0; i < n; ++i)
-	{
-		cout << a[i] << " ";
-	}
-	delete[] a;
-	return 0;
+    int count;
+	cout << "Input element count\n";
+    cin >> count;
+    int* array = new int[count];
+	cout << "Input elements\n";
+    for (int i = 0; i < count; ++i) {
+        cin >> array[i];
+    }
+
+    ShellSort(count, array);
+    PrintArray(count, array);
+    delete[] array;
+    return 0;
 }
