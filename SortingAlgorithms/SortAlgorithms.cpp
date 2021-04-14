@@ -4,15 +4,15 @@
 void BubbleSort(int* array, int number)
 {
     bool swapped;
-    for(int i=0; i < number-1; i++) {
+    for (int i=0; i < number-1; i++) {
         swapped = false;
-        for(int j=0; j < number-i-1; j++) {
-            if(array[j] > array[j+1]) {
+        for (int j=0; j < number-i-1; j++) {
+            if (array[j] > array[j+1]) {
                 swap(&array[j], &array[j+1]);
                 swapped = true;
             }
         }
-        if(swapped == false) {
+        if (swapped == false) {
             break;
         }
     }
@@ -24,28 +24,28 @@ void Merge(int* array, int low, int middle, int high)
     int i = low;
     int k = 0;
     int j = middle + 1;
-    while(i <= middle && j <= high) {
-        if(array[i] <= array[j]) {
+    while (i <= middle && j <= high) {
+        if (array[i] <= array[j]) {
             temp[k] = array[i++];
         } else {
             temp[k] = array[j++];
         }
         k++;
     }
-    while(i <= middle) {
+    while (i <= middle) {
         temp[k++] = array[i++];
     }
-    while(j <= high) {
+    while (j <= high) {
         temp[k++] = array[j++];
     }
-    for(i = low; i <= high; i++) {
+    for (i = low; i <= high; i++) {
         array[i] = temp[i - low];
     }
 }
 
 void MergeSort(int* array, int low, int high)
 {
-    if(low < high) {
+    if (low < high) {
         int middle = (low + high)/2;
         MergeSort(array, low, middle);
         MergeSort(array, middle + 1, high);
@@ -55,9 +55,9 @@ void MergeSort(int* array, int low, int high)
 
 void SelectionSort(int* array, int size) 
 {
-    for(int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) {
         int min = i;
-        for(int j = i + 1; j < size; j++) {
+        for (int j = i + 1; j < size; j++) {
             if (array[min] > array[j]) {
                 min = j; 
             }
@@ -84,8 +84,8 @@ int PartitionArray(int* array, int low, int high)
 {
     int pivot = array[high]; //choosing a pivot
     int wall = low -1;
-    for(int j = low; j < high; j++) {
-        if(array[j] <= pivot) {
+    for (int j = low; j < high; j++) {
+        if (array[j] <= pivot) {
             wall++;
             swap(&array[wall], &array[j]);
         }
@@ -96,7 +96,7 @@ int PartitionArray(int* array, int low, int high)
 
 void QuickSort(int* array, int low, int high)
 {
-    if(low < high) {
+    if (low < high) {
         int index = PartitionArray(array, low, high - 1);
         QuickSort(array, low, index -1);
         QuickSort(array, index + 1, high);
@@ -106,7 +106,7 @@ void QuickSort(int* array, int low, int high)
 void Print(int* array, int number)
 {
     std::cout << "The array is: ";
-    for(int i=0; i < number; i++) {
+    for (int i=0; i < number; i++) {
         std::cout << array[i] << " ";
     }
     std::cout << std::endl;
@@ -118,8 +118,9 @@ int main()
     int size;
     std::cout << "Input the size of array: ";
     std::cin >> size;
+    std::cout << "\nPlease input array's elements:\n";
     int array[size];
-    for(int i=0; i < size; i++) {
+    for (int i=0; i < size; i++) {
         std::cin >> array[i];
     }
 
