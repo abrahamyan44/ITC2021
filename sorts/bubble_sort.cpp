@@ -2,21 +2,21 @@
 
 using namespace std;
 
-void BubbleSort(const int& size, int* arr)
+void BubbleSort (const int& size, int* arr)
 {
     bool swapped = false;
-    for(int i = 0; i < size; ++i)
+    for (int i = 0; i < size; ++i)
     {
-        for(int j = 1; j < size - i; ++j)
+        for (int j = 1; j < size - i; ++j)
         {
-            if(arr[j - 1] > arr[j])
+            if (arr[j - 1] > arr[j])
             {
                 swap(arr[j - 1], arr[j]);
                 swapped = true;
             }
         }
 
-        if(!swapped)
+        if (!swapped)
         {
             break;
         }
@@ -25,7 +25,7 @@ void BubbleSort(const int& size, int* arr)
     return;
 }
 
-void PrintArray(const int& count, int* array)
+void PrintArray (const int& count, int* array)
 {
     for (int i = 0; i < count; ++i)
     {

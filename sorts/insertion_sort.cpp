@@ -2,13 +2,13 @@
 
 using namespace std;
 
-void InsertionSort(const int& size, int* arr)
+void InsertionSort (const int& size, int* arr)
 {
-    for(int i = 1; i < size; ++i)
+    for (int i = 1; i < size; ++i)
     {
         int chosen_member = arr[i];
         int j = i;
-        while(j > 0 && arr[j - 1] > chosen_member)
+        while (j > 0 && arr[j - 1] > chosen_member)
         {
             arr[j] = arr[j - 1];
             --j;
@@ -17,7 +17,7 @@ void InsertionSort(const int& size, int* arr)
     }
 }
 
-void PrintArray(const int& count, int* array)
+void PrintArray (const int& count, int* array)
 {
     for (int i = 0; i < count; ++i)
     {

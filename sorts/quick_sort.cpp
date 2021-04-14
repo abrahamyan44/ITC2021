@@ -2,23 +2,23 @@
 
 using namespace std;
 
-void QuickSort(int start, int wall, int end, int* arr)
+void QuickSort (int start, int wall, int end, int* arr)
 {
-    if(start >= end)
+    if (start >= end)
     {
         return;
     }
-    if(start + 1 == end)
+    if (start + 1 == end)
     {
-        if(arr[start] > arr[end])
+        if (arr[start] > arr[end])
         {
             swap(arr[start], arr[end]);
         }
         return;
     }
-    for(int i = wall; i < end; ++i)
+    for (int i = wall; i < end; ++i)
     {
-        if(arr[i] < arr[end])
+        if (arr[i] < arr[end])
         {
             swap(arr[wall], arr[i]);
             ++wall;
@@ -29,7 +29,7 @@ void QuickSort(int start, int wall, int end, int* arr)
     QuickSort(wall + 1, wall + 1, end, arr);
 }
 
-void PrintArray(const int& count, int* array)
+void PrintArray (const int& count, int* array)
 {
     for (int i = 0; i < count; ++i)
     {

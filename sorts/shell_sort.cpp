@@ -2,15 +2,15 @@
 
 using namespace std;
 
-void ShellSort(const int& count, int* arr)
+void ShellSort (const int& count, int* arr)
 {
-	for(int interval = count / 2; interval > 0; interval /= 2)
+	for (int interval = count / 2; interval > 0; interval /= 2)
 	{
-		for(int i = interval; i < count; ++i)
+		for (int i = interval; i < count; ++i)
 		{
-			for(int j = i; j >= interval; j -= interval)
+			for (int j = i; j >= interval; j -= interval)
 			{
-				if(arr[j] < arr[j - interval])
+				if (arr[j] < arr[j - interval])
 				{
 					swap(arr[j], arr[j - interval]);
 				}
@@ -23,7 +23,7 @@ void ShellSort(const int& count, int* arr)
 	}
 }
 
-void PrintArray(const int& count, int* array)
+void PrintArray (const int& count, int* array)
 {
     for (int i = 0; i < count; ++i)
     {

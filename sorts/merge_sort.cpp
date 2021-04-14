@@ -2,12 +2,12 @@
 
 using namespace std;
 
-void DeclareSortedArray(int* arr, int* arr1, int* arr2, int count)
+void DeclareSortedArray (int* arr, int* arr1, int* arr2, int count)
 {
 	int index1 = 0, index2 = 0;
-	for(int i = 0; i < count; ++i)
+	for (int i = 0; i < count; ++i)
 	{
-		if(index2 >= count - count / 2 || (index1 < count / 2 && arr1[index1] < arr2[index2]))
+		if (index2 >= count - count / 2 || (index1 < count / 2 && arr1[index1] < arr2[index2]))
 		{
 			arr[i] = arr1[index1];
 			++index1;
@@ -20,28 +20,28 @@ void DeclareSortedArray(int* arr, int* arr1, int* arr2, int count)
 	}	
 }
 
-void DivideMyArray(int* arr, int* arr1, int* arr2, int count)
+void DivideMyArray (int* arr, int* arr1, int* arr2, int count)
 {
-    for(int i = 0; i < count / 2; ++i)
+    for (int i = 0; i < count / 2; ++i)
     {
 		arr1[i] = arr[i];
 	}
-	for(int i = 0; i < count - count / 2; ++i)
+	for (int i = 0; i < count - count / 2; ++i)
 	{
 		arr2[i] = arr[i + count / 2];
 	}
 }
 
 
-void MergeSort(int count, int* arr)
+void MergeSort (int count, int* arr)
 {
 	if(count == 1)
 	{
 		return;
 	}
-	if(count == 2)
+	if (count == 2)
 	{
-		if(arr[0] > arr[1])
+		if (arr[0] > arr[1])
 		{
 			swap(arr[0], arr[1]);
 		}
@@ -58,7 +58,7 @@ void MergeSort(int count, int* arr)
 	delete[] arr2;
 }
 
-void PrintArray(const int& count, int* array)
+void PrintArray (const int& count, int* array)
 {
     for (int i = 0; i < count; ++i)
     {

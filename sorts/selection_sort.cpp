@@ -2,24 +2,24 @@
 
 using namespace std;
 
-void SelectionSort(const int& size, int* arr)
+void SelectionSort (const int& size, int* arr)
 {
-	for(int i = 0; i < size - 1; ++i)
+	for (int i = 0; i < size - 1; ++i)
 	{
 		int min, index;
-		for(int j = i; j < size; ++j)
+		for (int j = i; j < size; ++j)
 		{
-			if(i == j || min > arr[j])
+			if (i == j || min > arr[j])
 			{
 				min = arr[j];
 				index = j;
 			}
 		}
-		swap(arr[i], arr[index]);
+		swap (arr[i], arr[index]);
 	}
 }
 
-void PrintArray(const int& count, int* array)
+void PrintArray (const int& count, int* array)
 {
     for (int i = 0; i < count; ++i)
     {
