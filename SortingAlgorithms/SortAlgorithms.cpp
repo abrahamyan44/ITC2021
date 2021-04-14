@@ -39,7 +39,7 @@ void Merge (int* array, int low, int middle, int high)
         temporal[k++] = array[j++];
     }
     for (i = low; i <= high; i++) {
-        array[i] = temp[i - low];
+        array[i] = temporal[i - low];
     }
 }
 
