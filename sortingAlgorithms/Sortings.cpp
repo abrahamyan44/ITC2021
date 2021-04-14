@@ -12,16 +12,16 @@ namespace
 
 void Sortings::BubbleSort(int* array, int size)
 {
-	bool sorted = true;
+	bool is_sorted = true;
 	for (int i = 0; i < size - 1; ++i) {
 		for (int j = 0; j < size - i - 1; ++j) {
 			if (array[j] > array[j + 1]) {
-				sorted = false;
+				is_sorted = false;
 				Swap(array[j],array[j + 1]);
 			}
 		}
 
-		if (sorted) {
+		if (is_sorted) {
 			return;
 		}
 	}
@@ -38,8 +38,8 @@ void Sortings::SelectionSort(int* array, int size)
 		}
 	
         if (i != min_index) {
-        // Swap the found min element with the first element
-		Swap(array[min_index],array[i]);
+            // Swap the found min element with the first element
+		    Swap(array[min_index],array[i]);
 	    }
     }
 }
