@@ -2,18 +2,20 @@
 using namespace std;
 
 template <class T>
-T search(T arr[], int low, int high, T element) {
-	if (low < high) {
-		int middle_index = (low + high) / 2;
+int search(T arr[], int low, int high, T element) {
+	if (low <= high) {
+		int middle_index = ( low + high) / 2;
 		if (arr[middle_index] == element) {
 			return middle_index;
 		}
 	       	if(arr[middle_index] > element) {
 			return	search(arr, low, middle_index - 1, element);
-		} else if (arr[middle_index] < element) {
+		}
+		if(arr[middle_index] < element) {
 			return search(arr, middle_index + 1, high, element);
-		}	
+		}		
 	}
+	return -1;
 }
 
 
@@ -54,7 +56,7 @@ int main()
 	for (int i = 0; i < size; i++) {
 		cin >> arr[i];
 	}
-	BubbleSort<int>(arr, size);
+	BubbleSort(arr, size);
 	cout << "Sorted array" << endl;
 	for(int i = 0; i < size; i++) {
 		cout << arr[i] << "\t";
@@ -63,7 +65,7 @@ int main()
 	cout << endl;
 	cout << "which element's number did you need?" << endl;
 	cin >> element;
-	int x = search<int> (arr, 0, size - 1, element);
+	int x = search(arr, 0, size - 1, element);
 
 	cout<< "arr[ " << x << " ] = " << element << endl;
 }
