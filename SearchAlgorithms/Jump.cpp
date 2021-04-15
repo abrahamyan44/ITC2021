@@ -12,7 +12,7 @@ int JumpSearch(int arr[], int size, int element) {
 			for (int j = i; j > i - sqrt(size); --j) {
         	        	if (arr[j] == element) {
 	        	                return j;
-                        	break;
+	                         	break;
                 		}
         		}
 		}
@@ -35,7 +35,7 @@ void BubbleSort(T arr[], int size)
 		bool swapped = false;
 
 		for (T j = 1; j < size - i; j++ ) {
-				if (arr[j] < arr[j-1]) {
+			if (arr[j] < arr[j-1]) {
 				Swap(&arr[j], &arr[j-1]);
 				swapped = true;
 			}
@@ -65,10 +65,8 @@ int main() {
 	}
 
 	cout << endl;
-
 	cout << "Enter number you want to search" << endl;
 	cin >> element;
-
 	cout << "arr [ " << JumpSearch(numbersArray, size, element) << " ]" << endl; 
 
 
