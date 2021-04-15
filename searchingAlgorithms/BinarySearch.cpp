@@ -15,7 +15,6 @@ int SearchItem(int array[], int start, int end, int item)
           return SearchItem(array, mid + 1, end, item);
         }
     }
-
     return -1;
 } 
 
