@@ -130,4 +130,37 @@ void Sortings::MergeSort(int* array, int start, int end)
 	Merge(array, start, middle, end);
 }
 
+namespace 
+{
+	void Heapify(int* array, int size, int root)
+	{
+    	int max = root;
+    	int right = (2 * root) + 1;
+    	int left = (2 * root) + 2;
 
+    	if (left < size && array[left] > array[max]) {
+    	    max = left;
+    	}
+    
+    	if (right < size && array[right] > array[max]) {
+    	    max = right;
+    	}
+
+    	if (max != root) {
+    	    Swap(array[root], array[max]);
+    	    Heapify(array, size, max);              
+    	}
+	}
+}
+
+void Sortings::HeapSort(int* array, int size)
+{
+    for (int i = (size / 2) - 1; i >= 0; --i) {
+        Heapify(array, size, i);        
+    }
+
+    for (int i = size - 1; i >= 0; --i) {
+        Swap(array[i], array[0]);
+        Heapify(array, i, 0);
+    }
+}

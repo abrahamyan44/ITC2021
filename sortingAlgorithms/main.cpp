@@ -54,14 +54,24 @@ int main()
 
 	/*************************************/
 
-	Sortings::MergeSort(array, 0, n-1);
+	/*Sortings::MergeSort(array, 0, n-1);
 
 	std::cout << "After Merge Sort: ";
 	for (int element : array) {
 		std::cout << element << ' ';
 	}
+	std::cout << std::endl;*/
+
+	/*************************************/
+
+	Sortings::HeapSort(array, n);
+
+	std::cout << "After Heap Sort: "; 
+
+	for (int element : array) {
+		std::cout << element << ' ';
+	}
 	std::cout << std::endl;
-	
-	
+		
 	return 0;
 }
