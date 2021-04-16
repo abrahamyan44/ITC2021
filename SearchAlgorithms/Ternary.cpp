@@ -3,22 +3,22 @@ using namespace std;
 
 template <class T>
 int search(T arr[], int low, int high, T element) {
-	if (low <= high) {
+	if(low <= high) {
 		int middle_index1 = low + ((low + high) / 3);
 		int middle_index2 =  high - ((low + high) / 3);
-		if (arr[middle_index1] == element) {
+		if(arr[middle_index1] == element) {
 			return middle_index1;
 		}
-		if (arr[middle_index2] == element) {
+		if(arr[middle_index2] == element) {
 			return middle_index2;
 		}
-		if (arr[middle_index1] > element) {
+		if(arr[middle_index1] > element) {
 			return	search(arr, low, middle_index1 - 1, element);
 		}
-		if (arr[middle_index2] <  element) {
+		if(arr[middle_index2] <  element) {
 			return	search(arr, middle_index2 + 1, high, element);
 		}
-		if (arr[middle_index1] <  element &&  arr[middle_index2] > element) {
+		if(arr[middle_index2] > element) {
 			return	search(arr, middle_index1 + 1, middle_index2 - 1, element);
 		}
 	}
