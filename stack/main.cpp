@@ -1,14 +1,9 @@
-#include<iostream>
-#include "stack_implementation.hpp"
+#include <iostream>
+#include "stack.hpp"
 
-int main()
-{
-    Stack l(4, 10);
-    l.Push(5);
-    l.Print();
-    std::cout << l.Top() << std::endl;
-    std::cout << l.Empty() << std::endl;
-    std::cout << l.Size() << std::endl;
-      
+int main() {
+    Stack s(2, 4);
+    s.Print();
+
     return 0;
 }

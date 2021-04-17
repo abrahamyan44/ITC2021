@@ -88,7 +88,7 @@ void Stack::Pop()
 //returns whether the stack is empty
 bool Stack::Empty()
 {
-    return (m_head == NULL) ? true : false;
+    return (m_head == NULL);
 } 
 
 //returns top element of the stack
