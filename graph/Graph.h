@@ -8,6 +8,9 @@ private:
     bool** m_vertice_matrix;
     int m_vertices_count;
 
+    bool* CreateTableForShowPassedVertices ();
+    void ImplementDFSRecursive (int vertice, bool* is_vertice_passed);
+
 public:
     Graph (int count);
 
@@ -15,7 +18,9 @@ public:
 
     void AddingEdge (int v, int w);
 
-    void ImplementBFS(int vertice) const;
+    void ImplementBFS (int vertice);
+
+    void ImplementDFS (int vertice);
 };
 
 
@@ -46,14 +51,19 @@ void Graph::AddingEdge (int v, int w) {
     return;
 }
 
-void Graph::ImplementBFS (int vertice) const {
+bool* Graph::CreateTableForShowPassedVertices () {
+    bool* table = new bool[m_vertices_count];
+    for (int i = 0; i < m_vertices_count; ++i) {
+        table[i] = 0;
+    }
+    return table;
+}
+
+void Graph::ImplementBFS (int vertice) {
     if (vertice < 0 || vertice >= m_vertices_count) {
         return;
     }
-    bool* is_vertice_passed = new bool[m_vertices_count];
-    for (int i = 0; i < m_vertices_count; ++i) {
-        is_vertice_passed[i] = false;
-    }
+    bool* is_vertice_passed = CreateTableForShowPassedVertices();
     std::queue<int> q;
     q.push(vertice);
     is_vertice_passed[vertice] = true;
@@ -69,4 +79,23 @@ void Graph::ImplementBFS (int vertice) const {
         q.pop();
     }
     std::cout << "\n";
+}
+
+void Graph::ImplementDFS (int vertice) {
+    if (vertice < 0 || vertice >= m_vertices_count) {
+        return;
+    }
+    bool* is_vertice_passed = CreateTableForShowPassedVertices();
+    ImplementDFSRecursive(vertice, is_vertice_passed);
+    std::cout << "\n";
+}
+
+void Graph::ImplementDFSRecursive (int vertice, bool* is_vertice_passed) {
+    is_vertice_passed[vertice] = true;
+    std::cout << vertice << " ";
+    for (int i = 0; i < m_vertices_count; ++i) {
+        if (m_vertice_matrix[vertice][i] == true && is_vertice_passed[i] == false) {
+            ImplementDFSRecursive(i, is_vertice_passed);
+        }
+    }
 }
