@@ -15,7 +15,7 @@ Stack::Stack(int size, int value)
     temp->next = nullptr;
     m_head = temp;
     m_tail = temp;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size - 1; i++) {
         Push(value);
     }
 }
@@ -47,16 +47,8 @@ void Stack::Print() const
     nodePtr temp = new node;
     temp = m_head;
     while (temp != nullptr) {
+        std::cout << temp->data << std::endl;
         temp = temp->next;
-        std::cout << temp << std::endl;
-    }
-}
-
-void Stack::PrintStack(nodePtr node)
-{
-    while (node != NULL) {
-        std::cout << " " << node->data << std::endl;
-        node = node->next;
     }
 }
 
@@ -75,6 +67,8 @@ void Stack::Pop()
             temp = temp->next;
         }
     }
+    delete temp->next;
+    temp->next = nullptr;
 }
 
 void Stack::Push(const int& value)
@@ -99,11 +93,17 @@ bool Stack::Empty() const
 
 int Stack::Top()
 {
-    nodePtr temp = new node;
-    temp = m_head;
+    if(m_head == nullptr) {
+        std::cout << "The stack is empty" << std::endl;
+    } else if(m_head->next == nullptr) {
+        return m_head->data;
+    } else {
+        nodePtr temp;
+        temp = m_head;
 
-    while (temp->next != nullptr) {
-        temp = temp->next;
+        while (temp->next != nullptr) {
+            temp = temp->next;
+        }
+        return temp->data;
     }
-    return temp->data;
 }
