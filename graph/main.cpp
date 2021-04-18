@@ -13,7 +13,7 @@ int main()
     graph.AddEdge(4, 4);
     //graph.Print();
     graph.DepthFirstSearch(0);
-	std::cout << std::endl;
+	//std::cout << std::endl;
     graph1.AddEdge(0, 1);
     graph1.AddEdge(0, 2);
     graph1.AddEdge(1, 2);
