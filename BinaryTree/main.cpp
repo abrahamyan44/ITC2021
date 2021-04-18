@@ -4,27 +4,31 @@
 int main()
 {
     int arr[]={1,2,3,4,5,6,7,8};
-    Tree<int> Object(arr, 7);
-    
-    //Object.Preorder(); //NLR
-    //std::cout << std::endl;
-    
-    Object.Inorder();  //LNR
+    Tree<int> BinaryTreeObject(arr, 7);
+    BinaryTreeObject.PrintPreOrder();   //prints node value left childe value and right childe value
     std::cout << std::endl;
     
-    //Object.Postorder();    //LRN
-    //std::cout << std::endl;
+    BinaryTreeObject.PrintInOrder();  //prints left childe value node value and right childe value
+    std::cout << std::endl;
+    
+    BinaryTreeObject.PrintPostOrder();   //prints left childe value right childe value and node value
+    std::cout << std::endl;
 
-    //Tree<int> TMP;
-    //TMP.Preorder();
-    //std::cout << std::endl;
+    Tree<int> TemporaryObject;
+    TemporaryObject.PrintPreOrder();
 
-    //TMP.Insert(3);
-    //TMP.Insert(4);
-    //TMP.Insert(2);
-    //TMP.Insert(7);
-    //TMP.Insert(1);
-    //TMP.Insert(9);
-    //TMP.Inorder();
-    //std::cout << std::endl;
+    TemporaryObject.Insert(3);
+    TemporaryObject.Insert(76);
+    TemporaryObject.Insert(2);
+    TemporaryObject.Insert(35);
+    TemporaryObject.Insert(4);
+    TemporaryObject.Insert(18);
+    TemporaryObject.Insert(7);
+    TemporaryObject.Insert(19);
+    TemporaryObject.PrintInOrder();
+    std::cout << std::endl;
+    
+    BinaryTreeObject.Insert(9);
+    BinaryTreeObject.PrintInOrder();
+    std::cout << std::endl;
 }

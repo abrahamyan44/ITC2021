@@ -11,6 +11,11 @@ $(EXE): $(OBJS)
 obj/%.o: %.cpp #%.hpp
 	mkdir -p obj
 	g++ -c $< -o $@
+	g++ -g $^ -o $@
+
+obj/%.o: %.cpp #%.hpp
+	mkdir -p obj
+	g++ -g -c $< -o $@
 
 #%.dep: %.cpp %.hpp
 #	g++ -M $^ -o $@
