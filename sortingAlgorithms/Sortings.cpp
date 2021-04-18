@@ -165,3 +165,19 @@ void Sortings::HeapSort(int* array, int size)
         Heapify(array, i, 0);
     }
 }
+
+
+void Sortings::ShellSort(int* array, int size)
+{
+	for (int gap = size / 2; gap > 0; gap /= 2) {
+		for (int i = gap; i < size; ++i ) {
+			for (int j = i - gap; j >= 0; j -= gap) {
+				if (array[j + gap] >= array[j]) {
+					break;
+				} else {
+					Swap(array[j + gap], array[j]);
+				}			
+			}
+		}	
+	}
+}
