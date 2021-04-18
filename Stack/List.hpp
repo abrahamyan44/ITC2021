@@ -1,3 +1,5 @@
+#ifndef _LIST_HPP
+#define _LIST_HPP
 
 template <typename T>
 class List
@@ -11,8 +13,8 @@ struct node
 
 private:
     int m_size;
-    node* m_begin;
-    node* m_end;
+    node* m_begin = 0;
+    node* m_end = 0;
 
 private:
     void free();
@@ -22,7 +24,7 @@ public:
     List(int count, T value);
     List(const List&);
     List& operator=(const List&);
-    T& operator[](int);
+    T& tail();
     ~List();
 
 public:
@@ -35,3 +37,5 @@ public:
     void Erase(int pos);
     void Print();
 };
+
+#endif //_LIST_HPP

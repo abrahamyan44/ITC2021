@@ -8,10 +8,13 @@ int main()
     std::cout << a.Size() << std::endl;
     a.Print();
     a.Insert(2,22.4);
+    b.InsertBegin(4);
+    b.Print();
     b = a;
     a.Insert(6,33.6);
     a.Print();
     b.Print();
+    std::cout << "index = " << a[4] << std::endl;
     a.Erase(5);
     a.Print();
     std::cout << a.Size() << std::endl;

@@ -119,19 +119,13 @@ List<T>& List<T>::operator=(const List& other)
 }
 
 template <typename T>
-T& List<T>::operator[](int index)
+T& List<T>::tail()
 {
-    if (index < 0 || index >= m_size)
+    if (0 == m_end)
     {
-        std::cout << "List index out of bound, exiting.";
-        exit(1);
+        std::cout << "List is empty.";
     }
-    node* tmp = m_begin;
-    for(int i = 0; i < index; ++i)
-    {
-        tmp = tmp->next;
-    }
-    return tmp->number;
+    return m_end->number ;
 }
 
 //Empties object
@@ -172,6 +166,10 @@ void List<T>::InsertBegin(const T& value)
     m_begin = tmp;
     m_begin->number = value;
     m_begin->prev = 0;
+    if (0 == m_end)
+    {
+        m_end = m_begin;
+    }
     ++m_size;
 }
 
@@ -191,6 +189,11 @@ void List<T>::InsertEnd(const T& value)
     m_end = tmp;
     m_end->number = value;
     m_end->next = 0;
+    if (0 == m_begin)
+    {
+        m_begin = m_end;
+
+    }
     ++m_size;
 }
 
@@ -308,5 +311,4 @@ void List<T>::Print()
     std::cout << std::endl;
 }
 
-
-//template class List<int>;
+template class List<int>;
