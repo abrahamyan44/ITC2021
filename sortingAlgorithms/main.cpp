@@ -12,15 +12,15 @@ void Testing1(int* array, int size, void (*function_name)(int*, int))
 	std::cout << std::endl;
 
 	if (function_name == Sortings::BubbleSort) {	
-		Sortings::BubbleSort(array,size);
+		Sortings::BubbleSort(array, size);
 	} else if (function_name == Sortings::InsertionSort) {	
-		Sortings::InsertionSort(array,size);
+		Sortings::InsertionSort(array, size);
 	} else if (function_name == Sortings::SelectionSort) {	
-		Sortings::SelectionSort(array,size);
+		Sortings::SelectionSort(array, size);
 	} else if (function_name == Sortings::HeapSort) {	
-		Sortings::HeapSort(array,size);
+		Sortings::HeapSort(array, size);
 	} else {	
-		Sortings::ShellSort(array,size);
+		Sortings::ShellSort(array, size);
 	}
 
 	std::cout << "After Sorting:  ";
