@@ -1,3 +1,5 @@
+#include <iostream>
+
 template <typename T>
 void Swap (T& first, T& second)
 {
@@ -167,3 +169,11 @@ void ShellSort (T* array, int size)
         }
     }
 }
+
+template void QuickSort(int64_t*, int);
+template void ShellSort(int64_t*, int);
+template void MergeSort(int64_t*, int);
+template void HeapSort(int64_t*, int);
+template void SelectionSort(int64_t*, int);
+template void InsertionSort(int64_t*, int);
+
