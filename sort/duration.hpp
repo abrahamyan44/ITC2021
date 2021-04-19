@@ -24,7 +24,7 @@ namespace duration
         return is_sorted;
     }
 
-	template <class T>
+    template <class T>
     long double Duration(void (*func_name)(T*, int, int), T* array, int n)
     {
         T* new_array = CopyArray(array, n);
@@ -41,7 +41,7 @@ namespace duration
         delete [] new_array;
     }
 
-	template <class T>
+    template <class T>
     long double Duration(void (*func_name)(T*, int), T* array, int n)
     {
         T* new_array = CopyArray(array, n);
