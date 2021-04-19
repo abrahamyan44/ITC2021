@@ -69,7 +69,7 @@ namespace sorting
         delete [] array2;
     }
 
-	template <class T>
+    template <class T>
     void MergeSort (T* array, int s, int n)
     {
         if (s < n) {
@@ -95,7 +95,7 @@ namespace sorting
         return i + 1;
     }
 
-	template <class T>
+    template <class T>
     void QuickSort (T* array, int s, int n)
     {
         if(s <= n) {
@@ -106,7 +106,7 @@ namespace sorting
 
     }
 
-	template <class T>
+    template <class T>
     void ShellSort(T* array, int n)
     {
         for(int interval = n / 2; interval > 0; interval /= 2) {
@@ -121,7 +121,7 @@ namespace sorting
         }
     }
 
-	template <class T>
+    template <class T>
     void Heapify(T* array, int n, int i)
     {
         int largest = i;
@@ -139,7 +139,7 @@ namespace sorting
         }
     }
 
-	template <class T>
+    template <class T>
     void HeapSort(T* array, int n)
     {
         for(int i = n / 2 - 1; i >= 0; --i) {
