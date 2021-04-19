@@ -79,7 +79,7 @@ namespace test
     }
  
     template <class T>
-	void TestingMerge(T* array, int n, int test_count)
+    void TestingMerge(T* array, int n, int test_count)
     {
         if(test_count == 1) {
             Print1("MergeSort", duration::Duration(sorting::MergeSort, array, n));
@@ -119,7 +119,7 @@ namespace test
                 time[i] = duration::Duration(sorting::BubbleSort, array, n);
             }
             Print("BubbleSort", time);
-		}
+        }
     }
 
 	template <class T>
