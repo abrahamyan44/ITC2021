@@ -11,10 +11,10 @@ int main(int argc, char* argv[])
     for(int i = 0; i < size; ++i) {
         array[i] = rand() % 3425;
     }
-		test::TestingQuick(array, size, test_count);
-		test::TestingHeap(array, size, test_count);
-		test::TestingMerge(array, size, test_count);
-		test::TestingBubble(array, size, test_count);
-		test::TestingShell(array, size, test_count);
+	test::TestingQuick(array, size, test_count);
+	test::TestingHeap(array, size, test_count);
+	test::TestingMerge(array, size, test_count);
+	test::TestingBubble(array, size, test_count);
+	test::TestingShell(array, size, test_count);
 	return 0;
 }
