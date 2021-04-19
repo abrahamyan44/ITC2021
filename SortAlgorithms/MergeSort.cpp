@@ -3,16 +3,34 @@
 #include <time.h>
 
 template <typename T>
-void InitializeArray(T* new_array, int new_size, T* old_array, int position_to_start_initializing)
+void GenerateVector (T* array, int size)
+{
+    srand(time(0));
+    for (int i = 0; i < size; ++i) {
+        array[i] = rand()% 50 - 25;
+    }
+}
+
+template <typename T>
+void PrintVector (T* array, int size)
+{ 
+    for (int i = 0; i < size; ++i) {
+        std::cout << std::setw(4) << array[i];
+        std::cout << ",";
+    }
+    std::cout << std::endl;
+}
+
+template <typename T>
+void InitializeArray (T* new_array, int new_size, T* old_array, int position_to_start_initializing)
 {
     for (int i = 0; i < new_size; ++i) {
         new_array[i] = old_array[position_to_start_initializing + i];
     }
 }
 
-
 template <typename T>
-void Divide(T* array, int left, int middle, int right)
+void Divide (T* array, int left, int middle, int right)
 {
     int first_part_size = middle - left + 1,  second_part_size = right - middle;
     T first_part[first_part_size], second_part[second_part_size];
@@ -36,7 +54,7 @@ void Divide(T* array, int left, int middle, int right)
 }
 
 template <typename T>
-void Merge(T* array, int left, int right)
+void Merge (T* array, int left, int right)
 {
     if (left >= right){
         return;
@@ -48,7 +66,7 @@ void Merge(T* array, int left, int right)
 }
 
 template <typename T>
-void MergeSort(T* array, int size)
+void MergeSort (T* array, int size)
 {
     Merge(array, 0, size - 1);
 }
@@ -57,18 +75,8 @@ int main()
 {
     const int count = 17;
     int vector[count];
-    srand(time(0));
-
-    for (int i = 0; i < count; ++i) {
-        vector[i] = rand()% 50 - 25;
-        std::cout << std::setw(4) << vector[i];
-    }
-    std::cout << std::endl;
-
+    GenerateVector(vector, count);
+    PrintVector(vector, count);
     MergeSort(vector, count);
-
-    for (int i = 0; i < count; ++i) {
-        std::cout << std::setw(4) << vector[i];
-    }
-    std::cout << std::endl;
+    PrintVector(vector, count);
 }

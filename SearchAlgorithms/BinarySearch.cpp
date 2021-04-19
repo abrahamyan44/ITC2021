@@ -3,7 +3,7 @@
 #include <time.h>
 
 template <typename T>
-void GenerateVector(T* array, int size)
+void GenerateVector (T* array, int size)
 {
     srand(time(0));
     for (int i = 0; i < size; ++i) {
@@ -12,7 +12,7 @@ void GenerateVector(T* array, int size)
 }
 
 template <typename T>
-void PrintVector(T* array, int size)
+void PrintVector (T* array, int size)
 { 
     for (int i = 0; i < size; ++i) {
         std::cout << std::setw(4) << array[i];
@@ -22,7 +22,7 @@ void PrintVector(T* array, int size)
 }
 
 template <typename T>
-void InsertionSort(T* array, int size)
+void InsertionSort (T* array, int size)
 {
     for (int i = 1; i < size; ++i) {
         T temporary = array[i];
@@ -36,7 +36,7 @@ void InsertionSort(T* array, int size)
 }
 
 template <typename T>
-int BinarySearch(T wanted_number, T* array, int start, int end)
+int BinarySearch (T wanted_number, T* array, int start, int end)
 {
     if (start <= end) { 
         int middle = start + (end - start) / 2;

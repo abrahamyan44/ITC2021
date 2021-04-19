@@ -3,6 +3,25 @@
 #include <time.h>
 
 template <typename T>
+void GenerateVector (T* array, int size)
+{
+    srand(time(0));
+    for (int i = 0; i < size; ++i) {
+        array[i] = rand()% 50 - 25;
+    }
+}
+
+template <typename T>
+void PrintVector (T* array, int size)
+{ 
+    for (int i = 0; i < size; ++i) {
+        std::cout << std::setw(4) << array[i];
+        std::cout << ",";
+    }
+    std::cout << std::endl;
+}
+
+template <typename T>
 void InsertionSort(T* array, int size)
 {
     for (int i = 1; i < size; ++i) {
@@ -20,18 +39,8 @@ int main()
 {
     const int count = 20;
     int vector[count];
-    srand(time(0));
-
-    for (int i = 0; i < count; ++i) {
-        vector[i] = rand()% 50 - 25;
-        std::cout << std::setw(4) << vector[i];
-    }
-    std::cout << std::endl;
-
+    GenerateVector(vector, count);
+    PrintVector(vector, count);
     InsertionSort(vector, count);
-
-    for (int i = 0; i < count; ++i) {
-        std::cout << std::setw(4) << vector[i];
-    }
-    std::cout << std::endl;
+    PrintVector(vector, count);
 }

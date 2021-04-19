@@ -22,25 +22,17 @@ void PrintVector (T* array, int size)
 }
 
 template <typename T>
-void Swap(T& first, T& second)
+void ShellSort (T* array, int size)
 {
-    T temp = first;
-    first = second;
-    second = temp; 
-}
-
-template <typename T>
-void SelectionSort(T* array, int size)
-{
-    int index_min_element;
-    for (int i = 0; i < size - 1; ++i) {
-        index_min_element = i;
-        for (int j = i + 1; j < size; ++j) {
-            if (array[index_min_element] > array[j]) {
-                index_min_element = j;
+    for (int gap = size / 2; gap >= 1; gap /= 2) {
+        for (int i = gap; i < size; ++i) {
+            int temporary = array[i];
+            int j;
+            for (j = i; j >= gap && array[j - gap] > temporary; j -= gap) {
+                array[j] = array[j - gap];
             }
+            array[j] = temporary;
         }
-        Swap(array[i], array[index_min_element]);
     }
 }
 
@@ -48,8 +40,8 @@ int main()
 {
     const int count = 20;
     int vector[count];
-    GenerateVector(vector,count);
+    GenerateVector(vector, count);
     PrintVector(vector, count);
-    SelectionSort(vector, count);
+    ShellSort(vector, count);
     PrintVector(vector, count);
 }
