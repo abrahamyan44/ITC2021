@@ -10,11 +10,23 @@ void Swap(T* a, T* b)
 	*b = temp;
 }
 
+template <class T>
+void SelectionSort(T arr[], int array_size)
+{
+	for(int i = 0; i < array_size; i++)
+	{	int min_index = i;
+		for(int j = i + 1; j < array_size; j++) {
+			if(arr[j] < arr[j - 1]) {
+				min_index = j;
+			}
+		}
+		Swap(&arr[i], &arr[min_index]);
+	}
+}
 
 template <class T>
 void BubbleSort(T arr[], int array_size)
 {
-		cout << "Bubble" << endl;
 	for(int i = 0; i < array_size; i++) {
 			bool swapped = false;
 		for(int j = 1; j < array_size - i; j++) {
@@ -30,30 +42,54 @@ void BubbleSort(T arr[], int array_size)
 }
 
 template <class T>
-T* MakeCopy(T arr[]) 
+T* MakeCopy(T arr1[], int array_size) 
 {
-	//return the copy of givrn array;
-	return 0;
+	T* arr2 = new int [array_size];
+	for (int i = 0; i < array_size; i++) {
+		arr2[i] = arr1[i];
+	}
+	return arr2;
 }
 
 template <class T>
-int* Test(T arr[], int array_size, int test_number)	
+int* Test(T arr[], int array_size, int test_number, void (*function)(T*,int))	
 {
-	int* test_result;
-	time_t begin;
-	time_t end;
- 	cout << "test" << endl;	
-	for( int i = 0; i < test_number; i++) {
-		cout << "test for" << endl;
-		time(&begin);
-		BubbleSort(arr, array_size);
-		time(&end);
-	
-		double difference = difftime(end, begin);
-		cout << "time = " << difference;
-		test_result[1 * i ] = difference;
+	int* test_result = new int [test_number];
+	int* array1 = MakeCopy(arr, array_size);
+	int* array2 = MakeCopy(arr, array_size);
+	int* array3 = MakeCopy(arr, array_size);
+	time_t begin1;
+	time_t end1;
+	time(&begin1);
+	function(array1, array_size);
+	time(&end1);
+	double difference1 = difftime(end1, begin1);
+	test_result[0] = difference1;
+	if(test_number > 1) {
+		time_t begin2;
+		time_t end2;
+		time(&begin2);
+		function(array2, array_size);
+		time(&end2);
+		double difference2 = difftime(end2, begin2);
+		test_result[1] = difference2;
 	}
-	cout << "for out" << endl;
+	
+	if(test_number > 2) {
+		time_t begin3;
+		time_t end3;
+		time(&begin3);
+		function(array3, array_size);
+		time(&end3);
+		double difference3 = difftime(end3, begin3);
+		test_result[ 2 ] = difference3;
+	
+	}
+	delete[] array1;
+	delete[] array2;
+	delete[] array3;
+	return test_result;
+	delete test_result;
 }
 
 template <class T>
@@ -94,11 +130,17 @@ void Print(int arr[], int test_number)
 {
 	cout << "Sorting type \t";
 	for(int i = 0; i < test_number; i++) {
-		cout << "test N " << i << "\t" << endl;
+		cout << "test N " << i << "\t" ;
 	}
+	cout << endl;
 	cout << "BubbleSort \t";
 	for(int i = 0; i < test_number; i++){
-		cout << arr[1 * i] << "\t";
+		cout << arr[ i + 1] << "\t \t";
+	}
+	cout << endl;
+	cout << "SelectionSort \t";
+	for(int i = 0; i < test_number; i++){
+		cout << arr[ i + 3] << "\t \t";
 	}
 	cout << endl;
 }
@@ -110,6 +152,8 @@ int main()
 	int test_number;
 	int* array;
 	int* test_result;
+	int* result = new int [5 * test_number]; 
+	int* preliminary_result;
 
 	cout << "How many elements include in array? " << endl;	
 	cin >> array_size;
@@ -122,10 +166,19 @@ int main()
 	}
 
 	array = CreateArray<int>(array_size);	
+		
+	test_result  = Test<int>(array, array_size, test_number, BubbleSort);
+	for(int i = 0; i < test_number; i++){
+		result[i] = test_result[i];
+	}
 
-//	Test<int>(array, array_size, test_number);
-	test_result = Test<int>(array, array_size, test_number);
-	Print(test_result, test_number);
+	test_result  = Test<int>(array, array_size, test_number, SelectionSort);
+	for(int i = 0; i < test_number; i++){
+		result[i+3] = test_result[i];
+	}
+
+
+	Print(result, test_number);
 	cout << endl;
 
 }
