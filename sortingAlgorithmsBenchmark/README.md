@@ -1,5 +1,5 @@
 # BENCHMARKING SORTING ALGORITHMS
-This program tests a sorting algorithm on arrays of various sizes.
+This program tests a sorting algorithms on arrays of various sizes.
 
 # AVAILABLE ALGORITHMS
 - Quick Sort
