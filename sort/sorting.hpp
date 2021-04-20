@@ -34,8 +34,8 @@ namespace sorting
     {
         int n1 = m - s + 1;
         int n2 = n - m;
-        T* array1 = new int[n1];
-        T* array2 = new int[n2];
+        T* array1 = new T[n1];
+        T* array2 = new T[n2];
         for (int i = 0; i < n1; ++i) {
             array1[i] = array[s + i];
         }

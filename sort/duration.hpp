@@ -4,7 +4,7 @@ namespace duration
 {
     template <class T>
     T* CopyArray(T* array, int n) {
-        T* new_array = new int[n];
+        T* new_array = new T[n];
         for(int i = 0; i < n; ++i) {
             new_array[i] = array[i];
         }

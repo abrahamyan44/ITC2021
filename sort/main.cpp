@@ -4,7 +4,7 @@ int main(int argc, char* argv[])
 {
     int size = std::stoi(argv[1]);
     int test_count = std::stoi(argv[2]);
-    int* array = nullptr;
+    long int* array = nullptr;
     assert(size > 0);
     array = new int64_t[size];
     srand(time(0));
