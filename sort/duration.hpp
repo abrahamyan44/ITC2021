@@ -33,12 +33,12 @@ namespace duration
         auto stop = std::chrono::system_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
         if(SortVerification(new_array, n)) {
+            delete [] new_array;
             return duration;
         }
         else {
             return -1;
         }
-        delete [] new_array;
     }
 
     template <class T>
@@ -50,12 +50,12 @@ namespace duration
         auto stop = std::chrono::system_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
         if(SortVerification(new_array, n)) {
+            delete [] new_array;
             return duration;
         }
         else {
             return -1;
         }
-        delete [] new_array;
     }
 }
 
