@@ -1,7 +1,7 @@
 EXE := benchmark
 CC := g++
 
-$(EXE) : main.cpp
+$(EXE) : *.cpp
 	$(CC) $^ -o $@
 
 SHELL:=/bin/bash
@@ -14,10 +14,9 @@ test:
 	@read size
 	@echo "Enter test count"
 	@read test_count
-	#@chmod a+x $(EXE) 
 	@./$(EXE) $$size $$test_count
 
-.PHONY: clean
+.PHONY: clean test
 
 clean:
 	@rm -rf $(EXE)
