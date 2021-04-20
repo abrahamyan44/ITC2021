@@ -9,7 +9,7 @@ void Print(string name, double* work_time) {
     sort(work_time, work_time + 3);
     cout << name << " sort is working correctly!" << endl;
     cout << "Minimum time for " << name << " sort is: " << work_time[0] << endl;
-    cout << "Average time for " << name << " sort is: " << work_time[1] << endl;
+    cout << "Average time for " << name << " sort is: " << (work_time[0] + work_time[1] + work_time[2]) / 3 << endl;
     cout << "Maximum time for " << name << " sort is: " << work_time[2] << endl;
     cout << endl;
 }
