@@ -3,7 +3,7 @@
 
 using std::string;
 
-void reverseString(string s)
+void ReverseString(string s)
 {
 	string rev;
 	int ln = s.length()-1;
@@ -21,5 +21,5 @@ int main()
 	std::cin >> str;
 
     //function call
-    reverseString(str);
+    ReverseString(str);
 }
