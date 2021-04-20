@@ -13,16 +13,17 @@ This program tests a sorting algorithm on arrays of various sizes.
 ## COMMAND OF USAGE IN BASH
 ```
 $make                				 # creates the executable file for the programm
-$./benchmark input_size tests_count  # runs the executable file
+$./benchmark input_size tests_count  		 # runs the executable file
 $make clean         				 # deletes all the generated files
 
+```
 where:
 input_size is length of the array which should be sorted
 tests_size is tests count which should be run on the same data(limited to 3)
 
 Output:
 Returns contain detailed report for min, max, average results (for 1 test cycle displayed only test duration)
-```
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
