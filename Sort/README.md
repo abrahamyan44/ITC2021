@@ -9,7 +9,9 @@ This project is created by VARDUHI SARGSYAN and ANNA HAKOBYAN
 ----------How to use it?----------
 
 -To run the project use make command and pass two parameters.
+
   .first is length of the array which should be sorted
+
   .second is tests count which should be run on the same data (limited to 3)
 
 -To clean all generated file do make clean.
