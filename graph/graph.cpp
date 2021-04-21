@@ -3,7 +3,7 @@
 Graph::Graph(int vertex)
     :m_vertex(vertex),
     m_graph(nullptr),
-    m_vizited(nullptr)
+    m_visited(nullptr)
 {
     m_graph = new int*[m_vertex];
     for(int i = 0; i < m_vertex; ++i) {
@@ -12,25 +12,25 @@ Graph::Graph(int vertex)
             m_graph[i][j] = 0;
         }
     }
-    m_vizited = new int[m_vertex];
+    m_visited = new int[m_vertex];
     for(int i = 0; i < m_vertex; ++i) {
-        m_vizited[i] = 0;
+        m_visited[i] = 0;
     }
 }
 
-void Graph::AddEdge(int vertex, int edge)
+void Graph::AddEdge(int vertex, int vertex2)
 {
-    m_graph[vertex][edge] = 1;
-    m_graph[edge][vertex] = 1;
+    m_graph[vertex][vertex2] = 1;
+    m_graph[vertex2][vertex] = 1;
 }
 
 void Graph::DepthFirstSearch(int vertex)
 {
     assert(vertex <= m_vertex);
-    m_vizited[vertex] = 1;
+    m_visited[vertex] = 1;
     std::cout << vertex << " ";
     for(int i = 0; i < m_vertex; ++i) {
-        if(m_graph[vertex][i] == 1 && m_vizited[i] == 0) {
+        if(m_graph[vertex][i] == 1 && m_visited[i] == 0) {
             DepthFirstSearch(i);
         }
     }
@@ -39,7 +39,7 @@ void Graph::DepthFirstSearch(int vertex)
 void Graph::BreadthFirstSearch(int vertex)
 {
     assert(vertex <= m_vertex);
-    m_vizited[vertex] = 1;
+    m_visited[vertex] = 1;
     std::queue<int> graph_queue;
     graph_queue.push(vertex);
     while(!graph_queue.empty()) {
@@ -48,9 +48,9 @@ void Graph::BreadthFirstSearch(int vertex)
         graph_queue.pop();
         for(int i = 0; i < m_vertex; ++i) {
             for(int j = 0; j < m_vertex; ++j) {
-                if(m_graph[i][j] == 1 && m_vizited[i] == 0) {
+                if(m_graph[i][j] == 1 && m_visited[i] == 0) {
                     graph_queue.push(i);
-                    m_vizited[i] = 1;
+                    m_visited[i] = 1;
                 }
             }
         }
@@ -66,7 +66,7 @@ Graph::~Graph()
     for(int i = 0; i < m_vertex; ++i) {
         delete [] m_graph[i];
     } delete [] m_graph;
-    delete [] m_vizited;
+    delete [] m_visited;
 }
 
 void Graph::Print()
