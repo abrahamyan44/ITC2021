@@ -16,6 +16,10 @@ void TestsCall(int argc, char* argv[])
 		std::cerr << "Warning: The count of tests should be less than 4." << std::endl;
 		return;
 	}
+	
+	if (100000 < atoi(argv[1])) {
+        std::cout << "Please Wait ..." << std::endl;
+	}
 
 	int size = atoi(argv[1]);
 	int tests_count = atoi(argv[2]);	
