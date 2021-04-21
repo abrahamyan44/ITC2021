@@ -187,3 +187,26 @@ void Sortings::ShellSort(int* array, int size)
 		}	
 	}
 }
+
+namespace 
+{
+// A comparator function used by STL's qsort
+	int Compare(const void* a, const void* b)
+	{
+	   const int* x = (int*) a;
+	   const int* y = (int*) b;
+	
+	   if (*x > *y) {
+		   return 1;
+	   } else if (*x < *y) {
+		   return -1;
+	   } 	
+	   
+	   return 0;	   
+	}
+}
+
+void Sortings::STLQuickSort(int*array, int size)
+{
+	qsort(array, size, sizeof(int), Compare);
+}

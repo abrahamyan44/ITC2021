@@ -91,6 +91,7 @@ void Testing1(int* array, int size, void (*function_name)(int*, int), int tests_
 		PrintMinMaxAverage(array_time, tests_count);		
 	}
 	cout << endl;
+	delete[] temp_array;
 }
 
 void Testing2(int* array, int start, int end, void (*function_name)(int*, int, int), int tests_count)

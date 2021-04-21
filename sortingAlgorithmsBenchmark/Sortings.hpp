@@ -8,5 +8,6 @@ namespace Sortings
 	void HeapSort(int*, int);
 	void ShellSort(int*, int);
 	void QuickSort(int*, int, int);
+	void STLQuickSort(int*, int);
 	void MergeSort(int*, int, int);
 }
