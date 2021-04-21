@@ -30,7 +30,7 @@ void GenerateVector (T* array, int size, int interval = 50)
         array[i] = rand()% interval - interval / 2;
     }
 }
-
+x
 template <typename T>
 void PrintVector (T* array, int size)
 { 
@@ -115,9 +115,9 @@ void TestTheAlgorithm(void (*AlgorithmName)(T*, int),T* array, int size_array, i
         test_result[i - 1] = duration.count();
     }
     if (isSorted(array_copy, size_array)) {
-        std::cout << "Array is sorted.\n";
+        std::cout << "Array sorting is succeeded.\n";
     } else {
-        std::cout << "Array is not sorted.\n";
+        std::cout << "Array sorting is not succeeded.\n";
     }
     std::cout << "\tMaximum time is equal " << GetMaximum(test_result, test_count) << " milliseconds.\n";
     std::cout << "\tMinimum time is equal " << GetMinimum(test_result, test_count) << " milliseconds.\n";
