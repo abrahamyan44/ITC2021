@@ -9,23 +9,20 @@ List::List()
 List::List(int count, int val)
 	:m_size(0)
     ,m_head(nullptr)
-    ,m_tail(nullptr)
-{	
+    ,m_tail(nullptr) {	
 	for (int i = 1; i <= count; ++i) {
 		insert_back(val);
 	} 
 }
 
-List::~List()
-{
+List::~List() {
 	clear();
 }
 
 List::List(const List& l1)
     :m_size(0)
 	,m_head(nullptr)
-    ,m_tail(nullptr)
-{
+    ,m_tail(nullptr) {
 	NodePtr current = l1.m_head;
 	
 	while (current != nullptr) {
@@ -34,8 +31,7 @@ List::List(const List& l1)
 	}
 }
 	
-List& List::operator=(const List& l1)
-{
+List& List::operator=(const List& l1) {
 	if (this != &l1) {
 	m_size = 0;
     m_head = nullptr;
@@ -51,8 +47,7 @@ List& List::operator=(const List& l1)
 	return *this;
 }
 
-void List::insert_front(int val)
-{
+void List::insert_front(int val) {
 	NodePtr node = new Node(val);
 
 	if (is_empty()) {
@@ -66,8 +61,7 @@ void List::insert_front(int val)
 	++m_size;
 }	
 
-void List::insert_back(int val)
-{
+void List::insert_back(int val) {
 	NodePtr node = new Node(val);
 
 	if (is_empty()) {
@@ -81,8 +75,7 @@ void List::insert_back(int val)
     ++m_size;	
 }
 
-void List::insert_after(int key,const int& val)
-{
+void List::insert_after(int key,const int& val) {
 	NodePtr node = new Node(val);
 
    	//find the position
@@ -110,8 +103,7 @@ void List::insert_after(int key,const int& val)
 	++m_size;
 }
 
-void List::insert_before(int key,const int& val)
-{
+void List::insert_before(int key,const int& val) {
 	NodePtr node = new Node(val); 
 	//find the position
 	NodePtr current = m_tail;
@@ -138,8 +130,7 @@ void List::insert_before(int key,const int& val)
 	++m_size;
 }
 
-int List::top_front() const
-{
+int List::top_front() const {
 	if (is_empty()) {
 		std::cout << "List is empty" << std::endl;
 		return 0;
@@ -148,8 +139,7 @@ int List::top_front() const
 	}
 }
 
-int List::top_back() const
-{   
+int List::top_back() const {   
     if (is_empty()) {
         std::cout << "List is empty" << std::endl;
 		return 0;
@@ -158,8 +148,7 @@ int List::top_back() const
     }   
 }
 
-int List::pop_front()
-{
+int List::pop_front() {
 	int item;
 	if (is_empty()) {
         std::cout << "List is empty" << std::endl;
@@ -177,8 +166,7 @@ int List::pop_front()
 	return item;
 }
 
-int List::pop_back()
-{
+int List::pop_back() {
     int item;
     if (is_empty()) {
         std::cout << "List is empty" << std::endl;
@@ -197,8 +185,7 @@ int List::pop_back()
     return item;
 }
 
-void List::remove(int key)
-{
+void List::remove(int key) {
     if (is_empty()) {
         std::cout << "List is empty" << std::endl;
         return;
@@ -236,8 +223,7 @@ void List::remove(int key)
 	--m_size;
 }
 
-void List::clear()
-{
+void List::clear() {
 	NodePtr current = m_head;
     while (current != nullptr) {
 		NodePtr nextPtr = current->next;	
@@ -248,8 +234,7 @@ void List::clear()
 	m_size = 0;
 }
 
-void List::print() const
-{
+void List::print() const {
 	if (is_empty()) {
 		std::cout << "List is empty:" << std::endl;
 		return;
@@ -264,8 +249,7 @@ void List::print() const
 	std::cout << std::endl;
 }
 
-void List::print_reverse() const 
-{
+void List::print_reverse() const {
 	if (is_empty()) {
         std::cout << "List is empty:" << std::endl;
         return;
@@ -280,18 +264,15 @@ void List::print_reverse() const
     std::cout << std::endl;
 }
 
-bool List::is_empty() const
-{
+bool List::is_empty() const {
 	return m_head == nullptr;
 }
 
-int List:: get_size() const
-{
+int List:: get_size() const {
 	return m_size;
 }
 
-bool List::find(int val) const
-{
+bool List::find(int val) const {
 	if (is_empty()) {
     	return false;
     }
