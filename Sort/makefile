@@ -4,7 +4,6 @@ EXECUTABLE :=sorting_benchmark
 SOURCE_FILES := $(wildcard *.cpp)
 OBJ_FILES := $(patsubst %.cpp, %.o, $(SOURCE_FILES))
 CC :=g++ 
-CHOICE ?= -O3
 
 $(EXECUTABLE): $(OBJ_FILES)
 	@$(CC) $^ -o $@
@@ -12,7 +11,6 @@ $(EXECUTABLE): $(OBJ_FILES)
 
 
 %.o : %.cpp
-	mkdir -p obj
 	@$(CC) -c $^ -o $@	
 	@echo "Creating object files"
 
@@ -21,13 +19,7 @@ $(EXECUTABLE): $(OBJ_FILES)
 
 clean:
 	@rm $(OBJ_FILES) $(EXECUTABLE) 2> /dev/null
-	@echo "Objeced files removed."
-
-
-.PHONY: release
-
-release:
-	$(MAKE) CHOICE="-O3"
+	@echo "Genereted files removed."
 
 
 .PHONY: debug
