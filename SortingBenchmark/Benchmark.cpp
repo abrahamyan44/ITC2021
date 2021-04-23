@@ -3,24 +3,7 @@
 #include <iomanip>
 #include <time.h>
 #include <chrono>
-
-template <typename T>
-void QuickSort (T*, int);
-
-template <typename T>
-void ShellSort (T*, int);
-
-template <typename T>
-void MergeSort (T*, int);
-
-template <typename T>
-void HeapSort (T*, int);
-
-template <typename T>
-void SelectionSort (T*, int);
-
-template <typename T>
-void InsertionSort (T*, int);
+#include "Algorithms.hpp"
 
 template <typename T>
 void GenerateVector (T* array, int size, int interval = 50)
@@ -30,7 +13,7 @@ void GenerateVector (T* array, int size, int interval = 50)
         array[i] = rand()% interval - interval / 2;
     }
 }
-x
+
 template <typename T>
 void PrintVector (T* array, int size)
 { 
@@ -70,18 +53,18 @@ bool isSorted(T* array, int size)
     return true;
 }
 
-int GetAverage(int* vector, int size)
+float GetAverage(float* vector, int size)
 {
-    int average_value = 0;
+    float average_value = 0;
     for (int i = 0; i < size; ++i) {
         average_value += vector[i];
     }
     return (average_value / size);
 }
 
-int GetMaximum(int* vector, int size)
+float GetMaximum(float* vector, int size)
 {
-    int max = vector[0];
+    float max = vector[0];
     for (int i = 1; i < size; ++i) {
         if (max <= vector[i]) {
             max = vector[i];
@@ -90,9 +73,9 @@ int GetMaximum(int* vector, int size)
     return max;
 }
 
-int GetMinimum(int* vector, int size)
+float GetMinimum(float* vector, int size)
 {
-    int min = vector[0];
+    float min = vector[0];
     for (int i = 0; i < size; ++i) {
         if (min >= vector[i]) {
             min = vector[i];
@@ -105,23 +88,19 @@ template <typename T>
 void TestTheAlgorithm(void (*AlgorithmName)(T*, int),T* array, int size_array, int test_count = 1)
 {
     T array_copy[size_array];
-    int test_result[test_count];
+    float test_result[test_count];
     for (int i = 1; i <= test_count; ++i) {
         CopyArray(array,array_copy, size_array);
         auto start = std::chrono::high_resolution_clock::now();
         AlgorithmName(array_copy, size_array);
         auto stop = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+        std::chrono::duration<float> duration = (stop - start);
         test_result[i - 1] = duration.count();
     }
-    if (isSorted(array_copy, size_array)) {
-        std::cout << "Array sorting is succeeded.\n";
-    } else {
-        std::cout << "Array sorting is not succeeded.\n";
-    }
-    std::cout << "\tMaximum time is equal " << GetMaximum(test_result, test_count) << " milliseconds.\n";
-    std::cout << "\tMinimum time is equal " << GetMinimum(test_result, test_count) << " milliseconds.\n";
-    std::cout << "\tAverage time is equal " << GetAverage(test_result, test_count) << " milliseconds.\n";
+    std::cout << std::fixed << std::setprecision(4);
+    std::cout << std::setw(10) << GetMaximum(test_result, test_count) << "|";
+    std::cout << std::setw(10) << GetMinimum(test_result, test_count) << "|";
+    std::cout << std::setw(10) << GetAverage(test_result, test_count) << "|\n";
 }
 
 int main(int argc, char* argv[])
@@ -143,22 +122,19 @@ int main(int argc, char* argv[])
     int64_t array[count_element];
     GenerateVector(array, count_element, 2 * count_element);
     
-    std::cout << "Tests a Quick sort algorithm.\n";
+    std::cout << "Algorithm     | Max(sec) | Min(sec) | Avg(sec) |\n";
+    std::cout << "===============================================\n";
+    std::cout << "Quick sort    |";
     TestTheAlgorithm(&QuickSort, array, count_element ,count_tests);
-   
-    std::cout << "\nTests a Shell sort algorithm.\n";
+    std::cout << "Shell sort    |";
     TestTheAlgorithm(&ShellSort, array, count_element, count_tests);
- 
-    std::cout << "\nTests a Merge sort algorithm.\n";
+    std::cout << "Merge sort    |";
     TestTheAlgorithm(&MergeSort, array, count_element, count_tests);
-
-    std::cout << "\nTests a Heap sort algorithm.\n";
+    std::cout << "Heap sort     |";
     TestTheAlgorithm(&HeapSort, array, count_element, count_tests);
-
-    std::cout << "\nTests a Selection sort algorithm.\n";
+    std::cout << "Selection sort|";
     TestTheAlgorithm(&SelectionSort, array, count_element, count_tests);
-
-    std::cout << "\nTests a Insertion sort algorithm.\n";
+    std::cout << "Insertion sort|";
     TestTheAlgorithm(&InsertionSort, array, count_element, count_tests);
 }
 

@@ -1,4 +1,4 @@
-EXE = benchmark
+EXE = soution
 BINPATH = bin
 OBJPATH = obj
 SRCS = $(wildcard *.cpp)
@@ -10,7 +10,7 @@ $(BINPATH)/$(EXE):$(OBJS)
 	@mkdir -p $(BINPATH)
 	g++ $^ -o $@
 
-$(OBJPATH)/%.o: %.cpp *.hpp
+$(OBJPATH)/%.o: %.cpp
 	@mkdir -p obj
 	g++ -c $< -o $@
 
