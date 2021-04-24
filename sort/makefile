@@ -19,7 +19,7 @@ test:
 .PHONY: clean test
 
 clean:
-	@rm -rf $(EXE)
+	@rm $(EXE)
 
 
 

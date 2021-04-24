@@ -9,7 +9,7 @@ namespace test
         std::cout << std::setw(5) << "| Sort program  | " << std::setw(5) << "duration   |" << std::endl;
         std::cout << std::endl;
         std::cout << "|" << sort_name << "|" << std::setw(10) << time[0] << "ms |" << std::setw(5) << "minimume  |" << std::endl;
-        std::cout << "|" << sort_name << "|" << std::setw(10) << (time[0] + time[1] + time[2]) / 3 << "ms |" << std::setw(5) << "average   |" << std::endl;
+        std::cout << "|" << sort_name << "|" << std::setw(10) << std::setprecision(4) << (time[0] + time[1] + time[2]) / 3 << "ms |" << std::setw(5) << "average   |" << std::endl;
         std::cout << "|" << sort_name << "|" << std::setw(10) << time[2] << "ms |"<< std::setw(5) << "maximume  |" << std::endl;
         std::cout << std::endl;
     }
@@ -25,7 +25,7 @@ namespace test
         std::cout << std::setw(5) << "| Sort program  | " << std::setw(5) << "duration  |" << std::endl;
         std::cout << std::endl;
         std::cout << "|" << sort_name << "|" << std::setw(5) << time[0] << "ms |" << "minimume|" << std::endl;
-        std::cout << "|" << sort_name << "|" << std::setw(5) << (time[0] + time[1]) / 2 << "ms |" << "average |" << std::endl;
+        std::cout << "|" << sort_name << "|" << std::setw(5) << std::setprecision(4) << (time[0] + time[1]) / 2 << "ms |" << "average |" << std::endl;
         std::cout << "|" << sort_name << "|" << std::setw(5) << time[1] << "ms |" << "maximume|" << std::endl;
         std::cout << std::endl;
     }
