@@ -32,7 +32,8 @@ release :
 	
 test :
 	@$(MAKE)	
-	$(MKDIR) test_run
+	@./$(BUILD_DIR)/$(EXE)
+	@$(MKDIR) test_run
 	@cp -r tst test_run
 	@cp -r bin test_run
 	@if diff -q ./tst/output.txt ./tst/goutput.txt
