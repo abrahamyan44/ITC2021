@@ -2,6 +2,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <cassert>
+#include <iomanip>
 using namespace std;
 
 template <class T>
