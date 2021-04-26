@@ -1,4 +1,5 @@
 #include <chrono> //for chrono, system_clock, duration 
+#include <iomanip> // for setprecicion, setw
 
 #include "Sortings.hpp"
 
@@ -31,10 +32,15 @@ void PrintMinMaxAverage(double array_time[], int tests_count)
 			max = array_time[i];
 		}
 	}
-	std::cout << std::endl;
-	std::cout << "	Min time is:     " << min << "s " << std::endl;
-	std::cout << "	Average time is: " << average / tests_count << "s " << std::endl;
-	std::cout << "	Max time is:     " << max << "s " ;
+	
+	std::cout << "| Min |" << std::fixed << 
+	std::setw(4) << std::setprecision(5) << min << "s " ; 
+
+	std::cout << "| Avg |" << std::fixed << 
+	std::setw(4) << std::setprecision(5) << average / tests_count << "s " ;
+
+	std::cout << "| Max |" <<  std::fixed << 
+	std::setw(4) << std::setprecision(5) << max << "s " ;
 }
 
 
@@ -80,11 +86,12 @@ void Testing1(int* array, int size, void (*function_name)(int*, int), int tests_
 			return;
 		}
 
-		duration<double> duration_time = end_time - start_time;
+		duration<double> duration_time = (end_time - start_time);
 		array_time[i - 1] = duration_time.count();
 		
 		if (1 == tests_count) {
-			cout << duration_time.count() << "s" << "      ";
+			cout << std::fixed << std::setw(4) << std::setprecision(5)
+				 << duration_time.count() << "s" << "      ";
 		}
 	}		
 	if (1 < tests_count) {							
@@ -115,7 +122,8 @@ void Testing2(int* array, int start, int end, void (*function_name)(int*, int, i
 		array_time[i - 1] = duration_time.count();
 		
 		if (1 == tests_count) {
-			cout << duration_time.count() << "s" << "      ";
+			cout << std::fixed << std::setw(4) << std::setprecision(5) <<
+			duration_time.count() << "s" << "      ";
 		}
 	}		
 	if (1 < tests_count) {							
@@ -123,4 +131,5 @@ void Testing2(int* array, int start, int end, void (*function_name)(int*, int, i
 	}
 	cout << endl;
 }
+
 
