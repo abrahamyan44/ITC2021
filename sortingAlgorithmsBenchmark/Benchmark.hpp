@@ -7,6 +7,12 @@ using namespace std;
 using namespace chrono;
 using namespace Sortings;
 
+void PrintDesign() {
+	std::cout << "Algorithm      " << "|   Min   |" 
+		      << "|   Avg   |" << "|   Max   |" << std::endl ;
+	std::cout << "---------------.---------..---------..---------." << std::endl;	
+}
+
 bool Verification(int* array, int size)
 {
 	for (int i = 0; i < size - 1; ++i) {
@@ -33,14 +39,14 @@ void PrintMinMaxAverage(double array_time[], int tests_count)
 		}
 	}
 	
-	std::cout << "| Min |" << std::fixed << 
-	std::setw(4) << std::setprecision(5) << min << "s " ; 
+	std::cout << "|" << std::fixed << 
+	std::setw(4) << std::setprecision(5) << min << "s " << "|" ; 
 
-	std::cout << "| Avg |" << std::fixed << 
-	std::setw(4) << std::setprecision(5) << average / tests_count << "s " ;
+	std::cout << "|" << std::fixed << 
+	std::setw(4) << std::setprecision(5) << average / tests_count << "s " << "|" ;
 
-	std::cout << "| Max |" <<  std::fixed << 
-	std::setw(4) << std::setprecision(5) << max << "s " ;
+	std::cout << "|" <<  std::fixed << 
+	std::setw(4) << std::setprecision(5) << max << "s " << "|" ;
 }
 
 

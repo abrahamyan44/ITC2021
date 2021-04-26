@@ -16,11 +16,13 @@ void TestsCall(int argc, char* argv[]) {
 	std::string function_name[] = { "BubbleSort   ", "InsertionSort", "SelectionSort",
 								    "ShellSort    ", "HeapSort     ", "STLQuickSort ",
 								    "QuickSort    ", "MergeSort    " };
-
 	f_t1 array_of_sorts1[]={ BubbleSort, InsertionSort, SelectionSort,
-							ShellSort, HeapSort, STLQuickSort };
-	
+							ShellSort, HeapSort, STLQuickSort };	
 	f_t2 array_of_sorts2[] = { QuickSort , MergeSort }; 
+
+	if (2 <= tests_count) {
+		PrintDesign();	
+	}
 
 	for (int i = 0, j = 0; i < 8; ++i) {
 		if (i < 6) {	
