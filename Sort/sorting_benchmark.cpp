@@ -66,8 +66,9 @@ double* TestMetod(T arr[], int array_size, double* result, int serial_number, in
 double* CompareMethod(double* result, int test_number) { 
 	double min;
 	double max;
-	if(test_number > 1) {
+
 		for(int i = 0; i < 30; i += 6) {
+		if(test_number > 1) {
 			min = result[i];
 			max = result[i + 1];
 			if (result[i] > result[i + 1]) {
@@ -81,11 +82,20 @@ double* CompareMethod(double* result, int test_number) {
 				if(min > result [i + 2]) {
 					min = result[i + 2];
 				}
-			}
+			} 
+		} else if(1 == test_number) {
+			min = result[i];
+			max = result[i];
+		}
 				result[i + 3] = min;
 				result[i + 4] = max;
-				result[i + 5] = (result[i] + result[i + 1] + result[i + 2]) / 3; 
-		}
+				if (3 == test_number) {
+					result[i + 5] = (result[i] + result[i + 1] + result[i + 2]) / 3; 
+				} else if (2 == test_number) {
+					result[i + 5] = (result[i] + result[i + 1]) / 2; 
+				} else if (1 == test_number){
+					result[i + 5] = result[i];
+				}
 	}
 	return result;
 }
