@@ -19,5 +19,5 @@ This project is created by VARDUHI SARGSYAN and ANNA HAKOBYAN
 ---------The program description----------
 
 When a program runs the output will be in a shell window. There will be a table with sorting algorithms name 
-(Quick sort, Shell sort, Bubble sort, Heap sort and Merge sort) and with the time that they do the sort. 
-It also contain minimum, maximum, and average results.
+
+(Quick sort, Shell sort, Bubble sort, Heap sort and Merge sort) and minimum, maximum, and average results.
