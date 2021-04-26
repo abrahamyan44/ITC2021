@@ -1,7 +1,7 @@
 #include <iostream>
-#include "BST.hpp"
+#include "BinarySearchTree.hpp"
 
-BST::BST()
+BinarySearchTree::BinarySearchTree()
 {
     root = NULL;
 }
@@ -24,7 +24,7 @@ void SortArray(int arr[], int n)
     }
 }
 
-BST::node* BST::CreateNewNode(int data)
+BinarySearchTree::node* BinarySearchTree::CreateNewNode(int data)
 {
     node* tree_node = new node;
     tree_node->data = data;
@@ -34,7 +34,7 @@ BST::node* BST::CreateNewNode(int data)
     return tree_node;
 }
 
-BST::node* BST::MakeTreeFromArray(int arr[], int start, int end)
+BinarySearchTree::node* BinarySearchTree::MakeTreeFromArray(int arr[], int start, int end)
 {
     if(start > end) {
         return NULL;
@@ -48,14 +48,14 @@ BST::node* BST::MakeTreeFromArray(int arr[], int start, int end)
     root->right = MakeTreeFromArray(arr, mid_index + 1, end);
 }
 
-BST::BST(int arr[], int size)
+BinarySearchTree::BinarySearchTree(int arr[], int size)
 {
     SortArray(arr, size);
     int start_index = 0;
     MakeTreeFromArray(arr, start_index, size);
 }
 
-void BST::AddLeaf(int value, node* ptr)
+void BinarySearchTree::AddLeaf(int value, node* ptr)
 {
     if(root == NULL)
     {
@@ -89,12 +89,12 @@ void BST::AddLeaf(int value, node* ptr)
     }
 }
 
-void BST::Insert(int value)
+void BinarySearchTree::Insert(int value)
 {
     AddLeaf(value, root);
 }
 
-void BST::InOrder(node* ptr)
+void BinarySearchTree::InOrder(node* ptr)
 {
     if(ptr == NULL) {
         return;
@@ -104,7 +104,7 @@ void BST::InOrder(node* ptr)
     InOrder(ptr->right);
 }
 
-void BST::PreOrder(node* ptr)
+void BinarySearchTree::PreOrder(node* ptr)
 {
     if(ptr == NULL) {
         return;
@@ -114,7 +114,7 @@ void BST::PreOrder(node* ptr)
     PreOrder(ptr->right);
 }
 
-void BST::PostOrder(node* ptr)
+void BinarySearchTree::PostOrder(node* ptr)
 {
     if(ptr == NULL) {
         return;
@@ -124,7 +124,7 @@ void BST::PostOrder(node* ptr)
     std::cout << ptr->data << " " << std::endl;
 }
 
-void BST::Print()
+void BinarySearchTree::Print()
 {
     InOrder(root);
     //PreOrder(root);

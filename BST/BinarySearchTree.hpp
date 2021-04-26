@@ -1,15 +1,14 @@
 #include <iostream>
 
-class BST
+struct node 
 {
-private:
-   struct node 
-   {
-       int data;
-       node* left;
-       node* right;
-   };
+    int data;
+    node* left;
+    node* right;
+};
 
+class BinarySearchTree
+{
 private:
     node* root;
     void AddLeaf(int value, node* ptr);
@@ -20,8 +19,8 @@ private:
     void PostOrder(node* ptr);
 
 public:
-    BST(); 
-    BST(int arr[], int size);
+    BinarySearchTree(); 
+    BinarySearchTree(int arr[], int size);
     void Insert(int value);
     void Print();
 };

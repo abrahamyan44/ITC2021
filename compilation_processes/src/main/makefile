@@ -1,5 +1,5 @@
 SOURCES := $(wildcard ../../src/main/*.cpp)
-OBJS := $(patsubst %.c, %.o, $(SOURCES))
+OBJS := $(patsuBinarySearchTree %.c, %.o, $(SOURCES))
 
 LFLAGS +=  -L ../../lib/ -ltest
 IFLAGS +=  -I../gcd

@@ -4,17 +4,17 @@
 #include <unistd.h>
 #include <chrono>
 
-void write_in_file(double a)
+void WriteInFile(double interval)
 {
-    std::ofstream myfile;
-    myfile.open("temp.txt");
+    std::ofstream dataStorageFile;
+    dataStorageFile.open("temp.txt");
     while(true) {
-    	time_t now = time(0);
-    	char* dt = ctime(&now);
-    	myfile << "interval is " << a << " Random number is :" << (float)(rand()%1000)/float(10) << " The local date and time is: " << dt << std::endl;
+    	time_t currentTime = time(0);
+    	char* currentDate = ctime(&currentTime);
+    	dataStorageFile << "interval is " << interval << " Random number is :" << (float)(rand() % 1000) / float(10) << " The local date and time is: " << currentDate << std::endl;
     	usleep(a * 1000000);
     }
-    myfile.close();
+    dataStorageFile.close();
 }
 
 int main(int argc, char* argv[])
@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
     } else if(strcmp(argv[1], "--interval") && argc == 3) {
         std::cout << "first argument must be '--interval'" << std::endl;
     } else if(argc == 3) {
-        write_in_file(atof(argv[2]));
+        WriteInFile(atof(argv[2]));
     } else if(argc > 3) {
         std::cout << "too much arguments..." << std::endl;
     }    
