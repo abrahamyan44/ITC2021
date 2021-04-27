@@ -1,6 +1,7 @@
 
 export CC := g++
 export EXE := main
+
 export SRC := $(wildcard src/*.cpp)
 export OBJ := $(patsubst src/%.cpp, obj/%.o, $(SRC))
 export DEP := $(patsubst src/%.cpp, obj/%.dep, $(SRC))

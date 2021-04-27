@@ -3,6 +3,6 @@
 Node::Node(int val)
 	:data(val)
 	,next(nullptr)
-	,prev(nullptr)
-{}
+	,prev(nullptr){
+}
 
