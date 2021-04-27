@@ -14,6 +14,7 @@ namespace
 	}	
 }
 
+
 void Sortings::BubbleSort(int* array, int size) {
 	bool is_sorted = true;
 
