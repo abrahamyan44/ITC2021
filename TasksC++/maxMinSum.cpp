@@ -1,19 +1,16 @@
 #include <iostream>
 
-int findMin(int x, int y)  //find min number
-{
+int findMin(int x, int y) { //find min number
 	if	(x <= y) return x;
 	return y;
 }
 
-int findMax(int x, int y)  //find max number
-{
+int findMax(int x, int y) { //find max number
 	if (x >= y) return x;
 	return y;
 }
 
-int calcSum(int x, int y)  //calculate sum of numbers
-{
+int calcSum(int x, int y) { //calculate sum of numbers
 	return x+y;
 }
 
