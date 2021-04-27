@@ -1,8 +1,7 @@
 #include <iostream>
 #include <cassert>
 
-int** createMatrix(int size)
-{
+int** createMatrix(int size) {
 	int** matrix = new int*[size];
 	for (int i = 0; i < size; ++i) {
 		matrix[i] = new int [size];
@@ -10,8 +9,7 @@ int** createMatrix(int size)
 	return matrix;
 }
 
-void initializMatrix(int** matrix, int size)
-{
+void initializMatrix(int** matrix, int size) {
 	for (int i = 0; i < size; ++i) { 
     	for (int j = 0; j < size; ++j) {
         		if (i == j) {
@@ -25,8 +23,7 @@ void initializMatrix(int** matrix, int size)
 	}
 }
  
-void printMatrix(int** matrix, int size)
-{
+void printMatrix(int** matrix, int size) {
 	if (0 == matrix || 0 == size) {
 		std::cout << "No Matrix" << std::endl;
 		return;
@@ -39,8 +36,7 @@ void printMatrix(int** matrix, int size)
    	}
 }	
 
-void deleteMatrix(int**& matrix, int size)
-{
+void deleteMatrix(int**& matrix, int size) {
 	assert(0 != matrix);
 
 	for (int i = 0; i < size; ++i) {
