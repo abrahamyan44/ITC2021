@@ -58,6 +58,7 @@ int main()
 	if (size <= 0) {
 		std::cout << "Invalid input:" << std::endl;
 	} else {
+
 	int** Matrix = createMatrix(size);
 
 	assert(0 != Matrix);
