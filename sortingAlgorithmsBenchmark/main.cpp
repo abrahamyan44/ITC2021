@@ -33,7 +33,7 @@ void TestsCall(int argc, char* argv[]) {
 			Testing2(array, 0, size - 1, array_of_sorts2[j], tests_count);
 			++j;
 		}
-	}
+}
 }
 
 int main(int argc, char* argv[])

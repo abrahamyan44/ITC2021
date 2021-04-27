@@ -13,8 +13,7 @@ void PrintDesign() {
 	std::cout << "---------------.---------..---------..---------." << std::endl;	
 }
 
-bool Verification(int* array, int size)
-{
+bool Verification(int* array, int size) {
 	for (int i = 0; i < size - 1; ++i) {
 		if (array[i] > array[i + 1]) {
 			return false;
@@ -23,8 +22,7 @@ bool Verification(int* array, int size)
 	return true;
 }
 
-void PrintMinMaxAverage(double array_time[], int tests_count)
-{
+void PrintMinMaxAverage(double array_time[], int tests_count) {
 	double min = array_time[0], max = array_time[0], average = 0;
 
 	for (int i = 0; i < tests_count; ++i) {
@@ -50,8 +48,7 @@ void PrintMinMaxAverage(double array_time[], int tests_count)
 }
 
 
-int* RandomArrayGenerator(int size)
-{
+int* RandomArrayGenerator(int size) {
 	int* array = new int[size];
 
 	for (int i = 0; i < size; ++i) {
@@ -63,8 +60,7 @@ int* RandomArrayGenerator(int size)
 	return array;
 }
 
-int* CopyArray(int* arr, int size)
-{
+int* CopyArray(int* arr, int size) {
 	int* newarr = new int [size];
 
 	for (int i = 0; i < size; ++i) {
@@ -74,8 +70,7 @@ int* CopyArray(int* arr, int size)
 	return newarr;
 }
 
-void Testing1(int* array, int size, void (*function_name)(int*, int), int tests_count)
-{
+void Testing1(int* array, int size, void (*function_name)(int*, int), int tests_count) {
 	int* temp_array = CopyArray(array, size);	
 	time_point<system_clock> start_time{}, end_time{};
 	double array_time[tests_count] = {};
@@ -107,8 +102,7 @@ void Testing1(int* array, int size, void (*function_name)(int*, int), int tests_
 	delete[] temp_array;
 }
 
-void Testing2(int* array, int start, int end, void (*function_name)(int*, int, int), int tests_count)
-{
+void Testing2(int* array, int start, int end, void (*function_name)(int*, int, int), int tests_count) {
 	int* temp_array = CopyArray(array, end + 1);	
 	time_point<system_clock> start_time{}, end_time{};
 	double array_time[tests_count] = {};
