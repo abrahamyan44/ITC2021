@@ -1,8 +1,7 @@
 #include <iostream>
 #include <cmath>
 
-void equation(int a, int b, int c, double& root1, double& root2)
-{
+void equation(int a, int b, int c, double& root1, double& root2) {
 	if (a == 0) {
 		std::cout << "Invalid." << std::endl << std::endl;
         return;
@@ -28,8 +27,7 @@ void equation(int a, int b, int c, double& root1, double& root2)
 	}
 }
 
-void test_equation(double a, double b, double c, double expRes1, double expRes2)
-{	
+void test_equation(double a, double b, double c, double expRes1, double expRes2) {	
 	if (a == 0) {
 		std::clog << "Invalid." << std::endl << std::endl;
 		return;
