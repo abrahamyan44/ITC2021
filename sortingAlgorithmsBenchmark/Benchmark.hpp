@@ -7,19 +7,20 @@ using namespace std;
 using namespace chrono;
 using namespace Sortings;
 
-void PrintDesign() {
-	std::cout << "Algorithm      " << "|   Min   |" 
-		      << "|   Avg   |" << "|   Max   |" << std::endl ;
-	std::cout << "---------------.---------..---------..---------." << std::endl;	
-}
-
 bool Verification(int* array, int size) {
 	for (int i = 0; i < size - 1; ++i) {
 		if (array[i] > array[i + 1]) {
+			std::cout << "Error: Array is not sorted.";
 			return false;
 		}
 	}
 	return true;
+}
+
+void PrintDesign() {
+	std::cout << "Algorithm      " << "|   Min   |" 
+		      << "|   Avg   |" << "|   Max   |" << std::endl ;
+	std::cout << "---------------.---------..---------..---------." << std::endl;	
 }
 
 void PrintMinMaxAverage(double array_time[], int tests_count) {
@@ -35,8 +36,7 @@ void PrintMinMaxAverage(double array_time[], int tests_count) {
 		if (max < array_time[i]) {
 			max = array_time[i];
 		}
-	}
-	
+	}	
 	std::cout << "|" << std::fixed << 
 	std::setw(4) << std::setprecision(5) << min << "s " << "|" ; 
 
@@ -44,9 +44,13 @@ void PrintMinMaxAverage(double array_time[], int tests_count) {
 	std::setw(4) << std::setprecision(5) << average / tests_count << "s " << "|" ;
 
 	std::cout << "|" <<  std::fixed << 
-	std::setw(4) << std::setprecision(5) << max << "s " << "|" ;
+	std::setw(4) << std::setprecision(5) << max << "s " << "|" << std::endl;
 }
 
+void PrintTime(duration<double> duration_time) {
+	cout << std::fixed << std::setw(4) << std::setprecision(5)
+	<< duration_time.count() << "s" << "      " << std::endl;
+}
 
 int* RandomArrayGenerator(int size) {
 	int* array = new int[size];
@@ -72,64 +76,54 @@ int* CopyArray(int* arr, int size) {
 
 void Testing1(int* array, int size, void (*function_name)(int*, int), int tests_count) {
 	int* temp_array = CopyArray(array, size);	
-	time_point<system_clock> start_time{}, end_time{};
 	double array_time[tests_count] = {};
 
 	for (int i = 1; i <= tests_count; ++i) {
 		array = temp_array;	
-
-		start_time = system_clock::now(); 		
+		time_point<system_clock> start_time = system_clock::now(); 		
 		function_name(array,size);		
-		end_time = system_clock::now();		
+		time_point<system_clock> end_time = system_clock::now();		
 			
 		if (!Verification(array, size)) {
-			std::cout << "Error: Array is not sorted.";
 			return;
 		}
-
 		duration<double> duration_time = (end_time - start_time);
 		array_time[i - 1] = duration_time.count();
 		
 		if (1 == tests_count) {
-			cout << std::fixed << std::setw(4) << std::setprecision(5)
-				 << duration_time.count() << "s" << "      ";
+			PrintTime(duration_time);
 		}
 	}		
 	if (1 < tests_count) {							
 		PrintMinMaxAverage(array_time, tests_count);		
 	}
-	cout << endl;
 	delete[] temp_array;
 }
 
 void Testing2(int* array, int start, int end, void (*function_name)(int*, int, int), int tests_count) {
 	int* temp_array = CopyArray(array, end + 1);	
-	time_point<system_clock> start_time{}, end_time{};
 	double array_time[tests_count] = {};
 
 	for (int i = 1; i <= tests_count; ++i) {	
 		array = temp_array;	
-
-		start_time = system_clock::now(); 		
+		time_point<system_clock> start_time = system_clock::now(); 		
 		function_name(array, start, end);
-		end_time = system_clock::now();			
+		time_point<system_clock> end_time = system_clock::now();			
 
 		if (!Verification(array, end + 1)) {
-			std::cout << "Error: Array is not sorted.";
 			return;
 		}
 		duration<double> duration_time = end_time - start_time;
 		array_time[i - 1] = duration_time.count();
 		
 		if (1 == tests_count) {
-			cout << std::fixed << std::setw(4) << std::setprecision(5) <<
-			duration_time.count() << "s" << "      ";
+			PrintTime(duration_time);
 		}
 	}		
 	if (1 < tests_count) {							
 		PrintMinMaxAverage(array_time, tests_count);		
 	}
-	cout << endl;
+	delete[] temp_array;
 }
 
 
