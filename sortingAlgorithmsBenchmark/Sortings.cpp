@@ -2,7 +2,6 @@
 #include <iostream>
 #include "Sortings.hpp"
 
-
 namespace 
 {	
 	void Swap(int& a, int& b) {
