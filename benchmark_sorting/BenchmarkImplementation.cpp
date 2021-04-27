@@ -1,23 +1,29 @@
-#include "SortingAlgorithms.h"
-#include "RunAlgorithms.h"
+#include "SortingAlgorithms.hpp"
+#include <map>
+#include <ctime>
+#include "Timer.hpp"
 typedef long long ll;
+
+using namespace std;
 
 template <class T>
 void RunAllAlgorithms(T* array, int size) {
-    RunBubbleSort(array, size);
-    RunQuickSort(array, size);
-    RunSelectionSort(array, size);
-    RunInsertionSort(array, size);
-    RunShellSort(array, size);
-    RunHeapSort(array, size);
-    RunMergeSort(array, size);
+    Timer<T> t(3);
+    t.Run(QuickSort, size, array, "Quick");
+	t.Run(BubbleSort, size, array, "Bubble");
+	t.Run(MergeSort, size, array, "Merge");
+	t.Run(HeapSort, size, array, "Heap");
+	t.Run(InsertionSort, size, array, "Insertion");
+	t.Run(SelectionSort, size, array, "Selection");
+	t.Run(ShellSort, size, array, "Shell");
+    t.Print();
 }
 
 template <class T>
 T*  GenerateRandomArray(int size) {
     T* array = new T[size];
 	for (int i = 0; i < size; ++i) {
-		array[i] = rand();
+		array[i] = rand() % 81;
 	}
     return array;
 }

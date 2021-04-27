@@ -10,7 +10,7 @@ void Swap(T& value1, T& value2) {
 }
 
 template <class T>
-void SortingArrayWithBubbleSort(const int& size, T* array) {
+void BubbleSort(int size, T* array) {
     bool swapped = false;
     for (int i = 0; i < size; ++i) {
         for (int j = 1; j < size - i; ++j) {
@@ -27,7 +27,7 @@ void SortingArrayWithBubbleSort(const int& size, T* array) {
 }
 
 template <class T>
-void SortingArrayWithQuickSort(int start, int wall, int end, T* array) {
+void QuickSortRecursive(int start, int wall, int end, T* array) {
     if (start >= end) {
         return;
     }
@@ -44,12 +44,17 @@ void SortingArrayWithQuickSort(int start, int wall, int end, T* array) {
         }
     }
     Swap(array[wall], array[end]);
-    SortingArrayWithQuickSort(start, start, wall - 1, array);
-    SortingArrayWithQuickSort(wall + 1, wall + 1, end, array);
+    QuickSortRecursive(start, start, wall - 1, array);
+    QuickSortRecursive(wall + 1, wall + 1, end, array);
 }
 
 template <class T>
-void SortingArrayWithSelectionSort(const int& size, T* array) {
+void QuickSort(int size, T* array) {
+    QuickSortRecursive(0, 0, size - 1, array);
+}
+
+template <class T>
+void SelectionSort(int size, T* array) {
     for (int i = 0; i < size; ++i) {
         int minimum = i;
         for (int j = i + 1; j < size; ++j) {
@@ -62,7 +67,7 @@ void SortingArrayWithSelectionSort(const int& size, T* array) {
 }
 
 template <class T>
-void SortingArrayWithInsertionSort(const int& size, T* array) {
+void InsertionSort(int size, T* array) {
     for (int i = 1; i < size; ++i) {
         int element = array[i];
         int j = i;
@@ -75,7 +80,7 @@ void SortingArrayWithInsertionSort(const int& size, T* array) {
 }
 
 template <class T>
-void SortingArrayWithShellSort(const int& size, T* array) {
+void ShellSort(int size, T* array) {
 	for (int interval = size / 2; interval > 0; interval /= 2)	{
 		for (int i = interval; i < size; ++i) {
 			for (int j = i; j >= interval; j -= interval) {
@@ -106,7 +111,7 @@ void HeapSwapping(const int& size, int index, T* array) {
 }
 
 template <class T>
-void SortingArrayWithHeapSort(const int& size, T* array) {
+void HeapSort(int size, T* array) {
 	for (int i = size / 2 - 1; i >= 0; --i) {
 		HeapSwapping(size, i, array);
 	}
@@ -142,7 +147,7 @@ void DivideMyArray(T* array, T* array1, T* array2, int size) {
 }
 
 template <class T>
-void SortingArrayWithMergeSort(int size, T* array) {
+void MergeSort(int size, T* array) {
 	if (size == 1) {
 		return;
 	}
@@ -155,8 +160,8 @@ void SortingArrayWithMergeSort(int size, T* array) {
 	T* array1 = new T[size / 2];
 	T* array2 = new T[size - size / 2];
 	DivideMyArray(array, array1, array2, size);
-	SortingArrayWithMergeSort(size / 2, array1);
-	SortingArrayWithMergeSort(size - size / 2, array2);
+	MergeSort(size / 2, array1);
+	MergeSort(size - size / 2, array2);
 	DeclareSortedArray(array, array1, array2, size);
 	delete[] array1;
 	delete[] array2;
