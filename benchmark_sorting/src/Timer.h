@@ -1,12 +1,4 @@
 #pragma once
-#include <ctime>
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <map>
-#include <string>
-#include <iomanip>
-
 using namespace std;
 
 template <class T>
@@ -21,7 +13,8 @@ public:
     void Start();
     void Run(void (*Sort) (int, T*), int size, T* array, string name);
     double GetDuration();
-    void Sort();
+    void SortTimer();
+    void SortByAverageTime();
     void Print();
 };
 
@@ -52,7 +45,7 @@ void Timer<T>::Run(void (*Sorting) (int, T*), int size, T* array, string name) {
         Sorting(size, CopyArray(size, array));
         m_timer[m_timer.size() - 1][i] = GetDuration();
     }
-    Sort();
+    SortTimer();
     m_match.insert(pair<double*, string>(m_timer[m_timer.size() - 1], name));
 }
 
@@ -62,19 +55,24 @@ double Timer<T>::GetDuration() {
 }
 
 template <class T>
-void Timer<T>::Sort() {
+void Timer<T>::SortTimer() {
     std::sort(m_timer[m_timer.size() - 1], m_timer[m_timer.size() - 1] + s_test_count);
 }
 
 template <class T>
-void Timer<T>::Print() {
+void Timer<T>::SortByAverageTime() {
     for (int i = 0; i < m_timer.size(); ++i) {
         for (int j = 1; j < m_timer.size() - i; ++j) {
             if (m_timer[j - 1][s_test_count / 2] > m_timer[j][s_test_count / 2]) {
-                Swap(m_timer[j - 1], m_timer[j]);
+                swap(m_timer[j - 1], m_timer[j]);
             }
         }
     }
+}
+
+template <class T>
+void Timer<T>::Print() {
+    SortByAverageTime();
     for (int i = 0; i < m_timer.size(); ++i) {
         cout << m_match[m_timer[i]] << "sort";
         for (int j = 0; j < s_test_count; ++j) {

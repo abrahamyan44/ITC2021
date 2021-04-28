@@ -1,7 +1,12 @@
-#include "SortingAlgorithms.hpp"
-#include <map>
+#include <iostream>
+#include <vector>
 #include <ctime>
-#include "Timer.hpp"
+#include <algorithm>
+#include <map>
+#include <string>
+#include <iomanip>
+#include "SortingAlgorithms.h"
+#include "Timer.h"
 typedef long long ll;
 
 using namespace std;

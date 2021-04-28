@@ -1,6 +1,26 @@
 #pragma once
-#include <iostream>
 using namespace std;
+
+template <class T>
+void BubbleSort(int size, T* array);
+
+template <class T>
+void QuickSort(int size, T* array);
+
+template <class T>
+void SelectionSort(int size, T* array);
+
+template <class T>
+void InsertionSort(int size, T* array);
+
+template <class T>
+void ShellSort(int size, T* array);
+
+template <class T>
+void HeapSort(int size, T* array);
+
+template <class T>
+void MergeSort(int size, T* array);
 
 template <class T>
 void Swap(T& value1, T& value2) {

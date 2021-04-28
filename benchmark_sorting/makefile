@@ -1,17 +1,25 @@
-out: BenchmarkImplementation.cpp
-	@g++ $^ -o $@
+out:
+	@make -s objs;
+	@mkdir -p bin;
+	@g++ objs/* -o bin/out;
+
+objs:
+	@mkdir -p objs;
+	@g++ -c src/BenchmarkImplementation.cpp -o objs/main.o
 
 .ONESHELL:
 run:
-	@make -s;
-	@read -p "Please, input size of the array, which should be sorted: " size;
-	@echo "Now choose which type of elements should be in an array."
-	@echo "(By default your elements will be integers. 
-	1.If you want to work with characters input 'char'. 
-	2.If you want to work with floating-point numbers, please, input 'double'. 
-	3.And finally, for 'long long numbers', please, input 'long'.):"
+	@make -s out;
+	@read -p "Input size of the array, which should be sorted: " size;
+	@echo "Choose type of elements."
+	@echo "1.For characters input char."
+	@echo "2.For float: double."
+	@echo "3.For long long: long."
+	@echo "4.In case of other inputs: int:"
 	@read type;
-	@./out $$size $$type;
+	@bin/out $$size $$type;
+
+.PHONY: bin/out
 
 clean:
-	@rm -rf out
+	@rm -rf bin objs
