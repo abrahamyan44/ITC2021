@@ -8,18 +8,29 @@ private:
     vector<double*> m_timer;
     map<double*, string> m_match;
     clock_t m_start;
-public:
-    Timer(int test_count);
+private:
     void Start();
-    void Run(void (*Sort) (int, T*), int size, T* array, string name);
     double GetDuration();
 	double GetAverageTime(double* work_time);
     void SortTimer();
     void SortByAverageTime();
-	string NumberToString(double number);
+public:
+	Timer(int test_count);
+    void Run(void (*Sort) (int, T*), int size, T* array, string name);
+    string NumberToString(double number);
 	string LineToString(double* work_time);
-    void Print();
+    void PrintTable();
+	~Timer();
 };
+
+template <class T>
+Timer<T>::~Timer(){
+	for (int i = 0; i < m_timer.size(); ++i) {
+		delete[] m_timer[i];
+	}
+	m_match.clear();
+}
+		
 
 void PrintSide(int length) {
 	cout << endl;
@@ -30,20 +41,19 @@ void PrintSide(int length) {
 	cout << endl;
 }
 
-void PrintTitle() {
-	string s[] = {"Function name", "Minimum time", "Average time", "Maximum time"};
-	for (int i = 0; i < 4; ++i) {
-		int begin = (14 - s[i].length()) / 2;
-		int end = 14 - s[i].length() - begin;
-		for (int j = 0; j < begin; ++j) {
-			cout << ' ';
-		}
-		cout << s[i];
-		for (int j = 0; j < end; ++j) {
-			cout << ' ';
-		}
-		cout << '|';
+string GetWord(string text) {
+	int begin = (14 - text.length()) / 2;
+	int end = 14 - text.length() - begin;
+	string word;
+	for (int j = 0; j < begin; ++j) {
+		word.push_back(' ');
 	}
+	word += text;
+	for (int j = 0; j < end; ++j) {
+		word.push_back(' ');
+	}
+	word.push_back('|');
+	return word;
 }
 
 template <class T>
@@ -109,30 +119,37 @@ void Timer<T>::SortByAverageTime() {
 
 template <class T>
 string Timer<T>::NumberToString(double number) {
-	return string();
+	std::ostringstream strs;
+	strs << number;
+	std::string str = strs.str();
+	return str.substr(0, 10);
 }
 
 template <class T>
 string Timer<T>::LineToString(double* work_time) {
 	string sort_name = m_match[work_time];
-	string line = m_match[work_time];
+	string line = "| " + m_match[work_time];
 	for (int i = 14; i > sort_name.length(); --i) {
 		line.push_back(' ');
 	}
+	line.push_back('|');
 	for (int i = 0; i < s_test_count; ++i) {
 		line.push_back('|');
-		line += NumberToString(work_time[i]);
+		line += GetWord(NumberToString(work_time[i]));
 	}
 	return line;
 }
 
 template <class T>
-void Timer<T>::Print() {
+void Timer<T>::PrintTable() {
     SortByAverageTime();
-	PrintTitle();
+	string line = "| " + GetWord("Function name") + "|" +  GetWord("Minimum time") + "|" +  GetWord("Average time") + "|" +  GetWord("Maximum time");
+	cout << line;
+	PrintSide(line.length());
     for (int i = 0; i < m_timer.size(); ++i) {
    		string line = LineToString(m_timer[i]);
-	    PrintSide(line.length());
         cout << line;
+		PrintSide(line.length());
     }
+	cout << endl;
 }

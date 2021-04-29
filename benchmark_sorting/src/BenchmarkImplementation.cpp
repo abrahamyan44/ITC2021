@@ -5,11 +5,26 @@
 #include <map>
 #include <string>
 #include <iomanip>
-#include "SortingAlgorithms.h"
+//#include "SortingAlgorithms.h"
 #include "Timer.h"
 typedef long long ll;
 
 using namespace std;
+
+template <class T>
+extern void QuickSort(int, T*);
+template <class T>
+extern void BubbleSort(int, T*);
+template <class T>
+extern void InsertionSort(int, T*);
+template <class T>
+extern void SelectionSort(int, T*);
+template <class T>
+extern void ShellSort(int, T*);
+template <class T>
+extern void HeapSort(int, T*);
+template <class T>
+extern void MergeSort(int, T*);
 
 template <class T>
 void RunAllAlgorithms(T* array, int size) {
@@ -21,7 +36,7 @@ void RunAllAlgorithms(T* array, int size) {
 	t.Run(InsertionSort, size, array, "Insertion");
 	t.Run(SelectionSort, size, array, "Selection");
 	t.Run(ShellSort, size, array, "Shell");
-    t.Print();
+    t.PrintTable();
 }
 
 template <class T>
@@ -41,7 +56,8 @@ void CreateArray(int size) {
 
 int main(int argc, char** argv) {
 	srand(time(0));
-	int size = atoi(argv[1]);
+//	int size = atoi(argv[1]);
+	int size = 100;
     char type;
     if (argc < 3) {
         type = 'i';
