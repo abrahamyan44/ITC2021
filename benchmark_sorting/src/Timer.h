@@ -14,6 +14,9 @@ private:
 	double GetAverageTime(double* work_time);
     void SortTimer();
     void SortByAverageTime();
+	void PrintSide(int length);
+	string GetWord(string text);
+	bool IsSorted(int size, T* array);
 public:
 	Timer(int test_count);
     void Run(void (*Sort) (int, T*), int size, T* array, string name);
@@ -31,8 +34,8 @@ Timer<T>::~Timer(){
 	m_match.clear();
 }
 		
-
-void PrintSide(int length) {
+template <class T>
+void Timer<T>::PrintSide(int length) {
 	cout << endl;
 	for (int i = 0; i < length; ++i) {
 		cout << '_';
@@ -41,7 +44,8 @@ void PrintSide(int length) {
 	cout << endl;
 }
 
-string GetWord(string text) {
+template <class T>
+string Timer<T>::GetWord(string text) {
 	int begin = (14 - text.length()) / 2;
 	int end = 14 - text.length() - begin;
 	string word;
@@ -66,6 +70,16 @@ T* CopyArray(int size, T* array) {
 }
 
 template <class T>
+bool Timer<T>::IsSorted(int size, T* array) {
+	for (int i = 1; i < size; ++i) {
+			if (array[i] < array[i - 1]) {
+				return false;
+		}
+	}
+	return true;
+}
+
+template <class T>
 Timer<T>::Timer(int test_count) {
     s_test_count = test_count;
 }
@@ -78,11 +92,18 @@ void Timer<T>::Start() {
 template <class T>
 void Timer<T>::Run(void (*Sorting) (int, T*), int size, T* array, string name) {
     m_timer.push_back(new double[s_test_count]);
-    for (int i = 0; i < s_test_count; ++i) {
-        Start();
-        Sorting(size, CopyArray(size, array));
-        m_timer[m_timer.size() - 1][i] = GetDuration();
-    }
+	for (int i = 0; i < s_test_count; ++i) {
+		Start();
+		T* new_array = CopyArray(size, array);
+		Sorting(size, new_array);
+		m_timer[m_timer.size() - 1][i] = GetDuration();
+		if (i == 0 && !IsSorted(size, new_array)) {
+			throw name + "sort does not work correctly!!!";
+			delete[] new_array;
+			return;
+		}
+		delete[] new_array;
+	}
     SortTimer();
     m_match.insert(pair<double*, string>(m_timer[m_timer.size() - 1], name + "sort"));
 }
@@ -144,6 +165,7 @@ template <class T>
 void Timer<T>::PrintTable() {
     SortByAverageTime();
 	string line = "| " + GetWord("Function name") + "|" +  GetWord("Minimum time") + "|" +  GetWord("Average time") + "|" +  GetWord("Maximum time");
+	PrintSide(line.length());
 	cout << line;
 	PrintSide(line.length());
     for (int i = 0; i < m_timer.size(); ++i) {
