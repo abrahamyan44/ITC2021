@@ -150,6 +150,34 @@ namespace sorting
             Heapify(array, i, 0);
         }
     }
+
+	template <class T>
+    void InsertionSort (T* array, int n)
+    {
+        for (int i = 1; i < n; ++i) {
+            T key = array[i];
+            int j = i - 1;
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                --j;
+            }
+            array[j + 1] = key;
+        }
+    }
+
+    template <class T>
+    void SelectionSort (T* array, int n)
+    {
+        for (int i = 0; i < n; ++i) {
+            int min_value_index = i;
+            for (int j = i; j < n; ++j) {
+                if (array[j] < array[min_value_index]) {
+                    min_value_index = j;
+                }
+            }
+            Swap(array[i], array[min_value_index]);
+        }
+    }
 }
 
 
