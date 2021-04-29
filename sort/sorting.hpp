@@ -29,8 +29,8 @@ namespace sorting
         }
     }
 
-	template <class T>
-	void MergeHelper(T* array, T* array1, T* array2, int n1, int n2, int s)
+    template <class T>
+    void MergeHelper(T* array, T* array1, T* array2, int n1, int n2, int s)
     {
         int i = 0;
         int j = 0;
