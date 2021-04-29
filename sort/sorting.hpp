@@ -6,47 +6,37 @@
 namespace sorting
 {
     template <class T>
-    void Swap (T& a, T& b) {
+    void Swap(T& a, T& b) {
         T k = a;
         a = b;
         b = k;
     }
 
     template <class T>
-    void BubbleSort (T* array, int n)
+    void BubbleSort(T* array, int n)
     {
-        for (int i = 0; i < n; ++i) {
+        for(int i = 0; i < n; ++i) {
             bool swap = false;
-            for (int j = 0; j < n - i - 1; ++j) {
-                if (array[j] > array[j + 1]) {
+            for(int j = 0; j < n - i - 1; ++j) {
+                if(array[j] > array[j + 1]) {
                     Swap(array[j + 1], array[j]);
                     swap = true;
                 }
             }
-            if (swap == false) {
+            if(swap == false) {
                 break;
             }
         }
     }
 
-    template <class T>
-    void Merge (T* array, int s, int m, int n)
-    {
-        int n1 = m - s + 1;
-        int n2 = n - m;
-        T* array1 = new T[n1];
-        T* array2 = new T[n2];
-        for (int i = 0; i < n1; ++i) {
-            array1[i] = array[s + i];
-        }
-        for (int j = 0; j < n2; ++j) {
-            array2[j] = array[m + 1 + j];
-        }
-        int i = 0;
+	template <class T>
+	void MergeHelper(T* array, T* array1, T* array2, int n1, int n2, int s)
+	{
+		int i = 0;
         int j = 0;
         int k = s;
-        while (i < n1 && j < n2) {
-            if (array1[i] <= array2[j]) {
+        while(i < n1 && j < n2) {
+            if(array1[i] <= array2[j]) {
                 array[k] = array1[i];
                 ++i;
             } else {
@@ -55,24 +45,40 @@ namespace sorting
             }
             ++k;
         }
-        while (i < n1) {
+        while(i < n1) {
             array[k] = array1[i];
             ++i;
             ++k;
         }
-        while (j < n2) {
+        while(j < n2) {
             array[k] = array2[j];
             ++j;
             ++k;
         }
+	}
+
+    template <class T>
+    void Merge(T* array, int s, int m, int n)
+    {
+        int n1 = m - s + 1;
+        int n2 = n - m;
+        T* array1 = new T[n1];
+        T* array2 = new T[n2];
+        for(int i = 0; i < n1; ++i) {
+            array1[i] = array[s + i];
+        }
+        for(int j = 0; j < n2; ++j) {
+            array2[j] = array[m + 1 + j];
+        }
+		MergeHelper(array, array1, array2, n1, n2, s);
         delete [] array1;
         delete [] array2;
     }
 
     template <class T>
-    void MergeSort (T* array, int s, int n)
+    void MergeSort(T* array, int s, int n)
     {
-        if (s < n) {
+        if(s < n) {
             int mid = s + (n - s) / 2;
             MergeSort(array, s, mid);
             MergeSort(array, mid + 1, n);
@@ -81,7 +87,7 @@ namespace sorting
     }
 
     template <class T>
-    int SetPartition (T* array, int s, int n)
+    int SetPartition(T* array, int s, int n)
     {
         T pivot = array[n];
         int i = s - 1;
@@ -96,7 +102,7 @@ namespace sorting
     }
 
     template <class T>
-    void QuickSort (T* array, int s, int n)
+    void QuickSort(T* array, int s, int n)
     {
         if(s <= n) {
             int position = SetPartition(array, s, n);
@@ -151,12 +157,12 @@ namespace sorting
     }
 
     template <class T>
-    void InsertionSort (T* array, int n)
+    void InsertionSort(T* array, int n)
     {
-        for (int i = 1; i < n; ++i) {
+        for(int i = 1; i < n; ++i) {
             T key = array[i];
             int j = i - 1;
-            while (j >= 0 && array[j] > key) {
+            while(j >= 0 && array[j] > key) {
                 array[j + 1] = array[j];
                 --j;
             }
@@ -165,12 +171,12 @@ namespace sorting
     }
 
     template <class T>
-    void SelectionSort (T* array, int n)
+    void SelectionSort(T* array, int n)
     {
-        for (int i = 0; i < n; ++i) {
+        for(int i = 0; i < n; ++i) {
             int min_value_index = i;
-            for (int j = i; j < n; ++j) {
-                if (array[j] < array[min_value_index]) {
+            for(int j = i; j < n; ++j) {
+                if(array[j] < array[min_value_index]) {
                     min_value_index = j;
                 }
             }
@@ -180,7 +186,3 @@ namespace sorting
 }
 
 
-
-
-
-     
