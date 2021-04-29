@@ -103,7 +103,6 @@ namespace sorting
             QuickSort(array, s, position - 1);
             QuickSort(array, position + 1, n);
         }
-
     }
 
     template <class T>
@@ -151,7 +150,7 @@ namespace sorting
         }
     }
 
-	template <class T>
+    template <class T>
     void InsertionSort (T* array, int n)
     {
         for (int i = 1; i < n; ++i) {
