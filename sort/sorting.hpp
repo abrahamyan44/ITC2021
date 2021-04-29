@@ -37,25 +37,25 @@ namespace sorting
         int k = s;
         while(i < n1 && j < n2) {
             if(array1[i] <= array2[j]) {
-				array[k] = array1[i];
-				++i;
-			} else {
-				array[k] = array2[j];
-				++j;
-			}
-			++k;
-		}
-		while(i < n1) {
-			array[k] = array1[i];
-			++i;
-			++k;
-		}
-		while(j < n2) {
-			array[k] = array2[j];
-			++j;
-			++k;
-		}
-	}
+                array[k] = array1[i];
+                ++i;
+            } else {
+                array[k] = array2[j];
+                ++j;
+            }
+            ++k;
+        }
+        while(i < n1) {
+            array[k] = array1[i];
+            ++i;
+            ++k;
+        }
+        while(j < n2) {
+            array[k] = array2[j];
+            ++j;
+            ++k;
+        }
+    }
 
     template <class T>
     void Merge(T* array, int s, int m, int n)
