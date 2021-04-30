@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <cassert>
+#include <stack>
+#include <queue>
 
 class Graph
 {
@@ -19,8 +21,9 @@ public:
 
 	void AddEdge(int i, int j);    // Add edges
 	void RemoveEdge(int i, int j); // Remove edges
-	void DFS(int vertex); 		   // Depth First Search Algorithm
-	void BFS(int vertex);		   // Breadth First Search Algorithm
+	bool IsConnected(int i, int j);// Check if 2 vertices are connected 
+	void DFS(int start, int end); 		   // Depth First Search Algorithm
+	void BFS(int start, int end);		   // Breadth First Search Algorithm
 		
 	void Print();	  // Print the matrix	
 };

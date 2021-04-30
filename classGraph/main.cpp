@@ -12,6 +12,10 @@ int main()
 	G.AddEdge(1,1);
 	G.AddEdge(3,2);
 
-	G.Print();
+	G.DFS(2,5);
+	G.BFS(0,3);
+//	G.Print();
+
+
 	return 0;
 }
