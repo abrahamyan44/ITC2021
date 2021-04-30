@@ -7,16 +7,17 @@
 #include <iomanip>
 #include "BenchmarkTable.hpp"
 #include "Timer.hpp"
-#include "SortingAlgorithms.hpp"
+#include "SortingAlgorithms.cpp"
+
 typedef long long ll;
 
 using namespace std;
 
-// extern template ByBagratid;
+//struct ByBagratid {};
 
 template <class T, class T1>
 void RunAllAlgorithms(T* array, int size) {
-    BenchmarkTable t(3);
+    BenchmarkTable t(1);
 	try {
 		cout << typeid(T1).name() << endl;
 		t.Run(T1::BubbleSort, size, array, "Bubble");

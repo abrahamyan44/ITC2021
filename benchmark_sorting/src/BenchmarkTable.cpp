@@ -1,28 +1,6 @@
 #include "BenchmarkTable.hpp"
 #include <algorithm>
 
-void BenchmarkTable::PrintSide(int length) {
-	std::cout << std::endl;
-	for (int i = 0; i < length; ++i) {
-		std::cout << '_';
-	}
-	std::cout << std::endl;
-	std::cout << std::endl;
-}
-
-std::string BenchmarkTable::GetWord(const std::string& text)
-{
-	int begin = (14 - text.length()) / 2;
-	int end = 14 - text.length() - begin;
-	std::string word(begin, ' ');
-	word += text;
-	for (int j = 0; j < end; ++j) {
-		word.push_back(' ');
-	}
-	word.push_back('|');
-	return word;
-}
-
 BenchmarkTable::BenchmarkTable(int test_count) {
     m_test_count = test_count;
 }
@@ -49,6 +27,28 @@ void BenchmarkTable::SortByAverageTime() {
     }
 }
 
+void BenchmarkTable::PrintSide(int length) {
+	std::cout << std::endl;
+	for (int i = 0; i < length; ++i) {
+		std::cout << '_';
+	}
+	std::cout << std::endl;
+	std::cout << std::endl;
+}
+
+std::string BenchmarkTable::GetWord(const std::string& text)
+{
+	int begin = (15 - text.length()) / 2;
+	int end = 15 - text.length() - begin;
+	std::string word(begin + 1, ' ');
+	word[0] = '|';
+	word += text;
+	for (int j = 0; j < end; ++j) {
+		word.push_back(' ');
+	}
+	return word;
+}
+
 std::string BenchmarkTable::NumberToString(double number) {
 	std::ostringstream strs;
 	strs << number;
@@ -62,17 +62,16 @@ std::string BenchmarkTable::LineToString(double* work_time) {
 	for (int i = 14; i > sort_name.length(); --i) {
 		line.push_back(' ');
 	}
+	line += GetWord(NumberToString(work_time[0]));
+	line += GetWord(NumberToString(GetAverageTime(work_time)));
+	line += GetWord(NumberToString(work_time[m_test_count - 1]));
 	line.push_back('|');
-	for (int i = 0; i < m_test_count; ++i) {
-		line.push_back('|');
-		line += GetWord(NumberToString(work_time[i]));
-	}
 	return line;
 }
 
 void BenchmarkTable::PrintTable() {
     SortByAverageTime();
-	std::string line = "| " + GetWord("Function name") + "|" +  GetWord("Minimum time") + "|" +  GetWord("Average time") + "|" +  GetWord("Maximum time");
+	std::string line = GetWord("Function name") +  GetWord("Minimum time") +  GetWord("Average time") + GetWord("Maximum time") + "|";
 	PrintSide(line.length());
 	std::cout << line;
 	PrintSide(line.length());
@@ -81,5 +80,4 @@ void BenchmarkTable::PrintTable() {
         std::cout << line;
 		PrintSide(line.length());
     }
-	std::cout << std::endl;
 }
