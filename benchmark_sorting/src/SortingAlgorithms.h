@@ -1,6 +1,3 @@
-#pragma once
-using namespace std;
-
 template <class T>
 void BubbleSort(int size, T* array);
 

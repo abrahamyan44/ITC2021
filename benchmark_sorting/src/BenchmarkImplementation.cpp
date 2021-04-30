@@ -5,11 +5,32 @@
 #include <map>
 #include <string>
 #include <iomanip>
-#include "SortingAlgorithms.h"
+//#include "../lib/SortingAlgorithmsByInstigateLite.so"
 #include "Timer.h"
 typedef long long ll;
 
 using namespace std;
+
+template <class T>
+extern void QuickSort(int size, T* array);
+
+template <class T>
+extern void BubbleSort(int size, T* array);
+
+template <class T>
+extern void MergeSort(int size, T* array);
+
+template <class T>
+extern void HeapSort(int size, T* array);
+
+template <class T>
+extern void ShellSort(int size, T* array);
+
+template <class T>
+extern void InsertionSort(int size, T* array);
+
+template <class T>
+extern void SelectionSort(int size, T* array);
 
 template <class T>
 void RunAllAlgorithms(T* array, int size) {

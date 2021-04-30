@@ -11,7 +11,7 @@ private:
 public:
     Timer(int test_count);
     void Start();
-    void Run(void (*Sort) (int, T*), int size, T* array, string name);
+    void Run(void (*Sorting) (int, T*), int size, T* array, string name);
     double GetDuration();
     void SortTimer();
     void SortByAverageTime();
