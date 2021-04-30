@@ -1,7 +1,7 @@
 out:
 	@make -s objs;
 	@mkdir -p bin;
-	@g++ ;
+	@g++ objs/* -o bin/out;
 
 objs:
 	@mkdir -p objs;
