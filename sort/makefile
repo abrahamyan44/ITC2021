@@ -1,26 +1,20 @@
-EXE := benchmark
-CC := g++
-
-$(EXE) : *.cpp
-	$(CC) $^ -o $@
-
-SHELL:=/bin/bash
-.ONESHELL:
 
 
-test:
-	@$(MAKE)
-	@echo "Enter size of array"
-	@read size
-	@echo "Enter test count"
-	@read test_count
-	@./$(EXE) $$size $$test_count
+all : benchmark
 
-.PHONY: clean test
+sorting.o : sorting.hpp
+	gcc -Wall -fPIC -c $^ -o $@
 
-clean:
-	@rm $(EXE)
+libsort.so : sorting.o
+	g++ -shared -Wl,-soname,$^ -o $@
+
+benchmark : libsort.so
+	g++ -I. -L. libsort.so *.cpp -o $@
 
 
+.PHONY : clean
+
+clean :
+	rm -f benchmark *.o *.so
 
 
