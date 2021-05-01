@@ -1,8 +1,12 @@
-#include "sorting.hpp"
+#ifndef DURATION_H
+#define DURATION_H
+
+#include <chrono>
+//#include <sorting.hpp>
 
 namespace duration
 {
-    template <class T>
+    template <typename T>
     T* CopyArray(T* array, int n) {
         T* new_array = new T[n];
         for(int i = 0; i < n; ++i) {
@@ -11,7 +15,7 @@ namespace duration
         return new_array;
     }
 
-    template <class T>
+    template <typename T>
     bool SortVerification(T* array, int n)
     {
         bool is_sorted;
@@ -24,7 +28,7 @@ namespace duration
         return is_sorted;
     }
 
-    template <class T>
+    template <typename T>
     long double Duration(void (*func_name)(T*, int, int), T* array, int n)
     {
         T* new_array = CopyArray(array, n);
@@ -41,7 +45,7 @@ namespace duration
         }
     }
 
-    template <class T>
+    template <typename T>
     long double Duration(void (*func_name)(T*, int), T* array, int n)
     {
         T* new_array = CopyArray(array, n);
@@ -60,4 +64,4 @@ namespace duration
 }
 
 
-
+#endif
