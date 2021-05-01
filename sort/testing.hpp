@@ -13,7 +13,7 @@ namespace test
 {
     void Print(std::string sort_name, long double* time)
     {
-        ByRubenyans::BubbleSort(time, 3);
+        ByRubenyans::BubbleSort(3, time);
         std::cout << std::setw(5) << "| Sort program  | " << std::setw(5) << "duration   |" << std::endl;
         std::cout << std::endl;
         std::cout << "|" << sort_name << "|" << std::setw(10) << time[0] << "ms |" << std::setw(5) << "minimume  |" << std::endl;
@@ -29,7 +29,7 @@ namespace test
 
     void Print2(std::string sort_name, long double* time)
     {
-        ByRubenyans::BubbleSort(time, 2);
+        ByRubenyans::BubbleSort(2, time);
         std::cout << std::setw(5) << "| Sort program  | " << std::setw(5) << "duration  |" << std::endl;
         std::cout << std::endl;
         std::cout << "|" << sort_name << "|" << std::setw(5) << time[0] << "ms |" << "minimume|" << std::endl;
@@ -42,19 +42,19 @@ namespace test
     void TestingShell(T* array, int n, int test_count)
     {
         if(test_count == 1) {
-            Print1("ShellSort", duration::Duration(ByRubenyans::ShellSort, array, n));
+            Print1("ShellSort", duration::Duration(ByRubenyans::ShellSort, n, array));
 		}
         if(test_count == 2) {
             long double time[2];
             for(int i = 0; i < 2; ++i) {
-                time[i] = duration::Duration(ByRubenyans::ShellSort, array, n);
+                time[i] = duration::Duration(ByRubenyans::ShellSort, n, array);
             }
             Print2("ShellSort", time);
         }
         if(test_count == 3) {
             long double time[3];
             for(int i = 0; i < 3; ++i) {
-                time[i] = duration::Duration(ByRubenyans::ShellSort, array, n);
+                time[i] = duration::Duration(ByRubenyans::ShellSort, n, array);
             }
             Print("ShellSort", time);
         }
@@ -64,19 +64,19 @@ namespace test
     void TestingHeap(T* array, int n, int test_count)
     {
         if(test_count == 1) {
-            Print1("HeapSort", duration::Duration(ByRubenyans::HeapSort, array, n));
+            Print1("HeapSort", duration::Duration(ByRubenyans::HeapSort, n, array));
         }
         if(test_count == 2) {
             long double time[2];
             for(int i = 0; i < 2; ++i) {
-                time[i] = duration::Duration(ByRubenyans::HeapSort, array, n);
+                time[i] = duration::Duration(ByRubenyans::HeapSort, n, array);
             }
             Print2("HeapSort", time);
         }
         if(test_count == 3) {
             long double time[3];
             for(int i = 0; i < 3; ++i) {
-                time[i] = duration::Duration(ByRubenyans::HeapSort, array, n);
+                time[i] = duration::Duration(ByRubenyans::HeapSort, n, array);
             }
             Print("HeapSort", time);
         }
@@ -86,19 +86,19 @@ namespace test
     void TestingMerge(T* array, int n, int test_count)
     {
         if(test_count == 1) {
-            Print1("MergeSort", duration::Duration(ByRubenyans::MergeSort, array, n));
+            Print1("MergeSort", duration::Duration(ByRubenyans::MergeSort, n, array));
         }
         if(test_count == 2) {
             long double time[2];
             for(int i = 0; i < 2; ++i) {
-                time[i] = duration::Duration(ByRubenyans::MergeSort, array, n);
+                time[i] = duration::Duration(ByRubenyans::MergeSort, n, array);
             }
             Print2("MergeSort", time);
         }
         if(test_count == 3) {
             long double time[3];
             for(int i = 0; i < 3; ++i) {
-                time[i] = duration::Duration(ByRubenyans::MergeSort, array, n);
+                time[i] = duration::Duration(ByRubenyans::MergeSort, n, array);
             }
             Print("MergeSort", time);
          }
@@ -108,19 +108,19 @@ namespace test
     void TestingBubble(T* array, int n, int test_count)
     {
         if(test_count == 1) {
-            Print1("BubbleSort", duration::Duration(ByRubenyans::BubbleSort, array, n));
+            Print1("BubbleSort", duration::Duration(ByRubenyans::BubbleSort, n, array));
         }
         if(test_count == 2) {
             long double time[2];
             for(int i = 0; i < 2; ++i) {
-                time[i] = duration::Duration(ByRubenyans::BubbleSort, array, n);
+                time[i] = duration::Duration(ByRubenyans::BubbleSort, n, array);
             }
             Print2("BubbleSort", time);
 		}
         if(test_count == 3) {
             long double time[3];
             for(int i = 0; i < 3; ++i) {
-                time[i] = duration::Duration(ByRubenyans::BubbleSort, array, n);
+                time[i] = duration::Duration(ByRubenyans::BubbleSort, n, array);
             }
             Print("BubbleSort", time);
         }
@@ -130,19 +130,19 @@ namespace test
     void TestingQuick(T* array, int n, int test_count)
     {
         if(test_count == 1) {
-            Print1("QuickSort", duration::Duration(ByRubenyans::QuickSort, array, n));
+            Print1("QuickSort", duration::Duration(ByRubenyans::QuickSort, n, array));
         }
         if(test_count == 2) {
             long double time[2];
             for(int i = 0; i < 2; ++i) {
-                time[i] = duration::Duration(ByRubenyans::QuickSort, array, n);
+                time[i] = duration::Duration(ByRubenyans::QuickSort, n, array);
             }
             Print2("QuickSort", time);
         }
         if(test_count == 3) {
             long double time[3];
             for(int i = 0; i < 3; ++i) {
-                time[i] = duration::Duration(ByRubenyans::QuickSort, array, n);
+                time[i] = duration::Duration(ByRubenyans::QuickSort, n, array);
             }
             Print("QuickSort", time);
         }

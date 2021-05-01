@@ -28,32 +28,16 @@ namespace duration
     }
 
     template <typename T>
-    long double Duration(void (*func_name)(T*, int, int), T* array, int n)
+    long double Duration(void (*func_name)(int, T*), int n, T* array)
     {
         T* new_array = CopyArray(array, n);
         auto start = std::chrono::system_clock::now();
-        (*func_name)(new_array, 0, n - 1);
+        (*func_name)(n, new_array);
         auto stop = std::chrono::system_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
         if(SortVerification(new_array, n)) {
             delete [] new_array;
-            return duration;
-        }
-        else {
-            return -1;
-        }
-    }
-
-    template <typename T>
-    long double Duration(void (*func_name)(T*, int), T* array, int n)
-    {
-        T* new_array = CopyArray(array, n);
-        auto start = std::chrono::system_clock::now();
-        (*func_name)(new_array, n);
-        auto stop = std::chrono::system_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
-        if(SortVerification(new_array, n)) {
-            delete [] new_array;
+			new_array = nullptr;
             return duration;
         }
         else {
@@ -61,6 +45,5 @@ namespace duration
         }
     }
 }
-
 
 #endif

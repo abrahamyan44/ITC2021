@@ -5,12 +5,11 @@ all : benchmark
 sorting.o : sorting.hpp
 	gcc -Wall -fPIC -c $^ -o $@
 
-libsort.so : sorting.o
-	g++ -shared -Wl,-soname,$^ -o $@
+libsorting.so : sorting.o
+	gcc -shared -Wl,-soname,$^ -o $@
 
-benchmark : libsort.so
-	g++ -I. -L. libsort.so *.cpp -o $@
-
+benchmark : libsorting.so 
+	g++ -I. -L. libsorting.so main.cpp -o $@
 
 .PHONY : clean
 

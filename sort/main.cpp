@@ -1,3 +1,4 @@
+#include <sorting.hpp>
 #include "testing.hpp"
 
 int main(int argc, char* argv[])
@@ -5,7 +6,7 @@ int main(int argc, char* argv[])
     int size = std::stoi(argv[1]);
     int test_count = std::stoi(argv[2]);
     long int* array = nullptr;
-    assert(size > 0);
+    assert(0 < size);
     array = new int64_t[size];
     srand(time(0));
     for(int i = 0; i < size; ++i) {
@@ -16,5 +17,7 @@ int main(int argc, char* argv[])
     test::TestingMerge(array, size, test_count);
     test::TestingBubble(array, size, test_count);
     test::TestingShell(array, size, test_count);
+	delete [] array;
+	array = nullptr;
     return 0;
 }

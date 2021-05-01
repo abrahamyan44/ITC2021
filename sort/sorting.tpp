@@ -87,7 +87,7 @@ namespace ByRubenyans
     template <typename T>
     void ByRubenyans::MergeSort(int n, T* array) 
     {
-        MergeSortRecursive(array, 0, n);
+        MergeSortRecursive(array, 0, n - 1);
     }
 
     template <typename T>
@@ -117,7 +117,7 @@ namespace ByRubenyans
     template <typename T>
     void ByRubenyans::QuickSort(int n, T* array)
     {
-        QuickSortRecursive(array, 0, n);
+        QuickSortRecursive(array, 0, n - 1);
     }
 
     template <typename T>
