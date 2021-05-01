@@ -11,7 +11,7 @@ namespace ByRubenyans
     }
 
     template <typename T>
-    void BubbleSort(T* array, int n)
+    void ByRubenyans::BubbleSort(int n, T* array)
     {
         for(int i = 0; i < n; ++i) {
             bool swap = false;
@@ -74,14 +74,20 @@ namespace ByRubenyans
     }
 
     template <typename T>
-    void MergeSort(T* array, int s, int n)
+    void MergeSortRecursive(T* array, int s, int n)
     {
         if(s < n) {
             int mid = s + (n - s) / 2;
-            MergeSort(array, s, mid);
-            MergeSort(array, mid + 1, n);
+            MergeSortRecursive(array, s, mid);
+            MergeSortRecursive(array, mid + 1, n);
             Merge(array, s, mid, n);
         }
+    }
+
+    template <typename T>
+    void ByRubenyans::MergeSort(int n, T* array) 
+    {
+        MergeSortRecursive(array, 0, n);
     }
 
     template <typename T>
@@ -100,17 +106,22 @@ namespace ByRubenyans
     }
 
     template <typename T>
-    void QuickSort(T* array, int s, int n)
+    void QuickSortRecursive(T* array, int s, int n)
     {
         if(s <= n) {
             int position = SetPartition(array, s, n);
-            QuickSort(array, s, position - 1);
-            QuickSort(array, position + 1, n);
+            QuickSortRecursive(array, s, position - 1);
+            QuickSortRecursive(array, position + 1, n);
         }
+    }
+    template <typename T>
+    void ByRubenyans::QuickSort(int n, T* array)
+    {
+        QuickSortRecursive(array, 0, n);
     }
 
     template <typename T>
-    void ShellSort(T* array, int n)
+    void ByRubenyans::ShellSort(int n, T* array)
     {
         for(int interval = n / 2; interval > 0; interval /= 2) {
             for(int i = interval; i < n; ++i) {
@@ -143,7 +154,7 @@ namespace ByRubenyans
     }
 
     template <typename T>
-    void HeapSort(T* array, int n)
+    void ByRubenyans::HeapSort(int n, T* array)
     {
         for(int i = n / 2 - 1; i >= 0; --i) {
             Heapify(array, n, i);
@@ -155,7 +166,7 @@ namespace ByRubenyans
     }
 
     template <typename T>
-    void InsertionSort(T* array, int n)
+    void ByRubenyans::InsertionSort(int n, T* array)
     {
         for(int i = 1; i < n; ++i) {
             T key = array[i];
@@ -169,7 +180,7 @@ namespace ByRubenyans
     }
 
     template <typename T>
-    void SelectionSort(T* array, int n)
+    void ByRubenyans::SelectionSort(int n, T* array)
     {
         for(int i = 0; i < n; ++i) {
             int min_value_index = i;
@@ -184,3 +195,4 @@ namespace ByRubenyans
 }
 
 #endif
+
