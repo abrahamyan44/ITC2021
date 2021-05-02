@@ -1,4 +1,4 @@
-#include "Timer.hpp"
+#include "../include/Timer.hpp"
 
 void Timer::Start() {
     m_start = clock();

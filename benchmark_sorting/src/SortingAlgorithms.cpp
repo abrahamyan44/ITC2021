@@ -1,38 +1,35 @@
 using namespace std;
 
-struct ByBagratid {
-public:
-	template <class T>
-	static void BubbleSort(int size, T* array);
 
-	template <class T>
-	static void QuickSort(int size, T* array);
+void BubbleSort(int size, int* array);
 
-	template <class T>
-	static void SelectionSort(int size, T* array);
 
-	template <class T>
-	static void InsertionSort(int size, T* array);
+void QuickSort(int size, int* array);
 
-	template <class T>
-	static void ShellSort(int size, T* array);
 
-	template <class T>
-	static void HeapSort(int size, T* array);
+void SelectionSort(int size, int* array);
 
-	template <class T>
-	static void MergeSort(int size, T* array);
-};
 
-template <class T>
-void Swap(T& value1, T& value2) {
-    T temporary = value1;
+void InsertionSort(int size, int* array);
+
+
+void ShellSort(int size, int* array);
+
+
+void HeapSort(int size, int* array);
+
+
+void MergeSort(int size, int* array);
+
+
+void Swap(int& value1, int& value2) {
+    int temporary = value1;
     value1 = value2;
     value2 = temporary;
 }
 
-template <class T>
-void ByBagratid::BubbleSort(int size, T* array) {
+
+void BubbleSort(int size, int* array) {
     bool swapped = false;
     for (int i = 0; i < size; ++i) {
         for (int j = 1; j < size - i; ++j) {
@@ -48,8 +45,8 @@ void ByBagratid::BubbleSort(int size, T* array) {
 	return;
 }
 
-template <class T>
-void QuickSortRecursive(int start, int wall, int end, T* array) {
+
+void QuickSortRecursive(int start, int wall, int end, int* array) {
     if (start >= end) {
         return;
     }
@@ -70,13 +67,13 @@ void QuickSortRecursive(int start, int wall, int end, T* array) {
     QuickSortRecursive(wall + 1, wall + 1, end, array);
 }
 
-template <class T>
-void ByBagratid::QuickSort(int size, T* array) {
+
+void QuickSort(int size, int* array) {
     QuickSortRecursive(0, 0, size - 1, array);
 }
 
-template <class T>
-void ByBagratid::SelectionSort(int size, T* array) {
+
+void SelectionSort(int size, int* array) {
     for (int i = 0; i < size; ++i) {
         int minimum = i;
         for (int j = i + 1; j < size; ++j) {
@@ -88,8 +85,8 @@ void ByBagratid::SelectionSort(int size, T* array) {
     }
 }
 
-template <class T>
-void ByBagratid::InsertionSort(int size, T* array) {
+
+void InsertionSort(int size, int* array) {
     for (int i = 1; i < size; ++i) {
         int element = array[i];
         int j = i;
@@ -101,8 +98,8 @@ void ByBagratid::InsertionSort(int size, T* array) {
     }
 }
 
-template <class T>
-void ByBagratid::ShellSort(int size, T* array) {
+
+void ShellSort(int size, int* array) {
 	for (int interval = size / 2; interval > 0; interval /= 2)	{
 		for (int i = interval; i < size; ++i) {
 			for (int j = i; j >= interval; j -= interval) {
@@ -116,8 +113,8 @@ void ByBagratid::ShellSort(int size, T* array) {
 	}
 }
 
-template <class T>
-void HeapSwapping(const int& size, int index, T* array) {
+
+void HeapSwapping(const int& size, int index, int* array) {
 	int maximum = index;
 	int left = 2 * index + 1, right = 2 * index + 2;
 	if (left < size && array[left] > array[maximum]) {
@@ -132,8 +129,8 @@ void HeapSwapping(const int& size, int index, T* array) {
 	}
 }
 
-template <class T>
-void ByBagratid::HeapSort(int size, T* array) {
+
+void HeapSort(int size, int* array) {
 	for (int i = size / 2 - 1; i >= 0; --i) {
 		HeapSwapping(size, i, array);
 	}
@@ -143,8 +140,8 @@ void ByBagratid::HeapSort(int size, T* array) {
 	}
 }
 
-template <class T>
-void DeclareSortedArray(T* array, T* array1, T* array2, int size) {
+
+void DeclareSortedArray(int* array, int* array1, int* array2, int size) {
 	int index1 = 0;
 	int index2 = 0;
 	for (int i = 0; i < size; ++i) {
@@ -158,8 +155,8 @@ void DeclareSortedArray(T* array, T* array1, T* array2, int size) {
 	}	
 }
 
-template <class T>
-void DivideMyArray(T* array, T* array1, T* array2, int size) {
+
+void DivideMyArray(int* array, int* array1, int* array2, int size) {
     for (int i = 0; i < size / 2; ++i) {
 		array1[i] = array[i];
 	}
@@ -168,8 +165,8 @@ void DivideMyArray(T* array, T* array1, T* array2, int size) {
 	}
 }
 
-template <class T>
-void ByBagratid::MergeSort(int size, T* array) {
+
+void MergeSort(int size, int* array) {
 	if (size == 1) {
 		return;
 	}
@@ -179,8 +176,8 @@ void ByBagratid::MergeSort(int size, T* array) {
 		}
 		return;
 	}
-	T* array1 = new T[size / 2];
-	T* array2 = new T[size - size / 2];
+	int* array1 = new int[size / 2];
+	int* array2 = new int[size - size / 2];
 	DivideMyArray(array, array1, array2, size);
 	MergeSort(size / 2, array1);
 	MergeSort(size - size / 2, array2);

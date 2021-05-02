@@ -5,28 +5,41 @@
 #include <map>
 #include <string>
 #include <iomanip>
-#include "BenchmarkTable.hpp"
-#include "Timer.hpp"
-#include "SortingAlgorithms.cpp"
+#include "../include/BenchmarkTable.hpp"
+#include "../include/Timer.hpp"
+//#include "SortingAlgorithms.cpp"
+//#include "Timer.cpp"
+//#include "BenchmarkTable.cpp"
 
 typedef long long ll;
 
 using namespace std;
 
-//struct ByBagratid {};
+extern void QuickSort(int, int*);
 
-template <class T, class T1>
-void RunAllAlgorithms(T* array, int size) {
-    BenchmarkTable t(1);
+extern void BubbleSort(int, int*);
+
+extern void SelectionSort(int, int*);
+
+extern void InsertionSort(int, int*);
+
+extern void ShellSort(int, int*);
+
+extern void HeapSort(int, int*);
+
+extern void MergeSort(int, int*);
+
+
+void RunAllAlgorithms(int* array, int size) {
+    BenchmarkTable t(3);
 	try {
-		cout << typeid(T1).name() << endl;
-		t.Run(T1::BubbleSort, size, array, "Bubble");
-		t.Run(T1::QuickSort, size, array, "Quick");
-		t.Run(T1::MergeSort, size, array, "Merge");
-		t.Run(T1::HeapSort, size, array, "Heap");
-		t.Run(T1::InsertionSort, size, array, "Insertion");
-		t.Run(T1::SelectionSort, size, array, "Selection");
-		t.Run(T1::ShellSort, size, array, "Shell");
+		t.Run(BubbleSort, size, array, "Bubble");
+		t.Run(QuickSort, size, array, "Quick");
+		t.Run(MergeSort, size, array, "Merge");
+		t.Run(HeapSort, size, array, "Heap");
+		t.Run(InsertionSort, size, array, "Insertion");
+		t.Run(SelectionSort, size, array, "Selection");
+		t.Run(ShellSort, size, array, "Shell");
 	} catch(const string s) {
 		cout << s << endl;
 		return;
@@ -34,38 +47,24 @@ void RunAllAlgorithms(T* array, int size) {
     t.PrintTable();
 }
 
-template <class T>
-T*  GenerateRandomArray(int size) {
-    T* array = new T[size];
+
+int*  GenerateRandomArray(int size) {
+    int* array = new int[size];
 	for (int i = 0; i < size; ++i) {
 		array[i] = rand() % 81;
 	}
     return array;
 }
 
-template <class T>
+
 void CreateArray(int size) {
-    T* array = GenerateRandomArray<T>(size);
-    RunAllAlgorithms<T, ByBagratid>(array, size);
+    int* array = GenerateRandomArray(size);
+    RunAllAlgorithms(array, size);
 }
 
 int main(int argc, char** argv) {
 	srand(time(0));
 	int size = atoi(argv[1]);
-    char type;
-    if (argc < 3) {
-        type = 'i';
-    } else {
-	    type = argv[2][0];
-    }
-	if (type == 'c') {
-		CreateArray<char>(size);
-	} else if (type == 'l') {
-		CreateArray<ll>(size);
-	} else if (type == 'd') {
-		CreateArray<double>(size);
-	} else {
-        CreateArray<int>(size);
-	}
+	CreateArray(size);
 	return 0;
 }

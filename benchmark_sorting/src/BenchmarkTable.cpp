@@ -1,4 +1,4 @@
-#include "BenchmarkTable.hpp"
+#include "../include/BenchmarkTable.hpp"
 #include <algorithm>
 
 BenchmarkTable::BenchmarkTable(int test_count) {
