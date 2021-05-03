@@ -13,7 +13,20 @@ extern void HeapSortByArtaxiad(int, int*);
 
 extern void MergeSortByArtaxiad(int, int*);
 
-// Bagratid team sorting functions
+// Arshakid team sorting functions
+extern void QuickSortByArshakid(int, int*);
+
+extern void BubbleSortByArshakid(int, int*);
+
+extern void SelectionSortByArshakid(int, int*);
+
+extern void InsertionSortByArshakid(int, int*);
+
+extern void ShellSortByArshakid(int, int*);
+
+extern void HeapSortByArshakid(int, int*);
+
+extern void MergeSortByArshakid(int, int*);
 
 
 // Bagratid team sorting functions

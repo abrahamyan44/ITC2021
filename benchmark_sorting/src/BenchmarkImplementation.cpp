@@ -31,6 +31,24 @@ void RunAllArtaxiadAlgorithms(int* array, int size, const int& test_count) {
     table.PrintTable();
 }
 
+void RunAllArshakidAlgorithms(int* array, int size, const int& test_count) {
+    BenchmarkTable table(test_count);
+	cout << "Arshakid team algorithms: ";
+	try {
+		table.Run(BubbleSortByArshakid, size, array, "Bubble");
+		table.Run(QuickSortByArshakid, size, array, "Quick");
+		table.Run(MergeSortByArshakid, size, array, "Merge");
+		table.Run(HeapSortByArshakid, size, array, "Heap");
+		table.Run(InsertionSortByArshakid, size, array, "Insertion");
+		table.Run(SelectionSortByArshakid, size, array, "Selection");
+		table.Run(ShellSortByArshakid, size, array, "Shell");
+	} catch(const string message) {
+		cout << message << endl;
+		return;
+	}
+    table.PrintTable();
+}
+
 void RunAllBagratidAlgorithms(int* array, int size, const int& test_count) {
     BenchmarkTable table(test_count);
 	cout << "Bagratid team algorithms: ";
@@ -53,7 +71,7 @@ void RunAllBagratidAlgorithms(int* array, int size, const int& test_count) {
 int*  GenerateRandomArray(int size) {
     int* array = new int[size];
 	for (int i = 0; i < size; ++i) {
-		array[i] = rand() % 81;
+		array[i] = rand();
 	}
     return array;
 }
@@ -64,6 +82,7 @@ int main(int argc, char** argv) {
 	int test_count = argc < 3 || atoi(argv[2]) <= 0 ? 3 : min(3, atoi(argv[2]));
     int* array = GenerateRandomArray(size);
 	RunAllArtaxiadAlgorithms(array, size, test_count);
+	//RunAllArshakidAlgorithms(array, size, test_count);
     RunAllBagratidAlgorithms(array, size, test_count);
 	return 0;
 }
