@@ -7,25 +7,11 @@
 #include <iomanip>
 #include "../include/BenchmarkTable.hpp"
 #include "../include/Timer.hpp"
+#include "../include/ExternFunctions.hpp"
 
 typedef long long ll;
 
 using namespace std;
-
-extern void QuickSortByBagratid(int, int*);
-
-extern void BubbleSortByBagratid(int, int*);
-
-extern void SelectionSortByBagratid(int, int*);
-
-extern void InsertionSortByBagratid(int, int*);
-
-extern void ShellSortByBagratid(int, int*);
-
-extern void HeapSortByBagratid(int, int*);
-
-extern void MergeSortByBagratid(int, int*);
-
 
 void RunAllBagratidAlgorithms(int* array, int size) {
     BenchmarkTable table(3);
@@ -37,8 +23,8 @@ void RunAllBagratidAlgorithms(int* array, int size) {
 		table.Run(InsertionSortByBagratid, size, array, "Insertion");
 		table.Run(SelectionSortByBagratid, size, array, "Selection");
 		table.Run(ShellSortByBagratid, size, array, "Shell");
-	} catch(const string s) {
-		cout << s << endl;
+	} catch(const string message) {
+		cout << message << endl;
 		return;
 	}
     table.PrintTable();
