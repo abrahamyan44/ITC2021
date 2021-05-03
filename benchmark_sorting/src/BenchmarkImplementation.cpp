@@ -67,6 +67,23 @@ void RunAllBagratidAlgorithms(int* array, int size, const int& test_count) {
     table.PrintTable();
 }
 
+void RunAllRubenidAlgorithms(int* array, int size, const int& test_count) {
+    BenchmarkTable table(test_count);
+	cout << "Rubenid team algorithms: ";
+	try {
+		table.Run(BubbleSortByRubenid, size, array, "Bubble");
+		table.Run(QuickSortByRubenid, size, array, "Quick");
+		table.Run(MergeSortByRubenid, size, array, "Merge");
+		table.Run(HeapSortByRubenid, size, array, "Heap");
+		table.Run(InsertionSortByRubenid, size, array, "Insertion");
+		table.Run(SelectionSortByRubenid, size, array, "Selection");
+		table.Run(ShellSortByRubenid, size, array, "Shell");
+	} catch(const string message) {
+		cout << message << endl;
+		return;
+	}
+    table.PrintTable();
+}
 
 int*  GenerateRandomArray(int size) {
     int* array = new int[size];
@@ -82,7 +99,8 @@ int main(int argc, char** argv) {
 	int test_count = argc < 3 || atoi(argv[2]) <= 0 ? 3 : min(3, atoi(argv[2]));
     int* array = GenerateRandomArray(size);
 	RunAllArtaxiadAlgorithms(array, size, test_count);
-	//RunAllArshakidAlgorithms(array, size, test_count);
+	RunAllArshakidAlgorithms(array, size, test_count);
     RunAllBagratidAlgorithms(array, size, test_count);
+	RunAllRubenidAlgorithms(array, size, test_count);
 	return 0;
 }
