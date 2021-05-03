@@ -1,26 +1,19 @@
 using namespace std;
 
 
-void BubbleSort(int size, int* array);
+void BubbleSortByBagratid(int size, int* array);
 
+void QuickSortByBagratid(int size, int* array);
 
-void QuickSort(int size, int* array);
+void SelectionSortByBagratid(int size, int* array);
 
+void InsertionSortByBagratid(int size, int* array);
 
-void SelectionSort(int size, int* array);
+void ShellSortByBagratid(int size, int* array);
 
+void HeapSortByBagratid(int size, int* array);
 
-void InsertionSort(int size, int* array);
-
-
-void ShellSort(int size, int* array);
-
-
-void HeapSort(int size, int* array);
-
-
-void MergeSort(int size, int* array);
-
+void MergeSortByBagratid(int size, int* array);
 
 void Swap(int& value1, int& value2) {
     int temporary = value1;
@@ -28,8 +21,7 @@ void Swap(int& value1, int& value2) {
     value2 = temporary;
 }
 
-
-void BubbleSort(int size, int* array) {
+void BubbleSortByBagratid(int size, int* array) {
     bool swapped = false;
     for (int i = 0; i < size; ++i) {
         for (int j = 1; j < size - i; ++j) {
@@ -44,7 +36,6 @@ void BubbleSort(int size, int* array) {
     }
 	return;
 }
-
 
 void QuickSortRecursive(int start, int wall, int end, int* array) {
     if (start >= end) {
@@ -67,13 +58,11 @@ void QuickSortRecursive(int start, int wall, int end, int* array) {
     QuickSortRecursive(wall + 1, wall + 1, end, array);
 }
 
-
-void QuickSort(int size, int* array) {
+void QuickSortByBagratid(int size, int* array) {
     QuickSortRecursive(0, 0, size - 1, array);
 }
 
-
-void SelectionSort(int size, int* array) {
+void SelectionSortByBagratid(int size, int* array) {
     for (int i = 0; i < size; ++i) {
         int minimum = i;
         for (int j = i + 1; j < size; ++j) {
@@ -85,8 +74,7 @@ void SelectionSort(int size, int* array) {
     }
 }
 
-
-void InsertionSort(int size, int* array) {
+void InsertionSortByBagratid(int size, int* array) {
     for (int i = 1; i < size; ++i) {
         int element = array[i];
         int j = i;
@@ -98,8 +86,7 @@ void InsertionSort(int size, int* array) {
     }
 }
 
-
-void ShellSort(int size, int* array) {
+void ShellSortByBagratid(int size, int* array) {
 	for (int interval = size / 2; interval > 0; interval /= 2)	{
 		for (int i = interval; i < size; ++i) {
 			for (int j = i; j >= interval; j -= interval) {
@@ -112,7 +99,6 @@ void ShellSort(int size, int* array) {
 		}
 	}
 }
-
 
 void HeapSwapping(const int& size, int index, int* array) {
 	int maximum = index;
@@ -129,8 +115,7 @@ void HeapSwapping(const int& size, int index, int* array) {
 	}
 }
 
-
-void HeapSort(int size, int* array) {
+void HeapSortByBagratid(int size, int* array) {
 	for (int i = size / 2 - 1; i >= 0; --i) {
 		HeapSwapping(size, i, array);
 	}
@@ -139,7 +124,6 @@ void HeapSort(int size, int* array) {
 		HeapSwapping(i, 0, array);
 	}
 }
-
 
 void DeclareSortedArray(int* array, int* array1, int* array2, int size) {
 	int index1 = 0;
@@ -155,7 +139,6 @@ void DeclareSortedArray(int* array, int* array1, int* array2, int size) {
 	}	
 }
 
-
 void DivideMyArray(int* array, int* array1, int* array2, int size) {
     for (int i = 0; i < size / 2; ++i) {
 		array1[i] = array[i];
@@ -165,8 +148,7 @@ void DivideMyArray(int* array, int* array1, int* array2, int size) {
 	}
 }
 
-
-void MergeSort(int size, int* array) {
+void MergeSortByBagratid(int size, int* array) {
 	if (size == 1) {
 		return;
 	}
@@ -179,8 +161,8 @@ void MergeSort(int size, int* array) {
 	int* array1 = new int[size / 2];
 	int* array2 = new int[size - size / 2];
 	DivideMyArray(array, array1, array2, size);
-	MergeSort(size / 2, array1);
-	MergeSort(size - size / 2, array2);
+	MergeSortByBagratid(size / 2, array1);
+	MergeSortByBagratid(size - size / 2, array2);
 	DeclareSortedArray(array, array1, array2, size);
 	delete[] array1;
 	delete[] array2;

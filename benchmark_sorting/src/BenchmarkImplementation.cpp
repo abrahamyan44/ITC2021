@@ -7,44 +7,41 @@
 #include <iomanip>
 #include "../include/BenchmarkTable.hpp"
 #include "../include/Timer.hpp"
-//#include "SortingAlgorithms.cpp"
-//#include "Timer.cpp"
-//#include "BenchmarkTable.cpp"
 
 typedef long long ll;
 
 using namespace std;
 
-extern void QuickSort(int, int*);
+extern void QuickSortByBagratid(int, int*);
 
-extern void BubbleSort(int, int*);
+extern void BubbleSortByBagratid(int, int*);
 
-extern void SelectionSort(int, int*);
+extern void SelectionSortByBagratid(int, int*);
 
-extern void InsertionSort(int, int*);
+extern void InsertionSortByBagratid(int, int*);
 
-extern void ShellSort(int, int*);
+extern void ShellSortByBagratid(int, int*);
 
-extern void HeapSort(int, int*);
+extern void HeapSortByBagratid(int, int*);
 
-extern void MergeSort(int, int*);
+extern void MergeSortByBagratid(int, int*);
 
 
-void RunAllAlgorithms(int* array, int size) {
-    BenchmarkTable t(3);
+void RunAllBagratidAlgorithms(int* array, int size) {
+    BenchmarkTable table(3);
 	try {
-		t.Run(BubbleSort, size, array, "Bubble");
-		t.Run(QuickSort, size, array, "Quick");
-		t.Run(MergeSort, size, array, "Merge");
-		t.Run(HeapSort, size, array, "Heap");
-		t.Run(InsertionSort, size, array, "Insertion");
-		t.Run(SelectionSort, size, array, "Selection");
-		t.Run(ShellSort, size, array, "Shell");
+		table.Run(BubbleSortByBagratid, size, array, "Bubble");
+		table.Run(QuickSortByBagratid, size, array, "Quick");
+		table.Run(MergeSortByBagratid, size, array, "Merge");
+		table.Run(HeapSortByBagratid, size, array, "Heap");
+		table.Run(InsertionSortByBagratid, size, array, "Insertion");
+		table.Run(SelectionSortByBagratid, size, array, "Selection");
+		table.Run(ShellSortByBagratid, size, array, "Shell");
 	} catch(const string s) {
 		cout << s << endl;
 		return;
 	}
-    t.PrintTable();
+    table.PrintTable();
 }
 
 
@@ -56,15 +53,10 @@ int*  GenerateRandomArray(int size) {
     return array;
 }
 
-
-void CreateArray(int size) {
-    int* array = GenerateRandomArray(size);
-    RunAllAlgorithms(array, size);
-}
-
 int main(int argc, char** argv) {
 	srand(time(0));
 	int size = atoi(argv[1]);
-	CreateArray(size);
+    int* array = GenerateRandomArray(size);
+    RunAllBagratidAlgorithms(array, size);
 	return 0;
 }
