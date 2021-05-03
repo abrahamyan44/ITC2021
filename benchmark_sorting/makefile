@@ -12,7 +12,8 @@ objs:
 run:
 	@make -s out;
 	@read -p "Input size of the array, which should be sorted: " size;
-	@bin/main $$size;
+	@read -p "Input count of tests (limited by 3): " test_count;
+	@bin/main $$size $$test_count;
 
 clean:
 	@rm -rf bin objs
