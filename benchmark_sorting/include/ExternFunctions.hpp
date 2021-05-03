@@ -44,4 +44,17 @@ extern void HeapSortByBagratid(int, int*);
 
 extern void MergeSortByBagratid(int, int*);
 
-// Bagratid team sorting functions
+// Rubenid team sorting functions
+extern void QuickSortByRubenid(int, int*);
+
+extern void BubbleSortByRubenid(int, int*);
+
+extern void SelectionSortByRubenid(int, int*);
+
+extern void InsertionSortByRubenid(int, int*);
+
+extern void ShellSortByRubenid(int, int*);
+
+extern void HeapSortByRubenid(int, int*);
+
+extern void MergeSortByRubenid(int, int*);
