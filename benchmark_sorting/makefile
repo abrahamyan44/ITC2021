@@ -1,12 +1,16 @@
 out:
 	@make -s objs;
 	@mkdir -p bin;
-	@g++  -o bin/main objs/* -L. lib/*;
+	@g++  -o bin/main objs/* -L. lib/*.so;
 
 objs:
 	@mkdir -p objs;
 	@g++ -c src/*.cpp
 	@mv *.o objs/
+	@g++ -shared -fPIC lib/Artaxiad.cpp -o lib/Artaxiad.so
+	@g++ -shared -fPIC lib/Arshakid.cpp -o lib/Arshakid.so
+	@g++ -shared -fPIC lib/Bagratid.cpp -o lib/Bagratid.so
+	@g++ -shared -fPIC lib/Rubenid.cpp -o lib/Rubenid.so
 
 .ONESHELL:
 run:
@@ -16,4 +20,4 @@ run:
 	@bin/main $$size $$test_count;
 
 clean:
-	@rm -rf bin objs
+	@rm -rf bin objs lib/*.so
