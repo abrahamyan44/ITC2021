@@ -8,6 +8,7 @@
 #include <string>
 #include <iomanip>
 #include <algorithm>
+#include <sqlite3.h>
 #include "Timer.hpp"
 
 class BenchmarkTable	
@@ -31,7 +32,7 @@ public:
 		T* array, std::string name);
     std::string NumberToString(double number);
 	std::string LineToString(double* work_time);
-    void PrintTable();
+    void PrintTable(sqlite3*& db, string team);
 };
 
 

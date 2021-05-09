@@ -1,5 +1,6 @@
 #include "../include/BenchmarkTable.hpp"
 #include <algorithm>
+#include <sqlite3.h>
 
 BenchmarkTable::BenchmarkTable(int test_count) {
     m_test_count = test_count;
@@ -69,7 +70,7 @@ std::string BenchmarkTable::LineToString(double* work_time) {
 	return line;
 }
 
-void BenchmarkTable::PrintTable() {
+void BenchmarkTable::PrintTable(sqlite3*& db, string team) {
     SortByAverageTime();
 	std::string line = GetWord("Function name") +  GetWord("Minimum time") +  GetWord("Average time") + GetWord("Maximum time") + "|";
 	PrintSide(line.length());
@@ -77,6 +78,8 @@ void BenchmarkTable::PrintTable() {
 	PrintSide(line.length());
     for (int i = 0; i < m_timer.size(); ++i) {
    		std::string line = LineToString(m_timer[i]);
+		const string row_str = "INSERT INTO RESULTS (TEAM, ALGORITHM, MINIMUM, AVERAGE, MAXIMUM) VALUES ('" + team + "', '" + m_match[m_timer[i]] + "', " + to_string(m_timer[i][0]) + ", " + to_string(m_timer[i][1]) + ", " + to_string(m_timer[i][2]) +");";
+		sqlite3_exec(db, row_str.c_str(), 0, 0, 0);
         std::cout << line;
 		PrintSide(line.length());
     }

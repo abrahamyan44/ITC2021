@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include <iomanip>
+#include <sqlite3.h>
 #include "../include/BenchmarkTable.hpp"
 #include "../include/Timer.hpp"
 #include "../include/ExternFunctions.hpp"
@@ -13,7 +14,7 @@ typedef long long ll;
 
 using namespace std;
 
-void RunAllArtaxiadAlgorithms(int* array, int size, const int& test_count) {
+void RunAllArtaxiadAlgorithms(int* array, int size, const int& test_count, sqlite3*& db) {
     BenchmarkTable table(test_count);
 	cout << endl;
 	cout << "Artaxiad team algorithms: ";
@@ -29,10 +30,10 @@ void RunAllArtaxiadAlgorithms(int* array, int size, const int& test_count) {
 		cout << message << endl;
 		return;
 	}
-    table.PrintTable();
+    table.PrintTable(db, "Artaxiad");
 }
 
-void RunAllArshakidAlgorithms(int* array, int size, const int& test_count) {
+void RunAllArshakidAlgorithms(int* array, int size, const int& test_count, sqlite3*& db) {
     BenchmarkTable table(test_count);
 	cout << endl;
 	cout << "Arshakid team algorithms: ";
@@ -48,10 +49,10 @@ void RunAllArshakidAlgorithms(int* array, int size, const int& test_count) {
 		cout << message << endl;
 		return;
 	}
-    table.PrintTable();
+    table.PrintTable(db, "Arshakid");
 }
 
-void RunAllBagratidAlgorithms(int* array, int size, const int& test_count) {
+void RunAllBagratidAlgorithms(int* array, int size, const int& test_count, sqlite3*& db) {
     BenchmarkTable table(test_count);
 	cout << endl;
 	cout << "Bagratid team algorithms: ";
@@ -67,10 +68,10 @@ void RunAllBagratidAlgorithms(int* array, int size, const int& test_count) {
 		cout << message << endl;
 		return;
 	}
-    table.PrintTable();
+    table.PrintTable(db, "Bagratid");
 }
 
-void RunAllRubenidAlgorithms(int* array, int size, const int& test_count) {
+void RunAllRubenidAlgorithms(int* array, int size, const int& test_count, sqlite3*& db) {
     BenchmarkTable table(test_count);
 	cout << endl;
 	cout << "Rubenid team algorithms: ";
@@ -86,7 +87,7 @@ void RunAllRubenidAlgorithms(int* array, int size, const int& test_count) {
 		cout << message << endl;
 		return;
 	}
-    table.PrintTable();
+    table.PrintTable(db, "Rubenid");
 }
 
 int*  GenerateRandomArray(int size) {
@@ -102,9 +103,20 @@ int main(int argc, char** argv) {
 	int size = atoi(argv[1]);
 	int test_count = argc < 3 || atoi(argv[2]) <= 0 ? 3 : min(3, atoi(argv[2]));
     int* array = GenerateRandomArray(size);
-	RunAllArtaxiadAlgorithms(array, size, test_count);
-	RunAllArshakidAlgorithms(array, size, test_count);
-    RunAllBagratidAlgorithms(array, size, test_count);
-	RunAllRubenidAlgorithms(array, size, test_count);
+	sqlite3* db;
+	const char* table;
+	sqlite3_open("database/results.db", &db);
+	table = "CREATE TABLE RESULTS("  \
+        "TEAM        TEXT      NOT NULL," \
+        "ALGORITHM          TEXT     NOT NULL," \
+        "MINIMUM           FLOAT     NOT NULL," \
+        "AVERAGE            FLOAT     NOT NULL," \
+        "MAXIMUM            FLOAT      NOT NULL);";
+	sqlite3_exec(db, table, 0, 0, 0);
+	RunAllArtaxiadAlgorithms(array, size, test_count, db);
+	RunAllArshakidAlgorithms(array, size, test_count, db);
+    RunAllBagratidAlgorithms(array, size, test_count, db);
+	RunAllRubenidAlgorithms(array, size, test_count, db);
+	sqlite3_close(db);
 	return 0;
 }

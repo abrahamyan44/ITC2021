@@ -1,7 +1,7 @@
 out:
 	@make -s objs;
 	@mkdir -p bin;
-	@g++  -o bin/main objs/* -L. lib/*.so;
+	@g++  -o bin/main objs/* -L. lib/*.so -l sqlite3;
 
 objs:
 	@mkdir -p objs;
@@ -20,4 +20,4 @@ run:
 	@bin/main $$size $$test_count;
 
 clean:
-	@rm -rf bin objs lib/*.so
+	@rm -rf bin objs lib/*.so database/*

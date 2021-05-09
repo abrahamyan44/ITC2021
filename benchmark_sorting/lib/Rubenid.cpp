@@ -12,7 +12,7 @@ void Swap(int& a, int& b) {
 	int tmp = a;
 	a = b;
 	b = tmp;
-}	
+}
 
 void BubbleSortByRubenid(int size, int* array) {
 	bool is_sorted = true;
