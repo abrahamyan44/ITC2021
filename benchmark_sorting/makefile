@@ -1,4 +1,5 @@
 out:
+	@make -s clean
 	@make -s objs;
 	@mkdir -p bin;
 	@g++  -o bin/main objs/* -L. lib/*.so -l sqlite3;
