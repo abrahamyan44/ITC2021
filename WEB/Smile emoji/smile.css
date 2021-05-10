@@ -1,0 +1,85 @@
+
+
+.container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.smile_body {
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    border-radius: 50%;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes example {
+    0% {
+        background: rgb(244,251,63);
+        background: radial-gradient(circle, rgba(244,251,63,1) 0%, rgba(252,152,70,1) 100%);
+    }
+    25% {
+        background: rgb(251,176,63);
+        background: radial-gradient(circle, rgba(251,176,63,1) 0%, rgba(252,70,70,1) 100%);
+    }
+    50% {
+        background: rgb(251,63,63);
+        background: radial-gradient(circle, rgba(251,63,63,1) 0%, rgba(252,70,178,1) 100%);
+    }
+    75% {
+        background: rgb(246,63,251);
+        background: radial-gradient(circle, rgba(246,63,251,1) 0%, rgba(91,70,252,1) 100%);
+    }
+    100% {
+        background: rgb(141,63,251);
+        background: radial-gradient(circle, rgba(141,63,251,1) 0%, rgba(17,69,255,1) 100%);
+    }
+}
+
+
+.left_eye {
+    position: relative;
+    top: 90px;
+    left: 100px; 
+
+    width: 70px;
+    height: 100px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.right_eye {
+    position: relative;
+    bottom: 10px;
+    left: 315px;
+
+    width: 70px;
+    height: 100px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.mouth {
+    position: absolute;
+    z-index: 1;
+    top: 220px;
+    left: 0;
+    right: 0;
+    height: 120px;
+    width: 200px;
+    margin: 0 auto;
+    border-bottom: 50px solid;
+    border-radius: 100%;
+}
+
+.bow {
+    width: 300px;
+    height: 150px;
+
+    margin: auto;
+}
