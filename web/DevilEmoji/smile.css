@@ -1,0 +1,39 @@
+* {
+margin : 0;
+padding: 0;
+box-sizing: border-box;
+outline: 0; 
+}
+
+.smile-container {
+    height: 500px;
+    width: 500px;
+    margin: 100px;
+    border-radius: 50%;
+    background-color: #550656;
+    box-shadow: gainsboro 5px 5px 5px 5px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eyes {
+    width: 250px;
+    height: 85px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-eye,.right-eye {
+    height: 120px;
+    width: 80px;
+    border-radius: 50%;
+    border: 10px solid black;
+    background-color: black;
+}
+
+.mouth {
+    border-bottom: 50px solid;
+    border-radius: 100%;
+    height: 200px;
+}
