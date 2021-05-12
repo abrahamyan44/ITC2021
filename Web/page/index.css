@@ -11,6 +11,7 @@
     width: 100%;
     height: 150px;
     background-color: black;
+    margin-bottom: 15px;
 }
 
 .searchBar {
@@ -32,11 +33,20 @@
 .searchInput {
     width: 500px;
     height: 30px;
+    border-radius: 15px;
+    padding-left: 4px;
+    outline: none;
 }
 
 .searchButton {
     width: 200px;
     height: 30px;
+    border-radius: 10px;
+}
+
+.navBarback {
+    width: 100%;
+    height: 150px;
 }
 
 span {
@@ -45,17 +55,15 @@ span {
 }
 
 .gridcontainer {
-    /* background-color: slategrey;
-    width: 50px;
-    height: 50px;
-    margin: 10px 10px 10px 10px; */
-    grid-template-columns: 1fr 1fr 1fr;
-    /* grid-row: 1fr 1fr 1fr; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: 3fr, 1fr, 1fr; */
 }
 
 .item {
     background-color: slategrey;
-    width: 50px;
-    height: 50px;
-    margin: 10px 10px 10px 10px;
+    width: 200px;
+    height: 200px;
+    margin: 15px;
+    text-align: center;
 }
