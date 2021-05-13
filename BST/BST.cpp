@@ -6,14 +6,25 @@ BST::BST()
     root = NULL;
 }
 
-void SwapTwoElements(int *x, int *y)
+BST::BST(int* arr, int size)
+{
+    root = CreateNewNode(0);
+    SortArray(arr, size);
+    int start_index = 0;
+
+    std::cout << "ctor    "  <<  start_index << ' ' << size  << "     Root     " << root << std::endl;
+
+    MakeTreeFromArray(arr, start_index, size);
+}
+
+void BST::SwapTwoElements(int *x, int *y)
 {
     int temp = *x;
     *x = *y;
     *y = temp;
 }
 
-void SortArray(int arr[], int n)
+void BST:: SortArray(int* arr, int n)
 {
     for (int i = 0; i < n-1; i++) {
         for (int j = 0; j < n-i-1; j++) {
@@ -24,35 +35,44 @@ void SortArray(int arr[], int n)
     }
 }
 
-BST::node* BST::CreateNewNode(int data)
-{
-    node* tree_node = new node;
+node* BST::CreateNewNode(int data)
+{		
+    node* tree_node= new node;
+    
+    assert(tree_node != NULL);
+    
+    std::cout <<tree_node << "   tree_node   " << std::endl;
+    
     tree_node->data = data;
     tree_node->left = NULL;
+    assert(tree_node->left == NULL);
+   
     tree_node->right = NULL;
+    assert(tree_node->right == NULL);
 
+    std::cout <<tree_node << "   tree_node   " << std::endl;
     return tree_node;
 }
 
-BST::node* BST::MakeTreeFromArray(int arr[], int start, int end)
+node* BST::MakeTreeFromArray(int* arr, int start, int end)
 {
-    if(start > end) {
-        return NULL;
-    } 
+std::cout << "MAKE   "  << start << ' ' << end << std::endl;
 
     int mid_index = (start + end)/2;
-    root = CreateNewNode(arr[mid_index]);
+    //assert(start < mid_index);
+    if(start >= mid_index || end <= mid_index) {
 
-    root->left = MakeTreeFromArray(arr, start, mid_index -1);
+    root = CreateNewNode(arr[mid_index]);
+        return nullptr;
+    }
+
+    //root = CreateNewNode(arr[mid_index]);
+
+    root->left = MakeTreeFromArray(arr, start, mid_index);
 
     root->right = MakeTreeFromArray(arr, mid_index + 1, end);
-}
-
-BST::BST(int arr[], int size)
-{
-    SortArray(arr, size);
-    int start_index = 0;
-    MakeTreeFromArray(arr, start_index, size);
+	
+    //return 0; 
 }
 
 void BST::AddLeaf(int value, node* ptr)
@@ -96,6 +116,8 @@ void BST::Insert(int value)
 
 void BST::InOrder(node* ptr)
 {
+    assert(nullptr != ptr);
+
     if(ptr == NULL) {
         return;
     }
@@ -106,6 +128,7 @@ void BST::InOrder(node* ptr)
 
 void BST::PreOrder(node* ptr)
 {
+    assert(nullptr != ptr);
     if(ptr == NULL) {
         return;
     } 
@@ -116,6 +139,8 @@ void BST::PreOrder(node* ptr)
 
 void BST::PostOrder(node* ptr)
 {
+
+    assert(nullptr != ptr);
     if(ptr == NULL) {
         return;
     }
@@ -126,8 +151,8 @@ void BST::PostOrder(node* ptr)
 
 void BST::Print()
 {
-    InOrder(root);
-    //PreOrder(root);
+    //InOrder(root);
+    PreOrder(root);
     //PostOrder(root);
     std::cout << "The tree is printed." << std::endl;
 }

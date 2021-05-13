@@ -1,17 +1,18 @@
 #include <iostream>
+#include <cassert>
 
-class BST
-{
-private:
-   struct node 
+ struct node 
    {
        int data;
        node* left;
        node* right;
    };
 
-private:
+class BST
+{
+  private:
     node* root;
+
     void AddLeaf(int value, node* ptr);
     node* CreateNewNode(int data);
     node* MakeTreeFromArray(int arr[], int start, int end);
@@ -19,6 +20,8 @@ private:
     void PreOrder(node* ptr);
     void PostOrder(node* ptr);
 
+void SortArray(int* arr, int n);
+void SwapTwoElements(int *x, int *y);
 public:
     BST(); 
     BST(int arr[], int size);

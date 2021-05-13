@@ -2,7 +2,7 @@
 #include "BST.hpp"
 
 int main()  {
-    int arr[5] = {2, 1, 3, 7, 5};
+    int arr[5] = { 1, 3, 7, 5, 6};
     BST t(arr, 5);
     t.Print();
     
