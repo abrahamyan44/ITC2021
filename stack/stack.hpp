@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 struct node
 {
     int data;
@@ -6,11 +9,11 @@ struct node
 
 class Stack {
 public:
-    typedef struct node* nodePtr;
+//    typedef struct node* nodePtr;
 
 private: 
-    nodePtr m_head;
-    nodePtr m_tail;
+    node* m_head;
+    node* m_tail;
 
 public:
     Stack();
@@ -20,7 +23,7 @@ public:
 
     int Size() const;
     void Print() const;
-    void PrintStack(nodePtr);
+    void PrintStack();
     void Pop();
     void Push(const int&);
     bool Empty() const;
