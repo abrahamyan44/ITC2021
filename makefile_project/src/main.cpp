@@ -31,4 +31,3 @@ int main() {
 	finput.close();
         return 0;
 }
-
