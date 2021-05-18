@@ -14,7 +14,7 @@ typedef long long ll;
 
 using namespace std;
 
-void RunAllArtaxiadAlgorithms(int* array, int size, const int& test_count, sqlite3*& DataBase) {
+void RunAllArtaxiadAlgorithms(int* array, int size, const int& test_count, sqlite3*& db) {
     BenchmarkTable table(test_count);
 	cout << endl;
 	cout << "Artaxiad team algorithms: ";
@@ -30,10 +30,10 @@ void RunAllArtaxiadAlgorithms(int* array, int size, const int& test_count, sqlit
 		cout << message << endl;
 		return;
 	}
-    table.PrintTable(DataBase,"Insert into Artaxiad (min_result, max_result, average_result) values");
+    table.PrintTable(db, "Artaxiad");
 }
 
-void RunAllArshakidAlgorithms(int* array, int size, const int& test_count, sqlite3*& DataBase) {
+void RunAllArshakidAlgorithms(int* array, int size, const int& test_count, sqlite3*& db) {
     BenchmarkTable table(test_count);
 	cout << endl;
 	cout << "Arshakid team algorithms: ";
@@ -49,10 +49,10 @@ void RunAllArshakidAlgorithms(int* array, int size, const int& test_count, sqlit
 		cout << message << endl;
 		return;
 	}
-	table.PrintTable(DataBase,"Insert into Arshakid (min_result, max_result, average_result) values");
+    table.PrintTable(db, "Arshakid");
 }
 
-void RunAllBagratidAlgorithms(int* array, int size, const int& test_count, sqlite3*& DataBase) {
+void RunAllBagratidAlgorithms(int* array, int size, const int& test_count, sqlite3*& db) {
     BenchmarkTable table(test_count);
 	cout << endl;
 	cout << "Bagratid team algorithms: ";
@@ -68,10 +68,10 @@ void RunAllBagratidAlgorithms(int* array, int size, const int& test_count, sqlit
 		cout << message << endl;
 		return;
 	}
-	table.PrintTable(DataBase,"Insert into Bagratid (min_result, max_result, average_result) values");
+    table.PrintTable(db, "Bagratid");
 }
 
-void RunAllRubenidAlgorithms(int* array, int size, const int& test_count, sqlite3*& DataBase) {
+void RunAllRubenidAlgorithms(int* array, int size, const int& test_count, sqlite3*& db) {
     BenchmarkTable table(test_count);
 	cout << endl;
 	cout << "Rubenid team algorithms: ";
@@ -87,7 +87,7 @@ void RunAllRubenidAlgorithms(int* array, int size, const int& test_count, sqlite
 		cout << message << endl;
 		return;
 	}
-	table.PrintTable(DataBase,"Insert into Rubenid (min_result, max_result, average_result) values");
+    table.PrintTable(db, "Rubenid");
 }
 
 int*  GenerateRandomArray(int size) {
@@ -110,7 +110,7 @@ void CreateTeamTable (std::string table_name) {
 		sqlite3_close(DataBase);
 	}
 
-	sql =   "algorithm_selector  int     NOT NULL," 
+	sql =   "algorithm_selector          int     NOT NULL," 
 			"min_result          float   NOT NULL," 
 			"max_result          float   NOT NULL," 
 			"average_result      float   NOT NULL);";
@@ -131,7 +131,7 @@ void CreateTable() {
 	char* ErrorMessage = 0;
 
 	sqlite3_open("DataBase.db", &DataBase);
-	sql = " Create Table Algorithms ( "
+	sql = " Create Table if not exists Algorithms ( "
 			"ID           INT PRIMERY KEY  NOT NULL,"
 			"Algorithm    TEXT             NOT NULL ); ";
 
@@ -142,12 +142,12 @@ void CreateTable() {
 	}
 
 	sql = " Insert into Algorithms values (1, 'ShellSort');"
-		  " Insert into Algorithms values (2, 'QuickSort');"
-		  " Insert into Algorithms values (3, 'HeapSort');"
-		  " Insert into Algorithms values (4, 'MergeSort');"
-		  " Insert into Algorithms values (5, 'SelectionSort');"
-		  " Insert into Algorithms values (6, 'InsertionSort');"
-		  " Insert into Algorithms values (7, 'BubbleSort');";
+              " Insert into Algorithms values (2, 'QuickSort');"
+	      " Insert into Algorithms values (3, 'HeapSort');"
+	      " Insert into Algorithms values (4, 'MergeSort');"
+	      " Insert into Algorithms values (5, 'SelectionSort');"
+	      " Insert into Algorithms values (6, 'InsertionSort');"
+              " Insert into Algorithms values (7, 'BubbleSort');";
 	sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
 	if (not_open) {
 		fprintf(stderr," Error: %s\n",ErrorMessage);
@@ -158,10 +158,10 @@ void CreateTable() {
 void CreateDataBase() {
 	sqlite3* DataBase;
 
-	CreateTeamTable(" CREATE TABLE Rubenid (");
-	CreateTeamTable(" CREATE TABLE Bagratid (");
-	CreateTeamTable(" CREATE TABLE Artaxiad (");
-	CreateTeamTable(" CREATE TABLE Arshakid (");
+	CreateTeamTable(" CREATE TABLE if not exists Rubenid (");
+	CreateTeamTable(" CREATE TABLE if not exists Bagratid (");
+	CreateTeamTable(" CREATE TABLE if not exists Artaxiad (");
+	CreateTeamTable(" CREATE TABLE if not exists Arshakid (");
 	CreateTable();
 	sqlite3_close(DataBase);
 }
@@ -169,16 +169,25 @@ void CreateDataBase() {
 
 
 int main(int argc, char** argv) {
-	sqlite3* DataBase;
-	CreateDataBase();
 	srand(time(0));
 	int size = atoi(argv[1]);
 	int test_count = argc < 3 || atoi(argv[2]) <= 0 ? 3 : min(3, atoi(argv[2]));
     int* array = GenerateRandomArray(size);
-	RunAllArtaxiadAlgorithms(array, size, test_count, DataBase);
-	RunAllArshakidAlgorithms(array, size, test_count, DataBase);
-    RunAllBagratidAlgorithms(array, size, test_count, DataBase);
-	RunAllRubenidAlgorithms(array, size, test_count, DataBase);
-
+	sqlite3* db;
+	CreateDataBase();
+	const char* table;
+	sqlite3_open("database/results.db", &db);
+	table = "CREATE TABLE RESULTS("  \
+        "TEAM        TEXT      NOT NULL," \
+        "ALGORITHM          TEXT     NOT NULL," \
+        "MINIMUM           FLOAT     NOT NULL," \
+        "AVERAGE            FLOAT     NOT NULL," \
+        "MAXIMUM            FLOAT      NOT NULL);";
+	sqlite3_exec(db, table, 0, 0, 0);
+	RunAllArtaxiadAlgorithms(array, size, test_count, db);
+	RunAllArshakidAlgorithms(array, size, test_count, db);
+    RunAllBagratidAlgorithms(array, size, test_count, db);
+	RunAllRubenidAlgorithms(array, size, test_count, db);
+	sqlite3_close(db);
 	return 0;
 }
