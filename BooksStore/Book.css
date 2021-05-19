@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+#count-form {
+    height: 120px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(237deg 100% 50% / 4%);
+}
+
+#input-tag{
+    font-size: 45px;
+    height: 60px;
+    width: 100px;
+    text-align: center;
+    border-radius: 4px
+}
+
+#submit-button {
+    font-size: 20px;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 350px 350px 350px ;
+    margin: auto;
+}
+
+.book-item {
+    height: 300px;
+    width: 200px;
+    border: 1px solid black;
+    margin: 70px;
+    text-align: center;
+}
