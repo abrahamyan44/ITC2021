@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+}
+
+.book {
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+    background-color: yellow
+
+}
+
+.title {
+    text-align: center;
+}
+
+.author {
+    text-align: center;
+}
+
+.image {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 0 auto;
+    /* height: 500px; */
+}
