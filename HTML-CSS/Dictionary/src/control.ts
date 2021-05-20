@@ -1,4 +1,8 @@
 import * as _ from 'lodash';
+import books from './books.json';
+
+const book
+
 
 // function component() {
 //     const element = document.createElement('div');

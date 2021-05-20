@@ -1,14 +1,57 @@
 * {
     margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('./images/background.png');
+    background-size: cover;
+}
+
+.search-box{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 10px 0;
+}
+
+.search-box > form {
+    position: relative;
+    width: 300px;
+}
+
+input {
+    position: absolute;
+    padding: 10px 0 10px 10px;
+    font-size: 15px;
+    border: 1px solid grey;
+    width: 300px;
+    border-radius: 25px;
+    background: #e9e4e4;
+    outline: none;
+}
+
+.button {
+    position: absolute;
+    border-radius: 50%;
+    right: -10px;
+    margin: 5px;
+    align-items: center;
+    padding: 5px 0 5px 0;
+    width: 30px;
+    background: #8ecafc;
+    color: white;
+    font-size: 15px;
+    border: 1px solid grey;
+    cursor: pointer;
 }
 
 .book {
-    /* position: relative; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 250px;
-    background-color: yellow
+    padding: 15px;
 
 }
 
