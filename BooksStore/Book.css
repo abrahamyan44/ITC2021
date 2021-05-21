@@ -65,7 +65,20 @@ h1 {
     border: 7px solid #00000061;
     margin: 70px;
     text-align: center;
-    border-radius: 40px;
+    border-radius: 10px;
+}
+
+.book-item > img {
+    height: 300px;
+    width: 220px;
+    opacity: 1;
+    transition: 0.7s ease;
+}
+
+.book-item:hover > img {
+    height: 310px;
+    width: 230px;
+    transition: 0.7s ease-out;
 }
 
 .img-item {
