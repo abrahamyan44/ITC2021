@@ -1,10 +1,11 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    /* background-color: black; */
+    background-color: currentColor;
 }
 
 nav {
@@ -20,7 +21,7 @@ nav {
     z-index: 1;
 }
 
-nav > img {
+nav > a > img {
     width: 85px;
     height: 85px;
 }
@@ -34,6 +35,14 @@ nav > img {
     color: whitesmoke;
 }
 
+.input-bar {
+    width: 200px;
+    border-radius: 25px;
+    padding-left: 5px;
+    outline: none;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+}
+
 .col-md {
     display: flex;
     justify-content: center;
@@ -42,10 +51,26 @@ nav > img {
     max-width: 250px;
     margin: 10px;   
     border-radius: 6px;
-    background-color: rgba(6, 172, 144, 0.877);
+    background-color: #4682b4;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 10px;
+    grid-auto-flow: dense;
 }
 
 .container img {
     width: 200px;
     height: 300px;
+    margin-bottom: 15px;
+}
+
+.book_button {
+    width: 40px;
+    height: 20px;
+    margin-bottom: 15px;
+    justify-content: center;
+
 }
