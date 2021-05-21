@@ -4,8 +4,10 @@
 }
 
 body {
-    background-image: url('./images/background.png');
+    background-image: url('./images/background.jpg');
     background-size: cover;
+    /* background-clip: content-box; */
+    /* background-repeat: repeat-y; */
 }
 
 .search-box{
@@ -45,6 +47,12 @@ input {
     border: 1px solid grey;
     cursor: pointer;
 }
+
+.list-books {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 
 .book {
     display: flex;

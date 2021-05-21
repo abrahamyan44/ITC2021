@@ -1,85 +1,85 @@
 [
     {
         "author": "Arthur Conan Doyle",
-        "book": "A Study in Scarlet",
+        "title": "A Study in Scarlet",
         "image": "images/A_Study_In_Scarlet.jpg"
     },
 
     {
         "author": "Arthur Conan Doyle",
-        "book": "The Valley of Fear",
+        "title": "The Valley of Fear",
         "image": "images/The_Valley_of_Fear.jpg"
     },
 
     {
         "author": "J.R.R. Tolkien",
-        "book": "The Lord of the Rings",
+        "title": "The Lord of the Rings",
         "image": "images/The_Lord_of_the_Rings.jpg"
     },
 
     {
         "author": "F. Scott Fitzgerald",
-        "book": "The Great Gatsby",
+        "title": "The Great Gatsby",
         "image": "images/The_Great_Gatsby.jpg"
     },
 
     {
         "author": "Markus Zusak",
-        "book": "The Book Thief",
+        "title": "The book Thief",
         "image": "images/The_Book_Thief.jpg"
     },
 
     {
         "author": "J.R.R. Tolkien",
-        "book": "The Hobbit",
+        "title": "The Hobbit",
         "image": "images/The_Hobbit.jpg"
     },
 
     {
         "author": "Louisa May Alcott",
-        "book": "Little Women",
+        "title": "Little Women",
         "image": "images/Little_Women.jpg"
     },
 
     {
         "author": "Ray Bradbury",
-        "book": "Fahrenheit 451",
+        "title": "Fahrenheit 451",
         "image": "images/Fahrenheit_451.jpg"
     },
 
     {
         "author": "Charlotte Bronte",
-        "book": "Jane Eyre",
+        "title": "Jane Eyre",
         "image": "images/Jane_Eyre.jpg"
     },
 
     {
         "author": "George Orwell",
-        "book": "Animal Farm",
+        "title": "Animal Farm",
         "image": "images/Animal_Farm.jpg"
     },
 
     {
         "author": "Margaret Mitchell",
-        "book": "Gone with the Wind",
+        "title": "Gone with the Wind",
         "image": "images/Gone_with_the_Wind.jpg"
     },
 
     {
         "author": "E.B. White",
-        "book": "Charlotte’s Web",
+        "title": "Charlotte’s Web",
         "image": "images/Charlottes_Web.jpg"
     },
 
     {
         "author": "William Golding",
-        "book": "Lord of the Flies",
+        "title": "Lord of the Flies",
         "image": "images/Lord_of_the_Flies.jpg"
     },
 
     {
         "author": "Khaled Hosseini",
-        "book": "The Kite Runner",
+        "title": "The Kite Runner",
         "image": "images/The_Kite_Runner.jpg"
     }
 ]
