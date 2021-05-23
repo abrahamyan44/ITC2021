@@ -4,77 +4,132 @@
 }
 
 body {
+    
     background-image: url('./images/background.jpg');
-    background-size: cover;
-    /* background-clip: content-box; */
-    /* background-repeat: repeat-y; */
+    background: cover;
+    background-attachment:  fixed;
+    background-repeat: no-repeat;
+    background-repeat: repeat-y;
 }
 
 .search-box{
-    height: 40px;
+    height: 4vw;
     display: flex;
     justify-content: center;
-    margin: 10px 0 10px 0;
+    margin: 2vw 0 2vw 0;
 }
 
 .search-box > form {
     position: relative;
-    width: 300px;
+    width: 28vw;
 }
 
-input {
+#input-block {
     position: absolute;
-    padding: 10px 0 10px 10px;
-    font-size: 15px;
+    padding: 1vw 0 1vw 1vw;
+    font-size: 1.5vw;
     border: 1px solid grey;
-    width: 300px;
-    border-radius: 25px;
+    width: 27vw;
+    border-radius: 50vw;
     background: #e9e4e4;
     outline: none;
 }
 
-.button {
+#input-button {
     position: absolute;
     border-radius: 50%;
-    right: -10px;
-    margin: 5px;
+    right: 0;
+    margin: 0.5vw 0.5vw 0.5vw 0.5vw;
     align-items: center;
-    padding: 5px 0 5px 0;
-    width: 30px;
+    padding: 0.5vw 0 0.5vw 0;
+    width: 3vw;
     background: #8ecafc;
     color: white;
-    font-size: 15px;
+    font-size: 1.5vw;
     border: 1px solid grey;
     cursor: pointer;
 }
 
+/* ================Book style============== */
 .list-books {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* display: grid; */
+    justify-items: center;
 }
-
 
 .book {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 250px;
+    width: 20vw;
     padding: 15px;
 
 }
 
 .title {
+    margin: 1.5vw 0 0.5vw 0;
+    color: aliceblue;
     text-align: center;
 }
 
 .author {
+    margin: 0.5vw 0 0.5vw 0;
+    color: aliceblue;
     text-align: center;
 }
 
 .image {
-    width: 200px;
-    display: flex;
-    justify-content: center;
+    width: 15vw;
     margin: 0 auto 0 auto;
-    /* height: 500px; */
 }
+
+/* ============ Responsive design =============*/
+@media only screen and (max-width: 600px) {
+    .list-books {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .book {
+        width: 25vw;
+
+    }
+
+    .image {
+        width: 20vw;
+    }
+
+    .title {
+        font-size: 3vw;
+    }
+
+    .author {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .list-books {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .book {
+        width: 30vw;
+
+    }
+
+    .image {
+        width: 25vw;
+    }
+
+    .title {
+        font-size: 4vw;
+    }
+
+    .author {
+        font-size: 4vw;
+    }
+}
+
