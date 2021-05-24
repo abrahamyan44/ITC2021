@@ -8,10 +8,17 @@
 
 h1 {
     text-align: center;
-    margin-top: 15px;
-    color: #00000073;
+    padding-top: 15px;
+    color: #f4f8f8;
     font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
+.header {
+    background-color: #5f9ea0de;
+}
+
+.wrapper {
+    background-color: #5f9ea012;
+} 
 
 #count-form {
     height: 120px;
@@ -42,9 +49,7 @@ h1 {
 }
 
 /* .wrapper {
-    /* display: flex;
-    align-items: center; */
-    /* justify-content: space-around; 
+    background-color: #5f9ea012;
 } */
 
 /* .main {
