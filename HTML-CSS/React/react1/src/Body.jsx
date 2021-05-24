@@ -3,10 +3,10 @@ import Book from './Book'
 
 export default function Body(props) {
     const [title, setTitle] = useState();
-    const [books, setBooks] = useState([{
-        title: 'first book'
-
-    }]);
+    const [books, setBooks] = useState(
+        [{title: 'first book'}]
+    
+    );
 
     return <div>
         {books.map(b => {

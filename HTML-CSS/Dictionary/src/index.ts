@@ -10,12 +10,9 @@ function main() {
   formBlock.addEventListener('submit', function (event) {
     event.preventDefault(); 
     let inputValue: number = parseInt((<HTMLInputElement>document.querySelector('#input-block')).value);  
-    if (0 < inputValue && inputValue < books.length) {
-      // removeBook();
+    if (0 < inputValue && inputValue <= books.length) {
+      removeBook();
       setBooks(inputValue);
-      // removeBook();
-      console.log('list = ', list);
-
     } else {
       alert("Wrong input value.");
     }
@@ -24,7 +21,7 @@ function main() {
 
 function setBooks(count:number) {  
   for (let index = 0; index < count; index++) {
-    
+     
     const element = books[index];
     
     const title = document.createElement('div');
@@ -51,9 +48,10 @@ function setBooks(count:number) {
 }
 
 function removeBook() {
-  // console.log(list);
-  if (list) {
-    list.parentElement.removeChild(list);
+  if (list.childElementCount > 0) {
+    while (list.firstChild) {
+      list.removeChild(list.firstChild);
+    }
   }
 }
 
