@@ -20,12 +20,19 @@ void RunAllArtaxiadAlgorithms(int* array, int size, const int& test_count, sqlit
 	cout << "Artaxiad team algorithms: ";
 	try {
 		table.Run(BubbleSortByArtaxiad, size, array, "Bubble");
+		table.WriteInTables("Artaxiad");
 		table.Run(QuickSortByArtaxiad, size, array, "Quick");
+		table.WriteInTables("Artaxiad");
 		table.Run(MergeSortByArtaxiad, size, array, "Merge");
+		table.WriteInTables("Artaxiad");
 		table.Run(HeapSortByArtaxiad, size, array, "Heap");
+		table.WriteInTables("Artaxiad");
 		table.Run(InsertionSortByArtaxiad, size, array, "Insertion");
+		table.WriteInTables("Artaxiad");
 		table.Run(SelectionSortByArtaxiad, size, array, "Selection");
+		table.WriteInTables("Artaxiad");
 		table.Run(ShellSortByArtaxiad, size, array, "Shell");
+		table.WriteInTables("Artaxiad");
 	} catch(const string message) {
 		cout << message << endl;
 		return;
@@ -39,12 +46,19 @@ void RunAllArshakidAlgorithms(int* array, int size, const int& test_count, sqlit
 	cout << "Arshakid team algorithms: ";
 	try {
 		table.Run(BubbleSortByArshakid, size, array, "Bubble");
+		table.WriteInTables("Arshakid");
 		table.Run(QuickSortByArshakid, size, array, "Quick");
+		table.WriteInTables("Arshakid");
 		table.Run(MergeSortByArshakid, size, array, "Merge");
+		table.WriteInTables("Arshakid");
 		table.Run(HeapSortByArshakid, size, array, "Heap");
+		table.WriteInTables("Arshakid");
 		table.Run(InsertionSortByArshakid, size, array, "Insertion");
+		table.WriteInTables("Arshakid");
 		table.Run(SelectionSortByArshakid, size, array, "Selection");
+		table.WriteInTables("Arshakid");
 		table.Run(ShellSortByArshakid, size, array, "Shell");
+		table.WriteInTables("Arshakid");
 	} catch(const string message) {
 		cout << message << endl;
 		return;
@@ -58,12 +72,19 @@ void RunAllBagratidAlgorithms(int* array, int size, const int& test_count, sqlit
 	cout << "Bagratid team algorithms: ";
 	try {
 		table.Run(BubbleSortByBagratid, size, array, "Bubble");
+		table.WriteInTables("Bagratid");
 		table.Run(QuickSortByBagratid, size, array, "Quick");
+		table.WriteInTables("Bagratid");
 		table.Run(MergeSortByBagratid, size, array, "Merge");
+		table.WriteInTables("Bagratid");
 		table.Run(HeapSortByBagratid, size, array, "Heap");
+		table.WriteInTables("Bagratid");
 		table.Run(InsertionSortByBagratid, size, array, "Insertion");
+		table.WriteInTables("Bagratid");
 		table.Run(SelectionSortByBagratid, size, array, "Selection");
+		table.WriteInTables("Bagratid");
 		table.Run(ShellSortByBagratid, size, array, "Shell");
+		table.WriteInTables("Bagratid");
 	} catch(const string message) {
 		cout << message << endl;
 		return;
@@ -77,11 +98,18 @@ void RunAllRubenidAlgorithms(int* array, int size, const int& test_count, sqlite
 	cout << "Rubenid team algorithms: ";
 	try {
 		table.Run(BubbleSortByRubenid, size, array, "Bubble");
+		table.WriteInTables("Rubenid");
 		table.Run(QuickSortByRubenid, size, array, "Quick");
+		table.WriteInTables("Rubenid");
 		table.Run(MergeSortByRubenid, size, array, "Merge");
+		table.WriteInTables("Rubenid");
 		table.Run(HeapSortByRubenid, size, array, "Heap");
+		table.WriteInTables("Rubenid");
 		table.Run(InsertionSortByRubenid, size, array, "Insertion");
+		table.WriteInTables("Rubenid");
 		table.Run(SelectionSortByRubenid, size, array, "Selection");
+		table.WriteInTables("Rubenid");
+		table.WriteInTables("Rubenid");
 		table.Run(ShellSortByRubenid, size, array, "Shell");
 	} catch(const string message) {
 		cout << message << endl;
@@ -110,7 +138,7 @@ void CreateTeamTable (std::string table_name) {
 		sqlite3_close(DataBase);
 	}
 
-	sql =   "algorithm_selector          int     NOT NULL," 
+	sql =   "Foreign key (ID_results)  references Algorithms(ID)," 
 			"min_result          float   NOT NULL," 
 			"max_result          float   NOT NULL," 
 			"average_result      float   NOT NULL);";
@@ -131,8 +159,8 @@ void CreateTable() {
 	char* ErrorMessage = 0;
 
 	sqlite3_open("DataBase.db", &DataBase);
-	sql = " Create Table Algorithms ( "
-			"ID           INT PRIMERY KEY  NOT NULL,"
+	sql =   " Create Table if not exists Algorithms ( "
+			"ID           INT PRIMERY KEY  Not Null,"
 			"Algorithm    TEXT             NOT NULL ); ";
 
 	not_open = sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
@@ -141,13 +169,13 @@ void CreateTable() {
 		sqlite3_free(ErrorMessage);
 	}
 
-	sql = " Insert into Algorithms values (1, 'ShellSort');"
-              " Insert into Algorithms values (2, 'QuickSort');"
-	      " Insert into Algorithms values (3, 'HeapSort');"
-	      " Insert into Algorithms values (4, 'MergeSort');"
-	      " Insert into Algorithms values (5, 'SelectionSort');"
-	      " Insert into Algorithms values (6, 'InsertionSort');"
-              " Insert into Algorithms values (7, 'BubbleSort');";
+	sql = " Insert into Algorithms  values (1, 'ShellSort');"
+          " Insert into Algorithms  values (2, 'QuickSort');"
+	      " Insert into Algorithms  values (3, 'HeapSort');"
+	      " Insert into Algorithms  values (4, 'MergeSort');"
+	      " Insert into Algorithms  values (5, 'SelectionSort');"
+	      " Insert into Algorithms  values (6, 'InsertionSort');"
+          " Insert into Algorithms  values (7, 'BubbleSort');";
 	sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
 	if (not_open) {
 		fprintf(stderr," Error: %s\n",ErrorMessage);
@@ -155,13 +183,43 @@ void CreateTable() {
 	}
 }
 
+void BenchmarkTable::WriteInTables(std::string team_name) {
+	sqlite3* DataBase;
+	bool not_open;
+	std::string sql;
+	char* ErrorMessage = 0;
+
+	sqlite3_open("DataBase.db", &DataBase);
+	
+	sql = "Insert into " + team_name + " values ( 1, " + to_string(m_timer[m_timer.size() - 1][0]) + "," +to_string(m_timer[m_timer.size() - 1][2]) + " ," +  to_string(m_timer[m_timer.size() - 1][1]) + " );"; 
+		
+	not_open = sqlite3_exec(DataBase, sql.c_str(), 0, 0, &ErrorMessage);
+	if(not_open) {
+		fprintf(stderr, "Error : %s\n", ErrorMessage);
+		sqlite3_free(ErrorMessage);
+	}
+}
+
 void CreateDataBase() {
 	sqlite3* DataBase;
+	const char* sql;
+	char* ErrorMessage = 0;
+	bool not_open;
+	
+	sqlite3_open("DataBase.db", &DataBase);
+	sql = "PRAGMA foreign_keys = ON;";
+	not_open = sqlite3_exec = (DataBase, sql, 0, 0, &ErrorMessage);
 
-	CreateTeamTable(" CREATE TABLE Rubenid (");
-	CreateTeamTable(" CREATE TABLE Bagratid (");
-	CreateTeamTable(" CREATE TABLE Artaxiad (");
-	CreateTeamTable(" CREATE TABLE Arshakid (");
+	if(not_open) {
+		fprintf(stderr, "Error: %s\n", ErrorMessage);
+		sqlite3_free(ErrorMessage);
+	}
+	
+	//	Drop table if exists team_name;
+	CreateTeamTable(" Create table if not exists Rubenid (");
+	CreateTeamTable(" Create table if not exists Bagratid (");
+	CreateTeamTable(" Create table if not exists Artaxiad (");
+	CreateTeamTable(" Create table if not exists Arshakid (");
 	CreateTable();
 	sqlite3_close(DataBase);
 }
