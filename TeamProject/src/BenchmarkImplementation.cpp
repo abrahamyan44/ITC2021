@@ -141,14 +141,14 @@ void CreateTeamTable (std::string team_name) {
 	sql =   " Drop table if exists " +  team_name + " ;" 
 	       	" Create table if not exists " + team_name + 
 	      	" ( Algorithm_Selector  INTEGER     PRIMARY KEY   AUTOINCREMENT,"
-	      	" min_result          float       NOT NULL," 
-		" max_result          float       NOT NULL," 
-		" average_result      float       NOT NULL,"
-		" Foreign key (Algorithm_Selector)  references Algorithms(Algorithm_Selector) );"; 
+		    " min_result          float       NOT NULL," 
+			" max_result          float       NOT NULL," 
+			" average_result      float       NOT NULL,"
+			" Foreign key (Algorithm_Selector)  references Algorithms(Algorithm_Selector) );"; 
 	
 	not_open = sqlite3_exec(DataBase, sql.c_str(), 0, 0, &ErrorMessage);
 	if(not_open) {
-		fprintf(stderr,"Error_create %s\n", ErrorMessage);
+		fprintf(stderr,"Error: %s\n", ErrorMessage);
 		sqlite3_free(ErrorMessage);
 	}
 } 
@@ -160,23 +160,23 @@ void CreateTable() {
 	char* ErrorMessage = 0;
 
 	sqlite3_open("DataBase.db", &DataBase);
-	sql =           " Create Table if not exists Algorithms ( "
+	sql =   " Create Table if not exists Algorithms ( "
 			"Algorithm_Selector    INTEGER    PRIMARY KEY  AUTOINCREMENT,"
 			"Algorithm             TEXT       NOT NULL ); ";
 
 	not_open = sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
 	if (not_open) {
-		fprintf(stderr," Error: %s\n",ErrorMessage);
+		fprintf(stderr," Error_alg: %s\n",ErrorMessage);
 		sqlite3_free(ErrorMessage);
 	}
 
-	sql = " Insert into Algorithms  (Algorithm)  values ('ShellSort');"
-              " Insert into Algorithms  (Algorithm)  values ('QuickSort');"
-	      " Insert into Algorithms  (Algorithm)  values ('HeapSort');"
+	sql = " Insert into Algorithms  (Algorithm)  values ('BubbleSort');"
+          " Insert into Algorithms  (Algorithm)  values ('QuickSort');"
 	      " Insert into Algorithms  (Algorithm)  values ('MergeSort');"
-	      " Insert into Algorithms  (Algorithm)  values ('SelectionSort');"
+	      " Insert into Algorithms  (Algorithm)  values ('HeapSort');"
 	      " Insert into Algorithms  (Algorithm)  values ('InsertionSort');"
-              " Insert into Algorithms  (Algorithm)  values ('BubbleSort');";
+	      " Insert into Algorithms  (Algorithm)  values ('SelectionSort');"
+          " Insert into Algorithms  (Algorithm)  values ('ShellSort');";
 	sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
 	if (not_open) {
 		fprintf(stderr," Error: %s\n",ErrorMessage);
@@ -192,7 +192,7 @@ void BenchmarkTable::WriteInTables(std::string team_name) {
 
 	sqlite3_open("DataBase.db", &DataBase);
 	
-	sql = "Insert into " + team_name + " (min_result, max_result, average_result) values (" + to_string(m_timer[m_timer.size() - 1][0]) + "," +to_string(m_timer[m_timer.size() - 1][2]) + " ," +  to_string( GetAverageTime( m_timer[m_timer.size() - 1] )) + " );"; 
+	sql = "Insert into " + team_name + " ( min_result, max_result, average_result ) values ( " + to_string( m_timer[m_timer.size() - 1][0] ) + " , " + to_string( m_timer[m_timer.size() - 1][2] ) + " , " +  to_string( GetAverageTime( m_timer[m_timer.size() - 1] )) + " );"; 
 		
 	not_open = sqlite3_exec(DataBase, sql.c_str(), 0, 0, &ErrorMessage);
 	if(not_open) {
