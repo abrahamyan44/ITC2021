@@ -6,9 +6,9 @@
 }
 
 body { 
+    background: fixed;
     background-image: url("https://cdnb.artstation.com/p/assets/images/images/021/016/507/large/mark-csikos-library-white.jpg?1570042109");
     background-repeat:  repeat;
-    /* background-color: #5f9ea012; */
 }
 
 h1 {
