@@ -126,7 +126,7 @@ int*  GenerateRandomArray(int size) {
     return array;
 }
 
-void CreateTeamTable (std::string table_name) {
+void CreateTeamTable (std::string team_name) {
 	sqlite3* DataBase;
 	char* ErrorMessage = 0;
 	std::string sql;
@@ -138,16 +138,17 @@ void CreateTeamTable (std::string table_name) {
 		sqlite3_close(DataBase);
 	}
 
-	sql =   "Algorithm_Selector  INTEGER     PRIMARY KEY   AUTOINCREMENT,"
-			"min_result          float       NOT NULL," 
-			"max_result          float       NOT NULL," 
-			"average_result      float       NOT NULL);"
-			"Foreign key (Algorithm_Selector)  references Algorithms(ID);"; 
-	std::string result = table_name + sql;
+	sql =   " Drop table if exists " +  team_name + " ;" 
+	       	" Create table if not exists " + team_name + 
+	      	" ( Algorithm_Selector  INTEGER     PRIMARY KEY   AUTOINCREMENT,"
+	      	" min_result          float       NOT NULL," 
+		" max_result          float       NOT NULL," 
+		" average_result      float       NOT NULL,"
+		" Foreign key (Algorithm_Selector)  references Algorithms(Algorithm_Selector) );"; 
 	
-	not_open = sqlite3_exec(DataBase, result.c_str(), 0, 0, &ErrorMessage);
+	not_open = sqlite3_exec(DataBase, sql.c_str(), 0, 0, &ErrorMessage);
 	if(not_open) {
-		fprintf(stderr,"Error %s\n", ErrorMessage);
+		fprintf(stderr,"Error_create %s\n", ErrorMessage);
 		sqlite3_free(ErrorMessage);
 	}
 } 
@@ -159,9 +160,9 @@ void CreateTable() {
 	char* ErrorMessage = 0;
 
 	sqlite3_open("DataBase.db", &DataBase);
-	sql =   " Create Table if not exists Algorithms ( "
-			"ID           INTEGER    PRIMARY KEY  AUTOINCREMENT,"
-			"Algorithm    TEXT       NOT NULL ); ";
+	sql =           " Create Table if not exists Algorithms ( "
+			"Algorithm_Selector    INTEGER    PRIMARY KEY  AUTOINCREMENT,"
+			"Algorithm             TEXT       NOT NULL ); ";
 
 	not_open = sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
 	if (not_open) {
@@ -170,12 +171,12 @@ void CreateTable() {
 	}
 
 	sql = " Insert into Algorithms  (Algorithm)  values ('ShellSort');"
-          " Insert into Algorithms  (Algorithm)  values ('QuickSort');"
+              " Insert into Algorithms  (Algorithm)  values ('QuickSort');"
 	      " Insert into Algorithms  (Algorithm)  values ('HeapSort');"
 	      " Insert into Algorithms  (Algorithm)  values ('MergeSort');"
 	      " Insert into Algorithms  (Algorithm)  values ('SelectionSort');"
 	      " Insert into Algorithms  (Algorithm)  values ('InsertionSort');"
-          " Insert into Algorithms  (Algorithm)  values ('BubbleSort');";
+              " Insert into Algorithms  (Algorithm)  values ('BubbleSort');";
 	sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
 	if (not_open) {
 		fprintf(stderr," Error: %s\n",ErrorMessage);
@@ -195,7 +196,7 @@ void BenchmarkTable::WriteInTables(std::string team_name) {
 		
 	not_open = sqlite3_exec(DataBase, sql.c_str(), 0, 0, &ErrorMessage);
 	if(not_open) {
-		fprintf(stderr, "Error : %s\n", ErrorMessage);
+		fprintf(stderr, "Error_write : %s\n", ErrorMessage);
 		sqlite3_free(ErrorMessage);
 	}
 }
@@ -211,15 +212,14 @@ void CreateDataBase() {
 	not_open = sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
 
 	if(not_open) {
-		fprintf(stderr, "Error: %s\n", ErrorMessage);
+		fprintf(stderr, "Error_keys: %s\n", ErrorMessage);
 		sqlite3_free(ErrorMessage);
 	}
 	
-	//	Drop table if exists team_name;
-	CreateTeamTable(" Create table if not exists Rubenid (");
-	CreateTeamTable(" Create table if not exists Bagratid (");
-	CreateTeamTable(" Create table if not exists Artaxiad (");
-	CreateTeamTable(" Create table if not exists Arshakid (");
+	CreateTeamTable("Rubenid ");
+	CreateTeamTable("Bagratid ");
+	CreateTeamTable("Artaxiad ");
+	CreateTeamTable("Arshakid ");
 	CreateTable();
 	sqlite3_close(DataBase);
 }
