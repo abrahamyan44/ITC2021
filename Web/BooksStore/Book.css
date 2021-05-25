@@ -2,26 +2,35 @@
     margin: 0;
     padding: 0;
     outline: none;
-    color: #4f4e4e;
     font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+body { 
+    background-image: url("https://cdnb.artstation.com/p/assets/images/images/021/016/507/large/mark-csikos-library-white.jpg?1570042109");
+    background-repeat:  repeat;
+    /* background-color: #5f9ea012; */
 }
 
 h1 {
+    font-size: -webkit-xxx-large;
     text-align: center;
     padding-top: 15px;
-    color: #f4f8f8;
+    /* color: #f4f8f8; */
+    color: #908f99a3;
     font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
 .header {
-    background-color: #5f9ea0de;
+    text-align: center;
+    /* background-color: #5f9ea0de; */
+    background-color: #d9dadc66;
 }
 
-.wrapper {
+/* .wrapper {
     background-color: #5f9ea012;
-} 
+}  */
 
 #count-form {
-    height: 120px;
+    height: 100px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -31,12 +40,13 @@ h1 {
 
 #input-tag{
     font-size: 45px;
-    height: 60px;
+    height: 50px;
     width: 100px;
     text-align: center;
     border-radius: 10px;
-    color: #4f4e4e;
-    border: 4px solid #00000061;
+    border: 4px solid #0000002b;
+    background: padding-box;
+    color: #b3b2b9;
 }
 
 #submit-button {
@@ -46,6 +56,9 @@ h1 {
     text-align: center;
     border-radius: 4px;
     margin-left: 20px;
+    border: 2px solid #0000002b;
+    background: whitesmoke;
+    color: #b3b2b9;
 }
 
 /* .wrapper {
@@ -94,4 +107,13 @@ h1 {
 .title-tag , .author-tag {
     font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
     padding: 5px;
+    font-weight: bold;
+    color: #908f99;
+}
+
+.material-icons {
+    font-size: 50px !important;
+    /* color: rgb(244 248 248); */
+    color: #b3b2b9;
+    padding: 15px;
 }
