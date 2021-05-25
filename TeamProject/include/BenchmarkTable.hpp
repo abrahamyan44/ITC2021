@@ -33,6 +33,8 @@ public:
     std::string NumberToString(double number);
 	std::string LineToString(double* work_time);
     void PrintTable(sqlite3*& db, std::string table);
+	void WriteInTable();
+	void WriteInTables(std::string team_name);
 };
 
 
@@ -52,7 +54,7 @@ void BenchmarkTable::Run(void (*Sorting) (int, T*), int size, T* array, std::str
 		T* new_array = CopyArray(size, array);
 		Sorting(size, new_array);
 		m_timer[m_timer.size() - 1][i] = time.GetDuration();
-		if (i == 0 && !IsSorted(size, new_array)) {
+		if ( i == 0 &&  !IsSorted(size, new_array)) {
 			throw name + "sort does not work correctly!!!";
 			delete[] new_array;
 			return;

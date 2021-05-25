@@ -109,8 +109,8 @@ void RunAllRubenidAlgorithms(int* array, int size, const int& test_count, sqlite
 		table.WriteInTables("Rubenid");
 		table.Run(SelectionSortByRubenid, size, array, "Selection");
 		table.WriteInTables("Rubenid");
-		table.WriteInTables("Rubenid");
 		table.Run(ShellSortByRubenid, size, array, "Shell");
+		table.WriteInTables("Rubenid");
 	} catch(const string message) {
 		cout << message << endl;
 		return;
@@ -138,11 +138,11 @@ void CreateTeamTable (std::string table_name) {
 		sqlite3_close(DataBase);
 	}
 
-	sql =   "Foreign key (ID_results)  references Algorithms(ID)," 
-			"min_result          float   NOT NULL," 
-			"max_result          float   NOT NULL," 
-			"average_result      float   NOT NULL);";
-
+	sql =   "Algorithm_Selector  INTEGER     PRIMARY KEY   AUTOINCREMENT,"
+			"min_result          float       NOT NULL," 
+			"max_result          float       NOT NULL," 
+			"average_result      float       NOT NULL);"
+			"Foreign key (Algorithm_Selector)  references Algorithms(ID);"; 
 	std::string result = table_name + sql;
 	
 	not_open = sqlite3_exec(DataBase, result.c_str(), 0, 0, &ErrorMessage);
@@ -160,8 +160,8 @@ void CreateTable() {
 
 	sqlite3_open("DataBase.db", &DataBase);
 	sql =   " Create Table if not exists Algorithms ( "
-			"ID           INT PRIMERY KEY  Not Null,"
-			"Algorithm    TEXT             NOT NULL ); ";
+			"ID           INTEGER    PRIMARY KEY  AUTOINCREMENT,"
+			"Algorithm    TEXT       NOT NULL ); ";
 
 	not_open = sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
 	if (not_open) {
@@ -169,13 +169,13 @@ void CreateTable() {
 		sqlite3_free(ErrorMessage);
 	}
 
-	sql = " Insert into Algorithms  values (1, 'ShellSort');"
-          " Insert into Algorithms  values (2, 'QuickSort');"
-	      " Insert into Algorithms  values (3, 'HeapSort');"
-	      " Insert into Algorithms  values (4, 'MergeSort');"
-	      " Insert into Algorithms  values (5, 'SelectionSort');"
-	      " Insert into Algorithms  values (6, 'InsertionSort');"
-          " Insert into Algorithms  values (7, 'BubbleSort');";
+	sql = " Insert into Algorithms  (Algorithm)  values ('ShellSort');"
+          " Insert into Algorithms  (Algorithm)  values ('QuickSort');"
+	      " Insert into Algorithms  (Algorithm)  values ('HeapSort');"
+	      " Insert into Algorithms  (Algorithm)  values ('MergeSort');"
+	      " Insert into Algorithms  (Algorithm)  values ('SelectionSort');"
+	      " Insert into Algorithms  (Algorithm)  values ('InsertionSort');"
+          " Insert into Algorithms  (Algorithm)  values ('BubbleSort');";
 	sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
 	if (not_open) {
 		fprintf(stderr," Error: %s\n",ErrorMessage);
@@ -191,7 +191,7 @@ void BenchmarkTable::WriteInTables(std::string team_name) {
 
 	sqlite3_open("DataBase.db", &DataBase);
 	
-	sql = "Insert into " + team_name + " values ( 1, " + to_string(m_timer[m_timer.size() - 1][0]) + "," +to_string(m_timer[m_timer.size() - 1][2]) + " ," +  to_string(m_timer[m_timer.size() - 1][1]) + " );"; 
+	sql = "Insert into " + team_name + " (min_result, max_result, average_result) values (" + to_string(m_timer[m_timer.size() - 1][0]) + "," +to_string(m_timer[m_timer.size() - 1][2]) + " ," +  to_string( GetAverageTime( m_timer[m_timer.size() - 1] )) + " );"; 
 		
 	not_open = sqlite3_exec(DataBase, sql.c_str(), 0, 0, &ErrorMessage);
 	if(not_open) {
@@ -208,7 +208,7 @@ void CreateDataBase() {
 	
 	sqlite3_open("DataBase.db", &DataBase);
 	sql = "PRAGMA foreign_keys = ON;";
-	not_open = sqlite3_exec = (DataBase, sql, 0, 0, &ErrorMessage);
+	not_open = sqlite3_exec(DataBase, sql, 0, 0, &ErrorMessage);
 
 	if(not_open) {
 		fprintf(stderr, "Error: %s\n", ErrorMessage);

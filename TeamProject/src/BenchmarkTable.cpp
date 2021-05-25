@@ -80,7 +80,9 @@ void BenchmarkTable::PrintTable(sqlite3*& DataBase, std::string table) {
 	std::cout << line;
 	PrintSide(line.length());
     for (int i = 0; i < m_timer.size(); ++i) {
-   		std::string line = LineToString(m_timer[i]);
+
+	
+			std::string line = LineToString(m_timer[i]);
 		const string row_str = "' (' " + to_string(m_timer[i][0]) + ", " + to_string(m_timer[i][1]) + ", "+ to_string(m_timer[i][2]) +  " );";
 		std::string result = table + row_str;
 		sqlite3_exec(DataBase, result.c_str(), 0, 0, &ErrorMessage);

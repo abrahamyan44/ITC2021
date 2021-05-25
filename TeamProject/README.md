@@ -1,5 +1,5 @@
 ------------------Creators-------------------
-Creators of this project are Sepuh, Jenya, Yura, Anna G. and Heghine.
+Created by ITC2021
 
 ------------------Commands-------------------
 
