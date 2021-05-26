@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: currentColor;
+    background-color: gray;
 }
 
 nav {
@@ -40,9 +40,17 @@ nav > a > img {
     border-radius: 25px;
     padding-left: 5px;
     outline: none;
-  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    margin-left: 20px;
 }
 
+.submit {
+    margin-left: 10px;
+    padding: 3px;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+}
 .col-md {
     display: flex;
     justify-content: center;
@@ -52,6 +60,11 @@ nav > a > img {
     margin: 10px;   
     border-radius: 6px;
     background-color: #4682b4;
+}
+
+.col-md p:nth-child(2) {
+    text-align: center;
+    height: 30px;
 }
 
 .container {
@@ -64,13 +77,6 @@ nav > a > img {
 .container img {
     width: 200px;
     height: 300px;
+    margin-top: 5px;
     margin-bottom: 15px;
-}
-
-.book_button {
-    width: 40px;
-    height: 20px;
-    margin-bottom: 15px;
-    justify-content: center;
-
 }
