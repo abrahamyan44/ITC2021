@@ -58,6 +58,28 @@ function createAddToCardSection() {
 
     return spanValue;
 }
+function createAllSections(index) {
+    const bookData = data[index];
+
+    return {
+        infoDiv: createInfoSection(),
+        bookDiv: createBookSection(),
+        deleteSection: createDeleteSection(),
+        authorSection: createAuthorSection(bookData),
+        titleSection: createTitleSection(bookData),
+        imageSection: createImageSection(bookData),
+        addToCardSection: createAddToCardSection(),
+    }
+}
+function appendAllSections(book) {
+    book.infoDiv.appendChild(book.authorSection);
+    book.infoDiv.appendChild(book.titleSection);
+    book.bookDiv.appendChild(book.deleteSection);
+    book.bookDiv.appendChild(book.infoDiv);
+    book.bookDiv.appendChild(book.imageSection);
+    book.bookDiv.appendChild(book.addToCardSection);
+    blockDiv.appendChild(book.bookDiv);
+}
 
 formBlock.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -65,23 +87,10 @@ formBlock.addEventListener("submit", function (event) {
     const inputValue = document.querySelector("#input-block").value;
 
     for (let i = 0; i < inputValue; ++i) {
-        const bookData = data[i];
-        const bookDiv = createBookSection();
-        const infoDiv = createInfoSection();
-        const deleteSection = createDeleteSection();
-        const authorSection = createAuthorSection(bookData);
-        const titleSection = createTitleSection(bookData);
-        const imageSection = createImageSection(bookData);
-        const addToCardSection = createAddToCardSection();
-        infoDiv.appendChild(authorSection);
-        infoDiv.appendChild(titleSection);
-        bookDiv.appendChild(deleteSection);
-        bookDiv.appendChild(infoDiv);
-        bookDiv.appendChild(imageSection);
-        bookDiv.appendChild(addToCardSection);
-        blockDiv.appendChild(bookDiv);
-        document.querySelector("#input-block").value = "";
+        const book = createAllSections(i);
+        appendAllSections(book);
     }
+    document.querySelector("#input-block").value = "";
 });
 
 blockDiv.addEventListener("click", function (event) {
