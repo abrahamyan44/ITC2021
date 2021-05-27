@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    
+    background-image: url('./images/background.jpg');
+    background: cover;
+    background-attachment:  fixed;
+    background-repeat: no-repeat;
+    background-repeat: repeat-y;
+}
+
+.search-box{
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    margin: 2vw 0 2vw 0;
+    
+}
+
+.search-box > form {
+    position: relative;
+    width: 28vw;
+}
+
+#input-block {
+    position: absolute;
+    padding: 1vw 0 1vw 1vw;
+    font-size: 1.5vw;
+    border: 1px solid grey;
+    width: 27vw;
+    border-radius: 50vw;
+    background: #e9e4e4;
+    outline: none;
+    box-shadow: 10px 10px 5px rgba(177, 158, 158, 0.384);
+}
+
+#input-button {
+    position: absolute;
+    border-radius: 50%;
+    right: 0;
+    margin: 0.5vw 0.5vw 0.5vw 0.5vw;
+    align-items: center;
+    padding: 0.5vw 0 0.5vw 0;
+    width: 3vw;
+    background: #8ecafc;
+    color: white;
+    font-size: 1.5vw;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+/* ================Book style============== */
+.list-books {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* display: grid; */
+    justify-items: center;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20vw;
+    padding: 15px;
+}
+
+.title {
+    margin: 1.5vw 0 0.5vw 0;
+    color: aliceblue;
+    text-align: center;
+}
+
+.author {
+    margin: 0.5vw 0 0.5vw 0;
+    color: aliceblue;
+    text-align: center;
+}
+
+.image {
+    width: 15vw;
+    margin: 0 auto 0 auto;
+    box-shadow: 10px 10px 5px rgba(177, 158, 158, 0.384);
+}
+
+/* ============ Responsive design =============*/
+@media only screen and (max-width: 600px) {
+    .list-books {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .book {
+        width: 25vw;
+
+    }
+
+    .image {
+        width: 20vw;
+    }
+
+    .title {
+        font-size: 3vw;
+    }
+
+    .author {
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .list-books {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .book {
+        width: 30vw;
+
+    }
+
+    .image {
+        width: 25vw;
+    }
+
+    .title {
+        font-size: 4vw;
+    }
+
+    .author {
+        font-size: 4vw;
+    }
+}
+
