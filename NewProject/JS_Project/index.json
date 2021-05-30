@@ -1,0 +1,17 @@
+"data" = [
+    {
+      "name": "Susan Choi",
+      "link": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F23%2F2018%2F07%2F27%2Fgreat-books-to-read-trust-exercise-crop.jpg&w=200&c=sc&poi=face&q=85",
+      "title": "Trust Exercise"
+    },
+    {
+        "name": "Aldo Sohm",
+        "link": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F23%2F2018%2F07%2F27%2Fgreat-books-to-read-wine-simple-crop.jpg&w=200&c=sc&poi=face&q=85",
+        "title": "Wine Simple"
+      },
+      {
+        "name": "Trick Mirror",
+        "link": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F23%2F2018%2F07%2F27%2Fgreat-books-to-read-trick-mirror-crop.jpg&w=200&c=sc&poi=face&q=85",
+        "title": "Jia Tolentino"
+      }
+  ]
