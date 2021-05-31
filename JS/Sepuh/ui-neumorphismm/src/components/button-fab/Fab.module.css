@@ -1,0 +1,46 @@
+.nu-fab {
+  display: inline-flex;
+}
+
+.nu-fab.nu-fab--animation {
+  transform-origin: center center;
+  animation: fab-animate 350ms ease-in-out 1;
+}
+
+.nu-fab--fixed {
+  position: fixed;
+}
+
+.nu-fab--absolute {
+  position: absolute;
+}
+
+.nu-fab.nu-fab--top {
+  top: 16px;
+}
+
+.nu-fab.nu-fab--right {
+  right: 16px;
+}
+
+.nu-fab.nu-fab--bottom {
+  bottom: 16px;
+}
+
+.nu-fab.nu-fab--left {
+  left: 16px;
+}
+
+@keyframes fab-animate {
+  0% {
+    transform: scale(1)
+  }
+
+  50% {
+    transform: scale(0)
+  }
+
+  100% {
+    transform: scale(1)
+  }
+}
