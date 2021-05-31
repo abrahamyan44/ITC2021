@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'ui-neumorphism'
 
-
+const FOODS_STORAGE_KEY = 'foods';
 const FoodScreen = () => {
-  const [foods, setFoods] = useState(() => JSON.parse(localStorage.getItem('foods')) || []);
+  const [foods, setFoods] = useState(() => JSON.parse(localStorage.getItem(FOODS_STORAGE_KEY)) || []);
 
   const [value, setValue] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('foods', JSON.stringify(foods));
+    localStorage.setItem(FOODS_STORAGE_KEY, JSON.stringify(foods));
   }, [foods]);
 
   const handleFoodSubmit = (event) => {
