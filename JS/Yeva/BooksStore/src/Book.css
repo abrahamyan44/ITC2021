@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+body { 
+    background: fixed;
+    background-image: url("https://cdnb.artstation.com/p/assets/images/images/021/016/507/large/mark-csikos-library-white.jpg?1570042109");
+    background-repeat:  repeat;
+}
+
+h1 {
+    font-size: -webkit-xxx-large;
+    text-align: center;
+    padding-top: 15px;
+    color: #908f99;
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.header {
+    text-align: center;
+    background-color: #d9dadc66;
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.material-icons {
+    font-size: 50px !important;
+    color: #908f99;
+    padding: 15px;
+}
+
+#count-form {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#input-tag {
+    height: 50px;
+    width: 100px;
+    font-size: 45px;
+    text-align: center;
+    border-radius: 10px;
+    border: 4px solid #0000002b;
+    background: padding-box;
+    color: #b3b2b9;
+}
+
+#submit-button {
+    cursor: pointer;
+    font-size: 20px;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    border-radius: 4px;
+    margin-left: 20px;
+    border: 2px solid #0000002b;
+    background: whitesmoke;
+    color: #b3b2b9;
+}
+
+.parent {
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.book-item {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    height: 380px;
+    width: 260px;
+    border: 7px solid #00000061;
+    margin: 70px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.book-item > img {
+    height: 300px;
+    width: 220px;
+    opacity: 1;
+    transition: 0.7s ease;
+}
+
+.book-item:hover > img {
+    height: 310px;
+    width: 230px;
+    transition: 0.7s ease-out;
+}
+
+.img-item {
+    height: 300px;
+    width: 200px;
+}
+
+.title-tag , .author-tag {
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+    padding: 5px;
+    font-weight: bold;
+    color: #908f99;
+}
+
+.delete-button {
+    cursor: pointer;
+    border: none;
+    width: 25px;
+    height: 20px;
+    float: right;
+    padding: 0;
+    margin: -1;
+    size: 15px;
+}
