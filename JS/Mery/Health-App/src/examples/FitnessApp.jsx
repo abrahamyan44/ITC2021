@@ -110,6 +110,19 @@ class FitnessApp extends React.Component {
               link
               active
               rounded
+              title={'Notification 2'}
+              subtitle={
+                'Please do exercises'
+              }
+              
+            />
+            <ListItem
+              style={{
+                marginTop: '10px',
+              }}
+              link
+              active
+              rounded
               title={'Notification 3'}
               subtitle={
                 'Running goal is not completed'
