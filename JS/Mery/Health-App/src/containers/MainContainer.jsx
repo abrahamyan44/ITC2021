@@ -26,12 +26,6 @@ class MainContainer extends React.Component {
     this.toggleTheme = this.toggleTheme.bind(this);
   }
 
-  get isHome() {
-    const { pathname: p } = this.props.location
-    return (
-      p === '/' || p === '/home' || p === '/examples' || p === '/typography'
-    )
-  }
 
   toggleTheme() {
     overrideThemeVariables({
@@ -53,7 +47,6 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    const { isHome } = this
     const { size } = this.props
     const { dark, open } = this.state
     const isSmall = size === 'sm' || size === 'xs'
@@ -78,7 +71,7 @@ class MainContainer extends React.Component {
                 ref={(ref) => (this.mainView = findDOMNode(ref))}
                 className={`main-view main-view--${
                   !isSmall ? 'large' : 'small'
-                } ${isHome ? 'main-view--home' : ''} ${
+                } ${'main-view--home'} ${
                   open ? 'main-view--open' : ''
                 }`}
               >
