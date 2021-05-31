@@ -36,9 +36,8 @@ class FitnessAppScreen extends React.Component {
         width={300}
         height={600}
         dark={this.props.dark}
-        className={`fitness-app ${
-          this.props.size === 'xs' ? 'fitness-app--small' : ''
-        } overflow-hidden`}
+        className={`fitness-app ${this.props.size === 'xs' ? 'fitness-app--small' : ''
+          } overflow-hidden`}
       >
         <H4 style={{ fontWeight: '500', marginTop: '8px' }} dark={this.props.dark}>{this.props.title}</H4>
         {this.props.children}

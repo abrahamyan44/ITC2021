@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'ui-neumorphism'
+
 
 const FoodScreen = () => {
   const [foods, setFoods] = useState(() => JSON.parse(localStorage.getItem('foods')) || []);
@@ -22,9 +24,28 @@ const FoodScreen = () => {
           value={value}
           onChange={event => setValue(event.target.value)}
           name='foodName'
-          placeholder='enter food name'
+          placeholder='Enter food name'
+          style={{
+            border: 'none',
+            width: '100%',
+            outline: 'none',
+            background: 'none',
+            fontSize: '20px',
+            color: '#555',
+            padding: '10px 10px 20px 5px',
+            boxShadow: 'inset 4px 4px 4px #cbced1, inset -4px -4px 4px #ffffff',
+          }}
         />
-        <button type='submit'>
+        <button style={{
+          background: 'transparent',
+          margin: '10px',
+          fontSize: '15px',
+          borderRadius: '15px',
+          height:'30px',
+          color:'#2979ff',
+          padding: '10px 10px 20px 5px',
+          boxShadow: '4px 4px 4px #cbced1, -4px -4px 4px #ffffff',
+        }}>
           Submit food
         </button>
       </form>

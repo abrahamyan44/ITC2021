@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Icon from '@mdi/react'
 import { mdiPlus } from '@mdi/js'
 import {
@@ -7,8 +6,13 @@ import {
   Card,
   IconButton,
   withResize,
-  Subtitle2
+  Subtitle2,
+  Caption,
 } from 'ui-neumorphism'
+
+import { mdiAccount } from '@mdi/js'
+import { ListItem, ListItemGroup } from 'ui-neumorphism'
+
 
 import FitnessAppScreen from './FitnessAppScreen';
 import ProgramScreen from './ProgramScreen';
@@ -22,8 +26,8 @@ class FitnessApp extends React.Component {
     return (
       <Card flat dark={dark} className='fitness-app-container'>
         <Card
-         flat
-         className='fitness-app-wrapper overflow-hidden' style={{ justifyContent: 'space-around' }}
+          flat
+          className='fitness-app-wrapper overflow-hidden' style={{ justifyContent: 'space-around' }}
         >
           <FitnessAppScreen
             title='Program'
@@ -73,17 +77,74 @@ class FitnessApp extends React.Component {
             selectedIndex={3}
             dark={dark}
           >
-            Notifications
+            <ListItem
+              style={{
+                marginTop: '10px',
+              }}
+              link
+              active
+              rounded
+              title={'Notification 1'}
+              subtitle={
+                'Do not forget to drink water'
+              }
+              
+            />
+            <ListItem
+              style={{
+                marginTop: '10px',
+              }}
+              link
+              active
+              rounded
+              title={'Notification 2'}
+              subtitle={
+                'Please do exercises'
+              }
+              
+            />
+            <ListItem
+              style={{
+                marginTop: '10px',
+              }}
+              link
+              active
+              rounded
+              title={'Notification 3'}
+              subtitle={
+                'Running goal is not completed'
+              }
+              
+            />
           </FitnessAppScreen>
           <FitnessAppScreen
             title='Account'
             selectedIndex={4}
             dark={dark}
           >
-          <Subtitle2>Gender: Female</Subtitle2> 
-          <Subtitle2>Name : Mery Hovsepyan </Subtitle2>
-          <Subtitle2>  Weight :  100</Subtitle2>
-          <Subtitle2>  Height :  200</Subtitle2>
+            <Card
+              dark={dark}
+              elevation={3}
+              style={{
+                display: 'flex',
+                marginTop: '10px',
+                marginBottom: '20px',
+                marginLeft: '80px',
+                width: '90px',
+                height: '90px',
+                borderRadius: '30px',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <Card flat>
+                <Icon path={mdiAccount} size={2.5} color='var(--primary)' />
+              </Card>
+            </Card>
+            <Subtitle2>Gender: Female</Subtitle2>
+            <Subtitle2>Name : Mery Hovsepyan </Subtitle2>
+            <Subtitle2>  Weight :  100</Subtitle2>
+            <Subtitle2>  Height :  200</Subtitle2>
           </FitnessAppScreen>
         </Card>
       </Card>
