@@ -133,7 +133,7 @@ class Home extends React.Component {
     return (
       <Card flat dark={dark} className='py-2'>
         <br />
-        <FitnessApp1 dark={dark} />
+        <FitnessApplication dark={dark} />
 
         <br />
       </Card>
