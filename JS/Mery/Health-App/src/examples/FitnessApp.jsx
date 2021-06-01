@@ -154,10 +154,10 @@ class FitnessApp extends React.Component {
                 <Icon path={mdiAccount} size={2.5} color='var(--primary)' />
               </Card>
             </Card>
-            <Subtitle2>Gender: Female</Subtitle2>
+            <Subtitle2>Gender : Female</Subtitle2>
             <Subtitle2>Name : Mery Hovsepyan </Subtitle2>
-            <Subtitle2>  Weight :  100</Subtitle2>
-            <Subtitle2>  Height :  200</Subtitle2>
+            <Subtitle2>Weight : 100</Subtitle2>
+            <Subtitle2>Height : 200</Subtitle2>
           </FitnessAppScreen>
         </Card>
       </Card>
