@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.converter {
+    border: solid 2px;
+    border-radius: 25px;
+    width: 50vw;
+    height: 30vw;
+    
+}
+
+.select-block {
+    display: flex;
+    justify-content: center;
+}
+
+#select-parameter {
+    margin: 1vw 0;
+    width: 25vw;
+    height: 3vw;
+    font-size: 2vw;
+    text-align-last: center;
+    border-radius: 1vw;
+}
+
+.input-block {
+    display: flex;
+    justify-content: center;
+    height: 5vw;
+    align-items: center;
+}
+
+input {
+    width: 10vw;
+    height: 2vw;
+    font-size: 1.5vw;
+}
+
+#swap-button {
+    /* width: 2vw; */
+    height: 2vw;
+    margin: 1vw;
+    font-size: 1vw;
+}
+
+.metric-units {
+    display: flex;
+    justify-content: center;
+}
+
+.left-select {
+    font-size: 1vw;
+    height: 2.vw;
+    width: 10vw;
+    margin-right: 2.5vw;
+    border-radius: 0.5vw;
+}
+
+.right-select {
+    font-size: 1vw;
+    height: 2vw;
+    width: 10vw;
+    margin-left: 2.5vw;
+    border-radius: 0.5vw;
+}
+
+
