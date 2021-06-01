@@ -3,36 +3,21 @@ import Food from './FoodPage/General'
 
 import Icon from '@mdi/react'
 import {
-    mdiRun,
-    mdiYoga,
-    mdiPlus,
     mdiHome,
     mdiBell,
-    mdiTicket,
     mdiAccount,
-    mdiArmFlex,
-    mdiDumbbell,
     mdiChartLine,
-    mdiChevronRight,
     mdiFood,
 } from '@mdi/js'
 
 import {
     H4,
-    H5,
-    H6,
     Card,
-    Body2,
-    Caption,
-    Subtitle2,
-    IconButton,
-    withResize,
     ToggleButton,
-    ProgressCircular,
 } from 'ui-neumorphism'
 
 
-function HomePage3({ dark, size }) {
+function Notifications({ dark, size }) {
     return (
         <Card flat dark={dark} className='fitness-app-container'>
             <Card flat className='fitness-app-wrapper overflow-hidden'>
@@ -47,12 +32,12 @@ function HomePage3({ dark, size }) {
                         style={{
                             display: 'flex',
                             marginTop: '8px',
-                            alignItems: 'center',
+                            // alignItems: 'center',
                             justifyContent: 'space-between'
                         }}
                     >
                         <H4 dark={dark} style={{ fontWeight: '500' }}>
-                            Food List
+                            Profile
               </H4>
                         {/* <IconButton
                 size='small'
@@ -64,18 +49,21 @@ function HomePage3({ dark, size }) {
                 <Icon path={mdiPlus} size={0.8} />
               </IconButton> */}
                     </div>
-                    <Card dark={dark}>
-                        <Food dark={dark} />
-                    </Card>
+                
                     <div
                         style={{
                             display: 'flex',
                             width: '252px',
-                            alignItems: 'center',
+                            // alignItems: 'center',
                             justifyContent: 'center'
                         }}
                     >
                     </div>
+                    <Card style={{marginTop: "25px"}}>
+                        <h3>Vardges</h3>
+                        <h3>Karapetyan</h3>
+                        <h5>vardges.karapetyan.20@gmail.com</h5>
+                    </Card>
 
                     <div className='fitness-app-nav-bar'>
                         <ToggleButton dark={dark}>
@@ -100,5 +88,5 @@ function HomePage3({ dark, size }) {
         )
 }
 
-export default HomePage3;
+export default Notifications;
 

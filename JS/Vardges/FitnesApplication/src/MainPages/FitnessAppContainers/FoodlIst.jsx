@@ -15,26 +15,16 @@ import {
     mdiChartLine,
     mdiChevronRight,
     mdiFood,
-    mdiNotificationClearAll,
-    mdiNote,
 } from '@mdi/js'
 
 import {
     H4,
-    H5,
-    H6,
     Card,
-    Body2,
-    Caption,
-    Subtitle2,
-    IconButton,
-    withResize,
     ToggleButton,
-    ProgressCircular,
 } from 'ui-neumorphism'
 
 
-function HomePage3({ dark, size }) {
+function FoodList({ dark, size }) {
     return (
         <Card flat dark={dark} className='fitness-app-container'>
             <Card flat className='fitness-app-wrapper overflow-hidden'>
@@ -54,12 +44,8 @@ function HomePage3({ dark, size }) {
                         }}
                     >
                         <H4 dark={dark} style={{ fontWeight: '500' }}>
-                            Notifications
-                        </H4>
-                        <ToggleButton selected dark={dark} color='var(--primary)'>
-                            <Icon path={mdiNotificationClearAll} size={0.8} />
-                        </ToggleButton> 
-             
+                            Food List
+              </H4>
                         {/* <IconButton
                 size='small'
                 rounded
@@ -70,6 +56,9 @@ function HomePage3({ dark, size }) {
                 <Icon path={mdiPlus} size={0.8} />
               </IconButton> */}
                     </div>
+                    <Card dark={dark}>
+                        <Food dark={dark} />
+                    </Card>
                     <div
                         style={{
                             display: 'flex',
@@ -79,7 +68,7 @@ function HomePage3({ dark, size }) {
                         }}
                     >
                     </div>
-                    <i style={{marginTop: '20px'}}>65 unreaded notifications</i>
+
                     <div className='fitness-app-nav-bar'>
                         <ToggleButton dark={dark}>
                             <Icon path={mdiHome} size={0.9} />
@@ -103,5 +92,5 @@ function HomePage3({ dark, size }) {
         )
 }
 
-export default HomePage3;
+export default FoodList;
 

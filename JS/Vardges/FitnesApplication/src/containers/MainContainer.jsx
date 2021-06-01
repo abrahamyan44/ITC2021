@@ -4,7 +4,6 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 
 import {
   Card,
-  Divider,
   withResize,
   overrideThemeVariables
 } 
@@ -27,13 +26,6 @@ class MainContainer extends React.Component {
     this.toggleSidebar = this.toggleSidebar.bind(this)
     this.onSidebarClick = this.onSidebarClick.bind(this)
   }
-
-  // get isHome() {
-  //   const { pathname: p } = this.props.location
-  //   return (
-  //     p === '/' || p === '/home' || p === '/examples' || p === '/typography'
-  //   )
-  // }
 
   toggleTheme() {
     overrideThemeVariables({

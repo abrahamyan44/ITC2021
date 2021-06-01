@@ -16,8 +16,7 @@ function Food({dark}) {
                             ...items,
                             {
                                 id: Math.random(),
-                                text: text,
-                                completed: false
+                                text: text
                             }
                         ],
                     );
@@ -25,7 +24,7 @@ function Food({dark}) {
             }} />
             <FoodList  dark={dark} items={items} onDelete={(todo) => {
                 setTodos(items.filter((t) =>
-                t.id !== todo.id
+                    t.id !== todo.id
                 ))
             }} />
         </div>

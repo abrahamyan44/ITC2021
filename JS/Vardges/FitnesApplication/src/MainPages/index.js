@@ -1,4 +1,4 @@
 // export { default as FitnessApp } from './FitnessApp'
 
 
-export {default as FitnessApp1} from './FitnessAppFunction'
+export {default as FitnessApplication} from './FitnessAppFunction'

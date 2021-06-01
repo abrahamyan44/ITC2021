@@ -15,6 +15,8 @@ import {
     mdiChartLine,
     mdiChevronRight,
     mdiFood,
+    mdiNotificationClearAll,
+    mdiNote,
 } from '@mdi/js'
 
 import {
@@ -32,7 +34,7 @@ import {
 } from 'ui-neumorphism'
 
 
-function HomePage3({ dark, size }) {
+function Profile({ dark, size }) {
     return (
         <Card flat dark={dark} className='fitness-app-container'>
             <Card flat className='fitness-app-wrapper overflow-hidden'>
@@ -47,13 +49,17 @@ function HomePage3({ dark, size }) {
                         style={{
                             display: 'flex',
                             marginTop: '8px',
-                            // alignItems: 'center',
+                            alignItems: 'center',
                             justifyContent: 'space-between'
                         }}
                     >
                         <H4 dark={dark} style={{ fontWeight: '500' }}>
-                            Profile
-              </H4>
+                            Notifications
+                        </H4>
+                        <ToggleButton selected dark={dark} color='var(--primary)'>
+                            <Icon path={mdiNotificationClearAll} size={0.8} />
+                        </ToggleButton> 
+             
                         {/* <IconButton
                 size='small'
                 rounded
@@ -64,22 +70,16 @@ function HomePage3({ dark, size }) {
                 <Icon path={mdiPlus} size={0.8} />
               </IconButton> */}
                     </div>
-                
                     <div
                         style={{
                             display: 'flex',
                             width: '252px',
-                            // alignItems: 'center',
+                            alignItems: 'center',
                             justifyContent: 'center'
                         }}
                     >
                     </div>
-                    <Card style={{marginTop: "25px"}}>
-                        <h3>Vardges</h3>
-                        <h3>Karapetyan</h3>
-                        <h5>vardges.karapetyan.20@gmail.com</h5>
-                    </Card>
-
+                    <i style={{marginTop: '20px'}}>65 unreaded notifications</i>
                     <div className='fitness-app-nav-bar'>
                         <ToggleButton dark={dark}>
                             <Icon path={mdiHome} size={0.9} />
@@ -103,5 +103,5 @@ function HomePage3({ dark, size }) {
         )
 }
 
-export default HomePage3;
+export default Profile;
 

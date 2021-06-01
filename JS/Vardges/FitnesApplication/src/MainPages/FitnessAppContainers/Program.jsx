@@ -31,7 +31,7 @@ import {
 } from 'ui-neumorphism'
 
 
-function HomePage1({dark,size}) {
+function Program({dark,size}) {
     return (
       <Card flat dark={dark} className='fitness-app-container'>
         <Card flat className='fitness-app-wrapper overflow-hidden'>
@@ -229,4 +229,4 @@ function HomePage1({dark,size}) {
     )
 }
 
-export default HomePage1;
+export default Program;

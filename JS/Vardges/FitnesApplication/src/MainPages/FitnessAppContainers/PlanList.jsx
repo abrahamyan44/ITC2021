@@ -21,17 +21,15 @@ import {
     H5,
     H6,
     Card,
-    Body2,
     Caption,
     Subtitle2,
     IconButton,
-    withResize,
     ToggleButton,
     ProgressCircular,
 } from 'ui-neumorphism'
 
 
-function HomePage2({ dark, size }) {
+function PlanList({ dark, size }) {
     return (
         <Card flat dark={dark} className='fitness-app-container'>
             <Card flat className='fitness-app-wrapper overflow-hidden'>
@@ -181,4 +179,4 @@ function HomePage2({ dark, size }) {
     )
 }
 
-export default HomePage2;
+export default PlanList;

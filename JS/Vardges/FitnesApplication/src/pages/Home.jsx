@@ -7,7 +7,7 @@ import {
 } from 'ui-neumorphism'
 
 // import { FitnessApp } from '../examples/index'
-import {FitnessApp1} from '../MainPages/index'
+import {FitnessApplication} from '../MainPages/index'
 const importCode = `import React, { Component } from 'react'
 
 import { Button } from 'ui-neumorphism'
