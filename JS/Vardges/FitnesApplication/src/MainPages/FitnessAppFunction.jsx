@@ -33,7 +33,8 @@ import {
 import HomePage1 from './FitnessAppContainers/HomePage1'
 import HomePage2 from './FitnessAppContainers/HomePage2'
 import HomePage3 from './FitnessAppContainers/HomePage3'
-
+import HomePage4 from './FitnessAppContainers/HomePage4'
+import HomePage5 from './FitnessAppContainers/HomePage5'
 
 
 class FitnessApp1 extends React.Component {
@@ -45,6 +46,8 @@ class FitnessApp1 extends React.Component {
                     <HomePage1 dark={dark} size={size}/>
                     <HomePage2 dark={dark} size={size}/>
                     <HomePage3 dark={dark} size={size}/>
+                    <HomePage4 dark={dark} size={size}/>
+                    <HomePage5 dark={dark} size={size}/>
             </Card>
             <Body2 style={{ marginTop: '48px', textAlign: 'center' }}>
             </Body2>

@@ -7,13 +7,13 @@ function FoodForm({onAdd}) {
         <div>
             <form  style={{marginBlock: '30px'}} onSubmit={(ev) => {
                 ev.preventDefault();
-                if(ev.target.value !== ' ')
                 setValue(text);
                 onAdd(text);
                 setText("")
             }}>
                 <input type="text" value={text}  maxLength={20} onChange={(ev) => {
-                    setText(ev.target.value)
+                    if(ev.target.value !== ' ')
+                        setText(ev.target.value)
                 }} />
                 <button>Add</button>
             </form>

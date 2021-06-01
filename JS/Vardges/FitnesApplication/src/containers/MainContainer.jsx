@@ -82,7 +82,7 @@ class MainContainer extends React.Component {
               onMenuClick={this.toggleSidebar}
             />
             {/* <Divider dense dark={dark} /> */}
-            <Card flat className='main-content'>
+            <Card flat className='main-content' style={{width:2350}}>
               <Card
                 flat
                 id='mainView'

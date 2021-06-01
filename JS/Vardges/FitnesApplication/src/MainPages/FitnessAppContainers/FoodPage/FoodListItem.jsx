@@ -19,12 +19,15 @@ function FoodListItem({ item, onDelete, dark }) {
             // fill:'currentcolor',
             display: 'flex',
             width: '252px',
-            justifyContent: 'space-between',
+           justifyContent: 'space-between',
             
         }} >
-            <input  dark={dark} type="checkbox" />
-            <h4 dark={dark}>{item.text} </h4>
-            <button flet dark={dark} onClick={() =>
+            {/* <input   type="checkbox"  onClick={()=>{
+                item.completed = !item.completed;
+            }
+            }/> */}
+            <h4 >{item.text} </h4>
+            <button  onClick={() =>
                 onDelete(item)}>X</button>
         </Card>
 
