@@ -87,7 +87,6 @@ class MainContainer extends React.Component {
                   ))}
                   </Switch>
                 </Card>
-                {/* {isSmall || isHome ? null : <RightBar dark={dark} size={size} />}*/}
             </Card>
           </Card>
         </Card>
