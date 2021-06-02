@@ -2,38 +2,20 @@ import * as _ from 'lodash';
 
 function main() {
     const select_object = document.querySelector('#select-parameter');
-    const metric_units_block = document.querySelector('.metric-units');
     let select_result = 0;
     select_object.addEventListener('change', function (event) {
         select_result = event.target.value;
-        if (select_result === 'Length') {
-            removeAllCilds(metric_units_block);
-            let metric_units = ['Kilometre', 'Metre'];
-            generateMetricUnitSelects(metric_units_block, metric_units);
-            swapMetricUnits();
-            const left_input = document.querySelector('#left-input');
-            left_input.addEventListener('input', function (event) {
-                const right_input = document.querySelector('#right-input');
-                const left_select = document.querySelector('.left-select');
-                const right_select = document.querySelector('.right-select');
-                switch (left_select.value) {
-                    case 'Kilometre':
-                        switch (right_select.value) {
-                            case 'Metre':
-                                right_input.value = kilometreToMetre(event.target.value);
-                                break;
-                        }
-                        break;
-                    case 'Metre':
-                        switch (right_select.value) {
-                            case 'Kilometre':
-                                right_input.value = metreToKilometre(event.target.value);
-                                break;
-                        }
-                        break;
-                }
+        switch (select_result) {
+            case 'Length':
+                convertingLength();
+                break;
+            case 'Mass':
+                convertingMass();
+                break;
 
-            });
+            default:
+                removeAllCilds(document.querySelector('.metric-units'));
+                break;
         }
     });
     
@@ -69,6 +51,79 @@ function generateMetricUnitSelects(block_to_append,  metric_units) {
     block_to_append.appendChild(right_select);
 }
 
+function convertingLength() {
+    const metric_units_block = document.querySelector('.metric-units');
+    let metric_units = ['Kilometre', 'Metre'];
+    removeAllCilds(metric_units_block);
+    generateMetricUnitSelects(metric_units_block, metric_units);
+    swapMetricUnits();
+    const left_input = document.querySelector('#left-input');
+    left_input.addEventListener('input', function (event) {
+        const right_input = document.querySelector('#right-input');
+        const left_select = document.querySelector('.left-select');
+        const right_select = document.querySelector('.right-select');
+        switch (left_select.value) {
+            case 'Kilometre':
+                switch (right_select.value) {
+                    case 'Metre':
+                        right_input.value = kilometreToMetre(event.target.value);
+                        break;
+                    default:
+                        right_input.value = event.target.value;
+                        break;
+                }
+                break;
+            case 'Metre':
+                switch (right_select.value) {
+                    case 'Kilometre':
+                        right_input.value = metreToKilometre(event.target.value);
+                        break;
+                    default:
+                        right_input.value = event.target.value;
+                        break;
+                }
+                break;
+        }
+    });
+}
+
+function convertingMass() {
+    const metric_units_block = document.querySelector('.metric-units');
+    let metric_units = ['Tonne', 'Kilogram'];
+    removeAllCilds(metric_units_block);
+    generateMetricUnitSelects(metric_units_block, metric_units);
+    swapMetricUnits();
+    const left_input = document.querySelector('#left-input');
+    left_input.addEventListener('input', function (event) {
+        const right_input = document.querySelector('#right-input');
+        const left_select = document.querySelector('.left-select');
+        const right_select = document.querySelector('.right-select');
+        switch (left_select.value) {
+            case 'Tonne':
+                switch (right_select.value) {
+                    case 'Kilogram':
+                        right_input.value = tonneToKilogram(event.target.value);
+                        break;
+                    default:
+                        right_input.value = event.target.value;
+                        break;
+                }
+                break;
+            case 'Kilogramm':
+                switch (right_select.value) {
+                    case 'Tonne':
+                        right_input.value = kilogramToTonne(event.target.value);
+                        break;
+                    default:
+                        right_input.value = event.target.value;
+                        break;
+
+                }
+                break;
+        }
+    });
+}
+
 function removeAllCilds(block) {
     if (block.childElementCount > 0) {
       while (block.firstChild) {
@@ -78,12 +133,37 @@ function removeAllCilds(block) {
   }
 
 function kilometreToMetre(input_value) {
-    return input_value * 1000;
+    if (input_value >= 0) {
+        return input_value * 1000;
+    } else {
+        return 0;
+    }
 }
 
 function metreToKilometre(input_value) {
-    return input_value / 1000;
+    if (input_value >= 0) {
+        return input_value / 1000;
+    } else {
+        return 0;
+    }
 }
+
+function tonneToKilogram(input_value) {
+    if (input_value >= 0) {
+        return input_value * 1000;
+    } else {
+        return 0;
+    }
+}
+
+function kilogramToTonne(input_value) {
+    if (input_value >= 0) {
+        return input_value / 1000;
+    } else {
+        return 0;
+    }
+}
+
 
 function swapMetricUnits() {
     const swap_button = document.querySelector('#swap-button');

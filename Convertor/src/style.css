@@ -68,15 +68,15 @@ h1 {
     font-size: 1vw;
     height: 2vw;
     width: 10vw;
-    border-radius: 0.5vw;
+    border-radius: 0.1vw;
 }
 
 .left-select {
-    margin-right: 2.5vw;
+    margin-right: 2vw;
 }
 
 .right-select {
-    margin-left: 2.5vw;
+    margin-left: 2vw;
 }
 
 
