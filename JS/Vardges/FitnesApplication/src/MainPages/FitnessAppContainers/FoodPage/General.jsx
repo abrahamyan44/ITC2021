@@ -5,13 +5,13 @@ import useLocalStorage from './uselocaleStorage'
 
 
 function Food({dark}) {
-   const [items, setTodos] = useLocalStorage(' ', [])
+   const [items, setItems] = useLocalStorage('keyForArray', [])
 
     return (
         <div>
             <FoodForm dark={dark} onAdd={(text) => {
                 if (items.length < 10 && text.length !== 0) {
-                    setTodos(
+                    setItems(
                         [
                             ...items,
                             {
@@ -23,7 +23,7 @@ function Food({dark}) {
                 }
             }} />
             <FoodList  dark={dark} items={items} onDelete={(todo) => {
-                setTodos(items.filter((t) =>
+                setItems(items.filter((t) =>
                     t.id !== todo.id
                 ))
             }} />

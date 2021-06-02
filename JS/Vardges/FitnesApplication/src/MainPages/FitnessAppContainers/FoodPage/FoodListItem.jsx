@@ -13,22 +13,22 @@ import {
     ProgressCircular,
 } from 'ui-neumorphism'
 
+import {
+    Button,
+} from 'ui-neumorphism'
+
+
 function FoodListItem({ item, onDelete, dark }) {
     return (
         <Card dark={dark} style={{
-            // fill:'currentcolor',
             display: 'flex',
             width: '252px',
            justifyContent: 'space-between',
             
         }} >
-            {/* <input   type="checkbox"  onClick={()=>{
-                item.completed = !item.completed;
-            }
-            }/> */}
             <h4 >{item.text} </h4>
-            <button  onClick={() =>
-                onDelete(item)}>X</button>
+            <Button  onClick={() =>
+                onDelete(item)}>X</Button>
         </Card>
 
     )

@@ -46,15 +46,6 @@ function FoodList({ dark, size }) {
                         <H4 dark={dark} style={{ fontWeight: '500' }}>
                             Food List
               </H4>
-                        {/* <IconButton
-                size='small'
-                rounded
-                text={false}
-                color='var(--primary)'
-                dark={dark}
-              >
-                <Icon path={mdiPlus} size={0.8} />
-              </IconButton> */}
                     </div>
                     <Card dark={dark}>
                         <Food dark={dark} />
@@ -73,7 +64,7 @@ function FoodList({ dark, size }) {
                         <ToggleButton dark={dark}>
                             <Icon path={mdiHome} size={0.9} />
                         </ToggleButton>
-                        <ToggleButton selected dark={dark} color='var(--primary)'>
+                        <ToggleButton selected dark={dark}>
                             <Icon path={mdiChartLine} size={0.8} />
                         </ToggleButton>
                         <ToggleButton selected dark={dark} color='var(--primary)'>

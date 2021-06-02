@@ -74,7 +74,7 @@ class MainContainer extends React.Component {
               onMenuClick={this.toggleSidebar}
             />
             {/* <Divider dense dark={dark} /> */}
-            <Card flat className='main-content' style={{width:2350}}>
+            <Card flat className='main-content'>
               <Card
                 flat
                 id='mainView'
@@ -86,7 +86,6 @@ class MainContainer extends React.Component {
                 }`}
               >
               
-                <Switch>
                   {routes.map((route) => (
                     <Route
                       exact
@@ -95,7 +94,6 @@ class MainContainer extends React.Component {
                       component={() => <route.component dark={dark} />}
                     />
                   ))}
-                  </Switch>
                 </Card>
             </Card>
           </Card>

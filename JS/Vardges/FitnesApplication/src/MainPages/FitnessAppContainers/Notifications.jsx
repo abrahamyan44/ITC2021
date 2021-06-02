@@ -84,13 +84,13 @@ function Profile({ dark, size }) {
                         <ToggleButton dark={dark}>
                             <Icon path={mdiHome} size={0.9} />
                         </ToggleButton>
-                        <ToggleButton selected dark={dark} color='var(--primary)'>
+                        <ToggleButton selected dark={dark} >
                             <Icon path={mdiChartLine} size={0.8} />
                         </ToggleButton>
-                        <ToggleButton selected dark={dark} color='var(--primary)'>
+                        <ToggleButton selected dark={dark} >
                             <Icon path={mdiFood} size={0.8} />
                         </ToggleButton>
-                        <ToggleButton dark={dark}>
+                        <ToggleButton dark={dark} color='var(--primary)'>
                             <Icon path={mdiBell} size={0.8} />
                         </ToggleButton>
                         <ToggleButton dark={dark}>

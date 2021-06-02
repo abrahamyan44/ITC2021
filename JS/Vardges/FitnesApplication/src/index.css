@@ -1,3 +1,12 @@
+
+input {
+  border: none;
+  outline:none;
+  background: none;
+  font-size: 18px;
+  color: #555;
+  padding:20px 10px 20px 5px;
+}
 * {
   margin: 0;
   padding: 0;
@@ -1226,10 +1235,10 @@ main {
 .sidebar-menu label {
   cursor: pointer;
 }
-/* 
+
 .right-bar {
   width: 150px;
-} */
+}
 
 /* Main container */
 
@@ -1243,6 +1252,8 @@ main {
 
 .main-container {
   height: 100vh;
+  --padding: 32px;
+  overflow: hidden;
   padding: var(--padding);
   --topbar-height: 99px;
 }
@@ -1275,23 +1286,12 @@ main {
   transform: translate3d(250px, 0, 0) !important;
 }
 
-.main-view--large {
-  max-width: calc(100% - 250px - 150px);
-}
-
-.main-view--small {
-  max-width: calc(100%) !important;
-}
-
-.main-view--home {
-  max-width: calc(100% - 250px);
-}
 
 .main-topbar {
   padding: 8px;
   display: flex;
-  /* align-items: center; */
-  /* justify-content: space-between; */
+  align-items: center;
+  justify-content: space-between;
 }
 
 .topbar-action,

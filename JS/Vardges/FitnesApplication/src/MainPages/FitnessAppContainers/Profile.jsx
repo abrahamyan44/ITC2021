@@ -39,15 +39,6 @@ function Notifications({ dark, size }) {
                         <H4 dark={dark} style={{ fontWeight: '500' }}>
                             Profile
               </H4>
-                        {/* <IconButton
-                size='small'
-                rounded
-                text={false}
-                color='var(--primary)'
-                dark={dark}
-              >
-                <Icon path={mdiPlus} size={0.8} />
-              </IconButton> */}
                     </div>
                 
                     <div
@@ -60,7 +51,9 @@ function Notifications({ dark, size }) {
                     >
                     </div>
                     <Card style={{marginTop: "25px"}}>
-                    <img src="/media/profile.png" width="150px" height="150px" />
+                        <ToggleButton dark={dark}>
+                            <Icon path={mdiAccount} width={50} height={50}/>
+                        </ToggleButton>
                         <h3>Vardges</h3>
                         <h3>Karapetyan</h3>
                         <h5>vardges.karapetyan.20@gmail.com</h5>
@@ -70,17 +63,17 @@ function Notifications({ dark, size }) {
                         <ToggleButton dark={dark}>
                             <Icon path={mdiHome} size={0.9} />
                         </ToggleButton>
-                        <ToggleButton selected dark={dark} color='var(--primary)'>
+                        <ToggleButton selected dark={dark} >
                             <Icon path={mdiChartLine} size={0.8} />
                         </ToggleButton>
-                        <ToggleButton selected dark={dark} color='var(--primary)'>
+                        <ToggleButton selected dark={dark} >
                             <Icon path={mdiFood} size={0.8} />
                         </ToggleButton>
                         <ToggleButton dark={dark}>
                             <Icon path={mdiBell} size={0.8} />
                         </ToggleButton>
                         <ToggleButton dark={dark}>
-                            <Icon path={mdiAccount} size={0.9} />
+                            <Icon path={mdiAccount} size={0.9} color='var(--primary)'/>
                         </ToggleButton>
                     </div>
                 </Card>

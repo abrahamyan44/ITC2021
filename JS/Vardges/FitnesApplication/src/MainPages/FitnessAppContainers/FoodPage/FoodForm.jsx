@@ -1,5 +1,10 @@
 import React,{useState} from 'react'
 
+import {
+    Button,
+} from 'ui-neumorphism'
+
+
 function FoodForm({onAdd}) {
     const [text, setText] = useState("");
     const [value, setValue] = useState()
@@ -15,7 +20,7 @@ function FoodForm({onAdd}) {
                     if(ev.target.value !== ' ')
                         setText(ev.target.value)
                 }} />
-                <button>Add</button>
+                <Button>Add</Button>
             </form>
         </div>
     )

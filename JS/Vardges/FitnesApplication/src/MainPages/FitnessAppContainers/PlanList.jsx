@@ -163,7 +163,7 @@ function PlanList({ dark, size }) {
                         <ToggleButton selected dark={dark} color='var(--primary)'>
                             <Icon path={mdiChartLine} size={0.8} />
                         </ToggleButton>
-                        <ToggleButton selected dark={dark} color='var(--primary)'>
+                        <ToggleButton selected dark={dark}>
                             <Icon path={mdiFood} size={0.8} />
                         </ToggleButton>
                         <ToggleButton dark={dark}>
