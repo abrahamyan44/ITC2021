@@ -9,23 +9,22 @@
 
 <body>
     <div class="converter">
+        <h1>Converter</h1>
         <div class="select-block">
             <select name="select-type" id="select-parameter">
+                <option value="Choose one">Choose one</option>
                 <option value="Length">Length</option>
                 <option value="Mass">Mass</option>
                 <option value="Volume">Volume</option>
-                <!-- <option value="Speed">Speed</option>
-                <option value="Time">Time</option> -->
             </select>
         </div>
         <div class="input-block">
-            <input type="number" id="first-input">
-            <button id="swap-button">Swap</button>
-            <input type="number" id="second-input">
+            <input type="number" id="left-input">
+            <span class="equal-symbol"> = </span>
+            <input type="number" id="right-input">
         </div>
 
-        <div class="metric-units">
-            
+        <div class="metric-units">    
         </div>
 
     </div>
