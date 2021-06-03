@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+ input{
+   height: 35px;
+   width: 110px;
+} 
+
+#select-id {
+    width: 448px;
+    margin-bottom: 30px;
+}
+
+.converter,
+.tables {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.tables {
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.div-1,
+.div-2 {
+  display: grid;
+}
