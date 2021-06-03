@@ -1,0 +1,14 @@
+.couple-cards {
+    display: flex;
+    margin-top: 5px;
+    justify-content: space-between;
+}
+
+.title {
+    font-weight: 500;
+    margin-top: 0px
+}
+
+.subtitle {
+    margin: 24px 0px 16px 0px
+}

@@ -1,18 +1,20 @@
 import React from 'react';
-import Training from'./Training/Training';
+import './Program.css';
+import Training from './TrainingCard/TrainingCard';
+import NavigationBar from './NavigationBar/NavigationBar';
 import {
     mdiRun,
     mdiYoga,
-    mdiPlus,
-    mdiHome,
-    mdiBell,
-    mdiFood,
-    mdiTicket,
-    mdiAccount,
+    // mdiPlus,
+    // mdiHome,
+    // mdiBell,
+    // mdiFood,
+    // mdiTicket,
+    // mdiAccount,
     mdiArmFlex,
     mdiDumbbell,
-    mdiChartLine,
-    mdiChevronRight
+    // mdiChartLine,
+    // mdiChevronRight
   } from '@mdi/js';
   import {
     H4,
@@ -33,25 +35,17 @@ class Program extends React.Component {
     render() {
         return (
             <Card width={300} height={600}>
-                <H4 style={{ fontWeight: '500', marginTop: '8px' }}>Program</H4>
-                <Training/>
-                <div className='fitness-app-nav-bar'>
-                <ToggleButton selected dark={false} color='var(--primary)'>
-                    <Icon path={mdiHome} size={1}></Icon>
-                </ToggleButton>
-                <ToggleButton  dark={false}>
-                    <Icon path={mdiChartLine} size={1}></Icon>
-                </ToggleButton>
-                <ToggleButton  dark={false}>
-                    <Icon path={mdiFood} size={1}></Icon>
-                </ToggleButton>
-                <ToggleButton dark={false}>
-                    <Icon path={mdiBell} size={1}></Icon>
-                </ToggleButton>
-                <ToggleButton dark={false}>
-                    <Icon path={mdiAccount} size={1}></Icon>
-                </ToggleButton>
+                <H4 className='title'>Program</H4>
+                <div className='couple-cards'>
+                    <Training icon = {mdiArmFlex} title = {'Arm'} subtitle = {'training'} progress = {'In progress..'}/>
+                    <Training icon = {mdiDumbbell} title = {'Weight'} subtitle = {'training'} progress = {'Have finished'}/>
                 </div>
+                <div className='couple-cards'>
+                    <Training icon = {mdiRun} title = {'Run'} subtitle = {'training'} progress = {'In progress..'}/>
+                    <Training icon = {mdiYoga} title = {'Yoga'} subtitle = {'training'} progress = {'No task'}/>
+                </div>
+                <H6 className='subtitle'>Courses Collection</H6>
+                <NavigationBar />
             </Card>
         )
     }
