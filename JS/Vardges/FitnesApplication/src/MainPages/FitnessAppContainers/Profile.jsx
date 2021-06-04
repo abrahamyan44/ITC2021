@@ -17,7 +17,7 @@ import {
 } from 'ui-neumorphism'
 
 
-function Notifications({ dark, size }) {
+function Profile({ dark, size }) {
     return (
         <Card flat dark={dark} className='fitness-app-container'>
             <Card flat className='fitness-app-wrapper overflow-hidden'>
@@ -40,7 +40,7 @@ function Notifications({ dark, size }) {
                             Profile
               </H4>
                     </div>
-                
+
                     <div
                         style={{
                             display: 'flex',
@@ -50,9 +50,9 @@ function Notifications({ dark, size }) {
                         }}
                     >
                     </div>
-                    <Card style={{marginTop: "25px"}}>
+                    <Card style={{ marginTop: "25px" }}>
                         <ToggleButton dark={dark}>
-                            <Icon path={mdiAccount} width={50} height={50}/>
+                            <Icon path={mdiAccount} width={50} height={50} />
                         </ToggleButton>
                         <h3>Vardges</h3>
                         <h3>Karapetyan</h3>
@@ -73,14 +73,14 @@ function Notifications({ dark, size }) {
                             <Icon path={mdiBell} size={0.8} />
                         </ToggleButton>
                         <ToggleButton dark={dark}>
-                            <Icon path={mdiAccount} size={0.9} color='var(--primary)'/>
+                            <Icon path={mdiAccount} size={0.9} color='var(--primary)' />
                         </ToggleButton>
                     </div>
                 </Card>
-                </Card>
-                </Card>
-        )
+            </Card>
+        </Card>
+    )
 }
 
-export default Notifications;
+export default Profile;
 

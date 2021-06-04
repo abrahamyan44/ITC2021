@@ -34,7 +34,7 @@ import {
 } from 'ui-neumorphism'
 
 
-function Profile({ dark, size }) {
+function Notifications({ dark, size }) {
     return (
         <Card flat dark={dark} className='fitness-app-container'>
             <Card flat className='fitness-app-wrapper overflow-hidden'>
@@ -58,17 +58,8 @@ function Profile({ dark, size }) {
                         </H4>
                         <ToggleButton selected dark={dark} color='var(--primary)'>
                             <Icon path={mdiNotificationClearAll} size={0.8} />
-                        </ToggleButton> 
-             
-                        {/* <IconButton
-                size='small'
-                rounded
-                text={false}
-                color='var(--primary)'
-                dark={dark}
-              >
-                <Icon path={mdiPlus} size={0.8} />
-              </IconButton> */}
+                        </ToggleButton>
+
                     </div>
                     <div
                         style={{
@@ -79,7 +70,7 @@ function Profile({ dark, size }) {
                         }}
                     >
                     </div>
-                    <i style={{marginTop: '20px'}}>65 unreaded notifications</i>
+                    <i style={{ marginTop: '20px' }}>65 unreaded notifications</i>
                     <div className='fitness-app-nav-bar'>
                         <ToggleButton dark={dark}>
                             <Icon path={mdiHome} size={0.9} />
@@ -90,18 +81,18 @@ function Profile({ dark, size }) {
                         <ToggleButton selected dark={dark} >
                             <Icon path={mdiFood} size={0.8} />
                         </ToggleButton>
-                        <ToggleButton dark={dark} color='var(--primary)'>
-                            <Icon path={mdiBell} size={0.8} />
+                        <ToggleButton dark={dark}>
+                            <Icon path={mdiBell} size={0.8} color='var(--primary)' />
                         </ToggleButton>
                         <ToggleButton dark={dark}>
                             <Icon path={mdiAccount} size={0.9} />
                         </ToggleButton>
                     </div>
                 </Card>
-                </Card>
-                </Card>
-        )
+            </Card>
+        </Card>
+    )
 }
 
-export default Profile;
+export default Notifications;
 

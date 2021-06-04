@@ -6,8 +6,8 @@ import {
   Card,
   withResize,
   overrideThemeVariables
-} 
-from 'ui-neumorphism'
+}
+  from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css'
 
 import Topbar from '../containers/Topbar.jsx'
@@ -79,22 +79,20 @@ class MainContainer extends React.Component {
                 flat
                 id='mainView'
                 ref={(ref) => (this.mainView = findDOMNode(ref))}
-                className={`main-view main-view--${
-                  !isSmall ? 'large' : 'small'
-                } ${isHome ? 'main-view--home' : ''} ${
-                  open ? 'main-view--open' : ''
-                }`}
+                className={`main-view main-view--${!isSmall ? 'large' : 'small'
+                  } ${isHome ? 'main-view--home' : ''} ${open ? 'main-view--open' : ''
+                  }`}
               >
-              
-                  {routes.map((route) => (
-                    <Route
-                      exact
-                      key={route.id}
-                      path={route.path}
-                      component={() => <route.component dark={dark} />}
-                    />
-                  ))}
-                </Card>
+
+                {routes.map((route) => (
+                  <Route
+                    exact
+                    key={route.id}
+                    path={route.path}
+                    component={() => <route.component dark={dark} />}
+                  />
+                ))}
+              </Card>
             </Card>
           </Card>
         </Card>

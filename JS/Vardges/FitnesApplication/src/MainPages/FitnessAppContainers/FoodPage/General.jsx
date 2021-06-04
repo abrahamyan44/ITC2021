@@ -4,8 +4,8 @@ import FoodList from './FoodList';
 import useLocalStorage from './uselocaleStorage'
 
 
-function Food({dark}) {
-   const [items, setItems] = useLocalStorage('keyForArray', [])
+function Food({ dark }) {
+    const [items, setItems] = useLocalStorage('keyForArray', [])
 
     return (
         <div>
@@ -22,7 +22,7 @@ function Food({dark}) {
                     );
                 }
             }} />
-            <FoodList  dark={dark} items={items} onDelete={(todo) => {
+            <FoodList dark={dark} items={items} onDelete={(todo) => {
                 setItems(items.filter((t) =>
                     t.id !== todo.id
                 ))

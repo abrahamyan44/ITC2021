@@ -7,7 +7,7 @@ import {
 } from 'ui-neumorphism'
 
 // import { FitnessApp } from '../examples/index'
-import {FitnessApplication} from '../MainPages/index'
+import { FitnessApplication } from '../MainPages/index'
 const importCode = `import React, { Component } from 'react'
 
 import { Button } from 'ui-neumorphism'
@@ -134,7 +134,6 @@ class Home extends React.Component {
       <Card flat dark={dark} className='py-2'>
         <br />
         <FitnessApplication dark={dark} />
-
         <br />
       </Card>
     )

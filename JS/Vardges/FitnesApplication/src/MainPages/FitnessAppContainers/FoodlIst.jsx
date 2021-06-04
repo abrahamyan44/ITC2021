@@ -78,9 +78,9 @@ function FoodList({ dark, size }) {
                         </ToggleButton>
                     </div>
                 </Card>
-                </Card>
-                </Card>
-        )
+            </Card>
+        </Card>
+    )
 }
 
 export default FoodList;

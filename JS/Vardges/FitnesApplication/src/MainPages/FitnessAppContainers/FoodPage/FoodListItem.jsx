@@ -23,11 +23,11 @@ function FoodListItem({ item, onDelete, dark }) {
         <Card dark={dark} style={{
             display: 'flex',
             width: '252px',
-           justifyContent: 'space-between',
-            
+            justifyContent: 'space-between',
+
         }} >
             <h4 >{item.text} </h4>
-            <Button  onClick={() =>
+            <Button onClick={() =>
                 onDelete(item)}>X</Button>
         </Card>
 

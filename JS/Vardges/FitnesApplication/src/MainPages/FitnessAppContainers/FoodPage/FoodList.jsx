@@ -3,13 +3,13 @@ import FoodListItem from './FoodListItem'
 
 
 
-function FoodList({items, onDelete, dark}) {
+function FoodList({ items, onDelete, dark }) {
     return (
         <div>
             {
                 items.map(item => {
                     return (
-                        <FoodListItem key={item.id} item={item} dark={dark} onDelete={onDelete}/>
+                        <FoodListItem key={item.id} item={item} dark={dark} onDelete={onDelete} />
                     )
                 }
                 )
