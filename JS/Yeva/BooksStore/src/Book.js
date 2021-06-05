@@ -1,12 +1,15 @@
 import _ from 'lodash';
-import data from './books.json'
+import data from './books.json';
 
 const count_form = document.querySelector('#count-form');
+const input_tag = document.querySelector('#input-tag').value;
+const parent = document.querySelector(".parent");
 
-count_form.addEventListener('submit', function (event) {
+count_form.addEventListener('submit', drawImgs);
+parent.addEventListener("click", removeImg);
+
+function drawImgs(event) {
     event.preventDefault();
-    const input_tag = document.querySelector('#input-tag').value;
-    const parent = document.querySelector(".parent");
     parent.innerHTML = "";
 
     for (let i = 0; i < input_tag; i++) {
@@ -35,4 +38,10 @@ count_form.addEventListener('submit', function (event) {
 
         document.querySelector('#input-tag').value = '';
     }
-})
+}
+
+function removeImg(evt) {
+    if(evt.target.className === "delete-button"){
+        parent.removeChild(evt.target.parentElement);
+    }
+}
