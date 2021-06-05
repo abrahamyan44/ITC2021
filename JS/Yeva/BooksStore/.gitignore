@@ -82,6 +82,7 @@ crashlytics-build.properties
 node_modules/
 bower_components/
 *.log
+package-lock.json
 
 build/
 dist/

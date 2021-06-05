@@ -35,13 +35,12 @@ function drawImgs(event) {
         card.appendChild(author);
         card.appendChild(title);
         card.appendChild(image);
-
         document.querySelector('#input-tag').value = '';
     }
 }
 
 function removeImg(evt) {
-    if(evt.target.className === "delete-button"){
+    if (evt.target.className === "delete-button") {
         parent.removeChild(evt.target.parentElement);
     }
 }
