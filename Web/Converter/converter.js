@@ -94,7 +94,16 @@ function Converting(input1, input2, select1, select2, swap) {
     Converting(input1, input2, select1, select2);
   });
 
+  swap.addEventListener("click", function(){
+    let tmp = input1.value;
+    input1.value = input2.value;
+    input2.value = tmp;
   
+    tmp = select1.value;
+    select1.value = select2.value;
+    select2.value = tmp;
+  });
+  Converting(input1, input2, select1, select2);
 }
 
 function convertingMass(input1, input2, select1, select2) {
