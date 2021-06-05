@@ -2,20 +2,32 @@
   margin: 0;
   padding: 0;
   outline: none;
-}
-
-h1 {
   text-align: center;
+  color: #506768;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
- input{
-   height: 35px;
-   width: 110px;
-} 
+input {
+  height: 35px;
+  width: 165px;
+}
+.swap {
+  cursor: pointer;
+  border: solid 1px #aaa4a4;
+  width: 30px;
+  height: 30px;
+  border-radius: 16%;
+  background: url("https://static.vecteezy.com/system/resources/previews/000/589/611/non_2x/vector-exchange-icon.jpg") 0 0 / 30px 30px repeat;
+}
+
+.container {
+  justify-content: center;
+  display: grid;
+}
 
 #select-id {
-    width: 448px;
-    margin-bottom: 30px;
+  width: 448px;
+  margin-bottom: 30px;
 }
 
 .converter,
@@ -27,7 +39,7 @@ h1 {
 
 .tables {
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .div-1,
