@@ -34,7 +34,7 @@ body {
     border-radius: 50vw;
     background: #e9e4e4;
     outline: none;
-    box-shadow: 10px 10px 5px rgba(177, 158, 158, 0.384);
+    /* box-shadow: 10px 10px 5px rgba(177, 158, 158, 0.384); */
 }
 
 #input-button {
@@ -57,34 +57,48 @@ body {
 .list-books {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* display: grid; */
     justify-items: center;
 }
 
 .book {
+    background-color: wheat;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 20vw;
-    padding: 15px;
+    margin: 15px;
+    box-shadow: 10px 10px 5px rgba(177, 158, 158, 0.384);
+
+}
+
+.delete-button {
+    width: 2vw;
+    height: 2vw;
+    float: right;
+}
+
+.icon {
+    margin: -0.2vw;
+    font-size: 2vw;
 }
 
 .title {
     margin: 1.5vw 0 0.5vw 0;
-    color: aliceblue;
+    color: black;
     text-align: center;
 }
 
 .author {
     margin: 0.5vw 0 0.5vw 0;
-    color: aliceblue;
+    color: black;
     text-align: center;
 }
 
 .image {
     width: 15vw;
+    height: 23vw;
     margin: 0 auto 0 auto;
-    box-shadow: 10px 10px 5px rgba(177, 158, 158, 0.384);
+    /* box-shadow: 10px 10px 5px rgba(177, 158, 158, 0.384); */
 }
 
 /* ============ Responsive design =============*/
