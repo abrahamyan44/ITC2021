@@ -1,0 +1,11 @@
+.notifications-card {
+    padding: 20px !important;
+    position: relative !important;
+    margin: 15px 30px !important;
+}
+
+.title-notifications {
+    font-weight: 500 !important;
+    margin: 15px 0px !important;
+    display: flex !important;
+}

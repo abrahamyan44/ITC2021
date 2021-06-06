@@ -1,0 +1,21 @@
+.food-card {
+    padding: 20px !important;
+    position: relative !important;
+    margin: 15px 30px !important;
+}
+
+.food-title {
+    font-weight: 500 !important;
+    margin: 15px 0px !important;
+    display: flex !important;
+}
+
+.text {
+    position: absolute !important;
+    bottom: 60px;
+}
+
+.output-text {
+    width: ;
+    max-height: 450px;
+}

@@ -1,0 +1,23 @@
+.account-card {
+    padding: 20px !important;
+    position: relative !important;
+    margin: 15px 30px !important;
+}
+
+.account-title {
+    font-weight: 500 !important;
+    margin: 15px 0px !important;
+    display: flex !important;
+}
+
+.person {
+    display: grid;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.mode-switcher {
+    position: absolute;
+    /* display: flex; */
+    left: 10px;
+}

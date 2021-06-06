@@ -1,0 +1,27 @@
+.completed-plan-block {
+    display: flex;
+    width: 252px;
+    align-items: center;
+    justify-content: center;
+}
+
+.completed-plan-card {
+    display: flex !important;
+    margin-top: 32px !important;
+    width: 194px !important;
+    height: 194px !important;
+    border-radius: 150px !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.current-value {
+    padding: 4px 0px;
+}
+
+.goal {
+    padding: 4px 0px;
+}
+
+
+

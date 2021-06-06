@@ -1,0 +1,24 @@
+.plan-list-card {
+    padding: 20px !important;
+    position: relative !important;
+    margin: 15px 30px !important;
+}
+
+.title-plan-list {
+    font-weight: 500 !important;
+    display: flex !important;
+}
+
+.title-and-button {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.two-group {
+    margin-top: 35px;
+    display: flexbox;
+    justify-items: first baseline;
+}
+

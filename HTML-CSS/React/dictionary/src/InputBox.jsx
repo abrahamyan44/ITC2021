@@ -7,7 +7,7 @@ export default function InputBox() {
     const [count, setCount] = useState(0);
     const [inputValue, setValue] = useState(0);
     console.log('Count = ', count);
-    return <>
+    return(
         <div className="search-box">
             <form id="form-block">
                 <input id="input-block" type="text" placeholder="Set books count..."
@@ -23,6 +23,6 @@ export default function InputBox() {
                 ><i className="fa fa-search"></i></button>
             </form>
         </div>
-        <Books count={count} />
-    </>
+        <Books count={count}/>
+    )
 }

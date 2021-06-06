@@ -9,21 +9,15 @@ import {
 
 class Training extends React.Component {
     render() {
+        const {dark, icon, title, subtitle, progress} = this.props;
         return (
-            <Card
-                elevation={2}
-                dark={false}
-                className='card'
-            >
-                <Card
-                    flat
-                    className="icon"
-                >
-                    <Icon path={this.props.icon} size={1} color='var(--primary)'></Icon>
+            <Card elevation={2} dark={dark} className='card'>
+                <Card flat className="icon">
+                    <Icon path={icon} size={1.3} color='var(--primary)'></Icon>
                 </Card>
-                <Subtitle2>{this.props.title}</Subtitle2>
-                <Subtitle2 style={{ marginBottom: '10px' }}>{this.props.subtitle}</Subtitle2>
-                <Caption secondary>{this.props.progress}</Caption>
+                <Subtitle2 className='subtitle0'>{title}</Subtitle2>
+                <Subtitle2 className='subtitle1'>{subtitle}</Subtitle2>
+                <Caption secondary className='progress'>{progress}</Caption>
             </Card>
         )
     }

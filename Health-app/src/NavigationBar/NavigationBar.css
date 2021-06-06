@@ -1,0 +1,14 @@
+.fitness-app-nav-bar {
+    width: 300px !important;
+    display: flex !important;
+    left: 0px !important;
+    bottom: 0px !important;
+    /* margin: 0px 0px !important; */
+    padding: 15px 25px !important;
+    position: absolute !important;
+    box-shadow: var(--box-shadow) !important;
+    background: var(--bg-color) !important;
+    justify-content: space-between !important;
+    border-bottom-left-radius: 24px !important;
+    border-bottom-right-radius: 24px !important;
+  }

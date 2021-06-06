@@ -1,14 +1,21 @@
 .couple-cards {
-    display: flex;
-    margin-top: 5px;
-    justify-content: space-between;
+    display: flex !important;
+    justify-content: space-between !important;
 }
 
-.title {
-    font-weight: 500;
-    margin-top: 0px
+.title-program {
+    font-weight: 500 !important;
+    margin: 15px 0px !important;
+    display: flex !important;
 }
 
 .subtitle {
-    margin: 24px 0px 16px 0px
+    margin: 15px 0px !important;
+    display: flex;
 }
+
+.program-card {
+    padding: 20px !important;
+    position: relative !important;
+    margin: 15px 30px !important;
+  }
