@@ -15,12 +15,14 @@ import {
   Card,
   IconButton,
 } from 'ui-neumorphism'
+import { withRouter } from 'react-router';
 
 class PlanList extends React.Component {
     render() {
         const {dark} = this.props;
         return (
-            <Card rounded width={300} height={600} dark = {dark} className='plan-list-card'>
+            <>
+            {/* <Card rounded width={300} height={600} dark = {dark} className='plan-list-card'> */}
                 <div className='title-and-button'>
                     <H4 dark = {dark} className='title-plan-list'>Plan list</H4>
                     <IconButton size='small' rounded text={false} color='var(--primary)' dark={dark}>
@@ -44,10 +46,11 @@ class PlanList extends React.Component {
                             style={{marginTop: '15px'}}
                     />
                 </div>
-                <NavigationBar selected = {'ChartLine'} dark = {dark}/>
-            </Card>
+                {/* <NavigationBar selected = {'ChartLine'} dark = {dark}/> */}
+            {/* </Card> */}
+            </>
         )
     }
 }
 
-export default PlanList;
+export default withRouter(PlanList);

@@ -1,5 +1,10 @@
 import React from 'react';
 import './NavigationBar.css'
+import Program from '../Program/Program';
+import PlanList from '../PlanList/PlanList';
+import Food from '../Food/Food';
+import Notifications from '../Notification/Notifications';
+import Account from '../Account/Account';
 import Icon from '@mdi/react';
 import {
     mdiHome,
@@ -9,113 +14,124 @@ import {
     mdiChartLine,
   } from '@mdi/js';
 import { ToggleButton } from 'ui-neumorphism'
+import { withRouter } from 'react-router';
 
 class NavigationBar extends React.Component {
     render() {
-        const {dark, selected} = this.props;
-        switch (selected) {
-            case 'Home':
+        const {dark, page, setPage, setMode} = this.props;
+        switch (page) {
+            case 'Program':
                 return (
-                    <div className='fitness-app-nav-bar'>
-                        <ToggleButton selected dark={dark} color='var(--primary)'>
-                            <Icon path={mdiHome} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton  dark={dark}>
-                            <Icon path={mdiChartLine} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton  dark={dark}>
-                            <Icon path={mdiFood} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiBell} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiAccount} size={1}></Icon>
-                        </ToggleButton>
+                    <div>
+                        <div className='fitness-app-nav-bar'>
+                            <ToggleButton selected dark={dark} color='var(--primary)'>
+                                <Icon path={mdiHome} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton  dark={dark} onClick = {(event) => {setPage('ChartLine')}}>
+                                <Icon path={mdiChartLine} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton  dark={dark} onClick = {(event) => {setPage('Food')}}>
+                                <Icon path={mdiFood} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Notifications')}}>
+                                <Icon path={mdiBell} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Account')}}>
+                                <Icon path={mdiAccount} size={1}></Icon>
+                            </ToggleButton>
+                        </div>
                     </div>
                 )
                 break;
             case 'ChartLine':
                 return (
-                    <div className='fitness-app-nav-bar'>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiHome} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton  dark={dark} selected color='var(--primary)'>
-                            <Icon path={mdiChartLine} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton  dark={dark}>
-                            <Icon path={mdiFood} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiBell} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiAccount} size={1}></Icon>
-                        </ToggleButton>
+                    <div>
+                        <div className='fitness-app-nav-bar'>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Program')}}>
+                                <Icon path={mdiHome} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton  dark={dark} selected color='var(--primary)'>
+                                <Icon path={mdiChartLine} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton  dark={dark} onClick = {(event) => {setPage('Food')}}>
+                                <Icon path={mdiFood} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Notifications')}}>
+                                <Icon path={mdiBell} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Account')}}>
+                                <Icon path={mdiAccount} size={1}></Icon>
+                            </ToggleButton>
+                        </div>
                     </div>
                 )
                 break;
             case 'Food':
                 return (
-                    <div className='fitness-app-nav-bar'>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiHome} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton  dark={dark}>
-                            <Icon path={mdiChartLine} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton  dark={dark} selected color='var(--primary)'>
-                            <Icon path={mdiFood} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiBell} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiAccount} size={1}></Icon>
-                        </ToggleButton>
+                    <div>
+                        <div className='fitness-app-nav-bar'>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Program')}}>
+                                <Icon path={mdiHome} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton  dark={dark} onClick = {(event) => {setPage('ChartLine')}}>
+                                <Icon path={mdiChartLine} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton  dark={dark} selected color='var(--primary)'>
+                                <Icon path={mdiFood} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Notifications')}}>
+                                <Icon path={mdiBell} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Account')}}>
+                                <Icon path={mdiAccount} size={1}></Icon>
+                            </ToggleButton>
+                        </div>
                     </div>
                 )
                 break;
             case 'Notifications':
                 return (
-                    <div className='fitness-app-nav-bar'>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiHome} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton  dark={dark}>
-                            <Icon path={mdiChartLine} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton  dark={dark}>
-                            <Icon path={mdiFood} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton dark={dark} selected color='var(--primary)'>
-                            <Icon path={mdiBell} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiAccount} size={1}></Icon>
-                        </ToggleButton>
+                    <div>
+                        <div className='fitness-app-nav-bar'>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Program')}}>
+                                <Icon path={mdiHome} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton  dark={dark} onClick = {(event) => {setPage('ChartLine')}}>
+                                <Icon path={mdiChartLine} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton  dark={dark} onClick = {(event) => {setPage('Food')}}>
+                                <Icon path={mdiFood} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton dark={dark} selected color='var(--primary)'>
+                                <Icon path={mdiBell} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Account')}}>
+                                <Icon path={mdiAccount} size={1}></Icon>
+                            </ToggleButton>
+                        </div>
                     </div>
                 )
                 break;
             case 'Account':
                 return (
-                    <div className='fitness-app-nav-bar'>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiHome} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton  dark={dark}>
-                            <Icon path={mdiChartLine} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton  dark={dark}>
-                            <Icon path={mdiFood} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton dark={dark}>
-                            <Icon path={mdiBell} size={1}></Icon>
-                        </ToggleButton>
-                        <ToggleButton dark={dark} selected color='var(--primary)'>
-                            <Icon path={mdiAccount} size={1}></Icon>
-                        </ToggleButton>
+                    <div>
+                        <div className='fitness-app-nav-bar'>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Program')}}>
+                                <Icon path={mdiHome} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton  dark={dark} onClick = {(event) => {setPage('ChartLine')}}>
+                                <Icon path={mdiChartLine} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton  dark={dark} onClick = {(event) => {setPage('Food')}}>
+                                <Icon path={mdiFood} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton dark={dark} onClick = {(event) => {setPage('Notifications')}}>
+                                <Icon path={mdiBell} size={1}></Icon>
+                            </ToggleButton>
+                            <ToggleButton dark={dark} selected color='var(--primary)'>
+                                <Icon path={mdiAccount} size={1}></Icon>
+                            </ToggleButton>
+                        </div>
                     </div>
                 )    
             break;
@@ -123,4 +139,4 @@ class NavigationBar extends React.Component {
     }
 }
 
-export default NavigationBar;
+export default withRouter(NavigationBar);
