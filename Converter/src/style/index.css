@@ -1,0 +1,33 @@
+#root {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+}
+
+.equals {
+    margin-top: 0px;
+}
+
+#firstSelect{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#fSelect{
+    width: 200px;
+    height: 50px;
+}
+
+.selectItems {
+    width: 220px;
+    height: 50px;
+}
+
+#selectbutton1, #selectbutton2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
