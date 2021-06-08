@@ -20,6 +20,7 @@ export default function MainSelectEventsListenner() {
         for (let i = 0; i < obj.length; ++i) {
             if (obj[i].id == firstSelect.selectedIndex) {
                 obj[i].selectOp.hidden = false;
+                obj[i].selectOp.innerHTML = ""
                 createSelectOptions(Object.keys(obj[i].value), obj[i].selectOp, selectbutton1)
             }
             else {
