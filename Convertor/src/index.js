@@ -1,43 +1,44 @@
 import * as _ from 'lodash';
 
-let length_metric_units = ['Centimeter', 'Kilometre', 'Metre', 'Millimetre'];
+let length_metric_units = ['Centimeter', 'Kilometre', 'Meter', 'Millimetre'];
 let mass_metric_units = ['Gram', 'Kilogram', 'Milligram', 'Tonne',];
 let frequency_metric_units = ['Hertz', 'Kilohertz', 'Megahertz'];
 
-let frequency = {
-    'Hertz': 1,
-    'Kilohertz': 1000,
-    'Megahertz': 1000000
-}
-
-let mass = {
+let mass_coefficient = {
     'Milligram': 0.000001,
     'Gram': 0.001,
     'Kilogram': 1,
     'Tonne': 1000
 } 
 
-let length = {
+let length_coefficient = {
     'Millimetre': 0.001,
     'Centimeter': 0.01,
     'Meter': 1,
     'Kilometre': 1000,
 }
 
+
+let frequency_coefficient = {
+    'Hertz': 1,
+    'Kilohertz': 1000,
+    'Megahertz': 1000000
+}
+
 function main() {
     const select_object = document.querySelector('#select-parameter');
-    let select_result = 0;
-    select_object.addEventListener('change', function (event) {
-        select_result = event.target.value;
-        switch (select_result) {
+    select_object.addEventListener('change', (event) => {
+        document.querySelector('#left-input').value = '';
+        document.querySelector('#right-input').value = '';
+        switch (event.target.value) {
             case 'Length':
-                convertingLength();
+                converting(length_metric_units, length_coefficient);
                 break;
             case 'Mass':
-                convertingMass();
+                converting(mass_metric_units, mass_coefficient);
                 break;
             case 'Frequency':
-                convertingFrequency();
+                converting(frequency_metric_units, frequency_coefficient);
                 break;
             default:
                 document.querySelector('.metric-units').innerHTML = '';
@@ -46,10 +47,10 @@ function main() {
     });
 }
 
-function generateMetricUnitSelects(block_to_append,  metric_units) {
+function generateMetricUnitSelects(block_to_append, metric_units) {
     const left_select = document.createElement('select');
-    left_select.className = 'left-select';
     const right_select = document.createElement('select');
+    left_select.className = 'left-select';
     right_select.className = 'right-select';
     for (let index = 0; index < metric_units.length; index++) {
         //create and append to left select
@@ -57,7 +58,6 @@ function generateMetricUnitSelects(block_to_append,  metric_units) {
         option1.value = metric_units[index];
         option1.textContent = metric_units[index];
         left_select.appendChild(option1);
-        console.log(left_select);
         //create and append to right select
         const option2 = document.createElement('option');
         option2.value = metric_units[index];
@@ -67,7 +67,6 @@ function generateMetricUnitSelects(block_to_append,  metric_units) {
     const swap_button = document.createElement('button');
     swap_button.id = 'swap-button';
     swap_button.textContent = 'Swap';
-
     left_select.value = metric_units[0];
     right_select.value = metric_units[1];
     block_to_append.appendChild(left_select);
@@ -75,54 +74,48 @@ function generateMetricUnitSelects(block_to_append,  metric_units) {
     block_to_append.appendChild(right_select);
 }
 
-function convertingLength() {
+function converting(metric_units, coefficient) {
     const metric_units_block = document.querySelector('.metric-units');
     metric_units_block.innerHTML = '';
-    generateMetricUnitSelects(metric_units_block, length_metric_units);
+    generateMetricUnitSelects(metric_units_block, metric_units);
     swapMetricUnits();
+    leftSelectChange(coefficient);
+    rightSelectChange(coefficient);
     const left_input = document.querySelector('#left-input');
+    const right_input = document.querySelector('#right-input');
+    const right_select = document.querySelector('.right-select');
+    const left_select = document.querySelector('.left-select');
     left_input.addEventListener('input', function (event) {
-        const right_input = document.querySelector('#right-input');
-        const right_select = document.querySelector('.right-select');
-        const left_select = document.querySelector('.left-select');
         if (event.target.value > 0) {
-            right_input.value = event.target.value * length[left_select.value]/ length[right_select.value];
+            right_input.value = event.target.value * coefficient[left_select.value]/ coefficient[right_select.value];
         } else {
             right_input.value = '';
         }
     });
 }
 
-function convertingMass() {
-    const metric_units_block = document.querySelector('.metric-units');
+function rightSelectChange(coefficient) {
+    const right_input = document.querySelector('#right-input');
     const left_input = document.querySelector('#left-input');
-    metric_units_block.innerHTML = '';
-    generateMetricUnitSelects(metric_units_block, mass_metric_units);
-    swapMetricUnits();
-    left_input.addEventListener('input', function (event) {
-        const left_select = document.querySelector('.left-select');
-        const right_input = document.querySelector('#right-input');
-        const right_select = document.querySelector('.right-select');
-        if (event.target.value > 0) {
-            right_input.value = event.target.value * mass[left_select.value]/ mass[right_select.value];
+    const right_select = document.querySelector('.right-select');
+    const left_select = document.querySelector('.left-select');
+    right_select.addEventListener('change', (event) => {
+        if (left_input.value > 0) {
+            right_input.value = left_input.value * coefficient[left_select.value] / coefficient[event.target.value];
         } else {
             right_input.value = '';
         }
     });
 }
 
-function convertingFrequency() {
-    const metric_units_block = document.querySelector('.metric-units');
-    metric_units_block.innerHTML = '';
-    generateMetricUnitSelects(metric_units_block, frequency_metric_units);
-    swapMetricUnits();
+function leftSelectChange(coefficient) {
+    const right_input = document.querySelector('#right-input');
     const left_input = document.querySelector('#left-input');
-    left_input.addEventListener('input', function (event) {
-        const right_input = document.querySelector('#right-input');
-        const right_select = document.querySelector('.right-select');
-        const left_select = document.querySelector('.left-select');
-        if (event.target.value > 0) {
-            right_input.value = event.target.value * frequency[left_select.value]/ frequency[right_select.value];
+    const right_select = document.querySelector('.right-select');
+    const left_select = document.querySelector('.left-select');
+    left_select.addEventListener('change', (event) => {
+        if (left_input.value > 0) {
+            right_input.value = left_input.value * coefficient[event.target.value] / coefficient[right_select.value];
         } else {
             right_input.value = '';
         }
