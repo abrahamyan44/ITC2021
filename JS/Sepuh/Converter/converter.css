@@ -14,13 +14,22 @@
   flex-direction: row;
   align-items: center;
   height: 100%;
+}
+
+.global {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
   padding-top: 100px;
 }
 
 .convert_block {
   width: 300px;
   height: 100px;
-  background-color: aqua;
+  background-color: rgb(205, 242, 245);
   font-size: 3em;
   display: flex;
   justify-content: center;
@@ -28,10 +37,16 @@
   align-items: center;
 }
 
+.ss {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+
 .swap_button {
   height: 50px;
   width: 50px;
-  background-color: red;
+  background-color: rgb(226, 199, 199);
   margin: 10px;
 }
 
