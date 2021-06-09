@@ -6,14 +6,25 @@ BinarySearchTree::BinarySearchTree()
     root = NULL;
 }
 
-void SwapTwoElements(int *x, int *y)
+BST::BST(int* arr, int size)
+{
+    root = CreateNewNode(0);
+    SortArray(arr, size);
+    int start_index = 0;
+
+    std::cout << "ctor    "  <<  start_index << ' ' << size  << "     Root     " << root << std::endl;
+
+    MakeTreeFromArray(arr, start_index, size);
+}
+
+void BST::SwapTwoElements(int *x, int *y)
 {
     int temp = *x;
     *x = *y;
     *y = temp;
 }
 
-void SortArray(int arr[], int n)
+void BST:: SortArray(int* arr, int n)
 {
     for (int i = 0; i < n-1; i++) {
         for (int j = 0; j < n-i-1; j++) {
@@ -24,35 +35,62 @@ void SortArray(int arr[], int n)
     }
 }
 
+<<<<<<< HEAD:BST/BinarySearchTree.cpp
 BinarySearchTree::node* BinarySearchTree::CreateNewNode(int data)
 {
     node* tree_node = new node;
+=======
+node* BST::CreateNewNode(int data)
+{		
+    node* tree_node= new node;
+    
+    assert(tree_node != NULL);
+    
+    std::cout <<tree_node << "   tree_node   " << std::endl;
+    
+>>>>>>> 6c8ab949f0cd7d7f2cb0d05be5e6c9d265ee2ce8:BST/BST.cpp
     tree_node->data = data;
     tree_node->left = NULL;
+    assert(tree_node->left == NULL);
+   
     tree_node->right = NULL;
+    assert(tree_node->right == NULL);
 
+    std::cout <<tree_node << "   tree_node   " << std::endl;
     return tree_node;
 }
 
+<<<<<<< HEAD:BST/BinarySearchTree.cpp
 BinarySearchTree::node* BinarySearchTree::MakeTreeFromArray(int arr[], int start, int end)
+=======
+node* BST::MakeTreeFromArray(int* arr, int start, int end)
+>>>>>>> 6c8ab949f0cd7d7f2cb0d05be5e6c9d265ee2ce8:BST/BST.cpp
 {
-    if(start > end) {
-        return NULL;
-    } 
+std::cout << "MAKE   "  << start << ' ' << end << std::endl;
 
     int mid_index = (start + end)/2;
+    //assert(start < mid_index);
+    if(start >= mid_index || end <= mid_index) {
+
     root = CreateNewNode(arr[mid_index]);
+        return nullptr;
+    }
 
-    root->left = MakeTreeFromArray(arr, start, mid_index -1);
+    //root = CreateNewNode(arr[mid_index]);
 
-    root->right = MakeTreeFromArray(arr, mid_index + 1, end);
-}
+    root->left = MakeTreeFromArray(arr, start, mid_index);
 
+<<<<<<< HEAD:BST/BinarySearchTree.cpp
 BinarySearchTree::BinarySearchTree(int arr[], int size)
 {
     SortArray(arr, size);
     int start_index = 0;
     MakeTreeFromArray(arr, start_index, size);
+=======
+    root->right = MakeTreeFromArray(arr, mid_index + 1, end);
+	
+    //return 0; 
+>>>>>>> 6c8ab949f0cd7d7f2cb0d05be5e6c9d265ee2ce8:BST/BST.cpp
 }
 
 void BinarySearchTree::AddLeaf(int value, node* ptr)
@@ -96,6 +134,8 @@ void BinarySearchTree::Insert(int value)
 
 void BinarySearchTree::InOrder(node* ptr)
 {
+    assert(nullptr != ptr);
+
     if(ptr == NULL) {
         return;
     }
@@ -106,6 +146,7 @@ void BinarySearchTree::InOrder(node* ptr)
 
 void BinarySearchTree::PreOrder(node* ptr)
 {
+    assert(nullptr != ptr);
     if(ptr == NULL) {
         return;
     } 
@@ -116,6 +157,8 @@ void BinarySearchTree::PreOrder(node* ptr)
 
 void BinarySearchTree::PostOrder(node* ptr)
 {
+
+    assert(nullptr != ptr);
     if(ptr == NULL) {
         return;
     }
@@ -126,8 +169,8 @@ void BinarySearchTree::PostOrder(node* ptr)
 
 void BinarySearchTree::Print()
 {
-    InOrder(root);
-    //PreOrder(root);
+    //InOrder(root);
+    PreOrder(root);
     //PostOrder(root);
     std::cout << "The tree is printed." << std::endl;
 }

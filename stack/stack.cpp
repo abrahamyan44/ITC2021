@@ -1,30 +1,55 @@
-#include <iostream>
 #include "stack.hpp"
-
+using namespace std;
 
 Stack::Stack()
 {
     m_head = nullptr;
     m_tail = nullptr;
+//    m_tail -> next = nullptr;
 }
 
 Stack::Stack(int size, int value)
 {
-    node* temp = new node;
-    temp->data = value;
-    temp->next = nullptr;
-    m_head = temp;
-    m_tail = temp;
-    for (int i = 0; i < size - 1; i++) {
-        Push(value);
-    }
+//     node* temp = new node;
+//     temp->data = value;
+//     temp->next = nullptr;
+//     m_head = temp;
+//     m_tail = temp;
+//     for (int i = 0; i < size - 1; i++) {
+//         Push(value);
+//     }
+
+	for(int i = 0; i < size; ++i) {
+		node* temp;
+		temp->data = value;
+		temp->next = nullptr;
+		m_head = temp;
+		m_tail = temp;
+        }
+	if (m_head == nullptr) {
+		node* temp;
+                temp->data = value;
+                temp->next = nullptr;
+                m_head = temp;
+                m_tail = temp;
+	} else {
+	       node* temp = m_head;
+               while (temp != nullptr) {
+                     temp = temp->next;
+               }
+	       temp->data = value;
+	       temp->next = nullptr;
+
+	}
 }
 
 Stack::~Stack()
 {
-    nodePtr temp = new node;
+	cout << "Stack destructer" << endl;
+	node* temp = new node;
     while (temp != nullptr) {
-        temp = m_head;
+       cout << "destructer while" << endl;
+	    temp = m_head;
         m_head = temp->next;
         delete temp;
     }
@@ -33,7 +58,7 @@ Stack::~Stack()
 int Stack::Size() const
 {
     int count = 0;
-    nodePtr temp = new node;
+    node* temp = new node;
     temp = m_head;
     while (temp != nullptr) {
         count++;
@@ -44,27 +69,42 @@ int Stack::Size() const
 
 void Stack::Print() const
 {
-    nodePtr temp = new node;
-    temp = m_head;
+    node* temp = m_head;
     while (temp != nullptr) {
-        std::cout << temp->data << std::endl;
+	
+        std::cout << temp->data  << std::endl;
         temp = temp->next;
+    }
+}
+
+void Stack::PrintStack()
+{
+	node* node;
+	cout << "Stack::printstack" << endl;
+    	while (node != NULL) {
+cout << "Stack print while" << endl;
+        std::cout << " " << node->data << std::endl;
+        node = node->next;
     }
 }
 
 void Stack::Pop()
 {
-    nodePtr temp = new node;
+   cout << "Pop" << endl;
+       	node* temp = new node;
     temp = m_head;
     if (m_head == nullptr) {
-        std::cout << "Stack is empyt" << std::endl;
+        std::cout << "Stack is empty" << std::endl;
     }
     else if (m_head->next == nullptr) {
         delete m_head;
+	m_head = nullptr;
     }
     else {
         while (temp->next->next != nullptr) {
             temp = temp->next;
+	    delete temp;
+	    temp = nullptr;
         }
     }
     delete temp->next;
@@ -73,7 +113,8 @@ void Stack::Pop()
 
 void Stack::Push(const int& value)
 {
-    nodePtr temp = new node;
+   cout << "Stack::push" << endl;
+       	node* temp = new node;
     temp->data = value;
     temp->next = nullptr;
     if (m_head == nullptr) {
@@ -82,13 +123,14 @@ void Stack::Push(const int& value)
     }
     else {
         m_tail->next = temp;
-        m_tail = temp;
+        temp = m_tail;
     }
 }
 
 bool Stack::Empty() const
 {
-    return m_head == nullptr;
+cout << "Stack::Empty" << endl;
+    	return m_head == nullptr;
 }
 
 int Stack::Top()
@@ -100,10 +142,14 @@ int Stack::Top()
     } else {
         nodePtr temp;
         temp = m_head;
-
+ cout << "Stack:Top" << endl;
+     	node* temp = new node;
+    temp = m_head;/*
         while (temp->next != nullptr) {
             temp = temp->next;
         }
-        return temp->data;
+        return temp->data;*/
     }
+}
+    return temp->data;
 }

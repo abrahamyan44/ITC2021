@@ -13,10 +13,11 @@ bin/main:
 	@mkdir -p test_run
 	@g++ -g obj/*.o -o $@
 
-release:
+release: $(OBJ_FILES)
 	@mkdir -p bin
 	@mkdir -p test_run
-	@g++ -O3 -g obj/*.o -o bin/$@
+	@g++ -O3 -g obj/*.o -o $@
+	@mv $@ bin/
 
 $(OBJ_FILES): $(SOURCE_FILES)
 	@mkdir -p obj	
