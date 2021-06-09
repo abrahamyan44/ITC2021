@@ -1,0 +1,17 @@
+{
+    "1": {
+        "Kilogram": 1,
+        "Gram": 0.001,
+        "Tonne": 1000
+    },
+    "2": {
+        "Square Kilometre": 1,
+        "Square Meter": 0.000001,
+        "Square Mile": 2.58999
+    },
+    "3": {
+        "Kilometre": 1,
+        "Meter": 0.001,
+        "Centimeter": 0.00001
+    }
+}

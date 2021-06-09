@@ -1,3 +1,6 @@
+//import _ from "lodash";
+
+const data = require("./converter.json");
 const selectId = document.querySelector("#select-id");
 const tables = document.querySelector(".tables");
 
@@ -9,8 +12,8 @@ const objOfArea = {
 };
 const objofLength = {
   Centimeter: "Meter",
-  Meter: "Milimetre",
-  Milimetre: "Centimeter",
+  Meter: "Kilometre",
+  Kilometre: "Centimeter",
 };
 
 selectId.addEventListener("change", function (evt) {
@@ -75,15 +78,9 @@ function Converting(input1, input2, select1, select2, swap) {
   input1.value = "";
 
   input1.addEventListener("input", function () {
-    if (selectId.value === "1") {
-      convertingMass(input1, input2, select1, select2);
-    } else if (selectId.value === "2") {
-      //TODO
-      //convertingArea(input1, input2, select1, select2);
-    } else {
-      //TODO
-      //convertingLength(input1, input2, select1, select2);
-    }
+    input2.value =
+      (input1.value * data[selectId.value][select1.value]) /
+      data[selectId.value][select2.value];
   });
 
   select1.addEventListener("change", function () {
@@ -104,71 +101,4 @@ function Converting(input1, input2, select1, select2, swap) {
     select2.value = tmp;
   });
   Converting(input1, input2, select1, select2);
-}
-
-function convertingMass(input1, input2, select1, select2) {
-  if (select1.value === "Kilogram" && select2.value === "Gram") {
-    input2.value = kgToG(input1.value);
-  } else if (select1.value === "Kilogram" && select2.value === "Tonne") {
-    input2.value = kgToTonne(input1.value);
-  } else if (select1.value === "Tonne" && select2.value === "Gram") {
-    input2.value = tonneToG(input1.value);
-  } else if (select1.value === "Tonne" && select2.value === "Kilogram") {
-    input2.value = tonneToKg(input1.value);
-  } else if (select1.value === "Gram" && select2.value === "Kilogram") {
-    input2.value = gToKg(input1.value);
-  } else if (select1.value === "Gram" && select2.value === "Tonne") {
-    input2.value = gToTonne(input1.value);
-  } else {
-    // kgToKg or gToG or tonneToTonne
-    input2.value = input1.value;
-  }
-}
-
-function kgToG(value) {
-  if (value > 0) {
-    return value * 1000;
-  } else {
-    return "";
-  }
-}
-
-function kgToTonne(value) {
-  if (value > 0) {
-    return value / 1000;
-  } else {
-    return "";
-  }
-}
-
-function tonneToG(value) {
-  if (value > 0) {
-    return value * 1000000;
-  } else {
-    return "";
-  }
-}
-
-function tonneToKg(value) {
-  if (value > 0) {
-    return value * 1000;
-  } else {
-    return "";
-  }
-}
-
-function gToKg(value) {
-  if (value > 0) {
-    return value / 1000;
-  } else {
-    return "";
-  }
-}
-
-function gToTonne(value) {
-  if (value > 0) {
-    return value / 1000000;
-  } else {
-    return "";
-  }
 }
