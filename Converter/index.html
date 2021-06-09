@@ -1,30 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <title>Getting Started</title>
-  <link rel="stylesheet" href="../src/style/index.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
+<link rel="stylesheet" href="../src/style/index.css">
 <body>
-  <div id="firstSelect">
-    <select id="fSelect">
-      <option value="Time">Time</option>
-      <option value="Weight">Weight</option>
-      <!-- <option value="Temperature">Temperature</option> -->
-      <option value="Length">Length</option>
-    </select>
-
     <div id="root">
-      <div id="selectbutton1"></div>
-      <H1 class="equals">=</H1>
-      <div id="selectbutton2"></div>
+        <select id="mainSelector"></select>
+        <div id="selectForm">
+            <div id="leftButton">
+                <input id="input1" type="text">
+                <select id="leftSelect"></select>
+            </div>
+            <div id="rightButton">
+                <input id="input2" type="text">
+                <select id="rightSelect"></select>
+            </div>
+        </div>
     </div>
-  </div>
-  <script src="main.js"></script>
-
+    <script src="main.js"></script>
 </body>
 
 </html>
-<html>

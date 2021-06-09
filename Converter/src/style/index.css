@@ -1,32 +1,26 @@
 #root {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
    
 }
-
-.equals {
-    margin-top: 0px;
+#mainSelector {
+    width: 442px;
+    height: 50px;
 }
 
-#firstSelect{
+#input1, #input2 {
+    height: 50px;
+}
+
+#selectForm {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-#fSelect{
-    width: 200px;
-    height: 50px;
-}
-
-.selectItems {
-    width: 220px;
-    height: 50px;
-}
-
-#selectbutton1, #selectbutton2 {
+#leftSelect, #rightSelect {
     display: flex;
     flex-direction: column;
     align-items: center;

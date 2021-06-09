@@ -1,11 +1,15 @@
-import MainSelectEventsListenner from './content/FirstEventListenner'
-import inputButtonsCreater from './content/InputButtonsCreater'
-import secondSelectButtonsEventListenner from './content/SecondSelectButtonsEventListenner'
-import rememberSelectedValue from './content/ThirdSelectButtonsEventListenner'
-import writeValueInInputButton from './content/WriteValueInInputButton'
+import _ from 'lodash';
+import createMainSelectButtonsOptions from './domFunctions/MainSelectOptionsCreater'
+import createLeftSelectOptions from './domFunctions/SelectOptionsForMeasurements'
+import getResult from './domFunctions/ResultWriter'
+import leftSelectButtonsClickListenner from './domFunctions/SelectButtonsListenners/LeftSelectButtonClickListenner'
+import rightSelectButtonsClickListenner from './domFunctions/SelectButtonsListenners/RightSelectButtonClickListenner'
+import mainSelectButtonsClickListenner from './domFunctions/SelectButtonsListenners/MainSelectButtonsClickListenner'
 
-MainSelectEventsListenner();
-inputButtonsCreater();
-secondSelectButtonsEventListenner();
-rememberSelectedValue();
-writeValueInInputButton();
+
+createMainSelectButtonsOptions();
+createLeftSelectOptions();
+getResult();
+leftSelectButtonsClickListenner();
+rightSelectButtonsClickListenner();
+mainSelectButtonsClickListenner();
