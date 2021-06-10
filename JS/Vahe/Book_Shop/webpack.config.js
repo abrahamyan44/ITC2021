@@ -27,6 +27,7 @@ module.exports = {
           patterns: [
             { from: "src/images", to: "images" },
             { from: "src/index.html", to: "" },
+            { from: "src/style.css", to: "" }
           ],
         }),
       ],

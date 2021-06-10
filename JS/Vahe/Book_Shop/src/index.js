@@ -17,6 +17,7 @@ function main() {
       alert("Wrong input value.");
     }
   });
+
   list.addEventListener("click", removeBook);
 }
 
@@ -25,10 +26,7 @@ function setBooks(count) {
     const element = books[index];
     const button = document.createElement('button');
     button.className = 'delete-button';
-    const close_icon = document.createElement('i');
-    close_icon.className = 'icon fa fa-close';
-    button.appendChild(close_icon);
-
+    button.textContent = 'X';
     const title = document.createElement('div');
     title.textContent = element.title;
     title.className = 'title';
@@ -40,8 +38,6 @@ function setBooks(count) {
     image.className = 'image';
     const book = document.createElement('div');
     book.className = 'book';
-    book.id = index;
-
     book.appendChild(button);
     book.appendChild(image);
     book.appendChild(title);
@@ -51,10 +47,10 @@ function setBooks(count) {
   document.querySelector('body').appendChild(list);
 }
 
-function removeBook() {
-  if (evt.target.className === "delete-button") {
-    list.removeChild(evt.target.parentElement);
-  }
+function removeBook(event) {
+  if (event.target.className === 'delete-button') {
+    list.removeChild(event.target.parentElement);
+  } 
 }
 
 main();

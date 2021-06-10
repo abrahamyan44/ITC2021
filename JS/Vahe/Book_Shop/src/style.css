@@ -75,11 +75,7 @@ body {
     width: 2vw;
     height: 2vw;
     float: right;
-}
-
-.icon {
-    margin: -0.2vw;
-    font-size: 2vw;
+    font-size: 1.5vw;
 }
 
 .title {
