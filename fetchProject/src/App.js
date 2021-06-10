@@ -1,4 +1,4 @@
-import './App.css';
+import './App.css'
 import React, { useState, useEffect } from "react"
 
 
@@ -12,7 +12,7 @@ function getFetchValue() {
 
 function DrawHeader(props) {
   return (
-    <tr>
+    <tr key={Math.random()}>
       {Object.keys(props.data[0]).map((elem) => {
         return (
           <th key={Math.random()}>{elem}</th>
@@ -24,12 +24,12 @@ function DrawHeader(props) {
 
 function DrawBody(props) {
   return (
-    Object.keys(props.data).map((key, i) => {
-      return <tr>{Object.keys(props.data[key]).map(
-        (key1, value) => {
+    Object.values(props.data).map((val) => {
+      return <tr key={Math.random()}>{Object.values(val).map(
+        (elem) => {
           return (
-            <td>
-              {props.data[key][key1]}
+            <td key={Math.random()}>
+              {elem}
             </td>
           )
         }
@@ -54,3 +54,4 @@ function App() {
 }
 
 export default App;
+
