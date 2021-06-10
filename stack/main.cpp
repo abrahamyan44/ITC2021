@@ -1,12 +1,13 @@
 #include "stack.hpp"
 
 int main() {
-    Stack s(4, 3);
-    cout << "s" << endl;
-    s.Push(4);
-    cout << "push"<< endl;
-    s.Push(5);
+    Stack s(2, 4);
+    std::cout << "The stack is " << std::endl;
     s.Print();
+    std::cout << "The stack after push method " << std::endl;
+    s.Push(6);
+    s.Print();
+    std::cout << "the top element is: " <<  s.Top() << std::endl;
 
     return 0;
 }

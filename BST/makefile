@@ -1,6 +1,6 @@
 .PHONY: clean
 
-bin/main: main.o BST.o
+bin/main: main.o BinarySearchTree.o
 	@echo "Your program compiled sucsesfully!"
 	@mkdir -p bin
 	@g++ -g $^ -o $@
@@ -8,7 +8,7 @@ bin/main: main.o BST.o
 main.o: main.cpp
 	@g++ -c $^ -o $@
 
-BST.o: BST.cpp
+BinarySearchTree.o: BinarySearchTree.cpp
 	@g++ -c $^ -o $@
 
 clean:

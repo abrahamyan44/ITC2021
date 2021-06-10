@@ -1,7 +1,7 @@
 #include <iostream>
-#include "BST.hpp"
+#include "BinarySearchTree.hpp"
 
-BST::BST()
+BinarySearchTree::BinarySearchTree()
 {
     root = NULL;
 }
@@ -35,6 +35,11 @@ void BST:: SortArray(int* arr, int n)
     }
 }
 
+<<<<<<< HEAD:BST/BinarySearchTree.cpp
+BinarySearchTree::node* BinarySearchTree::CreateNewNode(int data)
+{
+    node* tree_node = new node;
+=======
 node* BST::CreateNewNode(int data)
 {		
     node* tree_node= new node;
@@ -43,6 +48,7 @@ node* BST::CreateNewNode(int data)
     
     std::cout <<tree_node << "   tree_node   " << std::endl;
     
+>>>>>>> 6c8ab949f0cd7d7f2cb0d05be5e6c9d265ee2ce8:BST/BST.cpp
     tree_node->data = data;
     tree_node->left = NULL;
     assert(tree_node->left == NULL);
@@ -54,7 +60,11 @@ node* BST::CreateNewNode(int data)
     return tree_node;
 }
 
+<<<<<<< HEAD:BST/BinarySearchTree.cpp
+BinarySearchTree::node* BinarySearchTree::MakeTreeFromArray(int arr[], int start, int end)
+=======
 node* BST::MakeTreeFromArray(int* arr, int start, int end)
+>>>>>>> 6c8ab949f0cd7d7f2cb0d05be5e6c9d265ee2ce8:BST/BST.cpp
 {
 std::cout << "MAKE   "  << start << ' ' << end << std::endl;
 
@@ -70,12 +80,20 @@ std::cout << "MAKE   "  << start << ' ' << end << std::endl;
 
     root->left = MakeTreeFromArray(arr, start, mid_index);
 
+<<<<<<< HEAD:BST/BinarySearchTree.cpp
+BinarySearchTree::BinarySearchTree(int arr[], int size)
+{
+    SortArray(arr, size);
+    int start_index = 0;
+    MakeTreeFromArray(arr, start_index, size);
+=======
     root->right = MakeTreeFromArray(arr, mid_index + 1, end);
 	
     //return 0; 
+>>>>>>> 6c8ab949f0cd7d7f2cb0d05be5e6c9d265ee2ce8:BST/BST.cpp
 }
 
-void BST::AddLeaf(int value, node* ptr)
+void BinarySearchTree::AddLeaf(int value, node* ptr)
 {
     if(root == NULL)
     {
@@ -109,12 +127,12 @@ void BST::AddLeaf(int value, node* ptr)
     }
 }
 
-void BST::Insert(int value)
+void BinarySearchTree::Insert(int value)
 {
     AddLeaf(value, root);
 }
 
-void BST::InOrder(node* ptr)
+void BinarySearchTree::InOrder(node* ptr)
 {
     assert(nullptr != ptr);
 
@@ -126,7 +144,7 @@ void BST::InOrder(node* ptr)
     InOrder(ptr->right);
 }
 
-void BST::PreOrder(node* ptr)
+void BinarySearchTree::PreOrder(node* ptr)
 {
     assert(nullptr != ptr);
     if(ptr == NULL) {
@@ -137,7 +155,7 @@ void BST::PreOrder(node* ptr)
     PreOrder(ptr->right);
 }
 
-void BST::PostOrder(node* ptr)
+void BinarySearchTree::PostOrder(node* ptr)
 {
 
     assert(nullptr != ptr);
@@ -149,7 +167,7 @@ void BST::PostOrder(node* ptr)
     std::cout << ptr->data << " " << std::endl;
 }
 
-void BST::Print()
+void BinarySearchTree::Print()
 {
     //InOrder(root);
     PreOrder(root);

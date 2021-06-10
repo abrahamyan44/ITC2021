@@ -2,7 +2,7 @@
 SHELL := /bin/bash
 
 SOURCE_FILES := $(wildcard src/*.cpp)
-OBJ_FILES := $(patsubst %.cpp, %.o, $(SOURCE_FILES))
+OBJ_FILES := $(patsuBinarySearchTree %.cpp, %.o, $(SOURCE_FILES))
 file1 = "test/goutput.txt"
 file2 = "test_run/output.txt"
 

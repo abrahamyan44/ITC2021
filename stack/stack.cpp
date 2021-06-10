@@ -10,6 +10,14 @@ Stack::Stack()
 
 Stack::Stack(int size, int value)
 {
+//     node* temp = new node;
+//     temp->data = value;
+//     temp->next = nullptr;
+//     m_head = temp;
+//     m_tail = temp;
+//     for (int i = 0; i < size - 1; i++) {
+//         Push(value);
+//     }
 
 	for(int i = 0; i < size; ++i) {
 		node* temp;
@@ -33,7 +41,6 @@ Stack::Stack(int size, int value)
 	       temp->next = nullptr;
 
 	}
-	
 }
 
 Stack::~Stack()
@@ -100,6 +107,8 @@ void Stack::Pop()
 	    temp = nullptr;
         }
     }
+    delete temp->next;
+    temp->next = nullptr;
 }
 
 void Stack::Push(const int& value)
@@ -126,13 +135,21 @@ cout << "Stack::Empty" << endl;
 
 int Stack::Top()
 {
+    if(m_head == nullptr) {
+        std::cout << "The stack is empty" << std::endl;
+    } else if(m_head->next == nullptr) {
+        return m_head->data;
+    } else {
+        nodePtr temp;
+        temp = m_head;
  cout << "Stack:Top" << endl;
      	node* temp = new node;
-    temp = m_head;
-
-    while (temp->next != nullptr) {
-        temp = temp->next;
+    temp = m_head;/*
+        while (temp->next != nullptr) {
+            temp = temp->next;
+        }
+        return temp->data;*/
     }
+}
     return temp->data;
 }
-
