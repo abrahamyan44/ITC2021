@@ -1,0 +1,44 @@
+
+body {background-color: rgb(190, 218, 179);}
+
+  .center {
+    margin: auto;
+    align-items: center;
+    width: 15%;
+    border: 3px solid green;
+    padding: 5px;
+  }
+
+  .center2{
+      margin: auto;
+      align-items: center;
+      border: none;
+      padding-left: 500px;
+      width: auto;
+  }
+
+.center_mass{
+    margin-left: 700px;
+    align-items: center;
+    width: 20%;
+    border: 3px solid green;
+    padding: 6px;
+    
+}
+  .measurements{
+    margin: auto;
+    align-items: center;
+    width: 15%;
+    border: 3px solid green;
+    padding: 6px;
+  }
+
+  .forInput{
+    margin-top: 20px;
+    align-items: center;
+    width: 14%;
+    border: 3px solid green;
+    padding: 6px;
+  }
+
+ 
