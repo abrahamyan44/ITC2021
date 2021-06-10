@@ -37,11 +37,6 @@ function CreateSelect(data, containerName, className, selectClassName) {
     return containerName;
 }
 
-// function Convert() {
-//     let toVal = firstNum.value * measurements[measure][a.value] / measurements[measure][b.value];
-//     secondNum.value = toVal;
-// }
-
 let measureData = Object.keys(measurements);
 let Select = document.createElement('select');
 Select.className = 'select-mesure';
