@@ -1,0 +1,33 @@
+.card {
+    position: relative;
+}
+
+.program-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.program-card-title {
+    width: 100%;
+    text-align: start;
+
+    padding-top: 28px;
+    padding-left: 15px;
+    padding-bottom: 20px;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.collections {
+    width: 100%;
+    text-align: start;
+    padding-left: 15px;
+    padding-top: 12px;
+}

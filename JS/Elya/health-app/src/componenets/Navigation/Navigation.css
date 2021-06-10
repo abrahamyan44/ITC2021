@@ -1,0 +1,18 @@
+.navigation {
+    position: absolute;
+    bottom: 0;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.links {
+    color: black;
+}
+
+.blue-link {
+    color: blue;
+}
+

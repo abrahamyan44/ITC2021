@@ -1,0 +1,16 @@
+.progressbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.progressbar-subcontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
