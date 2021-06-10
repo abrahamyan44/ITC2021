@@ -1,0 +1,25 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  background-color: #B578E8;;
+  color: white;
+}
