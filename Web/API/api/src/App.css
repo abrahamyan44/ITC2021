@@ -1,0 +1,22 @@
+.App {
+  justify-content: center;
+  text-align: center;
+  background-color: darkgray;
+  height: 250px;
+  width: 500px;
+  margin-top: 200px;
+  margin-left: 500px;
+  padding: 20px;
+}
+
+
+.element1{
+  
+  width: 200px;
+ border: 1px solid black;
+}
+
+
+#row{
+  margin-top: 15px;
+}
