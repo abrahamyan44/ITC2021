@@ -37,6 +37,11 @@ function CreateSelect(data, containerName, className, selectClassName) {
     return containerName;
 }
 
+// function Convert() {
+//     let toVal = firstNum.value * measurements[measure][a.value] / measurements[measure][b.value];
+//     secondNum.value = toVal;
+// }
+
 let measureData = Object.keys(measurements);
 let Select = document.createElement('select');
 Select.className = 'select-mesure';
@@ -49,8 +54,6 @@ for(let i = 0; i < measureData.length; i++) {
 }
 
 form.addEventListener('click', function(event) {
-    firstNum.value = '';
-    secondNum.value = '';
     firstNum.disabled = false;
     secondNum.disabled = false; 
     firstNum.placeholder = '0';
@@ -63,16 +66,19 @@ form.addEventListener('click', function(event) {
     CreateSelect(data, firstContainer, 'first-option', 'first-select');
     CreateSelect(data, secondContainer, 'second-option', 'second-select');
 
+    function Convert() {
+        let toVal = firstNum.value * measurements[measure][a.value] / measurements[measure][b.value];
+        secondNum.value = toVal;
+    }
+
     firstContainer.addEventListener('click', function(event) {
-        firstNum.value = '';
-        secondNum .value = '';
         firstVal = event.target.value;
+        Convert();
     })
 
     secondContainer.addEventListener('click', function(event) {
-        firstNum.value = '';
-        secondNum.value = '';
         secondtVal = event.target.value;
+        Convert();
     })
 
     let switchButton = document.querySelector('.switch');
@@ -89,12 +95,9 @@ form.addEventListener('click', function(event) {
         b.value = tmp;
     })
 
-    function Convert() {
-        let toVal = firstNum.value * measurements[measure][a.value] / measurements[measure][b.value];
-        secondNum.value = toVal;
-    }
-
     firstNum.addEventListener('input', function(event) {
         Convert();
     })
+
+    Convert();
 })
