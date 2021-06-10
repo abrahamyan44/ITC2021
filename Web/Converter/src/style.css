@@ -1,0 +1,39 @@
+.converter-body{
+    width: 500px;
+    height: 250px;
+    background-color: darkgray;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 250px;
+}
+
+
+.converter-title{
+    text-align: center;
+    margin-top: 15px;
+}
+
+input{
+    height: 25px;
+    text-align: center;
+}
+
+#input{
+    margin-left: 25px;
+}
+
+#inputType, #resultType{
+    width: 150px;
+    margin-left: 25px;
+}
+
+#measureType{
+    margin-left: 100px;
+    margin-bottom: 25px;
+    height: 30px;
+    width: 250px;    
+}
+
+#resultType{
+    margin-left: 80px;
+}
