@@ -1,0 +1,58 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    text-align: center;
+    color: #413a7e;
+    font-family: "Goudy Bookletter 1911", monospace;
+}
+
+.h1 {
+    font-size: 50px;
+    margin: 20px;
+}
+
+input {
+    background-color: aliceblue;
+    height: 50px;
+    width: 200px;
+}
+
+.swap {
+    margin: 15px;
+    cursor: pointer;
+    border: solid 1px #aaa4a4;
+    width: 30px;
+    height: 30px;
+    border-radius: 16%;
+    background: url("https://st4.depositphotos.com/1842549/21264/i/1600/depositphotos_212644920-stock-photo-swap-icon-internet-button-white.jpg") 0 0 / 30px 30px repeat;
+}
+
+.table {
+    width: 100%;
+    justify-content: space-around;
+}
+
+
+.measurediv {
+    justify-content: center;
+    display: grid;
+}
+
+#select-id {
+    width: 250px;
+    margin-bottom: 30px;
+    background-color: aliceblue;
+}
+
+.converter,
+.table {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.div1,
+.div2 {
+    display: grid;
+}
