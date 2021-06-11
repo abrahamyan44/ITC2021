@@ -47,7 +47,7 @@ function CreateTable(obj) {
     select2.className = "second-select";
     swap.className = "swap";
 
-    for (let val in n) {
+    for (let val in obj) {
         const option = document.createElement("option");
         option.value = val;
         option.text = val;
