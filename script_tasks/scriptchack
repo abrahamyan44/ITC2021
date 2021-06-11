@@ -1,0 +1,33 @@
+#!/bin/bash
+read -p "Type CLI argument: " input
+
+if [[ $input =~ ^[+-]?[0-9]+$ ]]; then
+echo "Input is an integer."
+
+
+elif  [ -z "$input" ];  then
+echo "Empty string"
+ 
+
+elif [[ $input =~ ^[a-zA-Z]*$ ]]; then
+echo "Input is a string."
+
+else
+echo "Input is a string+integer."
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

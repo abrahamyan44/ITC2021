@@ -1,0 +1,18 @@
+#!/bin/bash
+echo "enter the size of the rectangle: "
+read size
+echo "enter a symbol of side of rectangle"
+read s
+echo " "
+for (( i = 1; i <= size; i++ )); do
+  for (( j = 1; j <= size; j++ )); do
+    if (( i>1 && i<size && j>1 && j<size )); then
+      echo -n  " " 
+    else
+      echo -n  $s
+    fi
+  done
+  echo
+done
+
+
