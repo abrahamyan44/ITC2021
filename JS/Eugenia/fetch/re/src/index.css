@@ -1,0 +1,26 @@
+table, th, td {
+  border: 2px solid rgb(180, 12, 105);
+  border-collapse: collapse;
+  background-color: whitesmoke;
+}
+
+
+th, td {
+  padding: 30px;
+  text-align: left;
+}
+
+th {
+  color: rgb(204, 10, 107);
+  background-color: rgb(243, 224, 227);
+}
+
+td {
+  color: rgb(204, 10, 107);
+}
+
+body {
+  margin-top: 170px;
+  margin-left: 500px;
+  background-color: rgb(206, 238, 248);
+}
