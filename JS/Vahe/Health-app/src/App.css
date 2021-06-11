@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+  display: flex;
+}
+
+.main-card {
+  padding: 20px !important;
+  position: relative !important;
+  margin: 15px 30px !important;
+}

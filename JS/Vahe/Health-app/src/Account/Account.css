@@ -1,0 +1,16 @@
+.account-title {
+    font-weight: 500 !important;
+    margin: 15px 0px !important;
+    display: flex !important;
+}
+
+.person {
+    display: grid;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.mode-switcher {
+    position: absolute;
+    left: 10px;
+}

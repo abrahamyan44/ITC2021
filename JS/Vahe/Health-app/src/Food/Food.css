@@ -1,0 +1,16 @@
+.food-title {
+    font-weight: 500 !important;
+    margin: 15px 0px !important;
+    display: flex !important;
+}
+
+.text {
+    position: absolute !important;
+    bottom: 60px;
+}
+
+.output-text {
+    padding: 0 10px;
+    overflow-wrap: break-word;
+    max-height: 450px;
+}
