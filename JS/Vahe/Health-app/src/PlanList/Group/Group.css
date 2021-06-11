@@ -1,0 +1,25 @@
+.group {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nested-card {
+    display: flex;
+    align-items: center;
+}
+
+.text-card {
+    margin-left: 12px;
+    text-align: left;
+}
+
+.group-title {
+    margin: 0px 0px;
+}
+
+
+
+
+

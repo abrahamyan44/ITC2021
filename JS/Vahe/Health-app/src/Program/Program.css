@@ -1,0 +1,15 @@
+.couple-cards {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.title-program {
+    font-weight: 500 !important;
+    margin: 15px 0px !important;
+    display: flex !important;
+}
+
+.subtitle {
+    margin: 15px 0px !important;
+    display: flex;
+}

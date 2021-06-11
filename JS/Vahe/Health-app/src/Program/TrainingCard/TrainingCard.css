@@ -1,0 +1,27 @@
+.card {
+    padding: 15px !important;
+    width: 115px !important;
+    margin: 10px 0 !important;
+    float: left;
+
+}
+
+.icon { 
+    width: 25px;
+    height: 25px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    display: flex;
+}
+
+.subtitle0, .subtitle1 {
+    display: flex;
+}
+
+.subtitle1 {
+    margin-bottom: 10px;
+}
+
+.progress {
+    display: flex;
+}

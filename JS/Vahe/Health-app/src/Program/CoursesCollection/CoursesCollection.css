@@ -1,0 +1,34 @@
+.courses-card {
+    padding: 16px !important;
+}
+
+.nested-div {
+    display: flex !important;
+}
+
+.ticket-card {
+    padding: 4px !important;
+    width: 46px !important;
+    height: 46px !important;
+}
+
+.text-card-courses {
+    margin-left: 12px !important;
+    overflow: unset !important;
+}
+
+.title-course {
+    margin: 0px 0px !important;
+    display: flex;
+}
+
+.card1 {
+    display: flex !important;
+    overflow: unset !important;
+    align-items: center !important;
+}
+
+.icon-button {
+    margin-left: 24px !important;
+}
+
