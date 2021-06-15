@@ -1,21 +1,6 @@
 import _ from 'lodash';
 
 const measurements = require('./measurements.json');
-// let measurements = {
-//     "lenght": {
-//         "m": 1,
-//         "sm": 0.01,
-//         "mm": 0.001,
-//         "km": 1000
-//     },
-//     "massa": {
-//         "kg": 1,
-//         "gr": 0.001,
-//         "mg": 0.000001,
-//         "tonna": 1000
-//     }
-
-// }
 
 let input = document.getElementById('input');
 let result = document.getElementById('result');
@@ -28,7 +13,33 @@ inputType.addEventListener('change', converter);
 resultType.addEventListener('change', converter);
 
 
+function options() {
+    let data = Object.keys(measurements)
+    for(let i = 0; i < data.length; i++) {
+        let options = document.createElement("option");
+        options.value = data[i];
+        options.text = data[i];
+        measureType.appendChild(options);
+    
+        let objName = data[i];
+        console.log('datsa i', measurements[objName]);
+       let arrayname = Object.keys(measurements[objName]);
+            for(let j = 0; j < arrayname.length; j++) {
+                let option1 = document.createElement("option");
+                option1.value = arrayname[j];
+                option1.text = arrayname[j];
+                inputType.appendChild(option1);
+                let option2 = document.createElement("option");
+                option2.value = arrayname[j];
+                option2.text = arrayname[j];
+                resultType.appendChild(option2);
+            }
+    }
+}
+
+options();
 function converter() {
     result.value = input.value * measurements[measureType.value][inputType.value] / measurements[measureType.value][resultType.value];
     return result.value;
 }
+
