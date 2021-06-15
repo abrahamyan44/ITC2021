@@ -22,7 +22,6 @@ function options() {
         measureType.appendChild(options);
     
         let objName = data[i];
-        console.log('datsa i', measurements[objName]);
        let arrayname = Object.keys(measurements[objName]);
             for(let j = 0; j < arrayname.length; j++) {
                 let option1 = document.createElement("option");
