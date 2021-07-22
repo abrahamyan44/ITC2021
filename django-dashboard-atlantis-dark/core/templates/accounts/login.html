@@ -1,0 +1,132 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Login {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/css/sign_in.css">
+{%if 'forgot-password' in request.path%}
+    <link rel="stylesheet" href="/static/assets/css/forgot-password.css">
+{% endif %}
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="first_half">
+    <div class="for_img_opacity">
+        <h1 class="company_name">Tasking and Analysis System</h1>
+    </div>
+</div>
+<div class="second_half">
+    <div class="lang-menu">
+        <div class="selected-lang">
+            <div class="select">
+                ENG
+                <ul>
+                    <li>
+                        <a href="" class="arm">ARM</a>
+                    </li>
+                    <li>
+                        <a href="" class="ru">RU</a>
+                    </li>
+                    <li>
+                        <a href="" class="eng">ENG</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="page-inner">
+        <div class="aa">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+
+                            {% if msg %}
+                                <span class="text-danger">{{ msg | safe }}</span>
+                            {% else %}
+                                {%if 'login' in request.path%}
+                                    <span>
+                                        Sign In
+                                    </span>
+                                {%elif 'forgot-password' in request.path%}
+                                    <span>
+                                        Reset password
+                                    </span>
+                                {% endif %}
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <form method="post" action="">
+
+                        {% csrf_token %}
+
+                            <div class="card-body">
+                            <div class="row">
+                                {%if 'login' in request.path%}
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="icon-user"></i>
+                                                    </span>
+                                                </div>
+                                                {{ form.username }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="icon-lock"></i>
+                                                    </span>
+                                                </div>
+                                                {{ form.password }}
+                                            </div>
+                                        </div>
+                                </div>
+                                {%elif 'forgot-password' in request.path%}
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group mb-3">
+                                                {{ email_send_form.email}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {%endif%}
+                            </div>
+                        </div>
+
+                        <div class="card-action">
+                            {%if 'login' in request.path %}
+                                <input type="submit" class="sign_button" value="Sign In"></input>
+                                &nbsp; &nbsp;
+
+                                <a href="{% url 'forgot-password' %}" >Forgot Password?</a>
+                            {%elif 'forgot-password' in request.path%}
+                                <input type="submit" class="sign_button" value="Reset"></input>
+                                &nbsp; &nbsp;
+
+                                <a href="{% url 'login' %}" >Back to log in</a>
+                            {%endif%}
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}
