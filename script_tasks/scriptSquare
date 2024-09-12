@@ -1,0 +1,19 @@
+#!/usr/bin/
+
+echo "Symbol of the side of square"
+read s
+echo "Size of the square?"
+    read size
+
+
+for (( i=0; i<$size; i++ )); do
+    for (( j=0; j<$size; j++ )); do
+      #if(( $i>0 && $i<$size-1 && $j>0 && $j<$size-1 ))
+      if [[ $i -gt 10 ]]
+        printf $s
+fi
+printf $s
+    done
+    printf "\n"
+done
+

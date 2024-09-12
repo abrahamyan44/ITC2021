@@ -1,0 +1,136 @@
+
+
+body{
+  background-image:url('./wood.jpg');
+}
+
+.header{
+  color: antiquewhite;
+  font-family: 'Helvetica Neue',
+  sans-serif;
+  font-size: 200px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center; 
+  margin-top: 20px;
+}
+.header:hover{
+  transform: scale(1.1) ;
+  transform-style: flat;
+}
+
+
+input[type=text] {
+  background-color: antiquewhite;
+  border: 10px;
+  color: antiquewhite;
+  padding: 16px 32px;
+  text-decoration: none;
+  text-align: center;
+  margin: 4px 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: black;
+ }
+
+ .button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  border-radius: 30px;
+ }
+
+
+ .a{
+  display: flex;
+  flex-direction: column; 
+  align-items: center;  
+}
+
+
+.center{
+  display: block;
+  margin: auto;
+  padding-left: 50px;
+}
+
+.bookDiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 150px;
+    margin-right: 100px;
+    padding: 12px 12px;
+    margin-bottom: 80px;
+}
+
+.img:hover {
+  transform: scale(1.1); 
+}
+
+.title{
+  width: 350px;
+  height: 80px;
+  color:antiquewhite;
+  text-align:left;
+}
+
+.author{
+  width: 350px;
+  height:50px;
+  color:antiquewhite;
+  font-style: italic;
+  text-align: left;
+}
+
+    
+.column{
+  width: 350px;
+  height: 500px;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-block: 100px;
+  vertical-align: left;   
+}
+
+.center{
+  border: 50px ;
+  text-align: center;
+  padding-left: 50px;
+}
+
+.input-block{
+    list-style-image: -moz-repeating-linear-gradient();
+}
+
+.img {
+  width: 300px;
+  height: 400px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+ }
+ 

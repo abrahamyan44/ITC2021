@@ -1,0 +1,248 @@
+{% extends "layouts/base.html" %} {% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+
+<link rel="stylesheet" href="/static/assets/css/reports_template.css"/>
+
+
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div class="page-header">
+                    <h4 class="page-title">Report</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="/">
+                                <i class="fas fa-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href='{% url "reports" %}'>Report</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href='{% url "reports" %}'>Report Table</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+        </style>
+    </head>
+    <body>
+
+    <h2>Report Table</h2>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td>Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+        <tr>
+            <td>Island Trading</td>
+            <td>Helen Bennett</td>
+            <td>UK</td>
+        </tr>
+        <tr>
+            <td>Laughing Bacchus Winecellars</td>
+            <td>Yoshi Tannamuri</td>
+            <td>Canada</td>
+        </tr>
+        <tr>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Giovanni Rovelli</td>
+            <td>Italy</td>
+        </tr>
+    </table>
+
+    </body>
+    </html>
+
+    <div class="row row-card-no-pd">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-head-row card-tools-still-right">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<!-- Atlantis DEMO methods, don't include it in your project! -->
+<script src="/static/assets/js/setting-demo.js"></script>
+<script src="/static/assets/js/demo.js"></script>
+
+<script>
+    Circles.create({
+        id: 'circles-1',
+        radius: 45,
+        value: 60,
+        maxValue: 100,
+        width: 7,
+        text: 5,
+        colors: ['#f1f1f1', '#FF9E27'],
+        duration: 400,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        styleWrapper: true,
+        styleText: true
+    })
+
+    Circles.create({
+        id: 'circles-2',
+        radius: 45,
+        value: 70,
+        maxValue: 100,
+        width: 7,
+        text: 36,
+        colors: ['#f1f1f1', '#2BB930'],
+        duration: 400,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        styleWrapper: true,
+        styleText: true
+    })
+
+    Circles.create({
+        id: 'circles-3',
+        radius: 45,
+        value: 40,
+        maxValue: 100,
+        width: 7,
+        text: 12,
+        colors: ['#f1f1f1', '#F25961'],
+        duration: 400,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        styleWrapper: true,
+        styleText: true
+    })
+
+    var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+
+    var mytotalIncomeChart = new Chart(totalIncomeChart, {
+        type: 'bar',
+        data: {
+            labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+            datasets: [{
+                label: "Total Income",
+                backgroundColor: '#ff9e27',
+                borderColor: 'rgb(23, 125, 255)',
+                data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false,
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        display: false //this will remove only the label
+                    },
+                    gridLines: {
+                        drawBorder: false,
+                        display: false
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        drawBorder: false,
+                        display: false
+                    }
+                }]
+            },
+        }
+    });
+
+    $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
+        type: 'line',
+        height: '70',
+        width: '100%',
+        lineWidth: '2',
+        lineColor: '#ffa534',
+        fillColor: 'rgba(255, 165, 52, .14)'
+    });
+
+let today = new Date().toISOString().substr(0, 10);
+document.querySelector("#today").value = today;
+
+document.querySelector("#today2").valueAsDate = new Date();
+
+
+
+
+
+
+</script>
+
+{% endblock javascripts %}

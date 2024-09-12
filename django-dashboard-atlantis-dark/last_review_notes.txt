@@ -1,0 +1,15 @@
+This file contains last review notes.
+
+1. write docstrings in case of necessity
++ 2. do not use built in names
+3. use forms in accordance with their purposes
+4. do coded clean-up and remove redundancies (e.g. print)
+5. consider to use log over print
++- 6. use 404-not-found in relative cases (show 404 not found page when it needed)
+7. less html, more django-python code (crispy-forms)
+8. solve the following import issue via correct CONFIG usage and correct
+    registration in INSTALLED_APPS list
+    from apps.authentication.models import User
+9. remove codes from 2019 year
+    project dependency: 'code': '^2021'
+10. solve merge conflicts by taking into the account your teammates' codes also

@@ -1,0 +1,59 @@
+#!/bin/bash
+
+cd $HOME/
+newdirname="logs"
+if [ -d "$newdirname" ]; then
+echo "Directory already exists" ;
+else
+`mkdir -p $newdirname`;
+echo "$newdirname directory is created"
+fi
+
+cd $HOME/logs
+
+touch errors
+touch errors_count
+
+echo -n "Enter the directory name:"
+read name
+while true
+do
+echo "PLease enter directory absolute path name you want to create"
+
+read path
+
+if [[ "${path:0:1}" == / || "${path:0:2}" == ~[/a-z] ]]
+then
+        mkdir -p $path/$name
+        break 1
+else
+        echo "enter valid absolute path"
+fi
+done
+
+echo "Great, it seems you understand absolute path !"
+
+echo "Now let's check if path already exists"
+
+newdirname="logs"
+if [ -d "$path/$name" ]; then
+echo "Specified path exists !!!" ;
+else
+echo "$path/$name directory is created"
+echo "Would you like to create new files in specified directory ?:"
+while true
+do
+read a 
+if (( $y == "YES" || $y == "yes" || "Yes" ))
+	echo "Lets create files .."
+	IFS','
+       read -a strarr <<< "$a"
+for index in ${!array[@]}; do
+    echo ${#array[@]};
+done
+fi
+done       
+else
+
+fi
+

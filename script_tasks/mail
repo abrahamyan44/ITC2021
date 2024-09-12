@@ -1,0 +1,14 @@
+#!bin/bash
+regex="^[a-zA-Z0-9!#\$%&'*+/=?^_\`{|}~-]+(\.[a-zA-Z0-9!#$%&'*+/=?^_\`{|}~-]+)*@([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-z0-9]([a-z0-9-]*[a-z0-9])?\$"
+
+read i
+if [[ $i =~ $regex ]] ; then
+    echo "valid mail"
+else
+    echo "invalid mail"
+fi
+
+
+~                                                                               
+~                                                                               
+~        

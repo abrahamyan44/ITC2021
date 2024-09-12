@@ -1,0 +1,255 @@
+{% extends "layouts/base.html" %} {% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="content">
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div class="page-header">
+                    <h4 class="page-title">Tasking system</h4>
+                    <ul class="breadcrumbs">
+                        <li class="nav-home">
+                            <a href="/">
+                                <i class="fas fa-home"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href='{% url "tasks" %}'>Tasking system</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href='{% url "tasks" %}'>Tasks</a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            {% if 'create' in segment and not parent_task %}
+                            <a href='{% url "task_create" %}'>Create a task</a> {% elif 'create' in segment %}
+                            <a href='{% url "subtask_create" parent_id=parent_task.id %}'>Create a subtask</a>
+                            {% elif 'edit' in segment %}
+                            <a href='{% url "task_edit" task_id=task_id %}'>Edit</a>{% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-inner mt--5">
+        <div class="row row-card-no-pd">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-head-row card-tools-still-right">
+                            <h4 class="card-title">
+                                {% if 'create' in segment and not parent_task %}
+                                Create a task
+                                {% elif 'create' in segment %}
+                                Create a subtask
+                                {% elif 'edit' in segment %}
+                                Edit
+                                {% endif %}
+                            </h4>
+                        </div>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div style="display: flex; color: black; width: 50%;">
+                            <div>
+                                {% if not parent_task and 'create' in segment %}
+                                {% else %}
+                                <div style="margin: 20px">
+                                    Parent ID
+                                    {{ form.pid }}
+                                </div>
+                                {% endif %}
+                                <div style="margin: 20px">
+                                    Assigned by
+
+                                    {% if parent_task %}
+                                    <input readonly
+                                        style="width: 100%; background: rgb(241, 241, 241); border-radius: 0; color: black; border-radius: 5px; padding: 5px; border: 1px solid rgb(241, 241, 241);"
+                                        value="{{parent_task.creator.name }} {{ parent_task.creator.last_name }}">
+                                    {% else %}
+                                    {{ form.creator }}
+                                    {% endif %}
+                                </div>
+                                <div style="margin: 20px">
+                                    Assigned to
+                                    {{ form.executor }}
+                                </div>
+                                <div style="display: flex; margin: 20px;">
+                                    <div style="width: 50%; margin-right: 20px;">
+                                        Current state
+                                        <div style="width: 110%;">
+                                            {{ form.current_state }}
+                                        </div>
+                                    </div>
+                                    <div style="width: 50%">
+                                        Target state
+                                        <div style="width: 110%;">
+                                            {{ form.target_state }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin: 20px">
+                                    Date created
+                                    {{ form.create_date }}
+                                </div>
+                                <div style="margin: 20px">
+                                    Due date
+                                    {{ form.deadline }}
+                                </div>
+                            </div>
+                            <div>
+                                <div style="margin: 20px">
+                                    Title
+                                    {{ form.task_title }}
+                                </div>
+                                <div style="margin: 20px">
+                                    Description
+                                    {{ form.task_description }}
+                                </div>
+                                <div style="margin: 20px">
+                                    Progress
+                                    {{ form.progress }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive table-hover table-sales">
+                                        <div class="card-tools">
+                                            <button type="submit" class="btn btn-secondary"> <i class="fas fa-plus"
+                                                    style="margin-right: 10px;"></i><b> {% if 'create' in segment %}
+                                                    Create
+                                                    {% else %} Edit {% endif %}</b></button>
+                                            <a href='{% url "tasks" %}' class="btn btn-secondary cancel_btn">
+                                                <i class="fas fa-times" style="margin-right: 10px;"></i><b> Cancel </b>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<!-- Atlantis DEMO methods, don't include it in your project! -->
+<script src="/static/assets/js/setting-demo.js"></script>
+<script src="/static/assets/js/demo.js"></script>
+
+<script>
+    Circles.create({
+        id: 'circles-1',
+        radius: 45,
+        value: 60,
+        maxValue: 100,
+        width: 7,
+        text: 5,
+        colors: ['#f1f1f1', '#FF9E27'],
+        duration: 400,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        styleWrapper: true,
+        styleText: true
+    })
+
+    Circles.create({
+        id: 'circles-2',
+        radius: 45,
+        value: 70,
+        maxValue: 100,
+        width: 7,
+        text: 36,
+        colors: ['#f1f1f1', '#2BB930'],
+        duration: 400,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        styleWrapper: true,
+        styleText: true
+    })
+
+    Circles.create({
+        id: 'circles-3',
+        radius: 45,
+        value: 40,
+        maxValue: 100,
+        width: 7,
+        text: 12,
+        colors: ['#f1f1f1', '#F25961'],
+        duration: 400,
+        wrpClass: 'circles-wrp',
+        textClass: 'circles-text',
+        styleWrapper: true,
+        styleText: true
+    })
+
+    var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+
+    var mytotalIncomeChart = new Chart(totalIncomeChart, {
+        type: 'bar',
+        data: {
+            labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+            datasets: [{
+                label: "Total Income",
+                backgroundColor: '#ff9e27',
+                borderColor: 'rgb(23, 125, 255)',
+                data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false,
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        display: false //this will remove only the label
+                    },
+                    gridLines: {
+                        drawBorder: false,
+                        display: false
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        drawBorder: false,
+                        display: false
+                    }
+                }]
+            },
+        }
+    });
+
+    $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
+        type: 'line',
+        height: '70',
+        width: '100%',
+        lineWidth: '2',
+        lineColor: '#ffa534',
+        fillColor: 'rgba(255, 165, 52, .14)'
+    });
+</script>
+
+{% endblock javascripts %}
