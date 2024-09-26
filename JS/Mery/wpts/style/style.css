@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(18, 42, 75);
+}
+
+header {
+    background-color: rgb(7, 30, 60);
+    position: sticky;
+    width: 100%;
+    top: 0;
+    padding: 12px;
+    box-sizing: border-box;
+    height: 60px;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+}
+
+.submit {
+    color: rgb(13, 13, 31);
+}
+
+@media only screen and (max-width: 2000px) {
+    h1 {
+        font-weight: bold;
+        font-size: 30px;
+        color: beige;
+        margin: auto;
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    h1 {
+        font-weight: bold;
+        font-size: 15px;
+        color: beige;
+        margin: auto;
+        font-family: 'Times New Roman', Times, serif;
+        font-style: italic;
+    }
+
+}
+
+
+#form-block {
+    background-color: rgb(18, 42, 75);
+}
+
+.book-section:hover {
+    transform: scale(1.05);
+}
+
+.book-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.book-section {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(37, 64, 99);
+    border-radius: 10px 10px 0px 0px;
+
+}
+
+.book-info {
+    text-align: center;
+    font-size: 25px;
+}
+
+.book-info>p {
+    margin: 5px 0;
+}
+
+.value {
+    margin-bottom: 8px;
+    background-color: rgb(0, 29, 53);
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.delete {
+    background-color: rgb(37, 64, 99);
+    color: rgb(170, 196, 222);
+    border-radius: 5px;
+    margin-right: 5px;
+    position: relative;
+    left: 137px;
+    cursor: pointer;
+}
+
+.author,
+.title {
+    color: beige;
+}
+
+.image {
+    margin: 10px;
+    width: 270px;
+    height: 300px;
+}
+
+#input-block {
+    size: 5px;
+    background-color: rgb(144, 149, 172);
+    margin-left: 3px;
+}
